@@ -93,10 +93,6 @@ Detalhes sobre o espaço de problema, os objetivos do projeto, sua justificativa
 
 ![Mapa de Stakeholders](./images/Mapa%20de%20Stakeholders.png)
 
-##### Mapa de Stakeholders
-
-![Mapa de Stakeholders](./images/Mapa%20de%20Stakeholders.png)
-
 ##### Entrevistas Qualitativas
 
 ![Entrevistas Qualitativas](./images/Entrevista%20Qualitativa%20Parte%201.png)
