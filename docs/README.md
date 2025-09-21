@@ -3,12 +3,12 @@
 Informações básicas do projeto.
 
 - **Projeto:** [NOME DO PROJETO]
-- **Repositório GitHub:** [LINK PARA O REPOSITÓRIO NO GITHUB]
+- **Repositório GitHub:** https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2025-2-ti1-5567100-precos_mercado.git
 - **Membros da equipe:**
 
-  - [Fulano](https://github.com/fulano) ⚠️ EXEMPLO ⚠️
-  - [Beltrano](https://github.com/beltrano) ⚠️ EXEMPLO ⚠️
-  - [Cicrano](https://github.com/cicrano) ⚠️ EXEMPLO ⚠️
+  - [Bruna Pedrosa Nunes](https://github.com/brunapedrosabr)
+  - [Beltrano](https://github.com/beltrano)
+  - [Cicrano](https://github.com/cicrano)
 
 A documentação do projeto é estruturada da seguinte forma:
 
