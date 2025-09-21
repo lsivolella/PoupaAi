@@ -2,13 +2,16 @@
 
 Informações básicas do projeto.
 
-- **Projeto:** [NOME DO PROJETO]
+- **Projeto:** PoupaAí
 - **Repositório GitHub:** https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2025-2-ti1-5567100-precos_mercado.git
 - **Membros da equipe:**
 
+  - [Bernardo Duarte Medeiros de Paula](https://github.com/bernardodvarte)
   - [Bruna Pedrosa Nunes](https://github.com/brunapedrosabr)
-  - [Beltrano](https://github.com/beltrano)
-  - [Cicrano](https://github.com/cicrano)
+  - [Lucas Gonçalves Sivolella](https://github.com/lsivolella)
+  - [Plínio Ângelo Ferreira](https://github.com/afplinio)
+  - [Sofia Ferreira Costa](https://github.com/costa-sofia)
+  - [Vinicius Ramos Sales](https://github.com/ViniRSales)
 
 A documentação do projeto é estruturada da seguinte forma:
 
@@ -85,21 +88,21 @@ Detalhes sobre o espaço de problema, os objetivos do projeto, sua justificativa
 
 ## Etapa de Entendimento
 
-##### Matriz CSD
+### Matriz CSD
 
 ![Matriz CSD](./images/Matriz%20CSD.png)
 
-##### Mapa de Stakeholders
+### Mapa de Stakeholders
 
 ![Mapa de Stakeholders](./images/Mapa%20de%20Stakeholders.png)
 
-##### Entrevistas Qualitativas
+### Entrevistas Qualitativas
 
 ![Entrevistas Qualitativas](./images/Entrevista%20Qualitativa%20Parte%201.png)
 
 ![Entrevistas Qualitativas](./images/Entrevista%20Qualitativa%20Parte%202.png)
 
-##### Highlights de Pesquisa
+### Highlights de Pesquisa
 
 ![Highlights de Pesquisa](./images/Highlights%20de%20Pesquisa.png)
 
@@ -221,7 +224,6 @@ Relação de ferramentas empregadas pelo grupo durante o projeto.
 | Repositório de código       | GitHub             | https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2025-2-ti1-5567100-precos_mercado.git                      |
 | Editor de código            | Visual Studio Code | https://code.visualstudio.com/                                                                               |
 | Protótipo Interativo        | Figma              | https://www.figma.com/design/LlSi6oktUlezQnomFvF1KN/Pre%C3%A7os-Mercado?node-id=0-1&p=f&t=DBwjVbY4Q0JGavk3-0 |
-|                             |                    |                                                                                                              |
 
 ## Gerenciamento do Projeto
 
