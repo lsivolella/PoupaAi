@@ -85,37 +85,43 @@ Detalhes sobre o espaço de problema, os objetivos do projeto, sua justificativa
 
 ## Etapa de Entendimento
 
-**✳️✳️✳️ APRESENTE OS ARTEFATOS DA ETAPA ✳️✳️✳️**
+##### Matriz CSD
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Nessa etapa, vamos trabalhar com a metdologia de Design Thinking para compreender com maior profundidade o problema a ser tratado. Nesse processo, vamos elaborar:
->
-> - **Matriz CSD**: também conhecida por Matriz de Alinhamento, é uma ferramenta utilizada no Design Thinking para organizar informações e facilitar o processo de tomada de decisão e solução de problemas;
-> - **Mapa de stakeholders**: ferramenta que nos permite compreender o grupo de pessoas e entidades que devemos estudar e conversar para entender mais sobre o problema
-> - **Entrevistas qualitativas**: série de entrevistas qualitativas para validar suposições e solucionar as dúvidas com as principais pessoas envolvidas;
-> - **Highlights de pesquisa**: um compilado do levantamento realizado por meio das entrevistas.
+![Matriz CSD](./images/Matriz%20CSD.png)
+
+##### Mapa de Stakeholders
+
+![Mapa de Stakeholders](./images/Mapa%20de%20Stakeholders.png)
+
+##### Mapa de Stakeholders
+
+![Mapa de Stakeholders](./images/Mapa%20de%20Stakeholders.png)
+
+##### Entrevistas Qualitativas
+
+![Entrevistas Qualitativas](./images/Entrevista%20Qualitativa%20Parte%201.png)
+
+![Entrevistas Qualitativas](./images/Entrevista%20Qualitativa%20Parte%202.png)
+
+##### Highlights de Pesquisa
+
+![Highlights de Pesquisa](./images/Highlights%20de%20Pesquisa.png)
 
 ## Etapa de Definição
 
 ### Personas
 
-**✳️✳️✳️ APRESENTE OS DIAGRAMAS DE PERSONAS ✳️✳️✳️**
+Persona 1: Osvaldo
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Relacione as personas identificadas no seu projeto e os respectivos mapas de empatia. Lembre-se que você deve ser enumerar e descrever precisamente e de forma personalizada todos os principais envolvidos com a solução almeja.
->
-> **Orientações**:
->
-> - [Persona x Público-alvo](https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/)
-> - [O que é persona?](https://resultadosdigitais.com.br/blog/persona-o-que-e/)
-> - [Rock Content](https://rockcontent.com/blog/personas/)
-> - [Criar personas (Hotmart)](https://blog.hotmart.com/pt-br/como-criar-persona-negocio/) > **Exemplo de Persona**
->
-> ![Exemplo de Persona](./images/exemplo-persona.png)
->
-> Fonte: [Como criar uma persona para o seu negócio](https://raissaviegas.com.br/como-criar-uma-persona/)
+![Persona Osvaldo](./images/Persona%20Osvaldo.png)
+
+Persona 2: Pedro
+
+![Persona Pedro](./images/Persona%20Pedro.png)
+
+Persona 3: Carla
+
+![Persona Carla](./images/Persona%20Carla.png)
 
 # Product Design
 
@@ -125,31 +131,31 @@ Nesse momento, vamos transformar os insights e validações obtidos em soluçõe
 
 Com base na análise das personas foram identificadas as seguintes histórias de usuários:
 
-| ID   | EU COMO...`PERSONA` | QUERO/PRECISO ...`FUNCIONALIDADE`      | PARA ...`MOTIVO/VALOR`                 |
-| ---- | ------------------- | -------------------------------------- | -------------------------------------- |
-| US01 | Usuário do sistema  | Registrar minhas tarefas ⚠️ EXEMPLO ⚠️ | Não esquecer de fazê-las               |
-| US02 | Administrador       | Alterar permissões ⚠️ EXEMPLO ⚠️       | Permitir que possam administrar contas |
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente aqui as histórias de usuário que são relevantes para o projeto de sua solução. As Histórias de Usuário consistem em uma ferramenta poderosa para a compreensão e elicitação dos requisitos funcionais e não funcionais da sua aplicação. Se possível, agrupe as histórias de usuário por contexto, para facilitar consultas recorrentes à essa parte do documento.
->
-> **Orientações**:
->
-> - [Histórias de usuários com exemplos e template](https://www.atlassian.com/br/agile/project-management/user-stories)
-> - [Como escrever boas histórias de usuário (User Stories)](https://medium.com/vertice/como-escrever-boas-users-stories-hist%C3%B3rias-de-usu%C3%A1rios-b29c75043fac)
+| ID   | EU COMO...`PERSONA`                | QUERO/PRECISO ...`FUNCIONALIDADE`                                           | PARA ...`MOTIVO/VALOR`                                                                   |
+| ---- | ---------------------------------- | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| US01 | Osvaldo                            | Um histórico com os preços dos produtos que costumo consumir                | Evitar lojas que tenham aumentado os preços repentinamente e buscar produtos substitutos |
+| US02 | Pedro                              | Encontrar os melhores preços para os produtos                               | Ter mais dinheiro para sair com os amigos                                                |
+| US03 | Carla                              | Saber onde posso encontrar os produtos que preciso comprar                  | Ter mais tempo para realizar minhas tarefas e descansar em casa                          |
+| US04 | Consumidor geral                   | Um aplicativo que me ajude a descobrir o preço dos produtos de supermercado | Que eu possa comparar preços e assim economizar em minhas compras                        |
+| US05 | Dono de restaurante                | Saber o local onde encontro todos produtos que preciso                      | Comprar os ingredientes necessários para cozinhar todos os alimentos do cardápio         |
+| US06 | Membro de uma grande família       | Comprar uma grande quantidade de itens no supermercado                      | Atender toda a demanda familiar e manter a qualidade do lar                              |
+| US07 | Atleta                             | Encontrar produtos específicos com facilidade                               | Atender minha dieta restrita                                                             |
+| US08 | Consumidor com mobilidade reduzida | Consumidor com mobilidade reduzida                                          | Que eu consiga fazer minhas compras sem maiores complicações                             |
+| US09 | Empresária                         | Otimizar meu tempo com idas as supermercado                                 | Conciliar meu trabalho com as compras de casa para mim e para minha família              |
 
 ## Proposta de Valor
 
-**✳️✳️✳️ APRESENTE O DIAGRAMA DA PROPOSTA DE VALOR PARA CADA PERSONA ✳️✳️✳️**
+##### Proposta para Persona 1: Osvaldo
 
-##### Proposta para Persona XPTO ⚠️ EXEMPLO ⚠️
+![Proposta de Valor Osvaldo](./images/Proposta%20de%20Valor%20Osvaldo.png)
 
-![Exemplo de proposta de valor](images/exemplo-proposta-valor.png)
+##### Proposta para Persona 2: Pedro
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> O mapa da proposta de valor é uma ferramenta que nos ajuda a definir qual tipo de produto ou serviço melhor atende às personas definidas anteriormente.
+![Proposta de Valor Pedro](./images/Proposta%20de%20Valor%20Pedro.png)
+
+##### Proposta para Persona 3: Carla
+
+![Proposta de Valor Carla](./images/Proposta%20de%20Valor%20Carla.png)
 
 ## Projeto de Interface
 
@@ -212,17 +218,14 @@ Detalhes sobre a organização do grupo e o ferramental empregado.
 
 Relação de ferramentas empregadas pelo grupo durante o projeto.
 
-| Ambiente                    | Plataforma | Link de acesso                                |
-| --------------------------- | ---------- | --------------------------------------------- |
-| Processo de Design Thinking | Miro       | https://miro.com/XXXXXXX ⚠️ EXEMPLO ⚠️        |
-| Repositório de código       | GitHub     | https://github.com/XXXXXXX ⚠️ EXEMPLO ⚠️      |
-| Hospedagem do site          | Render     | https://site.render.com/XXXXXXX ⚠️ EXEMPLO ⚠️ |
-| Protótipo Interativo        | MarvelApp  | https://marvelapp.com/XXXXXXX ⚠️ EXEMPLO ⚠️   |
-|                             |            |                                               |
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Liste as ferramentas empregadas no desenvolvimento do projeto, justificando a escolha delas, sempre que possível. Inclua itens como: (1) Editor de código, (2) )ferramentas de comunicação, (3) )ferramentas de diagramação, (4) )plataformas de hospedagem, entre outras.
+| Ambiente                    | Plataforma         | Link de acesso                                                                                               |
+| --------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------ |
+| Processo de Design Thinking | Miro               | https://miro.com/app/board/uXjVJRfmPqM=/                                                                     |
+| Comunicação                 | Google Meet        | https://meet.google.com/                                                                                     |
+| Repositório de código       | GitHub             | https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2025-2-ti1-5567100-precos_mercado.git                      |
+| Editor de código            | Visual Studio Code | https://code.visualstudio.com/                                                                               |
+| Protótipo Interativo        | Figma              | https://www.figma.com/design/LlSi6oktUlezQnomFvF1KN/Pre%C3%A7os-Mercado?node-id=0-1&p=f&t=DBwjVbY4Q0JGavk3-0 |
+|                             |                    |                                                                                                              |
 
 ## Gerenciamento do Projeto
 
