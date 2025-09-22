@@ -33,7 +33,7 @@ Detalhes sobre o espaço de problema, os objetivos do projeto, sua justificativa
 
 O cenário atual de compras em supermercados no Brasil apresenta alguns desafios para os consumidores como:
 
-**1. Falta de centralização da Informações**
+**1. Falta de centralização das Informações**
 
 - Os consumidores precisam consumir múltiplas fontes de informação para comparar preços como sites dos supermercados, aplicativos, folhetos promocionais dos supermercados e/ou anúncios.
 - As informações sobre promoções são dispersas e difíceis de encontrar.
