@@ -88,18 +88,17 @@ O desenvolvimento dessa aplicação web se baseia principalmente em três tópic
 
 ## Público-Alvo
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
+O público alvo do projeto, mesmo que seja uma aplicação que possa servir para toda a sociedade, pode ser definido a partir dos apontamentos descritos abaixo.
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Descreva quais são as pessoas que usarão a sua aplicação indicando os diferentes perfis. A ideia é, dentro do possível, conhecer um pouco mais sobre o perfil dos usuários: conhecimentos prévios, relação com a tecnologia, relações hierárquicas, etc.
->
-> Adicione informações sobre o público-alvo por meio de uma descrição textual, ou diagramas de personas, mapa de stakeholders, ou como o grupo achar mais conveniente.
->
-> **Orientações**:
->
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
+- Consumidores em geral que buscam economizar em suas compras, principalmente em produtos de uso cotidiano (alimentos, eletrônicos, medicamentos, etc.).
+
+- Adultos jovens a de meia-idade (18 a 50 anos), que já utilizam aplicativos com frequência para compras online e estão familiarizados com tecnologia.
+
+- Famílias e responsáveis pelas compras domésticas, que procuram os melhores preços para otimizar o orçamento mensal.
+
+- Usuários com renda média que têm mais sensibilidade a variações de preço e, portanto, tendem a buscar alternativas mais baratas.
+
+Em resumo, consumidores preocupados em obter o melhor custo-benefício em suas compras. Como citado anteriormente, embora o sistema possa ser utilizado por qualquer pessoa, ele se destina especialmente a indivíduos entre 18 e 50 anos, familiarizados com tecnologia e que buscam praticidade na comparação de preços. Famílias e responsáveis pelas compras domésticas são também um segmento importante, pois tendem a utilizar a ferramenta para otimizar seus gastos e tempo. Além disso, e também podendo estar atrelado aos outros grupos citados previamente, pessoas com uma renda média ou menor também são essenciais, pois preferencialmente buscarão os produtos com os preços mais em conta.
 
 # Product Discovery
 
