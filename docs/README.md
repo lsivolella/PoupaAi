@@ -33,31 +33,31 @@ Detalhes sobre o espaço de problema, os objetivos do projeto, sua justificativa
 
 O cenário atual de compras em supermercados no Brasil apresenta alguns desafios para os consumidores como:
 
-1. Falta de centralização da Informações
+**1. Falta de centralização da Informações**
 
 - Os consumidores precisam consumir múltiplas fontes de informação para comparar preços como sites dos supermercados, aplicativos, folhetos promocionais dos supermercados e/ou anúncios.
 - As informações sobre promoções são dispersas e difíceis de encontrar.
 - Não é mantido um histórico de compras para o consumidor poder replicar e/ou consultar a fim de otimizar suas compras.
 
-2. Ineficiência no Planejamento
+**2. Ineficiência no Planejamento**
 
 - Segundo pesquisa feita pela Neogrid e Opinion Box de 2024, 40% dos brasileiros fazem múltiplicas compras no mês o que pode estar ligado por falta de planejamento ou por preferência do consumidor em dividir por partes.
 - As listas de compras são regularmente esquecidas ou incompletas pelos consumidores.
 - Não há sugestão ao consumidor baseado em consumo anterior.
 
-3. Perda de Oportunidade Econômica
+**3. Perda de Oportunidade Econômica**
 
-- Segundo pesquisa feita pela Neogrid e Opinion Box de 2024, 85% dos brasileiros compram além do planejado quando encontram produtos com preços mais baixo.
-- As promoções são frequentemente descobertas no momento da compras.
+- Segundo pesquisa feita pela Neogrid e Opinion Box de 2024, 85% dos brasileiros compram além do planejado quando encontram produtos com preços mais baixos.
+- As promoções são frequentemente descobertas no momento da compra.
 - Há carência e falta de alertas personalizados sobre ofertas relevantes para o consumidor específico.
 
 Esse problema se manifesta em um mercado onde 90% dos brasileiros buscam constantemente economia, mas carecem de ferramentas tecnológicas integradas para otimizar suas decisões de compra.
 
 ## Objetivos
 
-Objetivo Geral: Desenvolver uma aplicação mobile que centralize e otimize a experiência de compras em supermercado, oferecendo comparação de preços, gestão inteligente de listas, alertas personalizados de ofertas e promoções além da visualização no mapa de locais com melhores preços para consumidores brasileiros.
+**Objetivo Geral:** Desenvolver uma aplicação mobile que centralize e otimize a experiência de compras em supermercado, oferecendo comparação de preços, gestão inteligente de listas, alertas personalizados de ofertas e promoções além da visualização no mapa de locais com melhores preços para consumidores brasileiros.
 
-Objetivos Específicos:
+**Objetivos Específicos:**
 
 - Implementar um sistema de comparação de preços
 - Criar funcionalidade da gestão inteligente da lista de compras podendo salvar, criar ou editar
@@ -65,9 +65,9 @@ Objetivos Específicos:
 
 ## Justificativa
 
-O desenvolvimento dessa aplicação web se baseia principalmente em dois tópicos que são:
+O desenvolvimento dessa aplicação web se baseia principalmente em três tópicos que são:
 
-1. Relevância Econômica
+**1. Relevância Econômica**
 
 - 47% das despesas familiares brasileiras são com alimentação.
 - O setor de supermercados representa 13,6% da receita do comércio nacional.
@@ -75,14 +75,14 @@ O desenvolvimento dessa aplicação web se baseia principalmente em dois tópico
 - O setor de supermercados é um setor em crescimento com 4% de alta no consumo em 2025.
 - A aplicação pode gerar economia significativa para as famílias brasileiros visto que, segundo o Serasa, as compras de supermercado são a principal fonte de endividamente no cartão de crédito dos brasileiros.
 
-2. Oportunidade Tecnológica
+**2. Oportunidade Tecnológica**
 
 - 71% dos brasileiros mudaram hábitos de compra no últino ano.
 - 30% dos brasileiros pesquisam preços antes de ir ao supermercado.
 - 85% dos brasileiros compram além do planejado quando encontram ofertas.
 - Há falta de soluções integradas no mercado brasileiro.
 
-3. Experiência do Consumidor
+**3. Experiência do Consumidor**
 
 - Consumidores buscam praticidade, saúde e escolhas conscientes.
 
