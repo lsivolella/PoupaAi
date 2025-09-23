@@ -184,37 +184,37 @@ Estes são os protótipos de telas do sistema.
 
 Criamos uma tela de login com possibilidade de se ter uma conta pela própria conta Apple, pelo Gmail ou por um cadastro próprio do site com qualquer tipo de e-mail. Você também pode, caso tenha esquecido a sua senha, clicar no botão "Esqueceu a Senha?", onde será redirecionado para outra tela para resolução do problema.
 
-![Login](images/login.png)
+![Login](images/Login.png)
 
 ##### Tela de Cadastro
 
 Nossa tela de cadastros pede informações básicas como o e-mail do usuário, seu nome, telefone e CPF. Além disso, obviamente, também é solicitado a criação de uma senha, além da confirmação da mesma.
 
-![Cadastro](images/cadastro.png)
+![Cadastro](images/Cadastro.png)
 
 ##### Esqueceu a Senha (1/3)
 
 Esta é a primeira tela que se apresenta ao clicar que esqueceu sua senha. Neste momento, você deve colocar seu e-mail ou telefone para recuperação.
 
-![Esqueceu Senha 1](images/esqueceusenha1.png)
+![Esqueceu Senha 1](images/Esqueceusenha1.png)
 
 ##### Esqueceu a Senha (2/3)
 
 Após preencher na tela anterior com e-mail ou telefone, o site te mostrará um campo para preencher com um token que é enviado na opção escolhida anteriormente.
 
-![Esqueceu Senha 2](images/esqueceusenha2.png)
+![Esqueceu Senha 2](images/Esqueceusenha2.png)
 
 ##### Esqueceu a Senha (3/3)
 
 Por fim, você redefine a sua senha informando-a em ambos os campos, sendo um deles para reconfirmação da mesma.
 
-![Esqueceu Senha 3](images/esqueceusenha3.png)
+![Esqueceu Senha 3](images/Esqueceusenha3.png)
 
 ##### Tela Inicial
 
 Ao logar e acessar a home, você se deparará com uma tela com uma versão reduzida do mapa de mercados, além de ter a possibilidade de acessar seu histórico de listas ou abrir uma nova. Você também é capaz de fazer uma busca por um item em específico nesta tela.
 
-![Inicial](images/inicial.png)
+![Inicial](images/Inicial.png)
 
 ##### Lista de Compras
 
@@ -250,19 +250,21 @@ Esta é a tela expandida do mapa de mercados mencionado anteriormente. Através 
 
 A partir dessa funcionalidade é possível comparar preços de produtos iguais em diferentes supermercados.
 
-![Comparativo](images/comparativo.png)
+![Comparativo](images/Comparativo.png)
 
 ##### Filtragem
 
-Em busca de produtos, o site te permite fazer filtros (supermercados, marcas, etc.) para encontrar mais facilmente.
+Na busca por produtos, o site te permite fazer filtros (supermercados, marcas, etc.) para encontrar mais facilmente.
 
-![Filtragem](images/filtragem.png)
+![Filtragem](images/Filtragem.png)
 
 ### User Flow
 
 ![Fluxo de Telas](images/fluxo.png)
 
 ### Protótipo Interativo
+
+Nosso protótipo interativo foi feito através do próprio Figma, basta clicar no link abaixo.
 
 ✅ [Protótipo Interativo](https://www.figma.com/proto/LlSi6oktUlezQnomFvF1KN/Pre%C3%A7os-Mercado?node-id=85-132&p=f&t=KJUl4L2lWBopU280-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=85%3A132&show-proto-sidebar=1)
 
