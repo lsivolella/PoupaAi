@@ -180,50 +180,91 @@ Artefatos relacionados com a interface e a interacão do usuário na proposta de
 
 Estes são os protótipos de telas do sistema.
 
-**✳️✳️✳️ COLOQUE AQUI OS PROTÓTIPOS DE TELAS COM TÍTULO E DESCRIÇÃO ✳️✳️✳️**
+##### Tela de Login
 
-##### TELA XPTO ⚠️ EXEMPLO ⚠️
+Criamos uma tela de login com possibilidade de se ter uma conta pela própria conta Apple, pelo Gmail ou por um cadastro próprio do site com qualquer tipo de e-mail. Você também pode, caso tenha esquecido a sua senha, clicar no botão "Esqueceu a Senha?", onde será redirecionado para outra tela para resolução do problema.
 
-Descrição para a tela XPTO
+![Login](images/login.png)
 
-![Exemplo de wireframe](images/exemplo-wireframe.png)
+##### Tela de Cadastro
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Wireframes são protótipos das telas da aplicação usados em design de interface para sugerir a estrutura de um site web e seu relacionamentos entre suas páginas. Um wireframe web é uma ilustração semelhante ao layout de elementos fundamentais na interface.
->
-> **Orientações**:
->
-> - [Ferramentas de Wireframes](https://rockcontent.com/blog/wireframes/)
-> - [Figma](https://www.figma.com/)
-> - [Adobe XD](https://www.adobe.com/br/products/xd.html#scroll)
-> - [MarvelApp](https://marvelapp.com/developers/documentation/tutorials/)
+Nossa tela de cadastros pede informações básicas como o e-mail do usuário, seu nome, telefone e CPF. Além disso, obviamente, também é solicitado a criação de uma senha, além da confirmação da mesma.
+
+![Cadastro](images/cadastro.png)
+
+##### Esqueceu a Senha (1/3)
+
+Esta é a primeira tela que se apresenta ao clicar que esqueceu sua senha. Neste momento, você deve colocar seu e-mail ou telefone para recuperação.
+
+![Esqueceu Senha 1](images/esqueceusenha1.png)
+
+##### Esqueceu a Senha (2/3)
+
+Após preencher na tela anterior com e-mail ou telefone, o site te mostrará um campo para preencher com um token que é enviado na opção escolhida anteriormente.
+
+![Esqueceu Senha 2](images/esqueceusenha2.png)
+
+##### Esqueceu a Senha (3/3)
+
+Por fim, você redefine a sua senha informando-a em ambos os campos, sendo um deles para reconfirmação da mesma.
+
+![Esqueceu Senha 3](images/esqueceusenha3.png)
+
+##### Tela Inicial
+
+Ao logar e acessar a home, você se deparará com uma tela com uma versão reduzida do mapa de mercados, além de ter a possibilidade de acessar seu histórico de listas ou abrir uma nova. Você também é capaz de fazer uma busca por um item em específico nesta tela.
+
+![Inicial](images/inicial.png)
+
+##### Lista de Compras
+
+Selecionando seus produtos, o aplicativo te levará para sua lista de compras, onde você poderá adicionar mais produtos, finalizar a lista ou editar os itens já incluídos.
+
+![Lista de Compras](images/listacompras.png)
+
+##### Adicionar Produto
+
+Esta tela serve para adicionar produtos na sua lista de compras. Há filtros de nome, marca e descrição. Também há um campo de quantidade para adicionar mais de um de uma vez caso queira.
+
+![Inicial](images/selecaoprodutos.png)
+
+##### Histórico de Listas
+
+Nesta tela você consegue acessar o histórico de todas as suas listas já feitas, contando com valores totais, quantidade de produtos, além de ser possível detalhar.
+
+![Histórico](images/historicolistas.png)
+
+##### Resumo
+
+Esta é a tela detalhada da sua lista selecionada no histórico. Todos os produtos e seus preços ficam armazenados nela.
+
+![Resumo](images/resumo.png)
+
+##### Mapa de Mercados
+
+Esta é a tela expandida do mapa de mercados mencionado anteriormente. Através dela você consegue visualizar quais supermercados estão mais perto da sua localidade e traçar um caminho até o escolhido.
+
+![Mapa](images/mapa.png)
+
+##### Comparação de Preços
+
+A partir dessa funcionalidade é possível comparar preços de produtos iguais em diferentes supermercados.
+
+![Comparativo](images/comparativo.png)
+
+##### Filtragem
+
+Em busca de produtos, o site te permite fazer filtros (supermercados, marcas, etc.) para encontrar mais facilmente.
+
+![Filtragem](images/filtragem.png)
 
 ### User Flow
 
-**✳️✳️✳️ COLOQUE AQUI O DIAGRAMA DE FLUXO DE TELAS ✳️✳️✳️**
-
-![Exemplo de fluxo de telas](images/exemplo-userflow.png)
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Fluxo de usuário (User Flow) é uma técnica que permite ao desenvolvedor mapear todo fluxo de telas do site ou app. Essa técnica funciona para alinhar os caminhos e as possíveis ações que o usuário pode fazer junto com os membros de sua equipe.
->
-> **Orientações**:
->
-> - [User Flow: O Quê É e Como Fazer?](https://medium.com/7bits/fluxo-de-usu%C3%A1rio-user-flow-o-que-%C3%A9-como-fazer-79d965872534)
-> - [User Flow vs Site Maps](http://designr.com.br/sitemap-e-user-flow-quais-as-diferencas-e-quando-usar-cada-um/)
-> - [Top 25 User Flow Tools &amp; Templates for Smooth](https://www.mockplus.com/blog/post/user-flow-tools)
+![Fluxo de Telas](images/fluxo.png)
 
 ### Protótipo Interativo
 
-**✳️✳️✳️ COLOQUE AQUI UM IFRAME COM SEU PROTÓTIPO INTERATIVO ✳️✳️✳️**
-
-✅ [Protótipo Interativo (MarvelApp)](https://marvelapp.com/prototype/4hd6091?emb=1&iosapp=false&frameless=false) ⚠️ EXEMPLO ⚠️
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Um protótipo interativo apresenta o projeto de interfaces e permite ao usuário navegar pelas funcionalidades como se estivesse lidando com o software pronto. Utilize as mesmas ferramentas de construção de wireframes para montagem do seu protótipo interativo. Inclua o link para o protótipo interativo do projeto.
+✅ [Protótipo Interativo](https://www.figma.com/proto/LlSi6oktUlezQnomFvF1KN/Pre%C3%A7os-Mercado?node-id=85-132&p=f&t=KJUl4L2lWBopU280-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=85%3A132&show-proto-sidebar=1)
 
 # Metodologia
 
