@@ -148,3 +148,28 @@ header #titulo-produto {
     color: #828282;
     font-size: 17px;
 }
+
+#card-produto {
+    display: flex;
+    margin: 20px;
+    border-left: 10px;
+    border-color: green;
+    border-style: solid;
+    justify-content: space-between;
+}
+
+#card-produto #card-produto-esquerda {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+#card-produto #card-produto-esquerda p {
+    margin-bottom: 10px;
+}
+
+#card-produto #card-produto-direita img {
+    height: auto;
+    width: 120px;
+}
