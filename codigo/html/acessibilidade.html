@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Acessibilidade</title>
+  </head>
+  <body>
+    <!-- Para adaptar - (Logo, barra de pesquisa e filtros) (linkar com tela de Mapas) -->
+    <header>
+      <nav>
+        <a href="#">Voltar</a>
+        <h1>PoupaAí</h1>
+        <div>
+          <a href="#">Acessibilidade</a>
+          <a href="#">Favoritos</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <input type="text" placeholder="Buscar por mercados..." />
+
+      <!-- Card acessibilidade -->
+      <section>
+        <div>
+          <h2>Super Nosso</h2>
+          <ul>
+            <li>Rampa de acesso: Sim</li>
+            <li>Elevador: Não</li>
+            <li>Vagas PCD: Sim</li>
+            <li>Piso tátil: Sim</li>
+            <li>Sinalização braille: Sim</li>
+            <li>Atendimento preferencial: Sim</li>
+            <li>Funcionário de libras: Não</li>
+          </ul>
+          <a href="#">Editar informações</a>
+        </div>
+      </section>
+
+      <!-- Card suspenso de editar acessibilidade -->
+      <div>
+        <div>
+          <h3>Editar acessibilidade</h3>
+          <form>
+            <label><input type="checkbox" />Rampa de acesso</label><br />
+            <label><input type="checkbox" />Elevador</label><br />
+            <label><input type="checkbox" />Vagas PCD</label><br />
+            <label><input type="checkbox" />Piso tátil</label><br />
+            <label><input type="checkbox" />Sinalização braille</label><br />
+            <label><input type="checkbox" />Atendimento preferencial</label
+            ><br />
+            <label><input type="checkbox" />Funcionário de libras</label><br />
+            <label>Comentários</label><br />
+            <textarea
+              rows="3"
+              placeholder="Adicione um comentário..."
+            ></textarea
+            ><br />
+            <button type="submit">Salvar</button>
+            <a href="#">Cancelar</a>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
