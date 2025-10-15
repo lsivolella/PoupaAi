@@ -1,0 +1,75 @@
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Compras</title>
+</head>
+<body>
+  <header>
+    <nav class="top-bar">
+      <button class="btn-voltar" aria-label="Voltar">←</button>
+      <h1>Lista de compras</h1>
+    </nav>
+  </header>
+
+  <main>
+    <section class="nome-lista">
+      <label for="nome-lista">Nome</label>
+      <input type="text" id="nome-lista" placeholder="Adicionar um nome para a lista">
+    </section>
+
+    <section class="tabela-itens">
+      <header class="cabecalho-tabela">
+        <span>Itens</span>
+        <span>Descrição</span>
+      </header>
+
+      <ul class="lista-produtos">
+        <li class="produto">
+          <div class="imagem-produto">
+            <img src="#" alt="Imagem do produto">
+          </div>
+          <div class="descricao-produto">
+            <h3>Nome da marca</h3>
+            <p>Nome do produto</p>
+            <p>Detalhes (peso, quantidade, etc.)</p>
+            <p>Quantidade: <strong>01</strong></p>
+          </div>
+          <div class="acoes-produto">
+            <button class="btn-editar" aria-label="Editar item">~</button>
+            <button class="btn-excluir" aria-label="Excluir item">~</button>
+          </div>
+        </li>
+
+        <li class="produto">
+          <div class="imagem-produto">
+            <img src="#" alt="Imagem do produto">
+          </div>
+          <div class="descricao-produto">
+            <h3>Nome da marca</h3>
+            <p>Nome do produto</p>
+            <p>Detalhes (peso, quantidade, etc.)</p>
+            <p>Quantidade: <strong>01</strong></p>
+          </div>
+          <div class="acoes-produto">
+            <button class="btn-editar" aria-label="Editar item">~</button>
+            <button class="btn-excluir" aria-label="Excluir item">~</button>
+          </div>
+        </li>
+      </ul>
+
+      <div class="adicionar-produto">
+        <button class="btn-adicionar">+ Adicionar produto</button>
+      </div>
+    </section>
+
+    <section class="finalizar-lista">
+      <button class="btn-finalizar">Finalizar a lista</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Minha Lista de Compras</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adicione o produto</title>
+</head>
+<body>
+  <header class="top-bar">
+    <button class="back-btn">&#8592;</button>
+    <h1>Adicione o produto</h1>
+  </header>
+
+  <main class="form-container">
+    <div class="input-group">
+      <label for="nome">Nome</label>
+      <input type="text" id="nome" placeholder="Nome do produto">
+    </div>
+
+    <div class="input-group">
+      <label for="marca">Marca</label>
+      <input type="text" id="marca" placeholder="Marca do produto">
+    </div>
+
+    <div class="input-group">
+      <label for="descricao">Descrição</label>
+      <input type="text" id="descricao" placeholder="Descrição do produto">
+    </div>
+
+    <div class="input-group quantidade-group">
+      <label for="quantidade">Quantidade</label>
+      <div class="quantidade-controls">
+        <input type="number" id="quantidade" value="1" min="1">
+        <button id="mais">+</button>
+        <button id="menos">−</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <button id="adicionar-produto" class="btn-principal">Adicionar produto</button>
+  </footer>
+
+</body>
+</html>
