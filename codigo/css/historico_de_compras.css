@@ -1,0 +1,96 @@
+#cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+#h2cabecalho {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#caixa-de-busca {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+#input-caixa-de-busca {
+    width: 95%;
+    height: 25px;
+    background-color: rgb(240, 237, 237);
+    border-radius: 5px;
+    border-color: white;
+    border-style: none;
+}
+
+.card {
+    background-color: rgb(212, 212, 247);
+    padding: 10px;
+    margin-top: 15px;
+}
+
+#card-data {
+    display: flex;
+    justify-content: end;
+    font-size: 12px;
+}
+
+#status-id-preco {
+    display: flex;
+    justify-content: space-between;
+}
+
+#status-id {
+    h2 {
+        margin: 2px;
+    }
+
+    h4 {
+        margin: 6px;
+    }
+
+    border-left: 5px solid rgb(132, 230, 132);
+    padding-left: 5px;
+}
+
+#imagensprodutos-detalhes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    align-items: center;
+}
+
+#imagensprodutos {
+    display: flex;
+    gap: 10px;
+}
+
+.fundo-de-imagem {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+
+    h1 {
+        margin: 0px;
+    }
+
+    justify-content: center;
+    align-items: center;
+
+    img {
+        height: 45px;
+    }
+}
+
+#botao-detlhes {
+    button {
+        background-color: rgb(132, 230, 132);
+        font-weight: bold;
+        border: none;
+        padding: 8px;
+    }
+}
