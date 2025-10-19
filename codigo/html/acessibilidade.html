@@ -4,64 +4,64 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Acessibilidade</title>
+    <link rel="stylesheet" href="../css/acessibilidade.css" />
   </head>
   <body>
-    <!-- Para adaptar - (Logo, barra de pesquisa e filtros) (linkar com tela de Mapas) -->
-    <header>
-      <nav>
-        <a href="#">Voltar</a>
-        <h1>PoupaAí</h1>
-        <div>
-          <a href="#">Acessibilidade</a>
-          <a href="#">Favoritos</a>
-        </div>
-      </nav>
-    </header>
-
-    <main>
-      <input type="text" placeholder="Buscar por mercados..." />
-
-      <!-- Card acessibilidade -->
-      <section>
-        <div>
-          <h2>Super Nosso</h2>
-          <ul>
-            <li>Rampa de acesso: Sim</li>
-            <li>Elevador: Não</li>
-            <li>Vagas PCD: Sim</li>
-            <li>Piso tátil: Sim</li>
-            <li>Sinalização braille: Sim</li>
-            <li>Atendimento preferencial: Sim</li>
-            <li>Funcionário de libras: Não</li>
-          </ul>
-          <a href="#">Editar informações</a>
-        </div>
-      </section>
-
-      <!-- Card suspenso de editar acessibilidade -->
-      <div>
-        <div>
-          <h3>Editar acessibilidade</h3>
-          <form>
-            <label><input type="checkbox" />Rampa de acesso</label><br />
-            <label><input type="checkbox" />Elevador</label><br />
-            <label><input type="checkbox" />Vagas PCD</label><br />
-            <label><input type="checkbox" />Piso tátil</label><br />
-            <label><input type="checkbox" />Sinalização braille</label><br />
-            <label><input type="checkbox" />Atendimento preferencial</label
-            ><br />
-            <label><input type="checkbox" />Funcionário de libras</label><br />
-            <label>Comentários</label><br />
-            <textarea
-              rows="3"
-              placeholder="Adicione um comentário..."
-            ></textarea
-            ><br />
-            <button type="submit">Salvar</button>
-            <a href="#">Cancelar</a>
-          </form>
+    <!-- Cabeçalho -->
+    <div id="tela-visualizar">
+      <div class="cabecalho">
+        <div class="logo">
+          <img src="../imgs/Logo_PoupaAI.svg" alt="PoupaAí" class="img-logo" />
         </div>
       </div>
-    </main>
+
+      <!-- Barra de pesquisa -->
+      <div class="barra-busca">
+        <input
+          type="text"
+          class="campo-busca"
+          placeholder="Buscar por mercados..."
+        />
+      </div>
+
+      <!-- Filtros (verificar se vamos manter essa parte) -->
+      <div class="filtros">
+        <button class="botao-filtro">
+          <span class="icone-filtro">♿</span>
+          <span>Acessibilidade</span>
+        </button>
+        <button class="botao-filtro">
+          <span class="icone-filtro">❤️</span>
+          <span>Favoritos</span>
+        </button>
+      </div>
+
+      <!-- Título Super Nosso (tem que mudar essa parte para ser dinâmico do supermercado selecionado anteriormente) -->
+      <div class="conteudo-principal">
+        <button class="botao-voltar" onclick="history.back()">‹</button>
+        <h2 class="nome-loja">Super Nosso</h2>
+
+        <div class="card-acessibilidade">
+          <div class="titulo-card" id="titulo-card">
+            <span class="icone-acessibilidade">♿</span>
+            <span id="status-acessibilidade">Sem informação</span>
+          </div>
+          <ul class="lista-acessibilidade" id="lista-acessibilidade">
+            <!-- itens de acessibilidade estão presentes no Javascript -->
+          </ul>
+        </div>
+
+        <!-- Comentários (ajustar parte dinâmica) -->
+        <div class="card-comentarios escondido" id="card-comentarios">
+          <div class="titulo-comentarios">💬 Comentários</div>
+          <div class="texto-comentarios" id="mostrar-comentarios"></div>
+        </div>
+      </div>
+
+      <a href="editar_acessibilidade.html" class="botao-editar"
+        >Editar informações</a
+      >
+    </div>
+    <script src="../js/acessibilidade.js"></script>
   </body>
 </html>
