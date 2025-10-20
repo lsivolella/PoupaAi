@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PoupaAi — Comparativo de Preços</title>
+</head>
+<body>
+
+  <!-- Cabeçalho do app -->
+  <header>
+    <button type="button" aria-label="Voltar">←</button>
+    <h1>PoupaAi</h1>
+  </header>
+
+  <main>
+    <!-- Campo de busca -->
+    <form role="search">
+      <label for="q">Pesquisar produto</label>
+      <input id="q" name="q" type="search" placeholder="Melancia" value="Melancia">
+      <button type="submit">Buscar</button>
+    </form>
+
+    <h2>Resultados</h2>
+
+    <!-- Tabela simples para o comparativo -->
+    <table>
+      <caption>Comparativo de preços para “Melancia”</caption>
+      <thead>
+        <tr>
+          <th scope="col">Itens</th>
+          <th scope="col">Descrição</th>
+          <th scope="col">Preço</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Linha 1 -->
+        <tr>
+          <td>
+            <figure>
+              <img src="produto-melancia.jpg" alt="Imagem de melancia fatiada" width="64" height="64">
+            </figure>
+          </td>
+          <td>
+            <p><strong>Marca</strong></p>
+            <p>Melancia</p>
+            <p>Valor Kilograma (Kg)</p>
+            <p>Estabelecimento A</p>
+          </td>
+          <td>
+            <p>R$ 1,99</p>
+            <button type="button" aria-label="Adicionar melancia do Estabelecimento A">+</button>
+          </td>
+        </tr>
+
+        <!-- Linha 2 -->
+        <tr>
+          <td>
+            <figure>
+              <img src="produto-melancia.jpg" alt="Imagem de melancia fatiada" width="64" height="64">
+            </figure>
+          </td>
+          <td>
+            <p><strong>Marca</strong></p>
+            <p>Melancia</p>
+            <p>Valor Kilograma (Kg)</p>
+            <p>Estabelecimento B</p>
+          </td>
+          <td>
+            <p>R$ 2,39</p>
+            <button type="button" aria-label="Adicionar melancia do Estabelecimento B">+</button>
+          </td>
+        </tr>
+
+        <!-- Linha 3 -->
+        <tr>
+          <td>
+            <figure>
+              <img src="produto-melancia.jpg" alt="Imagem de melancia fatiada" width="64" height="64">
+            </figure>
+          </td>
+          <td>
+            <p><strong>Marca</strong></p>
+            <p>Melancia</p>
+            <p>Valor Kilograma (Kg)</p>
+            <p>Estabelecimento C</p>
+          </td>
+          <td>
+            <p>R$ 3,99</p>
+            <button type="button" aria-label="Adicionar melancia do Estabelecimento C">+</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <footer>
+   
+  </footer>
+
+</body>
+</html>

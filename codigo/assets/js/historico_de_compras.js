@@ -5,17 +5,17 @@ const mock_compras = [
     data: new Date("2025-10-15T12:00:00"),
     itens: [
       {
-        imagem_url: "../public/arroz_branco_camil_1kg.jpg",
+        imagem_url: "../assets/img/arroz_branco_camil_1kg.jpg",
         preco: 7.20,
         nome: "Arroz Branco Camil 1kg"
       },
       {
-        imagem_url: "../public/aveia_integral_quaker_400g.png",
+        imagem_url: "../assets/img/aveia_integral_quaker_400g.png",
         preco: 8.50,
         nome: "Aveia Integral Quaker 400g"
       },
       {
-        imagem_url: "../public/feijao_preto_kicaldo_1kg.png",
+        imagem_url: "../assets/img/feijao_preto_kicaldo_1kg.png",
         preco: 9.10,
         nome: "Feijão Preto Kicaldo 1kg"
       }
@@ -27,12 +27,12 @@ const mock_compras = [
     data: new Date("2025-10-14T12:00:00"),
     itens: [
       {
-        imagem_url: "../public/pao_forma_integral_visconti_500g.png",
+        imagem_url: "../assets/img/pao_forma_integral_visconti_500g.png",
         preco: 8.90,
         nome: "Pão de Forma Integral Visconti 500g"
       },
       {
-        imagem_url: "../public/veja_multiuso_500ml.png",
+        imagem_url: "../assets/img/veja_multiuso_500ml.png",
         preco: 6.70,
         nome: "Veja Multiuso 500ml"
       }
@@ -44,17 +44,17 @@ const mock_compras = [
     data: new Date("2025-10-13T12:00:00"),
     itens: [
       {
-        imagem_url: "../public/arroz_branco_camil_1kg.jpg",
+        imagem_url: "../assets/img/arroz_branco_camil_1kg.jpg",
         preco: 7.20,
         nome: "Arroz Branco Camil 1kg"
       },
       {
-        imagem_url: "../public/feijao_preto_kicaldo_1kg.png",
+        imagem_url: "../assets/img/feijao_preto_kicaldo_1kg.png",
         preco: 9.10,
         nome: "Feijão Preto Kicaldo 1kg"
       },
       {
-        imagem_url: "../public/veja_multiuso_500ml.png",
+        imagem_url: "../assets/img/veja_multiuso_500ml.png",
         preco: 6.70,
         nome: "Veja Multiuso 500ml"
       }
