@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra</title>
+    <link rel="stylesheet" href="../assets/css/finalizar_compra.css">
+</head>
+<body>
+    <header>
+        <a href=""><</a>
+        <div class="logo">
+          <img src="../assets/img/Logo_PoupaAI.svg" alt="PoupaAí" class="img-logo" />
+        </div>
+      <span>Lista de produtos</span>
+    </header>
+    <main>
+      <div class="titulo">Seu Carrinho</div>
+      <div class="conteudo">
+        <section>
+          <table>
+            <thead>
+              <tr>
+                <th>Produto</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+                <th>Total</th>
+                <th>-</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="produto">
+                    <img class="imagem-um" src="../assets/img/pao_forma_integral_visconti_500g.png" alt="" />
+                    <div class="info">
+                      <div class="nome-do-produto">Pão de Forma Integral Visconti 500g</div>
+                    </div>
+                  </div>
+                </td>
+                <td>R$ 9.00</td>
+                <td>
+                  <div class="quantidade">
+                    <button><i class="menos">-</i></button>
+                    <span>1</span>
+                    <button><i class="mais">+</i></button>
+                  </div>
+                </td>
+                <td>R$ 9.00</td>
+                <td>
+                  <button class="remover"><i>x</i></button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="produto">
+                    <img class="imagem-dois" src="../assets/img/veja_multiuso_500ml.png" alt="" />
+                    <div class="info">
+                      <div class="nome-do-produto">Veja Multiuso 500ml</div>
+                    </div>
+                  </div>
+                </td>
+                <td>R$ 6.60</td>
+                <td>
+                  <div class="quantidade">
+                    <button><i class="menos">-</i></button>
+                    <span>1</span>
+                    <button><i class="mais">+</i></button>
+                  </div>
+                </td>
+                <td>R$ 6.60</td>
+                <td>
+                  <button class="remover"><i>x</i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <aside>
+          <div class="finalizacao">
+            <header>Resumo da lista</header>
+            <div class="informacoes-da-lista">
+              <div><span>Lista: #002</span></div>
+              <div><span>Sub-total:</span><span> R$ 15.60</span></div>
+              <div><span>Frete:</span><span> Gratuito</span></div>
+              </div>
+            <footer>
+              <span>Total</span>
+              <span>R$ 15.60</span>
+            </footer>
+          </div>
+          <button>Adicionar Produtos</button>
+          <a href="../html/historico_de_compras.html">
+          <button>Finalizar Pedido</button>
+          </a>
+        </aside>
+      </div>
+    </main>
+  </body>
+</html>
