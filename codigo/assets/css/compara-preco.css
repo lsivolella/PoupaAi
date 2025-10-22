@@ -1,0 +1,384 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #000000;
+}
+
+header {
+  background-color: #ffffff;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+header button {
+  background: none;
+  border: none;
+  color: #000000;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-icon {
+  font-size: 28px;
+}
+
+.logo h1 {
+  font-size: 24px;
+  color: #000000;
+}
+
+.logo-azul {
+  color: #4A90E2;
+}
+
+.abas {
+  display: flex;
+  background-color: #ffffff;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.aba {
+  flex: 1;
+  padding: 16px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  color: #666666;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.aba.ativa {
+  color: #000000;
+  border-bottom-color: #000000;
+}
+
+.conteudo-aba {
+  display: none;
+}
+
+.conteudo-aba.ativa {
+  display: block;
+}
+
+.busca {
+  padding: 16px;
+  background-color: #ffffff;
+}
+
+.busca-container {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 12px 16px;
+  gap: 8px;
+}
+
+.busca-container input {
+  border: none;
+  background: none;
+  flex: 1;
+  font-size: 16px;
+  outline: none;
+  color: #000000;
+}
+
+.busca-container input::placeholder {
+  color: #999999;
+}
+
+.icone-busca {
+  font-size: 20px;
+  color: #666666;
+}
+
+.secao-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.secao-titulo {
+  font-weight: bold;
+  font-size: 14px;
+  color: #000000;
+}
+
+.secao-info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #000000;
+  cursor: pointer;
+}
+
+.setas-ordenacao {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.seta {
+  font-size: 10px;
+  line-height: 1;
+  color: #666666;
+  cursor: pointer;
+}
+
+.seta.ativa {
+  color: #000000;
+}
+
+.lista-produtos {
+  background-color: #ffffff;
+}
+
+.produto {
+  display: flex;
+  padding: 16px;
+  gap: 12px;
+  border-bottom: 1px solid #f0f0f0;
+  align-items: center;
+}
+
+.produto-imagem {
+  width: 80px;
+  height: 80px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.produto-imagem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.produto-info {
+  flex: 1;
+}
+
+.produto-marca {
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 4px;
+}
+
+.produto-nome {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 4px;
+}
+
+.produto-detalhes {
+  font-size: 12px;
+  color: #666666;
+  line-height: 1.4;
+}
+
+.produto-preco-area {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.produto-preco {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.botao-adicionar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comparativo-listas {
+  padding: 16px;
+  background-color: #f5f5f5;
+}
+
+.comparativo-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+
+.card-mercado {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card-mercado.melhor-preco {
+  border: 3px solid #4CAF50;
+  background-color: #f1f8f4;
+}
+
+.mercado-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.mercado-nome {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.badge-melhor {
+  background-color: #4CAF50;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.item-lista {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.item-lista:last-of-type {
+  border-bottom: 2px solid #e0e0e0;
+  margin-bottom: 12px;
+}
+
+.item-nome {
+  font-size: 14px;
+  color: #333333;
+}
+
+.item-preco {
+  font-size: 14px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.total-mercado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+}
+
+.total-label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.total-valor {
+  font-size: 22px;
+  font-weight: bold;
+  color: #4CAF50;
+}
+
+@media (min-width: 768px) {
+  .lista-produtos {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .secao-header {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .comparativo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .produto {
+    padding: 20px;
+  }
+
+  .produto-imagem {
+    width: 100px;
+    height: 100px;
+  }
+
+  .produto-nome {
+    font-size: 18px;
+  }
+
+  .produto-preco {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  header, .busca, .secao-header {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .comparativo-listas {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .comparativo-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .produto {
+    padding: 24px;
+  }
+
+  .produto-imagem {
+    width: 120px;
+    height: 120px;
+  }
+
+  .produto-info {
+    margin-left: 16px;
+  }
+}
