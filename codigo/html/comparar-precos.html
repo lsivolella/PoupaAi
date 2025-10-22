@@ -4,99 +4,208 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PoupaAi — Comparativo de Preços</title>
+  <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-
-  <!-- Cabeçalho do app -->
   <header>
     <button type="button" aria-label="Voltar">←</button>
-    <h1>PoupaAi</h1>
+    <div class="logo">
+      <span class="logo-icon">🛒</span>
+      <h1>Poupa<span class="logo-azul">Ai</span></h1>
+    </div>
   </header>
 
-  <main>
-    <!-- Campo de busca -->
-    <form role="search">
-      <label for="q">Pesquisar produto</label>
-      <input id="q" name="q" type="search" placeholder="Melancia" value="Melancia">
-      <button type="submit">Buscar</button>
-    </form>
+  <div class="abas">
+    <button class="aba ativa" onclick="trocarAba(this,'produtos')">Produtos Individuais</button>
+    <button class="aba" onclick="trocarAba(this,'listas')">Lista de Compras</button>
+  </div>
 
-    <h2>Resultados</h2>
+  <div id="aba-produtos" class="conteudo-aba ativa">
+    <div class="busca">
+      <div class="busca-container">
+        <span class="icone-busca">🔍</span>
+        <input type="search" placeholder="Pesquise o produto aqui" value="arroz">
+      </div>
+    </div>
 
-    <!-- Tabela simples para o comparativo -->
-    <table>
-      <caption>Comparativo de preços para “Melancia”</caption>
-      <thead>
-        <tr>
-          <th scope="col">Itens</th>
-          <th scope="col">Descrição</th>
-          <th scope="col">Preço</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Linha 1 -->
-        <tr>
-          <td>
-            <figure>
-              <img src="produto-melancia.jpg" alt="Imagem de melancia fatiada" width="64" height="64">
-            </figure>
-          </td>
-          <td>
-            <p><strong>Marca</strong></p>
-            <p>Melancia</p>
-            <p>Valor Kilograma (Kg)</p>
-            <p>Estabelecimento A</p>
-          </td>
-          <td>
-            <p>R$ 1,99</p>
-            <button type="button" aria-label="Adicionar melancia do Estabelecimento A">+</button>
-          </td>
-        </tr>
+    <div class="secao-header">
+      <span class="secao-titulo">ITENS</span>
+      <span class="secao-info" onclick="ordenarProdutos()">
+        PREÇO
+        <div class="setas-ordenacao">
+          <span class="seta" id="seta-cima">▲</span>
+          <span class="seta ativa" id="seta-baixo">▼</span>
+        </div>
+      </span>
+    </div>
 
-        <!-- Linha 2 -->
-        <tr>
-          <td>
-            <figure>
-              <img src="produto-melancia.jpg" alt="Imagem de melancia fatiada" width="64" height="64">
-            </figure>
-          </td>
-          <td>
-            <p><strong>Marca</strong></p>
-            <p>Melancia</p>
-            <p>Valor Kilograma (Kg)</p>
-            <p>Estabelecimento B</p>
-          </td>
-          <td>
-            <p>R$ 2,39</p>
-            <button type="button" aria-label="Adicionar melancia do Estabelecimento B">+</button>
-          </td>
-        </tr>
+    <div class="lista-produtos">
+      <div style="background-color: #f9f9f9; padding: 12px 16px; font-weight: bold; border-bottom: 2px solid #e0e0e0;">
+        ARROZ 5KG
+      </div>
 
-        <!-- Linha 3 -->
-        <tr>
-          <td>
-            <figure>
-              <img src="produto-melancia.jpg" alt="Imagem de melancia fatiada" width="64" height="64">
-            </figure>
-          </td>
-          <td>
-            <p><strong>Marca</strong></p>
-            <p>Melancia</p>
-            <p>Valor Kilograma (Kg)</p>
-            <p>Estabelecimento C</p>
-          </td>
-          <td>
-            <p>R$ 3,99</p>
-            <button type="button" aria-label="Adicionar melancia do Estabelecimento C">+</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </main>
+      <div class="produto">
+        <div class="produto-imagem">
+          <img src="https://cdn.pixabay.com/photo/2017/06/06/22/37/italian-cuisine-2378729_640.jpg" alt="Produto">
+        </div>
+        <div class="produto-info">
+          <p class="produto-marca">Marca</p>
+          <p class="produto-nome">Arroz</p>
+          <p class="produto-detalhes">Pacote 5 Kg<br>Estabelecimento A</p>
+        </div>
+        <div class="produto-preco-area">
+          <p class="produto-preco">R$22,90</p>
+          <button class="botao-adicionar" aria-label="Adicionar">+</button>
+        </div>
+      </div>
 
-  <footer>
-   
-  </footer>
+      <div class="produto">
+        <div class="produto-imagem">
+          <img src="https://cdn.pixabay.com/photo/2017/06/06/22/37/italian-cuisine-2378729_640.jpg" alt="Produto">
+        </div>
+        <div class="produto-info">
+          <p class="produto-marca">Marca</p>
+          <p class="produto-nome">Arroz</p>
+          <p class="produto-detalhes">Pacote 5 Kg<br>Estabelecimento B</p>
+        </div>
+        <div class="produto-preco-area">
+          <p class="produto-preco" style="color: #4CAF50;">R$19,90</p>
+          <button class="botao-adicionar" aria-label="Adicionar">+</button>
+        </div>
+      </div>
 
+      <div class="produto">
+        <div class="produto-imagem">
+          <img src="https://cdn.pixabay.com/photo/2017/06/06/22/37/italian-cuisine-2378729_640.jpg" alt="Produto">
+        </div>
+        <div class="produto-info">
+          <p class="produto-marca">Marca</p>
+          <p class="produto-nome">Arroz</p>
+          <p class="produto-detalhes">Pacote 5 Kg<br>Estabelecimento C</p>
+        </div>
+        <div class="produto-preco-area">
+          <p class="produto-preco">R$24,50</p>
+          <button class="botao-adicionar" aria-label="Adicionar">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="aba-listas" class="conteudo-aba">
+    <div class="comparativo-listas">
+      <h2 style="margin-bottom: 20px; font-size: 20px;">Comparativo de Preços por Estabelecimento</h2>
+
+      <div class="comparativo-grid">
+        <div class="card-mercado">
+          <div class="mercado-header">
+            <h3 class="mercado-nome">Estabelecimento A</h3>
+          </div>
+          <div class="item-lista">
+            <span class="item-nome">Arroz 5kg</span>
+            <span class="item-preco">R$ 22,90</span>
+          </div>
+          <div class="item-lista">
+            <span class="item-nome">Feijão 1kg</span>
+            <span class="item-preco">R$ 7,50</span>
+          </div>
+          <div class="item-lista">
+            <span class="item-nome">Macarrão 500g</span>
+            <span class="item-preco">R$ 3,20</span>
+          </div>
+          <div class="item-lista">
+            <span class="item-nome">Ovos (dúzia)</span>
+            <span class="item-preco">R$ 12,90</span>
+          </div>
+          <div class="total-mercado">
+            <span class="total-label">TOTAL:</span>
+            <span class="total-valor">R$ 46,50</span>
+          </div>
+        </div>
+
+        <div class="card-mercado melhor-preco">
+          <div class="mercado-header">
+            <h3 class="mercado-nome">Estabelecimento B</h3>
+            <span class="badge-melhor">Melhor Preço</span>
+          </div>
+          <div class="item-lista">
+            <span class="item-nome">Arroz 5kg</span>
+            <span class="item-preco">R$ 19,90</span>
+          </div>
+          <div class="item-lista">
+            <span class="item-nome">Feijão 1kg</span>
+            <span class="item-preco">R$ 6,80</span>
+          </div>
+          <div class="item-lista">
+            <span class="item-nome">Macarrão 500g</span>
+            <span class="item-preco">R$ 2,90</span>
+          </div>
+          <div class="item-lista">
+            <span class="item-nome">Ovos (dúzia)</span>
+            <span class="item-preco">R$ 11,50</span>
+          </div>
+          <div class="total-mercado">
+            <span class="total-label">TOTAL:</span>
+            <span class="total-valor">R$ 41,10</span>
+          </div>
+        </div>
+
+        <div class="card-mercado">
+          <div class="mercado-header">
+            <h3 class="mercado-nome">Estabelecimento C</h3>
+          </div>
+          <div class="item-lista">
+            <span class="item-nome">Arroz 5kg</span>
+            <span class="item-preco">R$ 24,50</span>
+          </div>
+          <div class="item-lista">
+            <span class="item-nome">Feijão 1kg</span>
+            <span class="item-preco">R$ 8,20</span>
+          </div>
+          <div class="item-lista">
+            <span class="item-nome">Macarrão 500g</span>
+            <span class="item-preco">R$ 3,50</span>
+          </div>
+          <div class="item-lista">
+            <span class="item-nome">Ovos (dúzia)</span>
+            <span class="item-preco">R$ 13,90</span>
+          </div>
+          <div class="total-mercado">
+            <span class="total-label">TOTAL:</span>
+            <span class="total-valor">R$ 50,10</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let ordemCrescente = true;
+    function trocarAba(btn, aba) {
+      document.querySelectorAll('.aba').forEach(b => b.classList.remove('ativa'));
+      document.querySelectorAll('.conteudo-aba').forEach(c => c.classList.remove('ativa'));
+      btn.classList.add('ativa');
+      if (aba === 'produtos') {
+        document.getElementById('aba-produtos').classList.add('ativa');
+      } else if (aba === 'listas') {
+        document.getElementById('aba-listas').classList.add('ativa');
+      }
+    }
+    function ordenarProdutos() {
+      const listaProdutos = document.querySelector('.lista-produtos');
+      const titulo = listaProdutos.querySelector('div[style*="background-color"]');
+      const produtos = Array.from(listaProdutos.querySelectorAll('.produto'));
+      ordemCrescente = !ordemCrescente;
+      document.getElementById('seta-cima').classList.toggle('ativa', !ordemCrescente);
+      document.getElementById('seta-baixo').classList.toggle('ativa', ordemCrescente);
+      produtos.sort((a, b) => {
+        const precoA = parseFloat(a.querySelector('.produto-preco').textContent.replace('R$', '').replace(',', '.'));
+        const precoB = parseFloat(b.querySelector('.produto-preco').textContent.replace('R$', '').replace(',', '.'));
+        return ordemCrescente ? precoA - precoB : precoB - precoA;
+      });
+      listaProdutos.innerHTML = '';
+      listaProdutos.appendChild(titulo);
+      produtos.forEach(p => listaProdutos.appendChild(p));
+    }
+  </script>
 </body>
 </html>
