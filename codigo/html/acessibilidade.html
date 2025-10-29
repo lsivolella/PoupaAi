@@ -11,7 +11,11 @@
     <div id="tela-visualizar">
       <div class="cabecalho">
         <div class="logo">
-          <img src="../assets/img/Logo_PoupaAI.svg" alt="PoupaAí" class="img-logo" />
+          <img
+            src="../assets/img/Logo_PoupaAI.svg"
+            alt="PoupaAí"
+            class="img-logo"
+          />
         </div>
       </div>
 
@@ -24,7 +28,7 @@
         />
       </div>
 
-      <!-- Filtros (verificar se vamos manter essa parte) -->
+      <!-- Filtros -->
       <div class="filtros">
         <button class="botao-filtro">
           <span class="icone-filtro">♿</span>
@@ -36,7 +40,7 @@
         </button>
       </div>
 
-      <!-- Título Super Nosso (tem que mudar essa parte para ser dinâmico do supermercado selecionado anteriormente) -->
+      <!-- Título Supermercado -->
       <div class="conteudo-principal">
         <button class="botao-voltar" onclick="history.back()">‹</button>
         <h2 class="nome-loja">Super Nosso</h2>
@@ -46,12 +50,14 @@
             <span class="icone-acessibilidade">♿</span>
             <span id="status-acessibilidade">Sem informação</span>
           </div>
+          <!-- data da última atualização -->
+          <div class="data-atualizacao" id="data-atualizacao"></div>
           <ul class="lista-acessibilidade" id="lista-acessibilidade">
             <!-- itens de acessibilidade estão presentes no Javascript -->
           </ul>
         </div>
 
-        <!-- Comentários (ajustar parte dinâmica) -->
+        <!-- Comentários -->
         <div class="card-comentarios escondido" id="card-comentarios">
           <div class="titulo-comentarios">💬 Comentários</div>
           <div class="texto-comentarios" id="mostrar-comentarios"></div>

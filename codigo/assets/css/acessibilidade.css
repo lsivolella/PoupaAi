@@ -134,22 +134,33 @@ body {
 .item-acessibilidade {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 12px 0;
   border-bottom: 1px solid #f0f0f0;
   font-size: 15px;
+  gap: 12px;
 }
 
 .item-acessibilidade:last-child {
   border-bottom: none;
 }
 
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
 .nome-item-lista {
   color: #333;
   font-weight: 500;
+  min-width: 180px;
 }
 
 .valor-item {
   font-weight: 600;
+  min-width: 120px;
 }
 
 .valor-item.sim {
@@ -342,4 +353,47 @@ body {
   cursor: pointer;
   background: #000;
   color: white;
+}
+
+/* Botões votação e data atualização */
+.data-atualizacao {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
+.botoes-votacao {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.botao-voto {
+  background: none;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #666;
+}
+
+.botao-voto:hover {
+  background: #f5f5f5;
+}
+
+.botao-voto.votado {
+  background: #e3f2fd;
+  border-color: #2196f3;
+  color: #2196f3;
+}
+
+.botao-voto.votado-dislike {
+  background: #ffebee;
+  border-color: #f44336;
+  color: #f44336;
 }
