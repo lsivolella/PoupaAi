@@ -1,0 +1,86 @@
+{
+    "mercados": [
+      {
+        "id": 1,
+        "nome": "Supermercado Lagoa",
+        "endereco": "Rua Principal, 100",
+        "localizacao": {
+          "latitude": -19.6305,
+          "longitude": -43.9360
+        }
+      },
+      {
+        "id": 2,
+        "nome": "Mercado Central Lagoa Santa",
+        "endereco": "Av. Minas Gerais, 250",
+        "localizacao": {
+          "latitude": -19.6290,
+          "longitude": -43.9385
+        }
+      },
+      {
+        "id": 3,
+        "nome": "Hipermercado Popular",
+        "endereco": "Rua das Flores, 45",
+        "localizacao": {
+          "latitude": -19.6312,
+          "longitude": -43.9350
+        }
+      },
+      {
+        "id": 4,
+        "nome": "Super Lagoa",
+        "endereco": "Av. Principal, 120",
+        "localizacao": {
+          "latitude": -19.6285,
+          "longitude": -43.9390
+        }
+      },
+      {
+        "id": 5,
+        "nome": "Mercado Boa Compra",
+        "endereco": "Rua das Palmeiras, 78",
+        "localizacao": {
+          "latitude": -19.6300,
+          "longitude": -43.9340
+        }
+      },
+      {
+        "id": 6,
+        "nome": "Supermercado Dia",
+        "endereco": "Av. Dona Elisa, 90",
+        "localizacao": {
+          "latitude": -19.6320,
+          "longitude": -43.9365
+        }
+      },
+      {
+        "id": 7,
+        "nome": "Mercadinho São José",
+        "endereco": "Rua São José, 10",
+        "localizacao": {
+          "latitude": -19.6315,
+          "longitude": -43.9378
+        }
+      },
+      {
+        "id": 8,
+        "nome": "Supermercado Real",
+        "endereco": "Av. Minas Gerais, 300",
+        "localizacao": {
+          "latitude": -19.6280,
+          "longitude": -43.9365
+        }
+      },
+      {
+        "id": 9,
+        "nome": "Mercado São Francisco",
+        "endereco": "Rua Francisco, 50",
+        "localizacao": {
+          "latitude": -19.6308,
+          "longitude": -43.9355
+        }
+      }
+    ]
+  }
+  

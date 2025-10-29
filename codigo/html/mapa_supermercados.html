@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mapa Supermercados</title>
+
+  <!-- Bootstrap CSS-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+  <!-- SEU CSS -->
+  <link rel="stylesheet" href="../assets/css/mapa_supermercados.css">
+</head>
+
+<body>
+  <header class="container py-4 text-center">
+    <img src="../assets/img/Logo_PoupaAI.svg" class="img-fluid" alt="Logo poupa aí, carrinho de compras">
+  </header>
+
+  <div class="container my-4">
+    <div class="search-bar mx-auto">
+      <i class="bi bi-search"></i>
+      <input type="text" class="form-control" placeholder="Buscar por mercados no mapa">
+    </div>
+  </div>
+
+  <div id="map"></div>
+  <div id="status">Obtendo localização...</div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../assets/js/mapa_supermercados.js"></script>
+</body>
+</html>
