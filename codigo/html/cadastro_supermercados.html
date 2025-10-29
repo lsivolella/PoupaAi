@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cadastro Supermercados</title>
+
+  <!-- Bootstrap CSS-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  
+  <!-- Bootstrap Icons-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+
+  <link rel="stylesheet" href="../assets/css/cadastro_supermercados.css">
+</head>
+<body>
+  <header class="container py-4 text-center">
+    <img src="../assets/img/Logo_PoupaAI.svg" class="img-fluid" alt="Logo poupa aí, carrinho de compras">
+  </header>
+
+  <form class="container">
+    <div class="mb-3">
+      <label for="nomeMercado" class="form-label">Nome do Mercado</label>
+      <input type="text" class="form-control" id="nomeMercado" aria-describedby="Nome do mercado para cadastro">
+    </div>
+    <div class="mb-3">
+      <label for="enderecoMercado" class="form-label">Endereço do Mercado</label>
+      <input type="text" class="form-control" id="enderecoMercado">
+    </div>
+    <div class="mb-3">
+      <label for="acessibilidadeMercado" class="form-label">Informações de Acessibilidade do Mercado</label>
+      <input type="text" class="form-control" id="acessibilidadeMercado">
+    </div>
+    <div class="mb-3">
+      <label for="imagemMercado" class="form-label">Selecione uma imagem:</label>
+      <input class="form-control" type="file" id="imagemMercado">
+    </div>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+  </form>
+
+
+</body>
+</html>
