@@ -4,6 +4,9 @@
 
 Escreva um ou dois parágrafo resumindo o objetivo do seu projeto.
 
+PoupaAí
+Uma plataforma voltada para ajudar consumidores a encontrarem os melhores preços nos mercados e a economizar seu tempo ao realizar compras.
+
 ## Alunos integrantes da equipe
 
 - Bernardo Duarte Medeiros de Paula
