@@ -6,11 +6,17 @@
   <title>Adicione o produto</title>
   <link rel="stylesheet" href="../assets/css/editar_produto.css">
   <link rel="stylesheet" href="../assets/css/styles.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
   <header class="top-bar">
-    <button class="back-btn">&#8592;</button>
+    <a href="lista.html" class="back-btn" aria-label="Voltar">
+      <span class="material-symbols-outlined">arrow_back</span>
+    </a>
     <h1>Adicione o produto</h1>
   </header>
 
@@ -33,15 +39,19 @@
     <div class="input-group quantidade-group">
       <label for="quantidade">Quantidade</label>
       <div class="quantidade-controls">
+        <button id="menos" aria-label="Remover um">
+          <span class="material-symbols-outlined">remove</span>
+        </button>
         <input type="number" id="quantidade" value="1" min="1">
-        <button id="mais">+</button>
-        <button id="menos">−</button>
+        <button id="mais" aria-label="Adicionar um">
+          <span class="material-symbols-outlined">add</span>
+        </button>
       </div>
     </div>
   </main>
 
   <footer>
-    <button id="adicionar-produto" class="btn-principal">Adicionar produto</button>
+    <a href="lista.html" id="adicionar-produto" class="btn-principal">Adicionar produto</a>
   </footer>
 
 </body>
