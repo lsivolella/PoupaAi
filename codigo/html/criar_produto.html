@@ -52,7 +52,8 @@
                         <label for="unidade" class="form-label mb-0">Unidade de Medida</label>
                     </div>
                     <div class="col-9">
-                        <input type="text" class="form-control" id="unidade" placeholder="Digite a unidade de medida (kg, litros, etc.)">
+                        <input type="text" class="form-control" id="unidade"
+                            placeholder="Digite a unidade de medida (kg, litros, etc.)">
                     </div>
                 </div>
 
@@ -61,7 +62,8 @@
                         <label for="embalagem" class="form-label mb-0">Tamanho Embalagem</label>
                     </div>
                     <div class="col-9">
-                        <input type="text" class="form-control" id="embalagem" placeholder="Digite o tamanho da embalagem">
+                        <input type="text" class="form-control" id="embalagem"
+                            placeholder="Digite o tamanho da embalagem">
                     </div>
                 </div>
 
@@ -81,6 +83,65 @@
                     </div>
                     <div class="col-9">
                         <input type="file" class="form-control" id="imagem" accept="image/*">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-3 d-flex align-items-center">
+                        <label for="mercados" class="form-label mb-0">Mercados</label>
+                    </div>
+
+                    <div class="col-9">
+                        <div class="mb-3">
+                            <button type="button" class="form-control mb-3" id="adicionar-mercado-btn">
+                                Adicionar Mercado
+                            </button>
+                        </div>
+
+                        <div class="lista-mercados">
+                            <div class="entrada-mercado row mb-2">
+                                <div class="col-6 d-flex align-items-center">
+                                    <input type="text" class="form-control" placeholder="Nome do mercado"
+                                        value="Supernosso">
+                                </div>
+                                <div class="col-4 d-flex align-items-center">
+                                    <input type="text" class="form-control" placeholder="Preço (R$)" value="14,99">
+                                </div>
+                                <div class="col-2 d-flex align-items-center">
+                                    <button class="btn btn-link p-0 text-danger" title="Remover">
+                                        <span class="material-symbols">delete</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="entrada-mercado row mb-2">
+                                <div class="col-6 d-flex align-items-center">
+                                    <input type="text" class="form-control" placeholder="Nome do mercado" value="Epa">
+                                </div>
+                                <div class="col-4 d-flex align-items-center">
+                                    <input type="text" class="form-control" placeholder="Preço (R$)" value="15,99">
+                                </div>
+                                <div class="col-2 d-flex align-items-center">
+                                    <button class="btn btn-link p-0 text-danger" title="Remover">
+                                        <span class="material-symbols">delete</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                                                        <div class="entrada-mercado row mb-2">
+                                <div class="col-6 d-flex align-items-center">
+                                    <input type="text" class="form-control" placeholder="Nome do mercado" value="">
+                                </div>
+                                <div class="col-4 d-flex align-items-center">
+                                    <input type="text" class="form-control" placeholder="Preço (R$)" value="">
+                                </div>
+                                <div class="col-2 d-flex align-items-center">
+                                    <button class="btn btn-link p-0 text-danger" title="Remover">
+                                        <span class="material-symbols">delete</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
