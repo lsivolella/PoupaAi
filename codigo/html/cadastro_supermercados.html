@@ -5,41 +5,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cadastro Supermercados</title>
 
-  <!-- Bootstrap CSS-->
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-  
-  <!-- Bootstrap Icons-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
-
-  <link rel="stylesheet" href="../assets/css/cadastro_supermercados.css">
 </head>
+
 <body>
   <header class="container py-4 text-center">
     <img src="../assets/img/Logo_PoupaAI.svg" class="img-fluid" alt="Logo poupa aí, carrinho de compras">
   </header>
 
-  <form class="container">
-    <div class="mb-3">
-      <label for="nomeMercado" class="form-label">Nome do Mercado</label>
-      <input type="text" class="form-control" id="nomeMercado" aria-describedby="Nome do mercado para cadastro">
-    </div>
-    <div class="mb-3">
-      <label for="enderecoMercado" class="form-label">Endereço do Mercado</label>
-      <input type="text" class="form-control" id="enderecoMercado">
-    </div>
-    <div class="mb-3">
-      <label for="acessibilidadeMercado" class="form-label">Informações de Acessibilidade do Mercado</label>
-      <input type="text" class="form-control" id="acessibilidadeMercado">
-    </div>
-    <div class="mb-3">
-      <label for="imagemMercado" class="form-label">Selecione uma imagem:</label>
-      <input class="form-control" type="file" id="imagemMercado">
-    </div>
-    <button type="submit" class="btn btn-primary">Cadastrar</button>
-  </form>
+  <main class="container">
+    <h1 class="mb-4 text-center">Cadastro de Supermercados</h1>
+    <form id="formCadastro">
+      <div class="mb-3">
+        <label for="nomeMercado" class="form-label">Nome do Mercado</label>
+        <input type="text" class="form-control" id="nomeMercado" placeholder="Ex: Supermercado Central">
+      </div>
 
+      <fieldset class="border rounded p-3 mb-4">
+        <legend class="float-none w-auto px-2 fs-5">Endereço</legend>
 
+        <div class="row g-3">
+          <div class="col-md-4">
+            <label for="cepMercado" class="form-label">CEP</label>
+            <input type="text" class="form-control" id="cepMercado" placeholder="Ex: 30170-131">
+          </div>
+          <div class="col-md-8">
+            <label for="ruaMercado" class="form-label">Rua</label>
+            <input type="text" class="form-control" id="ruaMercado" placeholder="Ex: Rua Bias Fortes">
+          </div>
+          <div class="col-md-4">
+            <label for="numeroMercado" class="form-label">Número</label>
+            <input type="text" class="form-control" id="numeroMercado" placeholder="Ex: 500">
+          </div>
+          <div class="col-md-6">
+            <label for="bairroMercado" class="form-label">Bairro</label>
+            <input type="text" class="form-control" id="bairroMercado" placeholder="Ex: Centro">
+          </div>
+          <div class="col-md-6">
+            <label for="cidadeMercado" class="form-label">Cidade</label>
+            <input type="text" class="form-control" id="cidadeMercado" placeholder="Ex: Belo Horizonte">
+          </div>
+          <div class="col-md-6">
+            <label for="estadoMercado" class="form-label">Estado</label>
+            <input type="text" class="form-control" id="estadoMercado" placeholder="Ex: MG">
+          </div>
+          <div class="col-md-6">
+            <label for="paisMercado" class="form-label">País</label>
+            <input type="text" class="form-control" id="paisMercado" placeholder="Ex: Brasil">
+          </div>
+        </div>    
+      </fieldset>
+
+      <div class="mb-3">
+        <label for="acessibilidadeMercado" class="form-label">Informações de Acessibilidade</label>
+        <input type="text" class="form-control" id="acessibilidadeMercado" placeholder="Ex: Rampas de acesso, vagas preferenciais...">
+      </div>
+
+      <div class="mb-3">
+        <label for="imagemMercado" class="form-label">Imagem do Mercado</label>
+        <input class="form-control" type="file" id="imagemMercado" accept="image/*">
+      </div>
+
+      <div style="margin-top:10px;">
+        <button id="btnCadastrar" type="button" class="btn btn-primary mb-3">Cadastrar</button>
+      </div>
+    </form>
+  </main>
+
+  <script src="../assets/js/cadastro_supermercados.js"></script>
 </body>
 </html>
