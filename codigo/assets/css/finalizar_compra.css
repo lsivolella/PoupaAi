@@ -1,10 +1,229 @@
-.imagem-um{   
-    width: 15%;
-    height: 15%;
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.imagem-dois{   
-    width: 25%;
-    height: 25%;
 
+body {
+    font-family: "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #f5f5f5;
+    max-width: 800px;
+    margin: 0 auto;
+    min-height: 100vh;
+    color: #333;
+}
+
+/* Início Cabeçalho */
+header {
+    background: white;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+header img {
+    height: 28px;
+    width: auto;
+}
+
+header h1 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+header nav button {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 8px;
+    color: #333;
+}
+/* Fim Cabeçalho */
+
+main {
+    padding: 16px;
+}
+
+/* Início Primeira Section */
+main section:first-of-type {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+main section:first-of-type h2 {
+    font-size: 15px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+main section:first-of-type img {
+    width: 120px;
+    height: auto;
+    margin-top: 8px;
+}
+/* Fim Primeira Section */
+
+/* Início Segunda Section*/
+/* Tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
+}
+
+th {
+    background: #fafafa;
+    text-align: left;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    border-bottom: 1px solid #eee;
+}
+
+td {
+    padding: 12px 10px;
+    vertical-align: middle;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+figure {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+figure img {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: #eee;
+}
+
+figcaption {
+    font-weight: 500;
+}
+
+/* Botões dentro da tabela */
+td button {
+    background: #000;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+td button:hover {
+    background: #333;
+}
+/* Fim Segunda Section*/
+
+/* resumo do carrinho */
+section:nth-of-type(3) {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+section:nth-of-type(3) h2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+section:nth-of-type(3) p {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #444;
+}
+
+.calcular-frete {
+    margin: 12px 0;
+}
+
+.calcular-frete span {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.calcular-frete input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #fafafa;
+}
+
+/* botões finais */
+section:last-of-type {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 80px;
+}
+
+section:last-of-type button {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+section:last-of-type button:first-child {
+    background: white;
+    border: 1.5px solid #000;
+    color: #000;
+}
+
+section:last-of-type button:first-child:hover {
+    background: #f0f0f0;
+}
+
+section:last-of-type button:last-child {
+    background: #000;
+    color: white;
+}
+
+section:last-of-type button:last-child:hover {
+    background: #333;
+}
+
+.botoes-finais {
+    text-decoration: none;
+    color: white;
+}
+
+/* footer*/
+footer {
+    height: 40px;
 }

@@ -26,3 +26,8 @@ header #titulo-produto {
     font-size: 17px;
     font-weight: bold;
 }
+
+#adicionar-mercado-btn{
+    background-color: black;
+    color: white;
+}

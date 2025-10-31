@@ -3,98 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finalizar Compra</title>
+    <title>Carrinho</title>
     <link rel="stylesheet" href="../assets/css/finalizar_compra.css">
+    <link rel="stylesheet" href="">
 </head>
 <body>
     <header>
-        <a href=""><</a>
-        <div class="logo">
-          <img src="../assets/img/Logo_PoupaAI.svg" alt="PoupaAí" class="img-logo" />
-        </div>
-      <span>Lista de produtos</span>
+      <!--Retorna para a lista de compras-->
+      <nav>
+        <button><a href=""></a><</button>
+      </nav>
+      <img src="../assets/img/Logo_PoupaAI.svg" alt="PoupaAí">
+      <h1>Carrinho</h1>
     </header>
     <main>
-      <div class="titulo">Seu Carrinho</div>
-      <div class="conteudo">
-        <section>
-          <table>
-            <thead>
-              <tr>
-                <th>Produto</th>
-                <th>Preço</th>
-                <th>Quantidade</th>
-                <th>Total</th>
-                <th>-</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <div class="produto">
-                    <img class="imagem-um" src="../assets/img/pao_forma_integral_visconti_500g.png" alt="" />
-                    <div class="info">
-                      <div class="nome-do-produto">Pão de Forma Integral Visconti 500g</div>
-                    </div>
-                  </div>
-                </td>
-                <td>R$ 9.00</td>
-                <td>
-                  <div class="quantidade">
-                    <button><i class="menos">-</i></button>
-                    <span>1</span>
-                    <button><i class="mais">+</i></button>
-                  </div>
-                </td>
-                <td>R$ 9.00</td>
-                <td>
-                  <button class="remover"><i>x</i></button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="produto">
-                    <img class="imagem-dois" src="../assets/img/veja_multiuso_500ml.png" alt="" />
-                    <div class="info">
-                      <div class="nome-do-produto">Veja Multiuso 500ml</div>
-                    </div>
-                  </div>
-                </td>
-                <td>R$ 6.60</td>
-                <td>
-                  <div class="quantidade">
-                    <button><i class="menos">-</i></button>
-                    <span>1</span>
-                    <button><i class="mais">+</i></button>
-                  </div>
-                </td>
-                <td>R$ 6.60</td>
-                <td>
-                  <button class="remover"><i>x</i></button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-        <aside>
-          <div class="finalizacao">
-            <header>Resumo da lista</header>
-            <div class="informacoes-da-lista">
-              <div><span>Lista: #002</span></div>
-              <div><span>Sub-total:</span><span> R$ 15.60</span></div>
-              <div><span>Frete:</span><span> Gratuito</span></div>
-              </div>
-            <footer>
-              <span>Total</span>
-              <span>R$ 15.60</span>
-            </footer>
-          </div>
-          <button>Adicionar Produtos</button>
-          <a href="../html/historico_de_compras.html">
-          <button>Finalizar Pedido</button>
-          </a>
-        </aside>
-      </div>
+      <!--Mostra em qual supermercado a compra será feita-->
+      <section>
+        <h2>Sua compra será feita no supermercado: </h2>
+        <img src="../assets/img/logo_verdemar.png" alt="Verdemar">
+      </section>
+      <!--Tabela com as informações do produto-->
+      <section>
+        <table border="1">
+          <thead>
+            <tr>
+              <th>Produto</th>
+              <th>Preço</th>
+              <th>Quantidade</th>
+              <th>Total</th>
+              <!--Lembrar de tirar a legenda de remover do cabeçalho-->
+            </tr>
+          </thead>
+          <tbody>
+            <!--Produto 1-->
+            <tr>
+              <td>
+                <figure>
+                  <img src="../assets/img/pao_forma_integral_visconti_500g.png" alt="Pão de Forma Integral Visconti 500g">
+                  <figcaption>Pão de Forma Integral Visconti 500g</figcaption>
+                </figure>
+              </td>
+              <td>
+                <span>R$ 9.00</span>
+              </td>
+              <td>
+                <span>1</span>
+                <button>+</button>
+                <button>-</button>
+              </td>
+              <td>
+                <span>R$ 9.00</span>
+              </td>
+            </tr>
+            <!--Produto 2-->
+            <tr>
+              <td>
+                <figure>
+                  <img src="../assets/img/veja_multiuso_500ml.png" alt="Veja Multiuso 500ml">
+                  <figcaption>Veja Multiuso 500ml</figcaption>
+                </figure>
+              </td>
+              <td>
+                <span>R$ 6.60</span>
+              </td>
+              <td>
+                <span>1</span>
+                <button>+</button>
+                <button>-</button>
+              </td>
+              <td>
+                <span>R$ 6.60</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <!--Informações Finais e frete-->
+      <section>
+        <h2>Resumo do Carrinho</h2>
+        <p>Identificador do carrinho: <strong>#002</strong></p>
+        <p>Sub-total: <strong>R$15.60</strong></p>
+        <div class="calcular-frete">
+          <span>Cálculo do frete: </span>
+          <form>
+            <input type="text" name="frete" id="frete" placeholder="Digite o seu CEP">
+          </form>
+        </div>
+        <p>Valor do Frete: <strong>Grátis</strong></p>
+        <p>Total: <strong>R$15.60</strong></p>
+      </section>
+      <!--Alterar lista e finalizar compra-->
+      <section>
+        <button><a style="color: black;" class="botoes-finais" href="../html/lista.html">Alterar a lista</a></button>
+        <button onclick="alert('Compra Finalizada')"><a class="botoes-finais" href="../html/historico_de_compras.html">Finalizar compra</a></button>
+      </section>
     </main>
+    <footer>
+
+    </footer>
   </body>
 </html>
