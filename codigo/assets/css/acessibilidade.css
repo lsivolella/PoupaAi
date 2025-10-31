@@ -397,3 +397,187 @@ body {
   border-color: #f44336;
   color: #f44336;
 }
+
+/* Responsividade */
+@media (max-width: 768px) {
+  body {
+    max-width: 100%;
+  }
+
+  .nome-item-lista {
+    min-width: 140px;
+    font-size: 14px;
+  }
+
+  .valor-item {
+    min-width: 80px;
+    font-size: 14px;
+  }
+
+  .botoes-votacao {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .botao-voto {
+    font-size: 12px;
+    padding: 3px 8px;
+  }
+
+  .item-acessibilidade {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .info-item {
+    flex: 1;
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cabecalho,
+  .cabecalho-edicao {
+    padding: 10px 12px;
+  }
+
+  .img-logo {
+    height: 24px;
+  }
+
+  .barra-busca {
+    padding: 10px 12px;
+  }
+
+  .campo-busca {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .filtros {
+    padding: 10px 12px;
+    gap: 12px;
+  }
+
+  .botao-filtro {
+    font-size: 13px;
+  }
+
+  .conteudo-principal,
+  .conteudo-edicao {
+    padding: 0 12px;
+  }
+
+  .nome-loja {
+    font-size: 16px;
+  }
+
+  .card-acessibilidade,
+  .card-comentarios {
+    padding: 16px;
+  }
+
+  .titulo-card {
+    font-size: 14px;
+  }
+
+  .icone-acessibilidade {
+    font-size: 18px;
+  }
+
+  .data-atualizacao {
+    font-size: 11px;
+  }
+
+  .item-acessibilidade {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .info-item {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .nome-item-lista {
+    min-width: auto;
+    font-size: 13px;
+  }
+
+  .valor-item {
+    min-width: auto;
+    font-size: 13px;
+  }
+
+  .botoes-votacao {
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .botao-voto {
+    font-size: 11px;
+    padding: 4px 10px;
+  }
+
+  .item-edicao {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .nome-item {
+    font-size: 14px;
+  }
+
+  .botoes-opcao {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .botao-opcao {
+    padding: 8px 12px;
+    font-size: 13px;
+    flex: 1;
+  }
+
+  .secao-comentarios {
+    padding: 12px;
+  }
+
+  .label-comentarios {
+    font-size: 14px;
+  }
+
+  .campo-comentarios {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .botoes-acao {
+    padding: 12px;
+  }
+
+  .botao-salvar,
+  .botao-cancelar {
+    padding: 14px;
+    font-size: 15px;
+  }
+
+  .botao-editar {
+    padding: 14px;
+    font-size: 15px;
+    width: calc(100% - 24px);
+    margin: 16px 12px;
+  }
+
+  .titulo-comentarios {
+    font-size: 14px;
+  }
+
+  .texto-comentarios {
+    font-size: 13px;
+  }
+}
