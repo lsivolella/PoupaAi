@@ -1,9 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const nomePadrao = "Minha lista de compras"; 
-    if (!localStorage.getItem('nome_lista_compras')) {
-        localStorage.setItem('nome_lista_compras', nomePadrao);
-    }
-
     carregarNomeLista();
     carregarProdutos();
 
