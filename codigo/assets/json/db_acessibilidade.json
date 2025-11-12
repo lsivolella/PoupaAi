@@ -1,0 +1,140 @@
+{
+  "supermercados": [
+    {
+      "id": "1",
+      "nome": "Super Nosso",
+      "acessibilidade": {
+        "rampa": null,
+        "elevador": null,
+        "vagas": null,
+        "piso": true,
+        "braille": true,
+        "preferencial": true,
+        "libras": null
+      },
+      "votos": {
+        "rampa": {
+          "likes": 0,
+          "dislikes": 0
+        },
+        "elevador": {
+          "likes": 0,
+          "dislikes": 0
+        },
+        "vagas": {
+          "likes": 0,
+          "dislikes": 0
+        },
+        "piso": {
+          "likes": 1,
+          "dislikes": 0
+        },
+        "braille": {
+          "likes": 1,
+          "dislikes": 0
+        },
+        "preferencial": {
+          "likes": 0,
+          "dislikes": 0
+        },
+        "libras": {
+          "likes": 0,
+          "dislikes": 0
+        }
+      },
+      "comentarios": "Recomendo",
+      "dataAtualizacao": "2025-11-12T03:52:34.980Z"
+    },
+    {
+      "id": "2",
+      "nome": "EPA",
+      "acessibilidade": {
+        "rampa": true,
+        "elevador": false,
+        "vagas": true,
+        "piso": true,
+        "braille": false,
+        "preferencial": true,
+        "libras": false
+      },
+      "votos": {
+        "rampa": {
+          "likes": 5,
+          "dislikes": 0
+        },
+        "elevador": {
+          "likes": 0,
+          "dislikes": 2
+        },
+        "vagas": {
+          "likes": 8,
+          "dislikes": 1
+        },
+        "piso": {
+          "likes": 4,
+          "dislikes": 0
+        },
+        "braille": {
+          "likes": 0,
+          "dislikes": 3
+        },
+        "preferencial": {
+          "likes": 10,
+          "dislikes": 0
+        },
+        "libras": {
+          "likes": 0,
+          "dislikes": 5
+        }
+      },
+      "comentarios": "Supermercado bem estruturado com boa acessibilidade.",
+      "dataAtualizacao": "2025-01-15T10:30:00"
+    },
+    {
+      "id": "3",
+      "nome": "Carrefour",
+      "acessibilidade": {
+        "rampa": true,
+        "elevador": true,
+        "vagas": true,
+        "piso": true,
+        "braille": true,
+        "preferencial": true,
+        "libras": true
+      },
+      "votos": {
+        "rampa": {
+          "likes": 15,
+          "dislikes": 0
+        },
+        "elevador": {
+          "likes": 12,
+          "dislikes": 1
+        },
+        "vagas": {
+          "likes": 20,
+          "dislikes": 0
+        },
+        "piso": {
+          "likes": 10,
+          "dislikes": 0
+        },
+        "braille": {
+          "likes": 8,
+          "dislikes": 0
+        },
+        "preferencial": {
+          "likes": 18,
+          "dislikes": 0
+        },
+        "libras": {
+          "likes": 6,
+          "dislikes": 2
+        }
+      },
+      "comentarios": "Ótima acessibilidade.",
+      "dataAtualizacao": "2025-01-20T14:45:00"
+    }
+  ],
+  "usuarios_votos": []
+}

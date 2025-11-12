@@ -1,29 +1,11 @@
+const API_URL = "http://localhost:3000/supermercados";
+
+//Supermercado Super Nosso pré-definido (adaptar depois para linkar com mapa)
+let supermercadoId = 1;
+
 // Dados (começa vazio/null ou localStorage)
-let acessibilidade = JSON.parse(localStorage.getItem("acessibilidade")) || {
-  rampa: null,
-  elevador: null,
-  vagas: null,
-  piso: null,
-  braille: null,
-  preferencial: null,
-  libras: null,
-};
-
-let votos = JSON.parse(localStorage.getItem("votos")) || {
-  rampa: { likes: 0, dislikes: 0 },
-  elevador: { likes: 0, dislikes: 0 },
-  vagas: { likes: 0, dislikes: 0 },
-  piso: { likes: 0, dislikes: 0 },
-  braille: { likes: 0, dislikes: 0 },
-  preferencial: { likes: 0, dislikes: 0 },
-  libras: { likes: 0, dislikes: 0 },
-};
-
-let meusVotos = JSON.parse(localStorage.getItem("meusVotos")) || {};
-let comentarios = localStorage.getItem("comentarios") || "";
-let dataAtualizacao = localStorage.getItem("dataAtualizacao")
-  ? new Date(localStorage.getItem("dataAtualizacao"))
-  : null;
+let meusVotos =
+  JSON.parse(localStorage.getItem(`meusVotos_${supermercadoId}`)) || {};
 
 // Itens acessibilidade
 const nomes = {
@@ -36,8 +18,38 @@ const nomes = {
   libras: "Funcionário de libras",
 };
 
+// GET para buscar supermercado
+async function buscarSupermercado(id) {
+  try {
+    const response = await fetch(`${API_URL}/${id}`);
+    const supermercado = await response.json();
+    return supermercado;
+  } catch (error) {
+    console.error("Erro ao buscar supermercado:", error);
+    return null;
+  }
+}
+
+// PUT para atualizar supermercado
+async function atualizarSupermercado(id, dados) {
+  try {
+    const response = await fetch(`${API_URL}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dados),
+    });
+    const supermercadoAtualizado = await response.json();
+    return supermercadoAtualizado;
+  } catch (error) {
+    console.error("Erro ao atualizar supermercado:", error);
+    return null;
+  }
+}
+
 // Verifica o status de acessiblidade
-function verificarStatus() {
+function verificarStatus(acessibilidade) {
   let temSim = false;
   let temInfo = false;
 
@@ -53,7 +65,9 @@ function verificarStatus() {
 }
 
 // função para data
-function formatarData(data) {
+function formatarData(dataISO) {
+  if (!dataISO) return null;
+  const data = new Date(dataISO);
   const dia = String(data.getDate()).padStart(2, "0");
   const mes = String(data.getMonth() + 1).padStart(2, "0");
   const ano = data.getFullYear();
@@ -63,72 +77,88 @@ function formatarData(data) {
 }
 
 // função para a parte de votação
-function votar(item, tipo) {
+async function votar(item, tipo) {
+  const supermercado = await buscarSupermercado(supermercadoId);
+  if (!supermercado) return;
   if (meusVotos[item] === tipo) {
     if (tipo === "like") {
-      votos[item].likes--;
+      supermercado.votos[item].likes--;
     } else {
-      votos[item].dislikes--;
+      supermercado.votos[item].dislikes--;
     }
     meusVotos[item] = null;
   } else {
     if (meusVotos[item] === "like") {
-      votos[item].likes--;
+      supermercado.votos[item].likes--;
     } else if (meusVotos[item] === "dislike") {
-      votos[item].dislikes--;
+      supermercado.votos[item].dislikes--;
     }
     if (tipo === "like") {
-      votos[item].likes++;
+      supermercado.votos[item].likes++;
     } else {
-      votos[item].dislikes++;
+      supermercado.votos[item].dislikes++;
     }
     meusVotos[item] = tipo;
   }
 
-  localStorage.setItem("votos", JSON.stringify(votos));
-  localStorage.setItem("meusVotos", JSON.stringify(meusVotos));
+  await atualizarSupermercado(supermercadoId, supermercado);
+
+  localStorage.setItem(
+    `meusVotos_${supermercadoId}`,
+    JSON.stringify(meusVotos)
+  );
 
   mostrarDados();
 }
 
 // Mostra na tela os itens de acessiblidade
-function mostrarDados() {
+async function mostrarDados() {
+  const supermercado = await buscarSupermercado(supermercadoId);
+  if (!supermercado) {
+    alert("Supermercado não encontrado!");
+    return;
+  }
+
   const lista = document.getElementById("lista-acessibilidade");
   const titulo = document.getElementById("titulo-card");
   const textoStatus = document.getElementById("status-acessibilidade");
   const elementoData = document.getElementById("data-atualizacao");
+  const nomeLoja = document.querySelector(".nome-loja");
 
   if (!lista) return;
+
+  // Atualiza nome do supermercado
+  if (nomeLoja) nomeLoja.textContent = supermercado.nome;
 
   lista.innerHTML = "";
 
   // Atualiza status
-  const status = verificarStatus();
+  const status = verificarStatus(supermercado.acessibilidade);
   textoStatus.textContent = status.texto;
   titulo.className = `titulo-card ${status.classe}`;
 
   // Mostra data de atualização
-  if (elementoData && dataAtualizacao) {
+  if (elementoData && supermercado.dataAtualizacao) {
     elementoData.textContent = `Última atualização: ${formatarData(
-      dataAtualizacao
+      supermercado.dataAtualizacao
     )}`;
     elementoData.style.display = "block";
   } else if (elementoData) {
     elementoData.style.display = "none";
   }
 
-  // Mostra os comentários
+  // Mostra comentários
   const cardComentarios = document.getElementById("card-comentarios");
   const mostrarComentarios = document.getElementById("mostrar-comentarios");
-  if (cardComentarios && comentarios.trim() !== "") {
+  if (cardComentarios && supermercado.comentarios.trim() !== "") {
     cardComentarios.style.display = "block";
-    mostrarComentarios.textContent = comentarios;
+    mostrarComentarios.textContent = supermercado.comentarios;
   } else if (cardComentarios) {
     cardComentarios.style.display = "none";
   }
 
   // Cria lista dos itens de acessibilidade
-  for (let item in acessibilidade) {
+  for (let item in supermercado.acessibilidade) {
     const li = document.createElement("li");
     li.className = "item-acessibilidade";
 
@@ -141,10 +171,10 @@ function mostrarDados() {
 
     const valor = document.createElement("span");
 
-    if (acessibilidade[item] === null) {
+    if (supermercado.acessibilidade[item] === null) {
       valor.className = "valor-item vazio";
       valor.textContent = "Sem informação";
-    } else if (acessibilidade[item] === true) {
+    } else if (supermercado.acessibilidade[item] === true) {
       valor.className = "valor-item sim";
       valor.textContent = "Sim";
     } else {
@@ -157,21 +187,21 @@ function mostrarDados() {
     li.appendChild(divInfo);
 
     // adiciona os botões para votação caso haja informação anterior salva
-    if (acessibilidade[item] !== null) {
+    if (supermercado.acessibilidade[item] !== null) {
       const divVotacao = document.createElement("div");
       divVotacao.className = "botoes-votacao";
 
       const btnLike = document.createElement("button");
       btnLike.className = "botao-voto";
       if (meusVotos[item] === "like") btnLike.classList.add("votado");
-      btnLike.innerHTML = `👍 ${votos[item].likes}`;
+      btnLike.innerHTML = `👍 ${supermercado.votos[item].likes}`;
       btnLike.onclick = () => votar(item, "like");
 
       const btnDislike = document.createElement("button");
       btnDislike.className = "botao-voto";
       if (meusVotos[item] === "dislike")
         btnDislike.classList.add("votado-dislike");
-      btnDislike.innerHTML = `👎 ${votos[item].dislikes}`;
+      btnDislike.innerHTML = `👎 ${supermercado.votos[item].dislikes}`;
       btnDislike.onclick = () => votar(item, "dislike");
 
       divVotacao.appendChild(btnLike);
@@ -183,52 +213,14 @@ function mostrarDados() {
   }
 }
 
-// Marca a opção selecionada
-function marcarOpcao(campo, valor) {
-  acessibilidade[campo] = valor;
+// dados ao editar
+async function carregarModoEdicao() {
+  const supermercado = await buscarSupermercado(supermercadoId);
+  if (!supermercado) return;
 
-  // Atualiza botões
-  document.querySelectorAll(".botao-opcao").forEach((botao) => {
-    const campoBtn = botao.getAttribute("data-campo");
-    const valorBtn = botao.getAttribute("data-valor");
-    let valorReal;
-
-    if (valorBtn === "null") valorReal = null;
-    else valorReal = valorBtn === "true";
-
-    if (acessibilidade[campoBtn] === valorReal) {
-      botao.classList.add("ativo");
-    } else {
-      botao.classList.remove("ativo");
-    }
-  });
-}
-
-// Botão Salvar
-function salvarAlteracoes() {
   const campoComentarios = document.getElementById("comentarios");
   if (campoComentarios) {
-    comentarios = campoComentarios.value;
-  }
-
-  // Atualiza data
-  dataAtualizacao = new Date();
-
-  localStorage.setItem("acessibilidade", JSON.stringify(acessibilidade));
-  localStorage.setItem("comentarios", comentarios);
-  localStorage.setItem("dataAtualizacao", dataAtualizacao.toISOString());
-  window.location.href = "acessibilidade.html";
-}
-
-// Inicia a lista
-if (document.getElementById("lista-acessibilidade")) {
-  mostrarDados();
-}
-
-if (document.getElementById("tela-editar")) {
-  const campoComentarios = document.getElementById("comentarios");
-  if (campoComentarios) {
-    campoComentarios.value = comentarios;
+    campoComentarios.value = supermercado.comentarios;
   }
 
   document.querySelectorAll(".botao-opcao").forEach((botao) => {
@@ -239,14 +231,90 @@ if (document.getElementById("tela-editar")) {
     if (valorBtn === "null") valorReal = null;
     else valorReal = valorBtn === "true";
 
-    if (acessibilidade[campo] === valorReal) {
+    if (supermercado.acessibilidade[campo] === valorReal) {
       botao.classList.add("ativo");
     }
   });
 }
 
-// limpar os dados antes de começar
-function limparDados() {
-  localStorage.clear();
-  location.reload();
+// Opção selecionada
+function marcarOpcao(campo, valor) {
+  document.querySelectorAll(".botao-opcao").forEach((botao) => {
+    const campoBtn = botao.getAttribute("data-campo");
+    const valorBtn = botao.getAttribute("data-valor");
+    let valorReal;
+
+    if (valorBtn === "null") valorReal = null;
+    else valorReal = valorBtn === "true";
+
+    if (campoBtn === campo) {
+      if (valorReal === valor) {
+        botao.classList.add("ativo");
+      } else {
+        botao.classList.remove("ativo");
+      }
+    }
+  });
 }
+
+// Botão Salvar
+async function salvarAlteracoes() {
+  const supermercado = await buscarSupermercado(supermercadoId);
+  if (!supermercado) return;
+
+  // Atualiza acessibilidade
+  const botoesAtivos = document.querySelectorAll(".botao-opcao.ativo");
+  botoesAtivos.forEach((botao) => {
+    const campo = botao.getAttribute("data-campo");
+    const valorBtn = botao.getAttribute("data-valor");
+    let valor;
+
+    if (valorBtn === "null") valor = null;
+    else valor = valorBtn === "true";
+
+    supermercado.acessibilidade[campo] = valor;
+  });
+
+  // Atualiza comentários
+  const campoComentarios = document.getElementById("comentarios");
+  if (campoComentarios) {
+    supermercado.comentarios = campoComentarios.value;
+  }
+
+  // Atualiza data
+  supermercado.dataAtualizacao = new Date().toISOString();
+
+  const resultado = await atualizarSupermercado(supermercadoId, supermercado);
+
+  if (resultado) {
+    alert("Alterações salvas com sucesso!");
+    window.location.href = "acessibilidade.html";
+  } else {
+    alert("Erro ao salvar alterações.");
+  }
+}
+
+// Verificando (mudar)
+function obterIdDaURL() {
+  const parametros = new URLSearchParams(window.location.search);
+  const id = parametros.get("id");
+  return id ? parseInt(id) : 1;
+}
+
+// Inicia a lista
+document.addEventListener("DOMContentLoaded", () => {
+  const paginaAtual = window.location.pathname;
+
+  supermercadoId = obterIdDaURL();
+
+  if (
+    paginaAtual.includes("acessibilidade.html") ||
+    paginaAtual.endsWith("/")
+  ) {
+    mostrarDados();
+  }
+
+  if (paginaAtual.includes("editar_acessibilidade.html")) {
+    carregarModoEdicao();
+  }
+});
