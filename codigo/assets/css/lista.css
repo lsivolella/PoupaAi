@@ -17,7 +17,7 @@ header {
   background-color: #fff;
   color: #020101;
   padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .top-bar {
@@ -39,12 +39,12 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.25rem; 
-  border-radius: 50%; 
+  padding: 0.25rem;
+  border-radius: 50%;
 }
 
 .btn-voltar .material-symbols-outlined {
-  font-size: 1.8rem; 
+  font-size: 1.8rem;
 }
 
 main {
@@ -76,7 +76,7 @@ main {
   background: #fff;
   padding: 1rem;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .cabecalho-tabela {
@@ -130,41 +130,37 @@ main {
   gap: 0.5rem;
 }
 
-
 .acoes-produto .btn-editar,
 .acoes-produto .btn-excluir {
   border: none;
   cursor: pointer;
-  
-  border-radius: 8px; 
-  
+  border-radius: 8px;
   transition: 0.2s ease;
-  
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;  
-  height: 36px; 
-  padding: 0; 
-  text-decoration: none; 
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  text-decoration: none;
 }
 
 .acoes-produto .btn-editar {
-  background: #080808; 
+  background: #080808;
 }
 
 .acoes-produto .btn-editar .material-symbols-outlined {
-   font-size: 1.25rem; 
-   color: #fff; 
+  font-size: 1.25rem;
+  color: #fff;
 }
 
 .acoes-produto .btn-excluir {
-  background: #070606; 
+  background: #070606;
 }
 
 .acoes-produto .btn-excluir .material-symbols-outlined {
-   font-size: 1.25rem;
-   color: #fff; 
+  font-size: 1.25rem;
+  color: #fff;
 }
 
 .adicionar-produto {
@@ -183,7 +179,7 @@ main {
   font-weight: 500;
   cursor: pointer;
   transition: 0.2s ease;
-  text-decoration: none; 
+  text-decoration: none;
 }
 
 .finalizar-lista {
@@ -204,7 +200,6 @@ main {
   transition: 0.3s ease;
 }
 
-
 @media (max-width: 768px) {
   .produto {
     flex-direction: column;
@@ -220,4 +215,14 @@ main {
   .descricao-produto {
     width: 100%;
   }
+
+  .nome-lista input {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  flex: 1;
+  width: 100%;
+  max-width: 500px;
+ }
 }
