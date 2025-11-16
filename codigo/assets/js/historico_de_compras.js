@@ -1,4 +1,4 @@
-const mock_compras = [
+/*const mock_compras = [
   {
     id: "#003",
     status: "Finalizado",
@@ -60,13 +60,14 @@ const mock_compras = [
       }
     ]
   }
-];
+];*/
 
+const listas = JSON.parse(localStorage.getItem("listas"));
 function renderizarCards() {
   let html = ""
-  const totalCompras = mock_compras.length
+  const totalCompras = listas.length
   for (let i = 0; i < totalCompras; i++) {
-    const compra = mock_compras[i]
+    const compra = listas[i]
     const totalItens = compra.itens.length
     const maisItens = totalItens - 2
     let precoTotal = 0
@@ -77,7 +78,7 @@ function renderizarCards() {
         <div class="card">
             <div id="card-data">
                 <span>Data do pedido: </span>
-                <span>${compra.data.toLocaleDateString("pt-BR")}</span>
+                <span>${new Date(compra.data).toLocaleDateString("pt-BR")}</span>
             </div>
 
             <div id="status-id-preco">

@@ -23,9 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('btn-finalizar').addEventListener('click', () => {
-        localStorage.removeItem('meus_produtos');
-        localStorage.removeItem('nome_lista_compras');
-        location.reload();
+        window.location.href= "../html/finalizar_compra.html"
     });
 });
 
@@ -80,7 +78,7 @@ function carregarProdutos() {
     produtos.forEach((produto, index) => {
         const li = document.createElement('li');
         li.classList.add('produto');
-        
+
         const imagemSrc = produto.imagem ? produto.imagem : 'https://placehold.co/60x60/eee/ccc?text=Item';
 
         li.innerHTML = `
@@ -103,9 +101,9 @@ function carregarProdutos() {
     });
 }
 
-window.deletarProduto = function(index) {
+window.deletarProduto = function (index) {
     let produtos = JSON.parse(localStorage.getItem('meus_produtos')) || [];
-    produtos.splice(index, 1); 
+    produtos.splice(index, 1);
     localStorage.setItem('meus_produtos', JSON.stringify(produtos));
-    carregarProdutos(); 
+    carregarProdutos();
 }

@@ -34,9 +34,9 @@
               <!--Lembrar de tirar a legenda de remover do cabeçalho-->
             </tr>
           </thead>
-          <tbody>
+          <tbody id="produtos">
             <!--Produto 1-->
-            <tr>
+            <!-- <tr>
               <td>
                 <figure>
                   <img src="../assets/img/pao_forma_integral_visconti_500g.png" alt="Pão de Forma Integral Visconti 500g">
@@ -54,9 +54,9 @@
               <td>
                 <span>R$ 9.00</span>
               </td>
-            </tr>
+            </tr> -->
             <!--Produto 2-->
-            <tr>
+            <!-- <tr>
               <td>
                 <figure>
                   <img src="../assets/img/veja_multiuso_500ml.png" alt="Veja Multiuso 500ml">
@@ -74,12 +74,12 @@
               <td>
                 <span>R$ 6.60</span>
               </td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
       </section>
       <!--Informações Finais e frete-->
-      <section>
+      <section id="resumo">
         <h2>Resumo do Carrinho</h2>
         <p>Identificador do carrinho: <strong>#002</strong></p>
         <p>Sub-total: <strong>R$15.60</strong></p>
@@ -95,11 +95,12 @@
       <!--Alterar lista e finalizar compra-->
       <section>
         <button><a style="color: black;" class="botoes-finais" href="../html/lista.html">Alterar a lista</a></button>
-        <button onclick="alert('Compra Finalizada')"><a class="botoes-finais" href="../html/historico_de_compras.html">Finalizar compra</a></button>
+        <button id="finalizacao" onclick="alert('Compra Finalizada')">Finalizar compra</button>
       </section>
     </main>
     <footer>
 
     </footer>
   </body>
+  <script src="../assets/js/finalizar_compra.js"></script>
 </html>

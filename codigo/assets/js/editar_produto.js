@@ -1,6 +1,7 @@
 let produtosDb = [];
 let imagemProdutoSelecionado = null;
 let cardSelecionado = null;
+let precoProdutoSelecionado = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
     configurarQuantidade();
@@ -106,6 +107,7 @@ function preencherFormulario(produto) {
 
     document.getElementById('quantidade').value = 1;
     imagemProdutoSelecionado = produto.imagem_url;
+    precoProdutoSelecionado = produto.ocorrencias[0].preco;
     document.getElementById('quantidade').focus();
     document.querySelector('.form-title').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
@@ -127,7 +129,8 @@ function salvarProduto() {
         marca,
         descricao,
         quantidade,
-        imagem: imagemProdutoSelecionado
+        imagem: imagemProdutoSelecionado,
+        preco: precoProdutoSelecionado
     };
 
     try {
