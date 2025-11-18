@@ -6,7 +6,7 @@
             "marca": "Camil",
             "unidade_medida": "kg",
             "tamanho_embalagem": "1",
-            "descricao": "Arroz branco tipo 1, embalagem de 1kg.",
+            "descricao": "Arroz branco tipo 1",
             "imagem_url": "../assets/img/arroz_branco_camil_1kg.jpg",
             "ocorrencias": [
                 {
@@ -25,7 +25,7 @@
             "marca": "Quaker",
             "unidade_medida": "g",
             "tamanho_embalagem": "400",
-            "descricao": "Aveia integral em flocos, embalagem de 400g.",
+            "descricao": "Aveia integral em flocos",
             "imagem_url": "../assets/img/aveia_integral_quaker_400g.png",
             "ocorrencias": [
                 {
@@ -44,7 +44,7 @@
             "marca": "Kicaldo",
             "unidade_medida": "kg",
             "tamanho_embalagem": "1",
-            "descricao": "Feijão preto tipo 1, embalagem de 1kg.",
+            "descricao": "Feijão preto tipo 1",
             "imagem_url": "../assets/img/feijao_preto_kicaldo_1kg.png",
             "ocorrencias": [
                 {
