@@ -1,11 +1,17 @@
-const API_URL = "http://localhost:3000/supermercados";
+const API_URL = "http://localhost:3000/mercados";
 
-//Supermercado Super Nosso pré-definido (adaptar depois para linkar com mapa)
-let supermercadoId = 1;
+// ID dinâmico do supermercado
+function obterIdDaURL() {
+  const parametros = new URLSearchParams(window.location.search);
+  const id = parametros.get("id");
+  return id ? parseInt(id) : 1;
+}
 
-// Dados (começa vazio/null ou localStorage)
+let mercadoId = obterIdDaURL();
+
+// Meus votos
 let meusVotos =
-  JSON.parse(localStorage.getItem(`meusVotos_${supermercadoId}`)) || {};
+  JSON.parse(localStorage.getItem(`meusVotos_${mercadoId}`)) || {};
 
 // Itens acessibilidade
 const nomes = {
@@ -18,20 +24,31 @@ const nomes = {
   libras: "Funcionário de libras",
 };
 
+// Função par editar acessibilidade
+function irParaEditar(e) {
+  e.preventDefault();
+  window.location.href = `editar_acessibilidade.html?id=${mercadoId}`;
+}
+
+// Função para voltar da edição
+function voltarParaAcessibilidade() {
+  window.location.href = `acessibilidade.html?id=${mercadoId}`;
+}
+
 // GET para buscar supermercado
-async function buscarSupermercado(id) {
+async function buscarMercado(id) {
   try {
     const response = await fetch(`${API_URL}/${id}`);
-    const supermercado = await response.json();
-    return supermercado;
+    const mercado = await response.json();
+    return mercado;
   } catch (error) {
-    console.error("Erro ao buscar supermercado:", error);
+    console.error("Erro ao buscar mercado:", error);
     return null;
   }
 }
 
 // PUT para atualizar supermercado
-async function atualizarSupermercado(id, dados) {
+async function atualizarMercado(id, dados) {
   try {
     const response = await fetch(`${API_URL}/${id}`, {
       method: "PUT",
@@ -40,16 +57,18 @@ async function atualizarSupermercado(id, dados) {
       },
       body: JSON.stringify(dados),
     });
-    const supermercadoAtualizado = await response.json();
-    return supermercadoAtualizado;
+    const mercadoAtualizado = await response.json();
+    return mercadoAtualizado;
   } catch (error) {
-    console.error("Erro ao atualizar supermercado:", error);
+    console.error("Erro ao atualizar mercado:", error);
     return null;
   }
 }
 
 // Verifica o status de acessiblidade
 function verificarStatus(acessibilidade) {
+  if (!acessibilidade) return { texto: "Sem informação", classe: "sem-info" };
+
   let temSim = false;
   let temInfo = false;
 
@@ -78,44 +97,41 @@ function formatarData(dataISO) {
 
 // função para a parte de votação
 async function votar(item, tipo) {
-  const supermercado = await buscarSupermercado(supermercadoId);
-  if (!supermercado) return;
+  const mercado = await buscarMercado(mercadoId);
+  if (!mercado) return;
+
   if (meusVotos[item] === tipo) {
     if (tipo === "like") {
-      supermercado.votos[item].likes--;
+      mercado.votos[item].likes--;
     } else {
-      supermercado.votos[item].dislikes--;
+      mercado.votos[item].dislikes--;
     }
     meusVotos[item] = null;
   } else {
     if (meusVotos[item] === "like") {
-      supermercado.votos[item].likes--;
+      mercado.votos[item].likes--;
     } else if (meusVotos[item] === "dislike") {
-      supermercado.votos[item].dislikes--;
+      mercado.votos[item].dislikes--;
     }
     if (tipo === "like") {
-      supermercado.votos[item].likes++;
+      mercado.votos[item].likes++;
     } else {
-      supermercado.votos[item].dislikes++;
+      mercado.votos[item].dislikes++;
     }
     meusVotos[item] = tipo;
   }
 
-  await atualizarSupermercado(supermercadoId, supermercado);
-
-  localStorage.setItem(
-    `meusVotos_${supermercadoId}`,
-    JSON.stringify(meusVotos)
-  );
-
+  await atualizarMercado(mercadoId, mercado);
+  localStorage.setItem(`meusVotos_${mercadoId}`, JSON.stringify(meusVotos));
   mostrarDados();
 }
 
 // Mostra na tela os itens de acessiblidade
 async function mostrarDados() {
-  const supermercado = await buscarSupermercado(supermercadoId);
-  if (!supermercado) {
-    alert("Supermercado não encontrado!");
+  const mercado = await buscarMercado(mercadoId);
+  if (!mercado) {
+    alert("Mercado não encontrado!");
+    window.location.href = "mapa_supermercados.html";
     return;
   }
 
@@ -128,19 +144,22 @@ async function mostrarDados() {
   if (!lista) return;
 
   // Atualiza nome do supermercado
-  if (nomeLoja) nomeLoja.textContent = supermercado.nome;
+  if (nomeLoja) nomeLoja.textContent = mercado.nome;
+
+  // Atualiza título da página
+  document.title = `Acessibilidade - ${mercado.nome}`;
 
   lista.innerHTML = "";
 
   // Atualiza status
-  const status = verificarStatus(supermercado.acessibilidade);
+  const status = verificarStatus(mercado.acessibilidade);
   textoStatus.textContent = status.texto;
   titulo.className = `titulo-card ${status.classe}`;
 
   // Mostra data de atualização
-  if (elementoData && supermercado.dataAtualizacao) {
+  if (elementoData && mercado.dataAtualizacao) {
     elementoData.textContent = `Última atualização: ${formatarData(
-      supermercado.dataAtualizacao
+      mercado.dataAtualizacao
     )}`;
     elementoData.style.display = "block";
   } else if (elementoData) {
@@ -150,15 +169,19 @@ async function mostrarDados() {
   // Mostra comentários
   const cardComentarios = document.getElementById("card-comentarios");
   const mostrarComentarios = document.getElementById("mostrar-comentarios");
-  if (cardComentarios && supermercado.comentarios.trim() !== "") {
+  if (
+    cardComentarios &&
+    mercado.comentarios &&
+    mercado.comentarios.trim() !== ""
+  ) {
     cardComentarios.style.display = "block";
-    mostrarComentarios.textContent = supermercado.comentarios;
+    mostrarComentarios.textContent = mercado.comentarios;
   } else if (cardComentarios) {
     cardComentarios.style.display = "none";
   }
 
   // Cria lista dos itens de acessibilidade
-  for (let item in supermercado.acessibilidade) {
+  for (let item in mercado.acessibilidade) {
     const li = document.createElement("li");
     li.className = "item-acessibilidade";
 
@@ -171,10 +194,10 @@ async function mostrarDados() {
 
     const valor = document.createElement("span");
 
-    if (supermercado.acessibilidade[item] === null) {
+    if (mercado.acessibilidade[item] === null) {
       valor.className = "valor-item vazio";
       valor.textContent = "Sem informação";
-    } else if (supermercado.acessibilidade[item] === true) {
+    } else if (mercado.acessibilidade[item] === true) {
       valor.className = "valor-item sim";
       valor.textContent = "Sim";
     } else {
@@ -187,21 +210,21 @@ async function mostrarDados() {
     li.appendChild(divInfo);
 
     // adiciona os botões para votação caso haja informação anterior salva
-    if (supermercado.acessibilidade[item] !== null) {
+    if (mercado.acessibilidade[item] !== null) {
       const divVotacao = document.createElement("div");
       divVotacao.className = "botoes-votacao";
 
       const btnLike = document.createElement("button");
       btnLike.className = "botao-voto";
       if (meusVotos[item] === "like") btnLike.classList.add("votado");
-      btnLike.innerHTML = `👍 ${supermercado.votos[item].likes}`;
+      btnLike.innerHTML = `👍 ${mercado.votos[item].likes}`;
       btnLike.onclick = () => votar(item, "like");
 
       const btnDislike = document.createElement("button");
       btnDislike.className = "botao-voto";
       if (meusVotos[item] === "dislike")
         btnDislike.classList.add("votado-dislike");
-      btnDislike.innerHTML = `👎 ${supermercado.votos[item].dislikes}`;
+      btnDislike.innerHTML = `👎 ${mercado.votos[item].dislikes}`;
       btnDislike.onclick = () => votar(item, "dislike");
 
       divVotacao.appendChild(btnLike);
@@ -215,12 +238,19 @@ async function mostrarDados() {
 
 // dados ao editar
 async function carregarModoEdicao() {
-  const supermercado = await buscarSupermercado(supermercadoId);
-  if (!supermercado) return;
+  const mercado = await buscarMercado(mercadoId);
+  if (!mercado) {
+    alert("Mercado não encontrado!");
+    window.location.href = "mapa_supermercados.html";
+    return;
+  }
+
+  // Atualiza título da página
+  document.title = `Editar Acessibilidade - ${mercado.nome}`;
 
   const campoComentarios = document.getElementById("comentarios");
   if (campoComentarios) {
-    campoComentarios.value = supermercado.comentarios;
+    campoComentarios.value = mercado.comentarios || "";
   }
 
   document.querySelectorAll(".botao-opcao").forEach((botao) => {
@@ -231,7 +261,7 @@ async function carregarModoEdicao() {
     if (valorBtn === "null") valorReal = null;
     else valorReal = valorBtn === "true";
 
-    if (supermercado.acessibilidade[campo] === valorReal) {
+    if (mercado.acessibilidade[campo] === valorReal) {
       botao.classList.add("ativo");
     }
   });
@@ -259,8 +289,8 @@ function marcarOpcao(campo, valor) {
 
 // Botão Salvar
 async function salvarAlteracoes() {
-  const supermercado = await buscarSupermercado(supermercadoId);
-  if (!supermercado) return;
+  const mercado = await buscarMercado(mercadoId);
+  if (!mercado) return;
 
   // Atualiza acessibilidade
   const botoesAtivos = document.querySelectorAll(".botao-opcao.ativo");
@@ -272,40 +302,31 @@ async function salvarAlteracoes() {
     if (valorBtn === "null") valor = null;
     else valor = valorBtn === "true";
 
-    supermercado.acessibilidade[campo] = valor;
+    mercado.acessibilidade[campo] = valor;
   });
 
   // Atualiza comentários
   const campoComentarios = document.getElementById("comentarios");
   if (campoComentarios) {
-    supermercado.comentarios = campoComentarios.value;
+    mercado.comentarios = campoComentarios.value;
   }
 
   // Atualiza data
-  supermercado.dataAtualizacao = new Date().toISOString();
+  mercado.dataAtualizacao = new Date().toISOString();
 
-  const resultado = await atualizarSupermercado(supermercadoId, supermercado);
+  const resultado = await atualizarMercado(mercadoId, mercado);
 
   if (resultado) {
     alert("Alterações salvas com sucesso!");
-    window.location.href = "acessibilidade.html";
+    window.location.href = `acessibilidade.html?id=${mercadoId}`;
   } else {
     alert("Erro ao salvar alterações.");
   }
 }
 
-// Verificando (mudar)
-function obterIdDaURL() {
-  const parametros = new URLSearchParams(window.location.search);
-  const id = parametros.get("id");
-  return id ? parseInt(id) : 1;
-}
-
 // Inicia a lista
 document.addEventListener("DOMContentLoaded", () => {
   const paginaAtual = window.location.pathname;
-
-  supermercadoId = obterIdDaURL();
 
   if (
     paginaAtual.includes("acessibilidade.html") ||
@@ -316,5 +337,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (paginaAtual.includes("editar_acessibilidade.html")) {
     carregarModoEdicao();
+
+    // Botões de voltar e cancelar
+    const botaoVoltar = document.getElementById("botao-voltar");
+    const botaoCancelar = document.getElementById("botao-cancelar");
+
+    if (botaoVoltar) {
+      botaoVoltar.onclick = voltarParaAcessibilidade;
+    }
+
+    if (botaoCancelar) {
+      botaoCancelar.onclick = voltarParaAcessibilidade;
+    }
   }
 });

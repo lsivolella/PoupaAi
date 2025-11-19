@@ -42,8 +42,13 @@
 
       <!-- Título Supermercado -->
       <div class="conteudo-principal">
-        <button class="botao-voltar" onclick="history.back()">‹</button>
-        <h2 class="nome-loja">Super Nosso</h2>
+        <button
+          class="botao-voltar"
+          onclick="window.location.href='mapa_supermercados.html'"
+        >
+          ‹
+        </button>
+        <h2 class="nome-loja">Carregando...</h2>
 
         <div class="card-acessibilidade">
           <div class="titulo-card" id="titulo-card">
@@ -64,7 +69,11 @@
         </div>
       </div>
 
-      <a href="editar_acessibilidade.html" class="botao-editar"
+      <a
+        href="#"
+        class="botao-editar"
+        id="botao-editar"
+        onclick="irParaEditar(event)"
         >Editar informações</a
       >
     </div>
