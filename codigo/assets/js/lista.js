@@ -6,15 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputNome = document.getElementById('nome-lista');
     const btnEditar = document.getElementById('btn-editar-nome');
 
-    btnEditar.style.display = 'none';
-
     btnSalvar.addEventListener('click', () => {
         const nome = inputNome.value.trim();
         if (nome !== "") {
             localStorage.setItem('nome_lista_compras', nome);
             exibirNomeFixo(nome);
-        } else {
-            console.warn("Por favor, digite um nome para a lista.");
         }
     });
 
@@ -23,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('btn-finalizar').addEventListener('click', () => {
-        window.location.href= "../html/finalizar_compra.html"
+        window.location.href = "../html/finalizar_compra.html";
     });
 });
 
@@ -32,11 +28,13 @@ function exibirNomeFixo(nome) {
     const tituloFixo = document.getElementById('titulo-lista-fixo');
     const textoNome = document.getElementById('texto-nome-lista');
     const btnEditar = document.getElementById('btn-editar-nome');
+    const btnSalvar = document.getElementById('btn-salvar-nome');
 
     areaInput.classList.add('escondido');
     tituloFixo.style.display = 'flex';
     textoNome.textContent = nome;
     btnEditar.style.display = 'inline-flex';
+    btnSalvar.style.display = 'none';
 }
 
 function carregarNomeLista() {
@@ -55,12 +53,16 @@ function editarNomeLista() {
     const tituloFixo = document.getElementById('titulo-lista-fixo');
     const inputNome = document.getElementById('nome-lista');
     const btnEditar = document.getElementById('btn-editar-nome');
+    const btnSalvar = document.getElementById('btn-salvar-nome');
     const nomeAtual = localStorage.getItem('nome_lista_compras') || "";
 
     inputNome.value = nomeAtual;
+
     areaInput.classList.remove('escondido');
     tituloFixo.style.display = 'none';
     btnEditar.style.display = 'none';
+    btnSalvar.style.display = 'inline-block';
+
     inputNome.focus();
 }
 
@@ -83,7 +85,7 @@ function carregarProdutos() {
 
         li.innerHTML = `
           <div class="imagem-produto">
-            <img src="${imagemSrc}" alt="${produto.nome}" onerror="this.src='https://placehold.co/60x60/eee/ccc?text=Item'">
+            <img src="${imagemSrc}" alt="${produto.nome}">
           </div>
           <div class="descricao-produto">
             <h3>${produto.nome}</h3>
@@ -92,7 +94,10 @@ function carregarProdutos() {
             <p>Quantidade: <strong>${produto.quantidade}</strong></p>
           </div>
           <div class="acoes-produto">
-            <button class="btn-excluir" onclick="deletarProduto(${index})" aria-label="Excluir item">
+            <button class="btn-editar" onclick="editarProduto(${index})">
+              <span class="material-symbols-outlined">edit</span>
+            </button>
+            <button class="btn-excluir" onclick="deletarProduto(${index})">
               <span class="material-symbols-outlined">delete</span>
             </button>
           </div>
@@ -107,3 +112,15 @@ window.deletarProduto = function (index) {
     localStorage.setItem('meus_produtos', JSON.stringify(produtos));
     carregarProdutos();
 }
+
+window.editarProduto = function(index) {
+    let produtos = JSON.parse(localStorage.getItem('meus_produtos')) || [];
+    let produto = produtos[index];
+
+    localStorage.setItem('produto_em_edicao', JSON.stringify({
+        index: index,
+        ...produto
+    }));
+
+    window.location.href = "editar_produto.html";
+};

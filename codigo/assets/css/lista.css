@@ -217,12 +217,12 @@ main {
   }
 
   .nome-lista input {
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-  flex: 1;
-  width: 100%;
-  max-width: 500px;
- }
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    flex: 1;
+    width: 100%;
+    max-width: 500px;
+  }
 }

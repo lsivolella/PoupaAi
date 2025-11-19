@@ -6,13 +6,13 @@
   <title>Adicione o produto</title>
   
   <link rel="stylesheet" href="../assets/css/editar_produto.css">
-  
   <link rel="stylesheet" href="../assets/css/editar_produto_lista.css"> 
-  
   <link rel="stylesheet" href="../assets/css/styles.css">
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
+
 <body>
   <header class="top-bar">
     <a href="lista.html" class="back-btn" aria-label="Voltar">
@@ -28,11 +28,12 @@
       <input type="search" id="search-bar" placeholder="Buscar por nome ou marca...">
     </section>
 
-    <section id="product-list-container">
-    </section>
+    <section id="product-list-container"></section>
 
     <h2 class="form-title">Item selecionado</h2>
+
     <div class="form-container">
+
       <div class="input-group">
         <label for="nome">Nome</label>
         <input type="text" id="nome" placeholder="Selecione um item da lista" readonly>
@@ -54,17 +55,20 @@
           <button id="menos" aria-label="Remover um">
             <span class="material-symbols-outlined">remove</span>
           </button>
+
           <input type="number" id="quantidade" value="1" min="1">
+
           <button id="mais" aria-label="Adicionar um">
             <span class="material-symbols-outlined">add</span>
           </button>
         </div>
       </div>
+
     </div>
   </main>
 
-  <footer>
-    <button id="btn-adicionar-produto" class="btn-principal" style="width:100%; border:none; cursor:pointer;">Adicionar produto</button>
+  <footer class="footer-editar-produto">
+      <button id="btn-adicionar-produto" class="btn-editar-produto">Adicionar produto</button>
   </footer>
 
   <script src="../assets/js/editar_produto.js"></script>
