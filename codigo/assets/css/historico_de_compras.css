@@ -1,101 +1,3 @@
-/*#cabecalho {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-}
-
-#h2cabecalho {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-#caixa-de-busca {
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-}
-
-#input-caixa-de-busca {
-    width: 95%;
-    height: 25px;
-    background-color: rgb(240, 237, 237);
-    border-radius: 5px;
-    border-color: white;
-    border-style: none;
-}
-
-.card {
-    background-color: rgb(212, 212, 247);
-    padding: 10px;
-    margin-top: 15px;
-}
-
-#card-data {
-    display: flex;
-    justify-content: end;
-    font-size: 12px;
-}
-
-#status-id-preco {
-    display: flex;
-    justify-content: space-between;
-}
-
-#status-id {
-    h2 {
-        margin: 2px;
-    }
-
-    h4 {
-        margin: 6px;
-    }
-
-    border-left: 5px solid rgb(132, 230, 132);
-    padding-left: 5px;
-}
-
-#imagensprodutos-detalhes {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 40px;
-    align-items: center;
-}
-
-#imagensprodutos {
-    display: flex;
-    gap: 10px;
-}
-
-.fundo-de-imagem {
-    display: flex;
-    width: 50px;
-    height: 50px;
-    background-color: white;
-
-    h1 {
-        margin: 0px;
-    }
-
-    justify-content: center;
-    align-items: center;
-
-    img {
-        height: 45px;
-    }
-}
-
-#botao-detlhes {
-    button {
-        background-color: rgb(132, 230, 132);
-        font-weight: bold;
-        border: none;
-        padding: 8px;
-    }
-}*/
-
-/* Reset geral */
 * {
     margin: 0;
     padding: 0;
@@ -110,10 +12,6 @@ body {
     min-height: 100vh;
     color: #333;
 }
-
-/* ------------------------------ */
-/*            CABEÇALHO           */
-/* ------------------------------ */
 
 #cabecalho {
     background: white;
@@ -145,10 +43,6 @@ body {
     font-weight: 600;
 }
 
-/* ------------------------------ */
-/*         CAIXA DE BUSCA         */
-/* ------------------------------ */
-
 #caixa-de-busca {
     padding: 16px;
     display: flex;
@@ -164,10 +58,6 @@ body {
     border-radius: 12px;
 }
 
-/* ------------------------------ */
-/*              CARDS             */
-/* ------------------------------ */
-
 .card {
     background: white;
     border-radius: 12px;
@@ -176,7 +66,6 @@ body {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* Data do pedido */
 #card-data {
     display: flex;
     justify-content: flex-end;
@@ -185,7 +74,6 @@ body {
     margin-bottom: 8px;
 }
 
-/* Status, ID, Preço */
 #status-id-preco {
     display: flex;
     justify-content: space-between;
@@ -209,15 +97,10 @@ body {
     font-weight: 700;
 }
 
-/* Preço */
 #preco h2 {
     font-size: 18px;
     font-weight: 700;
 }
-
-/* ------------------------------ */
-/*     Imagens + botão detalhes   */
-/* ------------------------------ */
 
 #imagensprodutos-detalhes {
     display: flex;
@@ -252,7 +135,6 @@ body {
     font-weight: 600;
 }
 
-/* Botão de detalhes */
 #botao-detlhes button {
     background: #000;
     color: white;

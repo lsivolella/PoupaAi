@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Roboto, sans-serif;
+    background-color: #f5f5f5;
+    max-width: 800px;
+    margin: 0 auto;
+    min-height: 100vh;
+    color: #333;
+}
+
+header {
+    background: white;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+}
+
+main {
+    padding: 16px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+th {
+    background: #fafafa;
+    text-align: left;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    border-bottom: 1px solid #eee;
+}
+
+td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+figure {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+figure img {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+}
+
+#resumo-final {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+#resumo-final p {
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+#acoes button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    background: black;
+    color: white;
+}
+
+#acoes button:hover {
+    background: #333;
+}

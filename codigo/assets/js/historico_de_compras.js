@@ -64,6 +64,11 @@
 
 const listas = JSON.parse(localStorage.getItem("listas"));
 
+function verDetalhes(id) {
+    localStorage.setItem("listaSelecionada", id);
+    window.location.href = "../html/detalhes_compra.html";
+}
+
 function renderizarCards() {
   let html = "";
   const totalCompras = listas.length;
@@ -130,7 +135,9 @@ function renderizarCards() {
           </div>
 
           <div id="botao-detlhes">
-            <button>Detalhes</button>
+            <button onclick="verDetalhes('${compra.id}')">
+                Ver Detalhes
+            </button>
           </div>
         </div>
       </div>
