@@ -63,64 +63,81 @@
 ];*/
 
 const listas = JSON.parse(localStorage.getItem("listas"));
+
 function renderizarCards() {
-  let html = ""
-  const totalCompras = listas.length
+  let html = "";
+  const totalCompras = listas.length;
   for (let i = 0; i < totalCompras; i++) {
-    const compra = listas[i]
-    const totalItens = compra.itens.length
-    const maisItens = totalItens - 2
-    let precoTotal = 0
+    const compra = listas[i];
+    const totalItens = compra.itens.length;
+    let precoTotal = 0;
     for (let j = 0; j < totalItens; j++) {
-      precoTotal += compra.itens[j].preco
+      precoTotal += compra.itens[j].preco;
+    }
+    let imagensHTML = "";
+
+    if (totalItens === 1) {
+      imagensHTML += `
+        <div class="fundo-de-imagem">
+          <img src="${compra.itens[0].imagem_url}" alt="">
+        </div>
+      `;
+    }
+    else if (totalItens === 2) {
+      imagensHTML += `
+        <div class="fundo-de-imagem">
+          <img src="${compra.itens[0].imagem_url}" alt="">
+        </div>
+        <div class="fundo-de-imagem">
+          <img src="${compra.itens[1].imagem_url}" alt="">
+        </div>
+      `;
+    }
+    else {
+      imagensHTML += `
+        <div class="fundo-de-imagem">
+          <img src="${compra.itens[0].imagem_url}" alt="">
+        </div>
+        <div class="fundo-de-imagem">
+          <img src="${compra.itens[1].imagem_url}" alt="">
+        </div>
+        <div class="fundo-de-imagem">
+          <h1>+${totalItens - 2}</h1>
+        </div>
+      `;
     }
     html += `
-        <div class="card">
-            <div id="card-data">
-                <span>Data do pedido: </span>
-                <span>${new Date(compra.data).toLocaleDateString("pt-BR")}</span>
-            </div>
-
-            <div id="status-id-preco">
-                <div id="status-id">
-                    <h4>${compra.status}</h4>
-                    <h2>${compra.id}</h2>
-                </div>
-                
-                <div id="preco">
-                    <h2>R$${precoTotal.toFixed(2)}</h2>
-                </div>
-
-            </div>
-
-            <div id="imagensprodutos-detalhes">
-
-                <div id="imagensprodutos">
-                <div class="fundo-de-imagem">
-                    <img src="${compra.itens[0].imagem_url}" alt="">
-                </div>
-
-                <div class="fundo-de-imagem">
-                    <img src="${compra.itens[1].imagem_url}" alt="">
-                </div>
-
-                <div class="fundo-de-imagem">
-                    <h1>+${maisItens}</h1>
-                </div>
-
-                </div>
-
-                <div id="botao-detlhes">
-                    <button>Detalhes</button>
-                </div>
-
-
-            </div>
-
+      <div class="card">
+        <div id="card-data">
+          <span>Data do pedido: </span>
+          <span>${new Date(compra.data).toLocaleDateString("pt-BR")}</span>
         </div>
-    `
+
+        <div id="status-id-preco">
+          <div id="status-id">
+            <h4>${compra.status}</h4>
+            <h2>${compra.id}</h2>
+          </div>
+
+          <div id="preco">
+            <h2>R$${precoTotal.toFixed(2)}</h2>
+          </div>
+        </div>
+
+        <div id="imagensprodutos-detalhes">
+          <div id="imagensprodutos">
+            ${imagensHTML}
+          </div>
+
+          <div id="botao-detlhes">
+            <button>Detalhes</button>
+          </div>
+        </div>
+      </div>
+    `;
   }
-  return html
+
+  return html;
 }
 
-document.getElementById("cards").innerHTML = renderizarCards()
+document.getElementById("cards").innerHTML = renderizarCards();

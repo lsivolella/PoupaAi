@@ -1,4 +1,4 @@
-#cabecalho {
+/*#cabecalho {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -93,4 +93,178 @@
         border: none;
         padding: 8px;
     }
+}*/
+
+/* Reset geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #f5f5f5;
+    max-width: 800px;
+    margin: 0 auto;
+    min-height: 100vh;
+    color: #333;
+}
+
+/* ------------------------------ */
+/*            CABEÇALHO           */
+/* ------------------------------ */
+
+#cabecalho {
+    background: white;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+#cabecalho a {
+    text-decoration: none;
+    font-size: 22px;
+    color: #333;
+    padding: 6px 10px;
+}
+
+#h2cabecalho {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+#h2cabecalho h2 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* ------------------------------ */
+/*         CAIXA DE BUSCA         */
+/* ------------------------------ */
+
+#caixa-de-busca {
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+}
+
+#input-caixa-de-busca {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 14px;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+}
+
+/* ------------------------------ */
+/*              CARDS             */
+/* ------------------------------ */
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 16px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Data do pedido */
+#card-data {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+/* Status, ID, Preço */
+#status-id-preco {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+#status-id {
+    padding-left: 8px;
+    border-left: 4px solid #4CAF50;
+}
+
+#status-id h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+#status-id h2 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Preço */
+#preco h2 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* ------------------------------ */
+/*     Imagens + botão detalhes   */
+/* ------------------------------ */
+
+#imagensprodutos-detalhes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+}
+
+#imagensprodutos {
+    display: flex;
+    gap: 10px;
+}
+
+.fundo-de-imagem {
+    width: 48px;
+    height: 48px;
+    background: #eee;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.fundo-de-imagem img {
+    max-width: 40px;
+    max-height: 40px;
+}
+
+.fundo-de-imagem h1 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* Botão de detalhes */
+#botao-detlhes button {
+    background: #000;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+#botao-detlhes button:hover {
+    background: #333;
 }
