@@ -10,12 +10,12 @@
             "imagem_url": "../assets/img/arroz_branco_camil_1kg.jpg",
             "ocorrencias": [
                 {
-                    "preco": 7.20,
-                    "mercadoId": 1
+                    "mercadoId": 1,
+                    "preco": 7.20
                 },
                 {
-                    "preco": 7.50,
-                    "mercadoId": 2
+                    "mercadoId": 2,
+                    "preco": 7.50
                 }
             ]
         },
@@ -29,12 +29,12 @@
             "imagem_url": "../assets/img/aveia_integral_quaker_400g.png",
             "ocorrencias": [
                 {
-                    "preco": 8.50,
-                    "mercadoId": 1
+                    "mercadoId": 1,
+                    "preco": 8.50
                 },
                 {
-                    "preco": 8.80,
-                    "mercadoId": 3
+                    "mercadoId": 3,
+                    "preco": 8.80
                 }
             ]
         },
@@ -48,12 +48,12 @@
             "imagem_url": "../assets/img/feijao_preto_kicaldo_1kg.png",
             "ocorrencias": [
                 {
-                    "preco": 9.10,
-                    "mercadoId": 1
+                    "mercadoId": 1,
+                    "preco": 9.10
                 },
                 {
-                    "preco": 9.30,
-                    "mercadoId": 2
+                    "mercadoId": 2,
+                    "preco": 9.30
                 }
             ]
         }

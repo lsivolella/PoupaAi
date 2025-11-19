@@ -3,6 +3,7 @@
     {
       "id": "1",
       "nome": "Supermercado Lagoa",
+      "logo": "",
       "endereco": "Rua Principal, 100",
       "localizacao": {
         "latitude": -19.6305,
@@ -53,6 +54,7 @@
     {
       "id": "2",
       "nome": "Mercado Central Lagoa Santa",
+      "logo": "",
       "endereco": "Av. Minas Gerais, 250",
       "localizacao": {
         "latitude": -19.629,
@@ -103,6 +105,7 @@
     {
       "id": "3",
       "nome": "Hipermercado Popular",
+      "logo": "",
       "endereco": "Rua das Flores, 45",
       "localizacao": {
         "latitude": -19.6312,
@@ -153,6 +156,7 @@
     {
       "id": "4",
       "nome": "Super Lagoa",
+      "logo": "",
       "endereco": "Av. Principal, 120",
       "localizacao": {
         "latitude": -19.6285,
@@ -203,6 +207,7 @@
     {
       "id": "5",
       "nome": "Mercado Boa Compra",
+      "logo": "",
       "endereco": "Rua das Palmeiras, 78",
       "localizacao": {
         "latitude": -19.63,
@@ -253,6 +258,7 @@
     {
       "id": "6",
       "nome": "Supermercado Dia",
+      "logo": "",
       "endereco": "Av. Dona Elisa, 90",
       "localizacao": {
         "latitude": -19.632,
@@ -303,6 +309,7 @@
     {
       "id": "7",
       "nome": "Mercadinho São José",
+      "logo": "",
       "endereco": "Rua São José, 10",
       "localizacao": {
         "latitude": -19.6315,
@@ -353,6 +360,7 @@
     {
       "id": "8",
       "nome": "Supermercado Real",
+      "logo": "",
       "endereco": "Av. Minas Gerais, 300",
       "localizacao": {
         "latitude": -19.628,
@@ -403,6 +411,7 @@
     {
       "id": "9",
       "nome": "Mercado São Francisco",
+      "logo": "",
       "endereco": "Rua Francisco, 50",
       "localizacao": {
         "latitude": -19.6308,
