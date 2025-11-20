@@ -1,6 +1,5 @@
 const supermercados = JSON.parse(localStorage.getItem("db_supermercados")) || [];
 
-
 document.getElementById("cepMercado").addEventListener("input", function () {
   this.value = this.value
     .replace(/\D/g, "")
@@ -17,6 +16,7 @@ document.getElementById("telefoneMercado").addEventListener("input", function ()
   }
 });
 
+
 function cadastrarMercado() {
   const nome = document.getElementById("nomeMercado").value.trim();
   const rua = document.getElementById("ruaMercado").value.trim();
@@ -26,9 +26,13 @@ function cadastrarMercado() {
   const estado = document.getElementById("estadoMercado").value.trim();
   const pais = document.getElementById("paisMercado").value.trim() || "Brasil";
   const cep = document.getElementById("cepMercado").value.trim();
+
   const telefone = document.getElementById("telefoneMercado").value.trim();
   const email = document.getElementById("emailMercado").value.trim();
   const imagem = document.getElementById("imagemMercado").files[0] || null;
+
+  const latitude = document.getElementById("latitudeMercado").value.trim();
+  const longitude = document.getElementById("longitudeMercado").value.trim();
 
   const acessSelect = document.getElementById("acessibilidadeMercado");
   const acessSelecionadas = [...acessSelect.options]
@@ -42,6 +46,11 @@ function cadastrarMercado() {
 
   if (cep && !/^\d{5}-?\d{3}$/.test(cep)) {
     alert("CEP inválido.");
+    return;
+  }
+
+  if (!latitude || !longitude) {
+    alert("Informe latitude e longitude.");
     return;
   }
 
@@ -67,8 +76,8 @@ function cadastrarMercado() {
     cep,
     horario: "",
     localizacao: {
-      latitude: null,
-      longitude: null
+      latitude: parseFloat(latitude),
+      longitude: parseFloat(longitude)
     },
     acessibilidade: acessibilidadeJSON,
     votos: {
