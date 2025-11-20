@@ -1,7 +1,9 @@
 const produtoId = new URLSearchParams(window.location.search).get("id");
+const backBtn = document.querySelector("#back-button");
 const form = document.querySelector("#produto-form");
 const adicionarMercadoBtn = document.querySelector("#adicionar-mercado-btn");
 const listaMercadosDiv = document.querySelector("#lista-mercados");
+const submitBtn = document.querySelector("#submitBtn");
 const baseURL = "http://localhost:3000/produtos";
 const imagemInput = document.querySelector("#imagem");
 const previewImagem = document.querySelector("#preview-imagem");
@@ -59,6 +61,29 @@ function preencherFormulario(produto) {
         listaMercadosDiv.insertAdjacentHTML("beforeend", html);
     });
 }
+
+if (backBtn) {
+    backBtn?.addEventListener("click", async () => {
+        const params = new URLSearchParams(window.location.search);
+        const produtoId = params.get("id");
+
+        if (!produtoId) {
+            history.back();
+            return;
+        }
+
+        // Check if product exists
+        const res = await fetch("../assets/json/db_produtos.json");
+        const data = await res.json();
+        const produtoExiste = data.produtos.some(p => p.id === Number(produtoId));
+
+        if (produtoExiste) {
+            window.location.href = `detalhes_produto.html?id=${produtoId}`;
+        } else {
+            history.back();
+        }
+    });
+};
 
 if (form) {
     form.addEventListener("submit", async (event) => {
@@ -157,5 +182,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         preencherFormulario(produto);
+
+        if (submitBtn) {
+            submitBtn.textContent = "Salvar Alterações";
+        }
     }
 });
