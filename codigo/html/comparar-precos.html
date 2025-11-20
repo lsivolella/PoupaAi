@@ -24,7 +24,6 @@
 
   <!-- Aba 1: Buscar Produto -->
   <div id="aba-busca" class="conteudo-aba ativa">
-    <!-- Busca -->
     <div class="busca">
       <div class="busca-container">
         <span class="icone-busca">🔍</span>
@@ -32,7 +31,6 @@
       </div>
     </div>
 
-    <!-- Cabeçalho da lista -->
     <div class="secao-header" id="secao-header-busca" style="display: none;">
       <span class="secao-titulo" id="nome-produto-buscado">PRODUTOS</span>
       <span class="secao-info" id="btn-ordenar-busca">
@@ -44,7 +42,6 @@
       </span>
     </div>
 
-    <!-- Comparativo de preços do produto buscado -->
     <div class="lista-produtos" id="lista-busca">
       <div class="mensagem-vazia">
         Digite o nome de um produto acima para comparar preços entre mercados 🔍
@@ -54,7 +51,6 @@
 
   <!-- Aba 2: Comparar Lista de Compras -->
   <div id="aba-listas" class="conteudo-aba">
-    <!-- Busca para adicionar produtos -->
     <div class="busca">
       <div class="busca-container">
         <span class="icone-busca">🔍</span>
@@ -62,9 +58,13 @@
       </div>
     </div>
 
-    <!-- Produtos encontrados para adicionar -->
-    <div id="resultados-busca-lista" style="background: white; max-height: 300px; overflow-y: auto; display: none;">
-      <!-- Resultados aparecem aqui -->
+    <!-- Resultados de busca -->
+    <div id="resultados-busca-lista" style="background: white; max-height: 300px; overflow-y: auto; display: none;"></div>
+
+    <!-- Lista de produtos adicionados -->
+    <div id="produtos-na-lista" style="background: white; padding: 16px; display: none;">
+      <h3 style="font-size: 16px; margin-bottom: 12px; color: #333;">Produtos na Lista:</h3>
+      <div id="itens-lista"></div>
     </div>
 
     <!-- Comparativo de listas -->
@@ -74,7 +74,6 @@
         <button class="btn-limpar" id="btn-limpar-lista" title="Limpar lista">🗑️ Limpar</button>
       </div>
 
-      <!-- Grid de comparação -->
       <div class="comparativo-grid">
         <div class="mensagem-vazia">Busque e adicione produtos para comparar totais entre mercados</div>
       </div>

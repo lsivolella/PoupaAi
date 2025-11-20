@@ -1,11 +1,10 @@
 // Variáveis globais
 let produtosCache = [];
 let mercadosCache = [];
-let listaAtual = { produtos: [] };
-let ordemCrescente = true;
+let listaAtual = { produtos: [] }; // Formato: [{produtoId: 1, quantidade: 2}, ...]
 let ordemCrescenteBusca = true;
 
-// Inicialização ao carregar a página
+// Inicialização
 document.addEventListener('DOMContentLoaded', async () => {
   await inicializar();
   configurarEventListeners();
@@ -22,6 +21,7 @@ async function inicializar() {
     console.log('Produtos carregados:', produtosCache.length);
     console.log('Mercados carregados:', mercadosCache.length);
     
+    renderizarListaProdutos();
     renderizarComparativoListas();
     
   } catch (erro) {
@@ -32,7 +32,7 @@ async function inicializar() {
   }
 }
 
-// Carregar produtos do JSON
+// Carregar JSONs
 async function carregarProdutos() {
   try {
     const response = await fetch('../assets/json/db_produtos.json');
@@ -45,7 +45,6 @@ async function carregarProdutos() {
   }
 }
 
-// Carregar mercados do JSON
 async function carregarMercados() {
   try {
     const response = await fetch('../assets/json/db_supermercados.json');
@@ -58,7 +57,7 @@ async function carregarMercados() {
   }
 }
 
-// ABA 1: Buscar e comparar produto específico
+// ABA 1: Buscar e comparar produto
 function buscarECompararProduto(termo) {
   const termoLower = termo.toLowerCase().trim();
   const listaBusca = document.getElementById('lista-busca');
@@ -145,7 +144,7 @@ function renderizarComparativoProduto(produtos) {
   listaBusca.innerHTML = html;
 }
 
-// ABA 2: Buscar produtos para adicionar à lista
+// ABA 2: Buscar produtos para adicionar
 function buscarProdutosParaLista(termo) {
   const termoLower = termo.toLowerCase().trim();
   const resultados = document.getElementById('resultados-busca-lista');
@@ -168,7 +167,7 @@ function buscarProdutosParaLista(termo) {
   
   let html = '';
   produtosEncontrados.slice(0, 5).forEach(produto => {
-    const jaAdicionado = listaAtual.produtos.find(p => p.produtoId === produto.id);
+    const itemNaLista = listaAtual.produtos.find(p => p.produtoId === produto.id);
     
     html += `
       <div class="produto" style="border-bottom: 1px solid #f0f0f0;">
@@ -179,10 +178,8 @@ function buscarProdutosParaLista(termo) {
           <p class="produto-nome">${produto.nome}</p>
           <p class="produto-detalhes">${produto.marca} - ${produto.tamanho_embalagem}${produto.unidade_medida}</p>
         </div>
-        <button class="botao-adicionar" 
-                onclick="adicionarProdutoNaLista(${produto.id})" 
-                ${jaAdicionado ? 'disabled style="opacity: 0.5;"' : ''}>
-          ${jaAdicionado ? '✓' : '+'}
+        <button class="botao-adicionar" onclick="adicionarProdutoNaLista(${produto.id})">
+          ${itemNaLista ? '✓' : '+'}
         </button>
       </div>
     `;
@@ -192,25 +189,102 @@ function buscarProdutosParaLista(termo) {
   resultados.innerHTML = html;
 }
 
+// Adicionar produto na lista (sempre adiciona, incrementando quantidade)
 function adicionarProdutoNaLista(produtoId) {
-  const existe = listaAtual.produtos.find(p => p.produtoId === produtoId);
+  const itemExistente = listaAtual.produtos.find(p => p.produtoId === produtoId);
   
-  if (existe) {
-    mostrarNotificacao('✓ Produto já está na lista!');
+  if (itemExistente) {
+    itemExistente.quantidade++;
+    mostrarNotificacao('✓ Quantidade atualizada!');
+  } else {
+    listaAtual.produtos.push({
+      produtoId: produtoId,
+      quantidade: 1,
+      adicionadoEm: new Date().toISOString()
+    });
+    mostrarNotificacao('✓ Produto adicionado!');
+  }
+  
+  salvarListaNoLocalStorage();
+  renderizarListaProdutos();
+  renderizarComparativoListas();
+  buscarProdutosParaLista(document.getElementById('campo-busca-lista').value);
+}
+
+// Renderizar lista de produtos adicionados
+function renderizarListaProdutos() {
+  const containerLista = document.getElementById('produtos-na-lista');
+  const itensLista = document.getElementById('itens-lista');
+  
+  if (!listaAtual.produtos || listaAtual.produtos.length === 0) {
+    containerLista.style.display = 'none';
     return;
   }
   
-  listaAtual.produtos.push({
-    produtoId: produtoId,
-    adicionadoEm: new Date().toISOString()
+  containerLista.style.display = 'block';
+  
+  let html = '';
+  listaAtual.produtos.forEach(item => {
+    const produto = produtosCache.find(p => p.id === item.produtoId);
+    if (!produto) return;
+    
+    html += `
+      <div style="display: flex; align-items: center; gap: 12px; padding: 8px; border-bottom: 1px solid #f0f0f0;">
+        <div style="width: 50px; height: 50px; border-radius: 8px; overflow: hidden; flex-shrink: 0; background: #f5f5f5;">
+          <img src="${produto.imagem_url}" alt="${produto.nome}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://placehold.co/50x50/eee/999?text=?'">
+        </div>
+        <div style="flex: 1;">
+          <p style="font-weight: bold; font-size: 14px; margin: 0;">${produto.nome}</p>
+          <p style="font-size: 12px; color: #666; margin: 2px 0 0 0;">${produto.marca} - ${produto.tamanho_embalagem}${produto.unidade_medida}</p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <button onclick="diminuirQuantidade(${produto.id})" style="width: 28px; height: 28px; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center;">−</button>
+          <span style="font-weight: bold; min-width: 30px; text-align: center;">${item.quantidade}</span>
+          <button onclick="aumentarQuantidade(${produto.id})" style="width: 28px; height: 28px; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center;">+</button>
+          <button onclick="removerProduto(${produto.id})" style="width: 28px; height: 28px; border: none; background: #ff4444; color: white; border-radius: 4px; cursor: pointer; font-size: 16px; margin-left: 8px;">🗑️</button>
+        </div>
+      </div>
+    `;
   });
   
-  salvarListaNoLocalStorage();
-  renderizarComparativoListas();
-  buscarProdutosParaLista(document.getElementById('campo-busca-lista').value);
-  mostrarNotificacao('✓ Produto adicionado!');
+  itensLista.innerHTML = html;
 }
 
+// Controles de quantidade
+function aumentarQuantidade(produtoId) {
+  const item = listaAtual.produtos.find(p => p.produtoId === produtoId);
+  if (item) {
+    item.quantidade++;
+    salvarListaNoLocalStorage();
+    renderizarListaProdutos();
+    renderizarComparativoListas();
+  }
+}
+
+function diminuirQuantidade(produtoId) {
+  const item = listaAtual.produtos.find(p => p.produtoId === produtoId);
+  if (item) {
+    if (item.quantidade > 1) {
+      item.quantidade--;
+    } else {
+      removerProduto(produtoId);
+      return;
+    }
+    salvarListaNoLocalStorage();
+    renderizarListaProdutos();
+    renderizarComparativoListas();
+  }
+}
+
+function removerProduto(produtoId) {
+  listaAtual.produtos = listaAtual.produtos.filter(p => p.produtoId !== produtoId);
+  salvarListaNoLocalStorage();
+  renderizarListaProdutos();
+  renderizarComparativoListas();
+  mostrarNotificacao('✓ Produto removido!');
+}
+
+// Renderizar comparativo (APENAS mercados com TODOS os itens)
 function renderizarComparativoListas() {
   const container = document.querySelector('.comparativo-grid');
   
@@ -221,11 +295,13 @@ function renderizarComparativoListas() {
   
   const totaisPorMercado = {};
   
+  // Calcular totais por mercado
   mercadosCache.forEach(mercado => {
     totaisPorMercado[mercado.id] = {
       mercado: mercado,
       itens: [],
-      total: 0
+      total: 0,
+      temTodosProdutos: true
     };
     
     listaAtual.produtos.forEach(itemLista => {
@@ -235,29 +311,46 @@ function renderizarComparativoListas() {
         const ocorrencia = produto.ocorrencias.find(o => o.mercadoId == mercado.id);
         
         if (ocorrencia) {
+          const subtotal = ocorrencia.preco * itemLista.quantidade;
           totaisPorMercado[mercado.id].itens.push({
             nome: `${produto.nome} ${produto.tamanho_embalagem}${produto.unidade_medida}`,
-            preco: ocorrencia.preco
+            quantidade: itemLista.quantidade,
+            precoUnitario: ocorrencia.preco,
+            subtotal: subtotal
           });
-          totaisPorMercado[mercado.id].total += ocorrencia.preco;
+          totaisPorMercado[mercado.id].total += subtotal;
+        } else {
+          // Mercado NÃO tem este produto
+          totaisPorMercado[mercado.id].temTodosProdutos = false;
         }
       }
     });
   });
   
-  const mercadosComItens = Object.values(totaisPorMercado).filter(m => m.itens.length > 0);
+  // FILTRAR apenas mercados que TÊM TODOS os produtos
+  const mercadosCompletos = Object.values(totaisPorMercado).filter(m => 
+    m.temTodosProdutos && m.itens.length === listaAtual.produtos.length
+  );
   
-  if (mercadosComItens.length === 0) {
-    container.innerHTML = '<div class="mensagem-vazia">Produtos não encontrados nos mercados</div>';
+  if (mercadosCompletos.length === 0) {
+    container.innerHTML = `
+      <div class="mensagem-vazia">
+        <p style="font-size: 18px; margin-bottom: 12px;">⚠️ Nenhum mercado tem todos os produtos</p>
+        <p style="font-size: 14px; color: #999;">Tente remover alguns itens ou adicionar produtos mais comuns</p>
+      </div>
+    `;
     return;
   }
   
-  const totais = mercadosComItens.map(m => m.total);
+  // Encontrar melhor preço
+  const totais = mercadosCompletos.map(m => m.total);
   const melhorTotal = Math.min(...totais);
   
+  // Renderizar cards
   let html = '';
-  mercadosComItens.forEach(dados => {
+  mercadosCompletos.forEach(dados => {
     const isMelhor = dados.total === melhorTotal;
+    const economia = isMelhor ? '' : `<p style="font-size: 12px; color: #ff4444; margin-top: 4px;">+R$ ${formatarPreco(dados.total - melhorTotal)} mais caro</p>`;
     
     html += `
       <div class="card-mercado ${isMelhor ? 'melhor-preco' : ''}">
@@ -270,8 +363,8 @@ function renderizarComparativoListas() {
     dados.itens.forEach(item => {
       html += `
         <div class="item-lista">
-          <span class="item-nome">${item.nome}</span>
-          <span class="item-preco">R$ ${formatarPreco(item.preco)}</span>
+          <span class="item-nome">${item.quantidade}x ${item.nome}</span>
+          <span class="item-preco">R$ ${formatarPreco(item.subtotal)}</span>
         </div>
       `;
     });
@@ -281,6 +374,7 @@ function renderizarComparativoListas() {
           <span class="total-label">TOTAL:</span>
           <span class="total-valor">R$ ${formatarPreco(dados.total)}</span>
         </div>
+        ${economia}
       </div>
     `;
   });
@@ -294,15 +388,16 @@ function limparLista() {
     return;
   }
   
-  if (confirm(`Deseja limpar todos os ${listaAtual.produtos.length} produtos?`)) {
+  if (confirm(`Deseja limpar todos os produtos da lista?`)) {
     listaAtual = { produtos: [] };
     salvarListaNoLocalStorage();
+    renderizarListaProdutos();
     renderizarComparativoListas();
     mostrarNotificacao('✓ Lista limpa!');
   }
 }
 
-// Trocar entre abas
+// Trocar abas
 function trocarAba(aba) {
   const abas = document.querySelectorAll('.aba');
   const conteudos = document.querySelectorAll('.conteudo-aba');
@@ -319,14 +414,14 @@ function trocarAba(aba) {
     conteudo.classList.add('ativa');
     
     if (abaTarget === 'listas') {
+      renderizarListaProdutos();
       renderizarComparativoListas();
     }
   }
 }
 
-// Configurar event listeners
+// Event listeners
 function configurarEventListeners() {
-  // Busca na aba 1
   const campoBusca = document.getElementById('campo-busca');
   if (campoBusca) {
     campoBusca.addEventListener('input', (e) => {
@@ -334,7 +429,6 @@ function configurarEventListeners() {
     });
   }
   
-  // Busca na aba 2
   const campoBuscaLista = document.getElementById('campo-busca-lista');
   if (campoBuscaLista) {
     campoBuscaLista.addEventListener('input', (e) => {
@@ -342,13 +436,11 @@ function configurarEventListeners() {
     });
   }
   
-  // Ordenação aba 1
   const btnOrdenarBusca = document.getElementById('btn-ordenar-busca');
   if (btnOrdenarBusca) {
     btnOrdenarBusca.addEventListener('click', () => ordenarProdutosBusca());
   }
   
-  // Abas
   const abas = document.querySelectorAll('.aba');
   abas.forEach(aba => {
     aba.addEventListener('click', function() {
@@ -356,7 +448,6 @@ function configurarEventListeners() {
     });
   });
   
-  // Limpar lista
   const btnLimpar = document.getElementById('btn-limpar-lista');
   if (btnLimpar) {
     btnLimpar.addEventListener('click', limparLista);
@@ -446,12 +537,9 @@ function mostrarNotificacao(mensagem) {
     background: #4CAF50; color: white;
     padding: 16px 24px; border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    z-index: 1000; animation: slideIn 0.3s ease;
+    z-index: 1000;
   `;
   
   document.body.appendChild(notification);
-  setTimeout(() => {
-    notification.style.animation = 'slideOut 0.3s ease';
-    setTimeout(() => notification.remove(), 300);
-  }, 2000);
+  setTimeout(() => notification.remove(), 2000);
 }
