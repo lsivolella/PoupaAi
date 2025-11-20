@@ -145,6 +145,12 @@ async function mostrarDados() {
 
   // Atualiza nome do supermercado
   if (nomeLoja) nomeLoja.textContent = mercado.nome;
+  document.getElementById("endereco-mercado").textContent =
+    mercado.endereco || "Não informado";
+  document.getElementById("telefone-mercado").textContent =
+    mercado.telefone || "Não informado";
+  document.getElementById("horario-mercado").textContent =
+    mercado.horario || "Não informado";
 
   // Atualiza título da página
   document.title = `Acessibilidade - ${mercado.nome}`;

@@ -5,6 +5,8 @@
       "nome": "Supermercado Lagoa",
       "logo": "",
       "endereco": "Rua Principal, 100",
+      "telefone": "(31) 3333-4444",
+      "horario": "Seg-Sáb: 7h às 22h, Dom: 8h às 20h",
       "localizacao": {
         "latitude": -19.6305,
         "longitude": -43.936
@@ -56,6 +58,8 @@
       "nome": "Mercado Central Lagoa Santa",
       "logo": "",
       "endereco": "Av. Minas Gerais, 250",
+      "telefone": "(31) 3444-5555",
+      "horario": "Segunda a Domingo: 6h às 23h",
       "localizacao": {
         "latitude": -19.629,
         "longitude": -43.9385
@@ -107,6 +111,8 @@
       "nome": "Hipermercado Popular",
       "logo": "",
       "endereco": "Rua das Flores, 45",
+      "telefone": "(31) 3555-6666",
+      "horario": "Seg-Sáb: 8h às 21h, Dom: 9h às 18h",
       "localizacao": {
         "latitude": -19.6312,
         "longitude": -43.935
@@ -158,6 +164,8 @@
       "nome": "Super Lagoa",
       "logo": "",
       "endereco": "Av. Principal, 120",
+      "telefone": "(31) 3666-7777",
+      "horario": "Todos os dias: 7h às 22h",
       "localizacao": {
         "latitude": -19.6285,
         "longitude": -43.939
@@ -209,6 +217,8 @@
       "nome": "Mercado Boa Compra",
       "logo": "",
       "endereco": "Rua das Palmeiras, 78",
+      "telefone": "(31) 3777-8888",
+      "horario": "Seg-Sáb: 6h30 às 20h, Dom: Fechado",
       "localizacao": {
         "latitude": -19.63,
         "longitude": -43.934
@@ -260,6 +270,8 @@
       "nome": "Supermercado Dia",
       "logo": "",
       "endereco": "Av. Dona Elisa, 90",
+      "telefone": "(31) 3888-9999",
+      "horario": "Segunda a Domingo: 7h às 23h",
       "localizacao": {
         "latitude": -19.632,
         "longitude": -43.9365
@@ -311,6 +323,8 @@
       "nome": "Mercadinho São José",
       "logo": "",
       "endereco": "Rua São José, 10",
+      "telefone": "(31) 3999-1111",
+      "horario": "Seg-Sáb: 8h às 19h, Dom: 8h às 13h",
       "localizacao": {
         "latitude": -19.6315,
         "longitude": -43.9378
@@ -362,6 +376,8 @@
       "nome": "Supermercado Real",
       "logo": "",
       "endereco": "Av. Minas Gerais, 300",
+      "telefone": "(31) 2111-2222",
+      "horario": "Todos os dias: 6h às 23h",
       "localizacao": {
         "latitude": -19.628,
         "longitude": -43.9365
@@ -413,6 +429,8 @@
       "nome": "Mercado São Francisco",
       "logo": "",
       "endereco": "Rua Francisco, 50",
+      "telefone": "(31) 2222-3333",
+      "horario": "Seg-Sáb: 7h às 20h, Dom: 8h às 14h",
       "localizacao": {
         "latitude": -19.6308,
         "longitude": -43.9355
