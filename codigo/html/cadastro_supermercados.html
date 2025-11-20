@@ -58,15 +58,38 @@
         </div>    
       </fieldset>
 
+      <fieldset class="border rounded p-3 mb-4">
+          <legend class="float-none w-auto px-2 fs-5">Informações de contato</legend>
+
+          <div class="mb-3">
+            <label for="telefoneMercado" class="form-label">Telefone</label>
+            <input type="text" class="form-control" id="telefoneMercado" placeholder="Ex: (31) 98888-7777">
+          </div>
+          
+          <div class="mb-3">
+            <label for="emailMercado" class="form-label">E-mail de Contato</label>
+            <input type="email" class="form-control" id="emailMercado" placeholder="Ex: contato@super.com">
+          </div>
+      </fieldset>
+
       <div class="mb-3">
-        <label for="acessibilidadeMercado" class="form-label">Informações de Acessibilidade</label>
-        <input type="text" class="form-control" id="acessibilidadeMercado" placeholder="Ex: Rampas de acesso, vagas preferenciais...">
-      </div>
+        <label for="acessibilidadeMercado" class="form-label">Acessibilidade</label>
+        <select id="acessibilidadeMercado" class="form-select" multiple>
+          <option value="rampa">Rampa</option>
+          <option value="elevador">Elevador</option>
+          <option value="vagas">Vagas Preferenciais</option>
+          <option value="piso">Piso Tátil</option>
+          <option value="braille">Sinalização em Braille</option>
+          <option value="preferencial">Atendimento Preferencial</option>
+          <option value="libras">Atendimento em Libras</option>
+        </select>
+        <small class="text-muted">Segure CTRL para selecionar várias opções</small>
+      </div>      
 
       <div class="mb-3">
         <label for="imagemMercado" class="form-label">Imagem do Mercado</label>
-        <input class="form-control" type="file" id="imagemMercado" accept="image/*">
-      </div>
+        <input class="form-control" type="file" id="imagemMercado" accept="image/png, image/jpeg, image/svg">
+      </div>      
 
       <div style="margin-top:10px;">
         <button id="btnCadastrar" type="button" class="btn btn-primary mb-3">Cadastrar</button>
