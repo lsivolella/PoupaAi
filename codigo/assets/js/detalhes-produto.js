@@ -180,7 +180,17 @@ function calcularDistancia(lat1, lon1, lat2, lon2) {
 }
 
 window.deletarProduto = function (id) {
+    const confirmar = confirm("Tem certeza que deseja excluir este produto?");
 
+    if (!confirmar) return;
+
+    // Remove from localStorage
+    localStorage.removeItem(`produto_${id}`);
+
+    alert("Produto excluído com sucesso!");
+
+    // Redirect after delete
+    window.location.href = "index.html";
 }
 
 window.editarProduto = function(id) {
