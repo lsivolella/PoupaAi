@@ -53,6 +53,14 @@ function preencherProduto(produto) {
         <div id="card-produto-direita">
             <img src="${produto.imagem_url}" alt="${produto.nome}">
         </div>
+        <div class="acoes-produto">
+            <button class="btn-editar" onclick="editarProduto(${produto.id})">
+                <span class="material-symbols-outlined">edit</span>
+            </button>
+            <button class="btn-excluir" onclick="deletarProduto(${produto.id})">
+                <span class="material-symbols-outlined">delete</span>
+            </button>
+        </div>
     `;
 }
 
@@ -96,16 +104,21 @@ async function preencherMercados(produto, mercados) {
         return;
     }
     produto.ocorrencias.forEach(ocorrencia => {
-        const mercado = mercados.find(m => m.id === ocorrencia.mercadoId);
+        const mercado = mercados.find(m => Number(m.id) === Number(ocorrencia.mercadoId));
         console.log(mercado);
         if (mercado) {
+            let distanciaTexto = "Distância indisponível";
 
-            const dist = calcularDistancia(
-                localizacaoUsuario.latitude,
-                localizacaoUsuario.longitude,
-                mercado.localizacao.latitude,
-                mercado.localizacao.longitude
-            );
+            if (localizacaoUsuario) {
+                const dist = calcularDistancia(
+                    localizacaoUsuario.latitude,
+                    localizacaoUsuario.longitude,
+                    mercado.localizacao.latitude,
+                    mercado.localizacao.longitude
+                );
+
+                distanciaTexto = `${dist.toFixed(2)} km de você`;
+            }
 
             mercadosContainer.insertAdjacentHTML("beforeend", `
                 <div class="card mb-2" style="width: 100%; max-width: 800px;">
@@ -119,7 +132,7 @@ async function preencherMercados(produto, mercados) {
                         <div class="col-6">
                             <div class="card-body">
                                 <h5 class="card-text">${mercado.nome}</h5>
-                                <p class="card-text">${dist.toFixed(2)} km de você</p>
+                                <p class="card-text">${distanciaTexto}</p>
                             </div>
                         </div>
                         <div class="col-2">
@@ -166,10 +179,18 @@ function calcularDistancia(lat1, lon1, lat2, lon2) {
     return R * c; // Km
 }
 
+window.deletarProduto = function (id) {
+
+}
+
+window.editarProduto = function(id) {
+    window.location.href = `criar_produto.html?id=${id}`;
+};
+
 document.addEventListener("DOMContentLoaded", async () => {
     if (produtoId) {
         try {
-            localizacaoUsuario = await pegarLocalizacaoUsuario();
+            localizacaoUsuario = await pegarLocalizacaoUsuario().catch(() => null);
             await carregarEPreencherProduto();
             await carregarEPreencherMercados();
         }

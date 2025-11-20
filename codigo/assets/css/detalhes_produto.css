@@ -77,6 +77,32 @@ header #titulo-produto {
     width: 120px;
 }
 
+.acoes-produto {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.acoes-produto .btn-editar,
+.acoes-produto .btn-excluir {
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  text-decoration: none;
+  background: #080808;
+}
+
+.acoes-produto .material-symbols-outlined {
+  font-size: 1.25rem;
+  color: #fff;
+}
+
 #mercados-container {
     margin: 10px;
 }
