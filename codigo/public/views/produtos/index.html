@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Produtos</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+
+<header class="container py-4 text-center">
+  <img src="../../assets/img/Logo_PoupaAI.svg" class="img-fluid" alt="Logo Poupa Aí">
+</header>
+
+<main class="container mt-4">
+
+  <a href="../../views/index.html" class="btn btn-outline-secondary mb-3">
+    <i class="bi bi-arrow-left"></i>
+  </a>
+
+  <!-- Abas -->
+  <ul class="nav nav-tabs mb-3" id="abasProdutos" role="tablist">
+    <li class="nav-item">
+      <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#aba-busca">Buscar Produtos</button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link" data-bs-toggle="tab" data-bs-target="#aba-lista">Lista de Produtos</button>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <!-- Aba 1: Comparar -->
+    <div class="tab-pane fade show active" id="aba-busca">
+      <div class="input-group mb-3">
+        <span class="input-group-text"><i class="bi bi-search"></i></span>
+        <input type="text" id="campo-busca-produtos" class="form-control" placeholder="Pesquise o produto (ex: arroz, feijão...)">
+      </div>
+      <div id="lista-busca-produtos" class="mb-3">
+        <div class="alert alert-secondary text-center">Digite o nome de um produto acima para buscar</div>
+      </div>
+    </div>
+
+    <!-- Aba 2: Lista de produtos cadastrados -->
+    <div class="tab-pane fade" id="aba-lista">
+      <div class="d-flex justify-content-end mb-3">
+        <a href="criar.html" class="btn btn-primary"><i class="bi bi-plus-lg"></i> Cadastrar Produto</a>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Preço</th>
+            <th>Imagem</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-produtos"></tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+
+
+<script type="module" src="../../assets/js/produtos/comparar.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script type="module" src="../../assets/js/produtos/visualizar.js"></script>
+
+</body>
+</html>

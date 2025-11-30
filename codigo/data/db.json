@@ -1,0 +1,113 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nome": "Sofia",
+      "email": "sofia@example.com",
+      "senha": "@senha"
+    }
+  ],
+  "mercados": [
+    {
+      "id": 1,
+      "nome": "Supermercado Central",
+      "endereco": "Rua A, 123",
+      "acessibilidades": [
+        1,
+        2
+      ],
+      "avaliacoes": [
+        1
+      ],
+      "produtos": [
+        1,
+        2,
+        3
+      ],
+      "mediaAvaliacoes": 4.2,
+      "numeroDeAvaliacoes": 3,
+      "logo": "https://static.ifood-static.com.br/image/upload/t_medium/logosgde/d24ab004-d1f7-4da4-b131-39be54b5e7d2/202308101634_wQ4D_i.jpg",
+      "telefone": "(31) 3333-4444",
+      "horarioFuncionamento": "Seg-Sáb: 7h às 22h, Dom: 8h às 20h",
+      "localizacao": {
+        "latitude": -19.6305,
+        "longitude": -43.936
+      }
+    }
+  ],
+  "acessibilidades": [
+    {
+      "id": 1,
+      "tipo": "Rampa de acesso"
+    },
+    {
+      "tipo": "Elevador",
+      "id": 2
+    }
+  ],
+  "avaliacoes": [
+    {
+      "id": 1,
+      "usuarioId": 1,
+      "mercadoId": 1,
+      "nota": 5,
+      "comentario": "Muito bom!"
+    }
+  ],
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Arroz 5kg",
+      "categoria": "Alimentos",
+      "preco": 25.99,
+      "marca": "Camil",
+      "unidade_medida": "kg",
+      "tamanho_embalagem": "1",
+      "descricao": "Arroz branco tipo 1",
+      "Mercado": [
+        1
+      ],
+      "imagem_url": "https://apoioentrega.vteximg.com.br/arquivos/ids/1853118-1000-1000/3090_0.png?v=638924232984930000"
+    }
+  ],
+  "listasCompras": [
+    {
+      "id": 1,
+      "usuarioId": 1,
+      "valor": 100.1,
+      "produtos": [
+        {
+          "produtoId": 1,
+          "quantidade": 2,
+          "precoUnitario": 50.05
+        },
+        {
+          "produtoId": 2,
+          "quantidade": 1,
+          "precoUnitario": 50.05
+        }
+      ]
+    }
+  ],
+  "historicoCompras": [
+    {
+      "id": 1,
+      "usuarioId": 1,
+      "data": "2025-11-28T15:20:00",
+      "total": 62.48,
+      "itens": [
+        {
+          "produtoId": 1,
+          "quantidade": 2,
+          "precoUnitario": 25.99
+        },
+        {
+          "produtoId": 2,
+          "quantidade": 1,
+          "precoUnitario": 10.5
+        }
+      ],
+      "mercadoId": 1
+    }
+  ]
+}

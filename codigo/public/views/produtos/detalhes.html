@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Detalhes do Produto</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <script defer type="module" src="../../assets/js/produtos/detalhes.js"></script>
+</head>
+<body>
+
+<header class="container py-4 text-center">
+  <img src="../../assets/img/Logo_PoupaAI.svg" class="img-fluid" alt="Logo Poupa Aí">
+</header>
+
+<main class="container">
+
+  <a href="index.html" class="btn btn-outline-secondary mb-3">
+    <i class="bi bi-arrow-left"></i>
+  </a>
+
+  <h1 class="text-center mb-4">Detalhes do Produto</h1>
+
+  <div class="card shadow">
+    <div class="card-body">
+
+      <div class="row">
+
+        <div class="col-md-4 text-center">
+          <img id="img-produto" class="img-fluid rounded shadow-sm" alt="Imagem do produto">
+        </div>
+
+        <div class="col-md-8">
+
+          <p><strong>Nome:</strong> <span id="det-nome"></span></p>
+          <p><strong>Categoria:</strong> <span id="det-categoria"></span></p>
+          <p><strong>Preço:</strong> <span id="det-preco"></span></p>
+          <p><strong>Marca:</strong> <span id="det-marca"></span></p>
+          <p><strong>Unidade de Medida:</strong> <span id="det-unidade"></span></p>
+          <p><strong>Tamanho da Embalagem:</strong> <span id="det-tamanho"></span></p>
+          <p><strong>Descrição:</strong> <span id="det-descricao"></span></p>
+          <p><strong>Mercado:</strong> <span id="det-mercado"></span></p>
+
+          <hr>
+
+          <div class="d-flex gap-2">
+            <a id="btn-editar" class="btn btn-warning">
+              <i class="bi bi-pencil"></i> Editar
+            </a>
+
+            <button id="btn-excluir" class="btn btn-danger">
+              <i class="bi bi-trash"></i> Excluir
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+</body>
+</html>
