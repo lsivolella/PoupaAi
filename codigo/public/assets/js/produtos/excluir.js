@@ -14,3 +14,10 @@ export function confirmarExcluirERecarregar(id) {
         excluirProdutoById(id).then(() => location.reload());
     }
 }
+
+document.querySelector("#btn-excluir").addEventListener("click", () => {
+    const id = sessionStorage.getItem("id");
+    import('../../assets/js/produtos/excluir.js').then(mod => {
+      mod.confirmarExcluirERecarregar(id);
+    });
+});
