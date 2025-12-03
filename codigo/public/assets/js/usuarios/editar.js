@@ -1,4 +1,4 @@
-import UsuariosService from "../../../services/usuario-service.js";
+import {UsuariosService} from "../../../services/usuario-service.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     carregarDados();

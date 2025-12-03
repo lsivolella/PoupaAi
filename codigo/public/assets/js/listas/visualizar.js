@@ -1,20 +1,23 @@
-import ListasComprasService from "../../../services/listas-service.js";
-import UsuariosService from "../../../services/usuario-service.js";
-import ProdutosService from "../../../services/produto-service.js";
+import { ListasService } from "../../../services/listas-service.js";
+import { UsuarioService } from "../../../services/usuario-service.js";
+import { ProdutoService } from "../../../services/produto-service.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-    carregarListasCompras();
-});
+const listasService = new ListasService();
+const usuariosService = new UsuarioService();
+const produtosService = new ProdutoService();
+
+const tabela = document.querySelector("#tabelaListasCompras");
 
 async function carregarListasCompras() {
-    const listas = await ListasComprasService.getAll();
-    const usuarios = await UsuariosService.getAll();
-    const produtos = await ProdutosService.getAll();
 
-    const tbody = document.getElementById("tabelaListasCompras");
-    tbody.innerHTML = "";
+    const listas = await listasService.getListas();
+    const usuarios = await usuariosService.getUsuarios();
+    const produtos = await produtosService.getProdutos();
+
+    tabela.innerHTML = "";
 
     listas.forEach(lista => {
+
         const usuario = usuarios.find(u => u.id === lista.usuarioId)?.nome || "—";
 
         const totalItens = lista.produtos
@@ -28,18 +31,23 @@ async function carregarListasCompras() {
             <td>R$ ${parseFloat(lista.valor).toFixed(2)}</td>
             <td>R$ ${totalItens}</td>
             <td>
-                <button class="editar-btn" data-id="${lista.id}">Editar</button>
-                <button class="excluir-btn" data-id="${lista.id}">Excluir</button>
+                <button class="editar-btn btn btn-sm btn-info" data-id="${lista.id}">
+                    Editar
+                </button>
+                <button class="excluir-btn btn btn-sm btn-danger" data-id="${lista.id}">
+                    Excluir
+                </button>
             </td>
         `;
 
-        tbody.appendChild(tr);
+        tabela.appendChild(tr);
     });
 
     adicionarEventos();
 }
 
 function adicionarEventos() {
+
     document.querySelectorAll(".editar-btn").forEach(btn => {
         btn.addEventListener("click", () => {
             sessionStorage.setItem("listaEdicaoId", btn.dataset.id);
@@ -49,8 +57,16 @@ function adicionarEventos() {
 
     document.querySelectorAll(".excluir-btn").forEach(btn => {
         btn.addEventListener("click", async () => {
-            await ListasComprasService.delete(btn.dataset.id);
-            carregarListasCompras();
+            const id = btn.dataset.id;
+
+            if (confirm("Tem certeza que deseja excluir esta lista?")) {
+
+                await listasService.excluirLista(id);
+
+                btn.closest("tr").remove();
+            }
         });
     });
 }
+
+window.addEventListener("load", carregarListasCompras);

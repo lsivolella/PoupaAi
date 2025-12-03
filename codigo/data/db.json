@@ -5,6 +5,12 @@
       "nome": "Sofia",
       "email": "sofia@example.com",
       "senha": "@senha"
+    },
+    {
+      "nome": "Teste",
+      "email": "teste@t.com",
+      "senha": "1408",
+      "id": 2
     }
   ],
   "mercados": [
@@ -33,6 +39,44 @@
         "latitude": -19.6305,
         "longitude": -43.936
       }
+    },
+    {
+      "nome": "Supermercados Celeste",
+      "logo": "https://raichu-uploads.s3.amazonaws.com/logo_supermercados-bh_UpPNOh.png",
+      "endereco": {
+        "cep": "30180-111",
+        "rua": "Av. Olegário Maciel",
+        "numero": "742",
+        "bairro": "Centro",
+        "cidade": "Belo Horizonte",
+        "estado": "MG",
+        "pais": "Brasil"
+      },
+      "telefone": "(31) 3271-8000",
+      "email": "atendimento@superceleste.com.br",
+      "acessibilidades": [
+        1
+      ],
+      "id": 2
+    },
+    {
+      "nome": "Mercado Super",
+      "logo": "https://img.cdndsgni.com/preview/10438126.jpg",
+      "endereco": {
+        "cep": "32315-000",
+        "rua": "Av. João César de Oliveira",
+        "numero": "5400",
+        "bairro": "Eldorado",
+        "cidade": "Contagem",
+        "estado": "MG",
+        "pais": "Brasil"
+      },
+      "telefone": "(31) 3392-4000",
+      "email": "contato@mercadosuper.com",
+      "acessibilidades": [
+        2
+      ],
+      "id": 3
     }
   ],
   "acessibilidades": [
@@ -52,26 +96,79 @@
       "mercadoId": 1,
       "nota": 5,
       "comentario": "Muito bom!"
+    },
+    {
+      "usuarioId": 1,
+      "mercadoId": 2,
+      "nota": 5,
+      "comentario": "Cabuloso!",
+      "criadoEm": "2025-12-03T22:21:43.399Z",
+      "id": 2
     }
   ],
-  "produtos": [],
+  "produtos": [
+    {
+      "nome": "Arroz Branco Tipo 1 – 5kg",
+      "categoria": "Alimentos",
+      "preco": 18.9,
+      "marca": "Tio João",
+      "unidade_medida": "Kg",
+      "tamanho_embalagem": "5",
+      "descricao": "Arroz branco tipo 1, grãos selecionados.",
+      "Mercado": [
+        1
+      ],
+      "imagem_url": "https://m.media-amazon.com/images/I/717Fu8J1nrL._AC_SX425_.jpg",
+      "criadoEm": "2025-12-03T00:23:18.642Z",
+      "atualizadoEm": "2025-12-03T00:23:18.642Z",
+      "id": 1
+    },
+    {
+      "nome": "Arroz Branquinho",
+      "categoria": "Alimentos",
+      "preco": 17.5,
+      "marca": "Tio João",
+      "unidade_medida": "Kg",
+      "tamanho_embalagem": "5",
+      "descricao": "Arroz branco tipo 1, grãos selecionados.",
+      "Mercado": [
+        2
+      ],
+      "imagem_url": "https://m.media-amazon.com/images/I/717Fu8J1nrL._AC_SX425_.jpg",
+      "criadoEm": "2025-12-03T00:24:32.332Z",
+      "atualizadoEm": "2025-12-03T00:24:32.332Z",
+      "id": 2
+    },
+    {
+      "nome": "Arroz Branco",
+      "categoria": "Alimentos",
+      "preco": 20.29,
+      "marca": "Camil",
+      "unidade_medida": "Kg",
+      "tamanho_embalagem": "5",
+      "descricao": "Arroz branco tipo 1, grãos selecionados.",
+      "Mercado": [
+        3
+      ],
+      "imagem_url": "https://m.media-amazon.com/images/I/81-Yw7YyRBL._AC_UF894,1000_QL80_.jpg",
+      "criadoEm": "2025-12-03T00:30:09.490Z",
+      "atualizadoEm": "2025-12-03T00:30:09.490Z",
+      "id": 3
+    }
+  ],
   "listasCompras": [
     {
-      "id": 1,
       "usuarioId": 1,
-      "valor": 100.1,
+      "valor": 101.45,
       "produtos": [
         {
-          "produtoId": 1,
-          "quantidade": 2,
-          "precoUnitario": 50.05
-        },
-        {
-          "produtoId": 2,
-          "quantidade": 1,
-          "precoUnitario": 50.05
+          "produtoId": 3,
+          "quantidade": 5,
+          "valorUnitario": 20.29
         }
-      ]
+      ],
+      "criadoEm": "2025-12-03T22:49:19.718Z",
+      "id": 2
     }
   ],
   "historicoCompras": [

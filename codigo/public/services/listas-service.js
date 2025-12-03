@@ -14,19 +14,19 @@ export class ListasService {
       return r.json();
     }
   
-    async criarLista(data) {
+    async criarLista(lista) {
       await fetch(this.endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
+        body: JSON.stringify(lista)
       });
     }
   
-    async atualizarLista(id, data) {
+    async atualizarLista(id, lista) {
       await fetch(`${this.endpoint}/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
+        body: JSON.stringify(lista)
       });
     }
   

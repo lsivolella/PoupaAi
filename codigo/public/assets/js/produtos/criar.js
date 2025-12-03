@@ -2,7 +2,6 @@ import { ProdutoService } from "../../../services/produto-service.js";
 
 const produtoService = new ProdutoService();
 
-// Inputs
 const nomeInput = document.querySelector("#nome-input");
 const categoriaSelect = document.querySelector("#categoria-select");
 const precoInput = document.querySelector("#preco-input");
