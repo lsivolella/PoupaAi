@@ -26,19 +26,25 @@ async function carregarListasCompras() {
 
         const tr = document.createElement("tr");
         tr.innerHTML = `
-            <td>${lista.id}</td>
-            <td>${usuario}</td>
-            <td>R$ ${parseFloat(lista.valor).toFixed(2)}</td>
-            <td>R$ ${totalItens}</td>
-            <td>
-                <button class="editar-btn btn btn-sm btn-info" data-id="${lista.id}">
-                    Editar
-                </button>
-                <button class="excluir-btn btn btn-sm btn-danger" data-id="${lista.id}">
-                    Excluir
-                </button>
-            </td>
-        `;
+        <td>${lista.id}</td>
+        <td>${usuario}</td>
+        <td>R$ ${parseFloat(lista.valor).toFixed(2)}</td>
+        <td>R$ ${totalItens}</td>
+        <td>
+            <button class="editar-btn btn btn-sm btn-info" data-id="${lista.id}">
+                Editar
+            </button>
+    
+            <button class="excluir-btn btn btn-sm btn-danger" data-id="${lista.id}">
+                Excluir
+            </button>
+    
+            <button class="finalizar-btn btn btn-sm btn-success" data-id="${lista.id}">
+                Finalizar
+            </button>
+        </td>
+    `;
+    
 
         tabela.appendChild(tr);
     });
@@ -47,7 +53,6 @@ async function carregarListasCompras() {
 }
 
 function adicionarEventos() {
-
     document.querySelectorAll(".editar-btn").forEach(btn => {
         btn.addEventListener("click", () => {
             sessionStorage.setItem("listaEdicaoId", btn.dataset.id);
@@ -60,13 +65,24 @@ function adicionarEventos() {
             const id = btn.dataset.id;
 
             if (confirm("Tem certeza que deseja excluir esta lista?")) {
-
                 await listasService.excluirLista(id);
-
                 btn.closest("tr").remove();
             }
         });
     });
+
+    document.querySelectorAll(".finalizar-btn").forEach(btn => {
+        btn.addEventListener("click", async () => {
+            const id = btn.dataset.id;
+
+            if (confirm("Finalizar lista e mover para o histórico?")) {
+                await listasService.finalizarLista(id);
+                btn.closest("tr").remove();
+                alert("Lista finalizada e movida para o histórico!");
+            }
+        });
+    });
 }
+
 
 window.addEventListener("load", carregarListasCompras);

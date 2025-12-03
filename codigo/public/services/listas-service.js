@@ -33,4 +33,33 @@ export class ListasService {
     async excluirLista(id) {
       await fetch(`${this.endpoint}/${id}`, { method: "DELETE" });
     }
+
+    async finalizarLista(id) {
+      const r = await fetch(`${this.endpoint}/${id}`);
+      const lista = await r.json();
+  
+      const historico = {
+          usuarioId: lista.usuarioId,
+          data: new Date().toISOString(),
+          total: lista.valor,
+          itens: lista.produtos.map(p => ({
+              produtoId: p.produtoId,
+              quantidade: p.quantidade,
+              precoUnitario: p.valorUnitario
+          })),
+          status: "finalizada"
+      };
+  
+      await fetch("http://localhost:3001/historicoCompras", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(historico)
+      });
+  
+      await fetch(`${this.endpoint}/${id}`, {
+          method: "DELETE"
+      });
+  
+      return true;
+  }  
 }
