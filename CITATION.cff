@@ -1,31 +1,31 @@
 cff-version: 1.0.1
 message: Please cite this software using these metadata.
-title: 
+title: Poupa Aí
 authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names:
+  - family-names: Duarte Medeiros de Paula
+    given-names: Bernardo
+  - family-names: Pedrosa Nunes
+    given-names: Bruna
+  - family-names: Gonçalves Sivolella
+    given-names: Lucas
+  - family-names: Ângelo Ferreira
+    given-names: Plínio
+  - family-names: Ferreira Costa
+    given-names: Sofia
+  - family-names: Ramos Sales
+    given-names: Vinicius
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Silva Tavares
+    given-names: Cleiton
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: da Costa Silva
+    given-names: Luiz Henrique
 keywords:
-  - 
-  - 
-repository-code: 
+  - mercados
+  - compras
+repository-code: https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2025-2-ti1-5567100-poupa-ai
 license: CC-BY-4.0
 version: 1.0.0
-date-released: 2022-07-14
+date-released: 2025-12-08
