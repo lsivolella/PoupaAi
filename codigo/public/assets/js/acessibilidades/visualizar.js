@@ -1,17 +1,17 @@
 import { AcessibilidadeService } from "../../../services/acessibilidade-service.js";
 
 const service = new AcessibilidadeService();
-const tabela = document.querySelector("#tabela-acessibilidades"); 
+const tabela = document.querySelector("#tabela-acessibilidades");
 
 async function carregarAcessibilidades() {
-    const acessibilidades = await service.getAcessibilidades();
+  const acessibilidades = await service.getAcessibilidades();
 
-    tabela.innerHTML = "";
+  tabela.innerHTML = "";
 
-    acessibilidades.forEach(a => {
-        const tr = document.createElement("tr");
+  acessibilidades.forEach((a) => {
+    const tr = document.createElement("tr");
 
-        tr.innerHTML = `
+    tr.innerHTML = `
             <td>${a.id}</td>
             <td>${a.tipo}</td>
             <td>
@@ -20,26 +20,26 @@ async function carregarAcessibilidades() {
             </td>
         `;
 
-        tabela.appendChild(tr);
-    });
+    tabela.appendChild(tr);
+  });
 
-    adicionarEventos();
+  adicionarEventos();
 }
 
 function adicionarEventos() {
-    document.querySelectorAll(".btn-editar").forEach(btn => {
-        btn.addEventListener("click", () => {
-            sessionStorage.setItem("acessibilidadeId", btn.dataset.id);
-            window.location.href = "./editar.html";
-        });
+  document.querySelectorAll(".btn-editar").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      sessionStorage.setItem("acessibilidadeId", btn.dataset.id);
+      window.location.href = "./editar.html";
     });
+  });
 
-    document.querySelectorAll(".btn-excluir").forEach(btn => {
-        btn.addEventListener("click", () => {
-            sessionStorage.setItem("acessibilidadeId", btn.dataset.id);
-            window.location.href = "./excluir.html";
-        });
+  document.querySelectorAll(".btn-excluir").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      sessionStorage.setItem("acessibilidadeId", btn.dataset.id);
+      window.location.href = "./excluir.html";
     });
+  });
 }
 
 carregarAcessibilidades();

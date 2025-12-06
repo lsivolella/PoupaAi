@@ -20,7 +20,9 @@ async function carregarDetalhes() {
 
     cardMercado.innerHTML = `
       <div class="card mb-3 d-flex flex-row align-items-center">
-        <img src="${mercado.logo}" class="img-fluid rounded-start" alt="${mercado.nome}" style="width: 250px; object-fit: cover;">
+        <img src="${mercado.logo}" class="img-fluid rounded-start" alt="${
+      mercado.nome
+    }" style="width: 250px; object-fit: cover;">
         <div class="card-body flex-grow-1">
           <h3 class="card-title">${mercado.nome}</h3>
           <p><b>Endereço:</b> ${mercado.endereco}</p>
@@ -38,8 +40,12 @@ async function carregarDetalhes() {
       </div>
     `;
 
-    const acessibilidadesAll = await fetch("http://localhost:3001/acessibilidades").then(r => r.json());
-    const acessibilidadesMercado = acessibilidadesAll.filter(a => mercado.acessibilidades.includes(a.id));
+    const acessibilidadesAll = await fetch(
+      "http://localhost:3001/acessibilidades"
+    ).then((r) => r.json());
+    const acessibilidadesMercado = acessibilidadesAll.filter((a) =>
+      mercado.acessibilidades.includes(a.id)
+    );
 
     cardAcessibilidade.innerHTML = `
       <div class="card mb-3">
@@ -47,15 +53,21 @@ async function carregarDetalhes() {
         <div class="card-body">
           ${
             acessibilidadesMercado.length > 0
-              ? `<ul>${acessibilidadesMercado.map(a => `<li>${a.tipo}</li>`).join("")}</ul>`
+              ? `<ul>${acessibilidadesMercado
+                  .map((a) => `<li>${a.tipo}</li>`)
+                  .join("")}</ul>`
               : "<p>Nenhuma acessibilidade cadastrada.</p>"
           }
         </div>
       </div>
     `;
 
-    const avaliacoesAll = await fetch("http://localhost:3001/avaliacoes").then(r => r.json());
-    const avaliacoesMercado = avaliacoesAll.filter(av => av.mercadoId == mercado.id);
+    const avaliacoesAll = await fetch("http://localhost:3001/avaliacoes").then(
+      (r) => r.json()
+    );
+    const avaliacoesMercado = avaliacoesAll.filter(
+      (av) => av.mercadoId == mercado.id
+    );
 
     cardAvaliacoes.innerHTML = `
       <div class="card mb-3">
@@ -65,7 +77,12 @@ async function carregarDetalhes() {
           <p><b>Total de Avaliações:</b> ${mercado.numeroDeAvaliacoes ?? 0}</p>
           ${
             avaliacoesMercado.length > 0
-              ? `<ul>${avaliacoesMercado.map(av => `<li><b>Usuário ${av.usuarioId}:</b> ${av.comentario} (Nota: ${av.nota})</li>`).join("")}</ul>`
+              ? `<ul>${avaliacoesMercado
+                  .map(
+                    (av) =>
+                      `<li><b>Usuário ${av.usuarioId}:</b> ${av.comentario} (Nota: ${av.nota})</li>`
+                  )
+                  .join("")}</ul>`
               : "<p>Sem avaliações.</p>"
           }
         </div>
@@ -73,7 +90,6 @@ async function carregarDetalhes() {
     `;
 
     adicionarEventos(mercado.id);
-
   } catch (err) {
     console.error(err);
     alert("Erro ao carregar detalhes do mercado.");
@@ -99,10 +115,12 @@ function adicionarEventos(id) {
     }
   });
 
-  document.getElementById("btn-adicionar-avaliacao").addEventListener("click", () => {
-    sessionStorage.setItem("mercadoId", id);
-    window.location.href = "../avaliacoes/criar.html"; 
-  });
+  document
+    .getElementById("btn-adicionar-avaliacao")
+    .addEventListener("click", () => {
+      sessionStorage.setItem("mercadoId", id);
+      window.location.href = "../avaliacoes/criar.html";
+    });
 }
 
 carregarDetalhes();

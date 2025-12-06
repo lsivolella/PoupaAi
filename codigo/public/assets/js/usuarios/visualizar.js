@@ -1,19 +1,19 @@
-import {UsuariosService} from "../../../services/usuario-service.js";
+import UsuariosService from "../../../services/usuario-service.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    carregarUsuarios();
+  carregarUsuarios();
 });
 
 async function carregarUsuarios() {
-    const usuarios = await UsuariosService.getAll();
-    const tbody = document.getElementById("tabelaUsuarios");
+  const usuarios = await UsuariosService.getAll();
+  const tbody = document.getElementById("tabelaUsuarios");
 
-    tbody.innerHTML = "";
+  tbody.innerHTML = "";
 
-    usuarios.forEach(usuario => {
-        const tr = document.createElement("tr");
+  usuarios.forEach((usuario) => {
+    const tr = document.createElement("tr");
 
-        tr.innerHTML = `
+    tr.innerHTML = `
             <td>${usuario.id}</td>
             <td>${usuario.nome}</td>
             <td>${usuario.email}</td>
@@ -23,24 +23,24 @@ async function carregarUsuarios() {
             </td>
         `;
 
-        tbody.appendChild(tr);
-    });
+    tbody.appendChild(tr);
+  });
 
-    adicionarEventos();
+  adicionarEventos();
 }
 
 function adicionarEventos() {
-    document.querySelectorAll(".editar-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-            sessionStorage.setItem("usuarioEdicaoId", btn.dataset.id);
-            window.location.href = "editar.html";
-        });
+  document.querySelectorAll(".editar-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      sessionStorage.setItem("usuarioEdicaoId", btn.dataset.id);
+      window.location.href = "editar.html";
     });
+  });
 
-    document.querySelectorAll(".excluir-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-            sessionStorage.setItem("usuarioExclusaoId", btn.dataset.id);
-            window.location.href = "excluir.html";
-        });
+  document.querySelectorAll(".excluir-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      sessionStorage.setItem("usuarioExclusaoId", btn.dataset.id);
+      window.location.href = "excluir.html";
     });
+  });
 }

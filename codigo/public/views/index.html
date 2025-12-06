@@ -1,54 +1,285 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home Poupai</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PoupaAí</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="/codigo/public/assets/css/style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="navbar-container">
+        <div class="logo">
+          <a href="./index.html">
+            <img
+              src="/codigo/public/assets/img/Logo_PoupaAI_Branco.svg"
+              alt="PoupaAí"
+              class="logo-img"
+            />
+          </a>
+        </div>
 
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <div class="search-bar">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Busque usando vírgula, ex: leite, cerveja, azeite, arroz, iogurte"
+            class="search-input"
+          />
+          <button class="search-button" id="searchButton">
+            <i class="bi bi-search"></i>
+            BUSCAR
+          </button>
+        </div>
 
-  <script type="module" src="../../assets/js/usuarios/criar.js"></script>
-</head>
-<body>
+        <div class="user-actions">
+          <button class="user-btn" id="loginBtn">
+            <i class="bi bi-person-circle"></i>
+            <span>Entrar</span>
+          </button>
 
+          <div class="user-logged" id="userLogged" style="display: none">
+            <div class="user-info">
+              <img
+                src="/codigo/public/assets/img/Avatar_Usuario.svg"
+                alt="Avatar"
+                class="user-avatar"
+                id="userAvatar"
+              />
+              <span class="user-greeting" id="userGreeting">Olá, Usuário!</span>
+            </div>
+            <button class="btn-logout" id="logoutBtn" title="Sair">
+              <i class="bi bi-box-arrow-right"></i>
+            </button>
+          </div>
 
-  <header class="container py-4 text-center">
-      <img src="../assets/img/Logo_PoupaAI.svg" class="img-fluid" alt="Logo Poupa Aí">
-  </header>
+          <button class="cart-btn" id="cartBtn">
+            <i class="bi bi-cart3"></i>
+            <span class="cart-badge" id="cartBadge">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
 
-  <main class="container">
+    <nav class="main-nav">
+      <a
+        href="/codigo/public/views/usuarios/dashboard-cliente.html"
+        class="nav-item"
+      >
+        <i class="bi bi-graph-up"></i>
+        Dashboard
+      </a>
+      <a href="/codigo/public/views/alertas/index.html" class="nav-item">
+        <i class="bi bi-bell-fill"></i>
+        Alertas
+      </a>
+      <a href="/codigo/public/views/listas/index.html" class="nav-item">
+        <i class="bi bi-list-check"></i>
+        Minhas Listas
+      </a>
+      <a href="/codigo/public/views/mercados/index.html" class="nav-item">
+        <i class="bi bi-shop"></i>
+        Supermercados
+      </a>
+      <a href="/codigo/public/views/produtos/index.html" class="nav-item">
+        <i class="bi bi-basket"></i>
+        Produtos
+      </a>
+      <a href="./views/promocoes/index.html" class="nav-item">
+        <i class="bi bi-fire"></i>
+        Ofertas do dia
+      </a>
+      <a href="/codigo/public/views/historicos/index.html" class="nav-item">
+        <i class="bi bi-clock-history"></i>
+        Histórico
+      </a>
+    </nav>
 
-  </main>
+    <section class="carousel-section">
+      <div class="carousel-container">
+        <button class="carousel-btn prev" id="prevBtn">
+          <i class="bi bi-chevron-left"></i>
+        </button>
 
-  <div class="bottom-nav">
-    <a href="#" class="nav-item center">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
-        <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5"/>
-      </svg>
-    </a>
-    <a href="../views/produtos/index.html" class="nav-item">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket3-fill" viewBox="0 0 16 16">
-        <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.468 15.426.943 9h14.114l-1.525 6.426a.75.75 0 0 1-.729.574H3.197a.75.75 0 0 1-.73-.574z"/>
-      </svg>
-    </a>
-    <a href="../views/usuarios/index.html" class="nav-item">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-      </svg>
-    </a>
-    <a href="../views/mercados/index.html" class="nav-item">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
-        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
-      </svg>
-    </a>
-    <a href="../views/mercados/mapa.html" class="nav-item">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe-americas" viewBox="0 0 16 16">
-        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M2.04 4.326c.325 1.329 2.532 2.54 3.717 3.19.48.263.793.434.743.484q-.121.12-.242.234c-.416.396-.787.749-.758 1.266.035.634.618.824 1.214 1.017.577.188 1.168.38 1.286.983.082.417-.075.988-.22 1.52-.215.782-.406 1.48.22 1.48 1.5-.5 3.798-3.186 4-5 .138-1.243-2-2-3.5-2.5-.478-.16-.755.081-.99.284-.172.15-.322.279-.51.216-.445-.148-2.5-2-1.5-2.5.78-.39.952-.171 1.227.182.078.099.163.208.273.318.609.304.662-.132.723-.633.039-.322.081-.671.277-.867.434-.434 1.265-.791 2.028-1.12.712-.306 1.365-.587 1.579-.88A7 7 0 1 1 2.04 4.327Z"/>
-      </svg>
-    </a>
-  </div>
+        <div class="carousel-wrapper" id="carouselWrapper">
+          <div class="carousel-slide">
+            <img
+              src="/codigo/public/assets/img/Banner_natal.png"
+              alt="Banner Natal"
+            />
+          </div>
+          <div class="carousel-slide">
+            <img
+              src="/codigo/public/assets/img/Banner_Clube_PoupaAI.png"
+              alt="Banner Clube PoupaAí"
+            />
+          </div>
+          <div class="carousel-slide">
+            <img
+              src="/codigo/public/assets/img/Banner_Hortifrutti.png"
+              alt="Banner Hortifruti"
+            />
+          </div>
+          <div class="carousel-slide">
+            <img
+              src="/codigo/public/assets/img/Banner_PetShop.png"
+              alt="Banner PetShop"
+            />
+          </div>
+        </div>
 
-</body>
+        <button class="carousel-btn next" id="nextBtn">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+
+        <div class="carousel-indicators" id="carouselIndicators"></div>
+      </div>
+    </section>
+
+    <section class="categories-section">
+      <h2 class="section-title">Categorias</h2>
+      <div class="categories-container" id="categoriesContainer">
+        <a
+          href="./views/produtos/listar-produtos.html?categoria=ofertas"
+          class="category-card"
+          data-category="ofertas"
+        >
+          <i class="bi bi-tags-fill category-icon"></i>
+          <div class="category-name">Ofertas</div>
+        </a>
+        <a
+          href="./views/produtos/listar-produtos.html?categoria=hortifruti"
+          class="category-card"
+          data-category="hortifruti"
+        >
+          <i class="bi bi-basket-fill category-icon"></i>
+          <div class="category-name">Hortifruti</div>
+        </a>
+        <a
+          href="./views/produtos/listar-produtos.html?categoria=acougue"
+          class="category-card"
+          data-category="acougue"
+        >
+          <i class="bi bi-egg-fried category-icon"></i>
+          <div class="category-name">Açougue</div>
+        </a>
+        <a
+          href="./views/produtos/listar-produtos.html?categoria=bebe"
+          class="category-card"
+          data-category="bebe"
+        >
+          <i class="bi bi-balloon-heart-fill category-icon"></i>
+          <div class="category-name">Mundo bebê</div>
+        </a>
+        <a
+          href="./views/produtos/listar-produtos.html?categoria=limpeza"
+          class="category-card"
+          data-category="limpeza"
+        >
+          <i class="bi bi-droplet-fill category-icon"></i>
+          <div class="category-name">Limpeza</div>
+        </a>
+        <a
+          href="./views/produtos/listar-produtos.html?categoria=bebidas"
+          class="category-card"
+          data-category="bebidas"
+        >
+          <i class="bi bi-cup-straw category-icon"></i>
+          <div class="category-name">Bebidas</div>
+        </a>
+        <a
+          href="./views/produtos/listar-produtos.html?categoria=padaria"
+          class="category-card"
+          data-category="padaria"
+        >
+          <i class="bi bi-shop-window category-icon"></i>
+          <div class="category-name">Padaria</div>
+        </a>
+        <a
+          href="./views/produtos/listar-produtos.html?categoria=alimentos"
+          class="category-card"
+          data-category="alimentos"
+        >
+          <i class="bi bi-box-seam-fill category-icon"></i>
+          <div class="category-name">Alimentos</div>
+        </a>
+      </div>
+    </section>
+
+    <section class="offers-section">
+      <div class="section-header">
+        <h2 class="section-title">Ofertas em Destaque</h2>
+        <a href="./views/promocoes/index.html" class="see-all">
+          Ver todas <i class="bi bi-chevron-right"></i>
+        </a>
+      </div>
+      <div class="offers-container" id="offersContainer"></div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3 class="footer-title">Redes Sociais</h3>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <i class="bi bi-facebook"></i> Facebook
+            </a>
+            <a href="#" class="social-link">
+              <i class="bi bi-instagram"></i> Instagram
+            </a>
+            <a href="#" class="social-link">
+              <i class="bi bi-twitter"></i> Twitter
+            </a>
+            <a href="#" class="social-link">
+              <i class="bi bi-youtube"></i> YouTube
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3 class="footer-title">Institucional</h3>
+          <div class="footer-links">
+            <a href="#quem-somos" class="footer-link">Quem Somos</a>
+            <a href="#trabalhe-conosco" class="footer-link">Trabalhe Conosco</a>
+            <a href="#politica-privacidade" class="footer-link"
+              >Política de Privacidade</a
+            >
+            <a href="#termos-uso" class="footer-link">Termos de Uso</a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3 class="footer-title">Atendimento</h3>
+          <div class="footer-links">
+            <a href="#contato" class="footer-link">Entre em Contato</a>
+            <a href="#cupons" class="footer-link">Cupons</a>
+            <a href="#duvidas" class="footer-link">Dúvidas Frequentes</a>
+            <a href="#como-funciona" class="footer-link">Como Funciona</a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3 class="footer-title">Baixe o App</h3>
+          <div class="app-links">
+            <a href="#" class="app-button">
+              <i class="bi bi-apple"></i> App Store
+            </a>
+            <a href="#" class="app-button">
+              <i class="bi bi-google-play"></i> Google Play
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 PoupaAí - Todos os direitos reservados</p>
+      </div>
+    </footer>
+    <script src="/codigo/navbar.js"></script>
+    <script src="index.js"></script>
+  </body>
 </html>

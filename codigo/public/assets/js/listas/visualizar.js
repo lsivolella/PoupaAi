@@ -1,88 +1,204 @@
-import { ListasService } from "../../../services/listas-service.js";
-import { UsuarioService } from "../../../services/usuario-service.js";
-import { ProdutoService } from "../../../services/produto-service.js";
+import ListasComprasService from "../../../services/listas-service.js";
+import UsuariosService from "../../../services/usuario-service.js";
+import ProdutosService from "../../../services/produto-service.js";
 
-const listasService = new ListasService();
-const usuariosService = new UsuarioService();
-const produtosService = new ProdutoService();
-
-const tabela = document.querySelector("#tabelaListasCompras");
+document.addEventListener("DOMContentLoaded", () => {
+  carregarListasCompras();
+});
 
 async function carregarListasCompras() {
+  const tbody = document.getElementById("tabelaListasCompras");
+  const emptyState = document.getElementById("emptyState");
+  const loadingRow = document.getElementById("loadingRow");
+  const totalListasBadge = document.getElementById("totalListas");
 
-    const listas = await listasService.getListas();
-    const usuarios = await usuariosService.getUsuarios();
-    const produtos = await produtosService.getProdutos();
+  try {
+    const listas = await ListasComprasService.getAll();
+    const usuarios = await UsuariosService.getAll();
 
-    tabela.innerHTML = "";
+    if (loadingRow) loadingRow.remove();
 
-    listas.forEach(lista => {
+    if (listas.length === 0) {
+      tbody.innerHTML = "";
+      emptyState.style.display = "block";
+      totalListasBadge.textContent = "0 listas";
+      return;
+    }
 
-        const usuario = usuarios.find(u => u.id === lista.usuarioId)?.nome || "—";
+    emptyState.style.display = "none";
+    tbody.innerHTML = "";
 
-        const totalItens = lista.produtos
-            .reduce((acc, p) => acc + (p.quantidade * p.valorUnitario), 0)
-            .toFixed(2);
+    totalListasBadge.textContent = `${listas.length} ${
+      listas.length === 1 ? "lista" : "listas"
+    }`;
 
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-        <td>${lista.id}</td>
-        <td>${usuario}</td>
-        <td>R$ ${parseFloat(lista.valor).toFixed(2)}</td>
-        <td>R$ ${totalItens}</td>
-        <td>
-            <button class="editar-btn btn btn-sm btn-info" data-id="${lista.id}">
-                Editar
-            </button>
-    
-            <button class="excluir-btn btn btn-sm btn-danger" data-id="${lista.id}">
-                Excluir
-            </button>
-    
-            <button class="finalizar-btn btn btn-sm btn-success" data-id="${lista.id}">
-                Finalizar
-            </button>
-        </td>
-    `;
-    
+    listas.forEach((lista) => {
+      const usuario =
+        usuarios.find((u) => u.id === lista.usuarioId)?.nome ||
+        "Usuário não encontrado";
 
-        tabela.appendChild(tr);
+      const totalItens = lista.produtos.reduce(
+        (acc, p) => acc + p.quantidade * p.valorUnitario,
+        0
+      );
+
+      const valorTotal = parseFloat(lista.valor);
+      const diferenca = valorTotal - totalItens;
+
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+                <td data-label="#">${lista.id}</td>
+                <td data-label="Usuário">${usuario}</td>
+                <td data-label="Valor Total">
+                    <strong>R$ ${formatarPreco(valorTotal)}</strong>
+                </td>
+                <td data-label="Valor dos Itens">
+                    R$ ${formatarPreco(totalItens)}
+                </td>
+                <td data-label="Diferença">
+                    <span class="${
+                      diferenca >= 0 ? "text-success" : "text-danger"
+                    }">
+                        ${diferenca >= 0 ? "+" : ""}R$ ${formatarPreco(
+        diferenca
+      )}
+                    </span>
+                </td>
+                <td data-label="Ações" class="text-center">
+                    <button class="btn-action btn-edit" data-id="${
+                      lista.id
+                    }" title="Editar">
+                        <i class="bi bi-pencil"></i>
+                        Editar
+                    </button>
+                    <button class="btn-action btn-delete" data-id="${
+                      lista.id
+                    }" title="Excluir">
+                        <i class="bi bi-trash"></i>
+                        Excluir
+                    </button>
+                </td>
+            `;
+
+      tbody.appendChild(tr);
     });
 
     adicionarEventos();
+  } catch (error) {
+    console.error("Erro ao carregar listas:", error);
+    tbody.innerHTML = `
+            <tr>
+                <td colspan="6" class="text-center py-5">
+                    <i class="bi bi-exclamation-triangle text-danger" style="font-size: 48px;"></i>
+                    <p class="mt-3 text-danger">Erro ao carregar as listas. Tente novamente.</p>
+                </td>
+            </tr>
+        `;
+  }
 }
 
 function adicionarEventos() {
-    document.querySelectorAll(".editar-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-            sessionStorage.setItem("listaEdicaoId", btn.dataset.id);
-            window.location.href = "editar.html";
-        });
+  document.querySelectorAll(".btn-edit").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      sessionStorage.setItem("listaEdicaoId", btn.dataset.id);
+      window.location.href = "editar.html";
     });
+  });
 
-    document.querySelectorAll(".excluir-btn").forEach(btn => {
-        btn.addEventListener("click", async () => {
-            const id = btn.dataset.id;
+  document.querySelectorAll(".btn-delete").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const confirmacao = confirm("Tem certeza que deseja excluir esta lista?");
 
-            if (confirm("Tem certeza que deseja excluir esta lista?")) {
-                await listasService.excluirLista(id);
-                btn.closest("tr").remove();
-            }
-        });
+      if (confirmacao) {
+        try {
+          btn.disabled = true;
+          btn.innerHTML =
+            '<span class="spinner" style="width: 16px; height: 16px; border-width: 2px;"></span>';
+
+          await ListasComprasService.delete(btn.dataset.id);
+
+          mostrarNotificacao("Lista excluída com sucesso!", "success");
+
+          carregarListasCompras();
+        } catch (error) {
+          console.error("Erro ao excluir lista:", error);
+          mostrarNotificacao(
+            "Erro ao excluir lista. Tente novamente.",
+            "error"
+          );
+          btn.disabled = false;
+          btn.innerHTML = '<i class="bi bi-trash"></i> Excluir';
+        }
+      }
     });
-
-    document.querySelectorAll(".finalizar-btn").forEach(btn => {
-        btn.addEventListener("click", async () => {
-            const id = btn.dataset.id;
-
-            if (confirm("Finalizar lista e mover para o histórico?")) {
-                await listasService.finalizarLista(id);
-                btn.closest("tr").remove();
-                alert("Lista finalizada e movida para o histórico!");
-            }
-        });
-    });
+  });
 }
 
+function formatarPreco(valor) {
+  return valor.toFixed(2).replace(".", ",");
+}
 
-window.addEventListener("load", carregarListasCompras);
+function mostrarNotificacao(mensagem, tipo = "info") {
+  const notificacao = document.createElement("div");
+  notificacao.className = `notificacao notificacao-${tipo}`;
+  notificacao.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${
+          tipo === "success"
+            ? "#28a745"
+            : tipo === "error"
+            ? "#dc3545"
+            : "#0066cc"
+        };
+        color: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        z-index: 10000;
+        animation: slideIn 0.3s ease-out;
+    `;
+  notificacao.innerHTML = `
+        <i class="bi bi-${
+          tipo === "success"
+            ? "check-circle"
+            : tipo === "error"
+            ? "x-circle"
+            : "info-circle"
+        }"></i>
+        ${mensagem}
+    `;
+
+  document.body.appendChild(notificacao);
+
+  setTimeout(() => {
+    notificacao.style.animation = "slideOut 0.3s ease-out";
+    setTimeout(() => notificacao.remove(), 300);
+  }, 3000);
+}
+
+const style = document.createElement("style");
+style.textContent = `
+    @keyframes slideIn {
+        from {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);

@@ -4,18 +4,21 @@ const service = new HistoricoService();
 const tabela = document.querySelector("#tabela-historico tbody");
 
 async function carregarHistorico() {
-    const historicos = await service.getHistorico();
+  const historicos = await service.getHistorico();
 
-    tabela.innerHTML = "";
+  tabela.innerHTML = "";
 
-    historicos.forEach(h => {
-        const tr = document.createElement("tr");
+  historicos.forEach((h) => {
+    const tr = document.createElement("tr");
 
-        const itensFormatados = h.itens
-            .map(i => `Produto ${i.produtoId} (Qtd: ${i.quantidade}, R$ ${i.precoUnitario})`)
-            .join("<br>");
+    const itensFormatados = h.itens
+      .map(
+        (i) =>
+          `Produto ${i.produtoId} (Qtd: ${i.quantidade}, R$ ${i.precoUnitario})`
+      )
+      .join("<br>");
 
-        tr.innerHTML = `
+    tr.innerHTML = `
             <td>${h.id}</td>
             <td>${h.usuarioId}</td>
             <td>${new Date(h.data).toLocaleString()}</td>
@@ -29,26 +32,26 @@ async function carregarHistorico() {
             </td>
         `;
 
-        tabela.appendChild(tr);
-    });
+    tabela.appendChild(tr);
+  });
 
-    adicionarEventos();
+  adicionarEventos();
 }
 
 function adicionarEventos() {
-    document.querySelectorAll(".btn-editar").forEach(btn => {
-        btn.addEventListener("click", () => {
-            sessionStorage.setItem("historicoId", btn.dataset.id);
-            window.location.href = "./editar.html";
-        });
+  document.querySelectorAll(".btn-editar").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      sessionStorage.setItem("historicoId", btn.dataset.id);
+      window.location.href = "./editar.html";
     });
+  });
 
-    document.querySelectorAll(".btn-excluir").forEach(btn => {
-        btn.addEventListener("click", () => {
-            sessionStorage.setItem("historicoId", btn.dataset.id);
-            window.location.href = "./excluir.html";
-        });
+  document.querySelectorAll(".btn-excluir").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      sessionStorage.setItem("historicoId", btn.dataset.id);
+      window.location.href = "./excluir.html";
     });
+  });
 }
 
 carregarHistorico();

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Criar Alerta</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="/codigo/public/assets/css/style.css" />
+  </head>
+
+  <body class="page-internal">
+    <header class="navbar">
+      <div class="navbar-container">
+        <div class="logo">
+          <a href="/codigo/public/views/index.html">
+            <img
+              src="/codigo/public/assets/img/Logo_PoupaAI_Branco.svg"
+              alt="PoupaAí"
+              class="logo-img"
+            />
+          </a>
+        </div>
+
+        <div class="search-bar">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Busque produtos..."
+            class="search-input"
+          />
+          <button class="search-button" id="searchButton">
+            <i class="bi bi-search"></i>
+            BUSCAR
+          </button>
+        </div>
+
+        <div class="user-actions">
+          <button class="user-btn" id="loginBtn" style="display: none">
+            <i class="bi bi-person-circle"></i>
+            <span>Entrar</span>
+          </button>
+
+          <div class="user-logged" id="userLogged" style="display: none">
+            <div class="user-info">
+              <img
+                src="/codigo/public/assets/img/Avatar_Usuario.svg"
+                alt="Avatar"
+                class="user-avatar"
+                id="userAvatar"
+              />
+              <span class="user-greeting" id="userGreeting">Olá, Usuário!</span>
+            </div>
+            <button class="btn-logout" id="logoutBtn" title="Sair">
+              <i class="bi bi-box-arrow-right"></i>
+            </button>
+          </div>
+
+          <button class="cart-btn" id="cartBtn">
+            <i class="bi bi-cart3"></i>
+            <span class="cart-badge" id="cartBadge">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <nav class="categories-nav">
+      <div class="container">
+        <ul class="categories-list">
+          <li>
+            <a href="/codigo/public/views/index.html"
+              ><i class="bi bi-house-door"></i> Início</a
+            >
+          </li>
+          <li>
+            <a href="/codigo/public/views/usuarios/dashboard-cliente.html"
+              ><i class="bi bi-speedometer2"></i> Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="/codigo/public/views/listas/index.html"
+              ><i class="bi bi-list-check"></i> Minhas Listas</a
+            >
+          </li>
+          <li>
+            <a href="/codigo/public/views/mercados/index.html"
+              ><i class="bi bi-shop"></i> Supermercados</a
+            >
+          </li>
+          <li>
+            <a href="/codigo/public/views/produtos/index.html"
+              ><i class="bi bi-box-seam"></i> Produtos</a
+            >
+          </li>
+          <li>
+            <a href="../promocoes/index.html"
+              ><i class="bi bi-tag"></i> Promoções</a
+            >
+          </li>
+          <li>
+            <a href="/codigo/public/views/alertas/index.html" class="active"
+              ><i class="bi bi-bell"></i> Alertas</a
+            >
+          </li>
+          <li>
+            <a href="/codigo/public/views/historicos/index.html"
+              ><i class="bi bi-clock-history"></i> Histórico</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <div class="container">
+        <nav aria-label="breadcrumb" class="breadcrumb-nav">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="../../index.html">Início</a>
+            </li>
+            <li class="breadcrumb-item"><a href="./index.html">Alertas</a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Criar Alerta
+            </li>
+          </ol>
+        </nav>
+
+        <div class="page-header">
+          <div class="page-header-content">
+            <div class="page-title-wrapper">
+              <i class="bi bi-plus-circle-fill page-icon"></i>
+              <h1 class="page-title" id="pageTitle">Criar Alerta de Preço</h1>
+            </div>
+            <p class="page-subtitle">
+              Configure um alerta para ser notificado quando o preço baixar
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <form id="alertForm">
+              <div class="form-section">
+                <h3 class="form-section-title">
+                  <i class="bi bi-search"></i>
+                  1. Buscar Produto
+                </h3>
+
+                <div class="form-group">
+                  <label for="produtoBusca" class="form-label"
+                    >Digite o nome do produto</label
+                  >
+                  <div class="search-input-wrapper">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="produtoBusca"
+                      placeholder="Ex: Arroz Tio João 5kg"
+                      autocomplete="off"
+                      required
+                    />
+                    <i class="bi bi-search search-icon"></i>
+                  </div>
+
+                  <div
+                    class="search-results"
+                    id="searchResults"
+                    style="display: none"
+                  ></div>
+
+                  <div
+                    class="selected-product"
+                    id="selectedProduct"
+                    style="display: none"
+                  >
+                    <div class="selected-product-content">
+                      <img
+                        src=""
+                        alt=""
+                        class="selected-product-img"
+                        id="selectedProductImg"
+                      />
+                      <div class="selected-product-info">
+                        <h4 id="selectedProductName"></h4>
+                        <p id="selectedProductBrand"></p>
+                        <p class="selected-product-price">
+                          Preço atual:
+                          <strong id="selectedProductPrice"></strong>
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      class="btn-remove-product"
+                      id="removeProductBtn"
+                    >
+                      <i class="bi bi-x-lg"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="form-section"
+                id="alertConfigSection"
+                style="display: none"
+              >
+                <h3 class="form-section-title">
+                  <i class="bi bi-sliders"></i>
+                  2. Configurar Alerta
+                </h3>
+
+                <div class="form-group">
+                  <label class="form-label">Alertar quando o preço:</label>
+                  <div class="radio-group">
+                    <label class="radio-option">
+                      <input
+                        type="radio"
+                        name="tipoAlerta"
+                        value="abaixo"
+                        checked
+                      />
+                      <div class="radio-content">
+                        <i class="bi bi-arrow-down-circle"></i>
+                        <div>
+                          <strong>Cair abaixo de</strong>
+                          <p>
+                            Ser notificado quando atingir um valor específico
+                          </p>
+                        </div>
+                      </div>
+                    </label>
+                    <label class="radio-option">
+                      <input type="radio" name="tipoAlerta" value="qualquer" />
+                      <div class="radio-content">
+                        <i class="bi bi-bell"></i>
+                        <div>
+                          <strong>Qualquer promoção</strong>
+                          <p>Ser notificado em qualquer oferta do produto</p>
+                        </div>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group" id="valorAlertaGroup">
+                  <label for="valorAlerta" class="form-label"
+                    >Valor desejado</label
+                  >
+                  <div class="input-group">
+                    <span class="input-prefix">R$</span>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="valorAlerta"
+                      placeholder="0,00"
+                      step="0.01"
+                      min="0"
+                    />
+                    <button
+                      type="button"
+                      class="btn-input-action"
+                      id="decreaseBtn"
+                    >
+                      <i class="bi bi-dash"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn-input-action"
+                      id="increaseBtn"
+                    >
+                      <i class="bi bi-plus"></i>
+                    </button>
+                  </div>
+                  <small class="form-hint">
+                    <i class="bi bi-info-circle"></i>
+                    Você será notificado quando o preço for igual ou menor que
+                    este valor
+                  </small>
+                </div>
+
+                <div class="form-group">
+                  <label for="supermercado" class="form-label"
+                    >Monitorar em:</label
+                  >
+                  <select class="form-control" id="supermercado">
+                    <option value="todos">Todos os supermercados</option>
+                    <option value="specific">Supermercado específico</option>
+                  </select>
+                </div>
+
+                <div
+                  class="form-group"
+                  id="supermercadoEspecificoGroup"
+                  style="display: none"
+                >
+                  <label for="supermercadoId" class="form-label"
+                    >Escolha o supermercado</label
+                  >
+                  <select class="form-control" id="supermercadoId">
+                    <option value="">Carregando...</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <a href="./index.html" class="btn btn-secondary">
+                  <i class="bi bi-x-lg"></i>
+                  Cancelar
+                </a>
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  id="submitBtn"
+                  disabled
+                >
+                  <i class="bi bi-check-lg"></i>
+                  <span id="submitBtnText">Criar Alerta</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 PoupaAí. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+    <script src="/codigo/navbar.js"></script>
+    <script type="module" src="/codigo/public/assets/js/alertas/alertas.js"></script>
+  </body>
+</html>

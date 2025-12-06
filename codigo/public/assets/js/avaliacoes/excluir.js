@@ -7,15 +7,15 @@ const btnExcluir = document.querySelector("#btn-confirmar-exclusao");
 const texto = document.querySelector("#info-avaliacao");
 
 async function carregar() {
-    if (!id) {
-        alert("Nenhuma avaliação selecionada!");
-        window.location.href = "./visualizar.html";
-        return;
-    }
+  if (!id) {
+    alert("Nenhuma avaliação selecionada!");
+    window.location.href = "./visualizar.html";
+    return;
+  }
 
-    const avaliacao = await service.getAvaliacao(id);
+  const avaliacao = await service.getAvaliacao(id);
 
-    texto.innerHTML = `
+  texto.innerHTML = `
         <strong>ID:</strong> ${avaliacao.id}<br>
         <strong>Usuário ID:</strong> ${avaliacao.usuarioId}<br>
         <strong>Mercado ID:</strong> ${avaliacao.mercadoId}<br>
@@ -25,9 +25,9 @@ async function carregar() {
 }
 
 btnExcluir.addEventListener("click", async () => {
-    await service.excluirAvaliacao(id);
-    alert("Avaliação excluída com sucesso!");
-    window.location.href = "./visualizar.html";
+  await service.excluirAvaliacao(id);
+  alert("Avaliação excluída com sucesso!");
+  window.location.href = "./visualizar.html";
 });
 
 carregar();

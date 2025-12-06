@@ -1,21 +1,19 @@
-import { UsuarioService } from "../../../services/usuario-service.js";
-
-const usuarioService = new UsuarioService();
+import UsuariosService from "../../../services/usuario-service.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("form-usuario").addEventListener("submit", salvar);
+  document.getElementById("formUsuario").addEventListener("submit", salvar);
 });
 
 async function salvar(event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    const nome = document.getElementById("nome-input").value;
-    const email = document.getElementById("email-input").value;
-    const senha = document.getElementById("senha-input").value;
+  const nome = document.getElementById("nome").value;
+  const email = document.getElementById("email").value;
+  const senha = document.getElementById("senha").value;
 
-    const novoUsuario = { nome, email, senha };
+  const novoUsuario = { nome, email, senha };
 
-    await usuarioService.criarUsuario(novoUsuario);
+  await UsuariosService.create(novoUsuario);
 
-    window.location.href = "index.html";
+  window.location.href = "index.html";
 }

@@ -2,7 +2,6 @@ import { ProdutoService } from "../../../services/produto-service.js";
 
 const produtoService = new ProdutoService();
 
-// Elementos
 const imgProduto = document.querySelector("#img-produto");
 const detNome = document.querySelector("#det-nome");
 const detCategoria = document.querySelector("#det-categoria");
@@ -16,11 +15,9 @@ const detMercado = document.querySelector("#det-mercado");
 const btnExcluir = document.querySelector("#btn-excluir");
 const btnEditar = document.querySelector("#btn-editar");
 
-// Pegar ID da URL
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
-// Buscar mercado
 async function getMercadoName(idMercado) {
   if (!idMercado) return "Não informado";
 
@@ -31,7 +28,6 @@ async function getMercadoName(idMercado) {
   return m.nome || "Desconhecido";
 }
 
-// Carregar produto
 async function carregarDetalhes() {
   const produto = await produtoService.getProduto(id);
 
@@ -40,7 +36,6 @@ async function carregarDetalhes() {
     return;
   }
 
-  // Preencher dados
   imgProduto.src = produto.imagem_url;
   detNome.textContent = produto.nome;
   detCategoria.textContent = produto.categoria;

@@ -1,113 +1,78 @@
-import { ListasService } from "../../../services/listas-service.js";
+import ListasComprasService from "../../../services/listas-service.js";
+import UsuariosService from "../../../services/usuario-service.js";
+import ProdutosService from "../../../services/produto-service.js";
 
-const listasService = new ListasService();
-
-const usuarioSelect = document.querySelector("#usuario");
-const valorTotalInput = document.querySelector("#valor");
-const produtoSelect = document.querySelector("#produto");
-const quantidadeInput = document.querySelector("#quantidade");
-const valorUnitarioInput = document.querySelector("#valorUnitario");
-const addProdutoBtn = document.querySelector("#addProduto");
-const salvarBtn = document.querySelector("#salvar-btn");
-const itensLista = document.querySelector("#itensLista");
-
-valorUnitarioInput.readOnly = true;
-valorTotalInput.readOnly = true;
-
-async function carregarProdutos() {
-    const r = await fetch("http://localhost:3001/produtos");
-    const produtos = await r.json();
-
-    produtos.forEach(p => {
-        const opt = document.createElement("option");
-        opt.value = p.id;
-        opt.textContent = p.nome;
-        opt.dataset.preco = p.preco; 
-        produtoSelect.appendChild(opt);
-    });
-}
-
-async function carregarUsuarios() {
-    const r = await fetch("http://localhost:3001/usuarios");
-    const usuarios = await r.json();
-
-    usuarios.forEach(u => {
-        const opt = document.createElement("option");
-        opt.value = u.id;
-        opt.textContent = u.nome;
-        usuarioSelect.appendChild(opt);
-    });
-}
-produtoSelect.addEventListener("change", () => {
-    const opt = produtoSelect.selectedOptions[0];
-    const preco = opt.dataset.preco;
-    valorUnitarioInput.value = Number(preco).toFixed(2);
+document.addEventListener("DOMContentLoaded", () => {
+  carregarSelects();
+  document.getElementById("formLista").addEventListener("submit", salvar);
+  document
+    .getElementById("addProduto")
+    .addEventListener("click", adicionarProduto);
 });
 
-function recalcularValorTotal() {
-    let total = 0;
+async function carregarSelects() {
+  const usuarios = await UsuariosService.getAll();
+  const produtos = await ProdutosService.getAll();
 
-    document.querySelectorAll("#itensLista tr").forEach(tr => {
-        const quantidade = Number(tr.children[1].textContent);
-        const valorUnitario = Number(tr.children[2].textContent.replace("R$ ", ""));
-        total += quantidade * valorUnitario;
-    });
+  const usuarioSelect = document.getElementById("usuario");
+  const produtoSelect = document.getElementById("produto");
 
-    valorTotalInput.value = total.toFixed(2);
+  usuarios.forEach((u) => {
+    usuarioSelect.innerHTML += `<option value="${u.id}">${u.nome}</option>`;
+  });
+
+  produtos.forEach((p) => {
+    produtoSelect.innerHTML += `<option value="${p.id}">${p.nome}</option>`;
+  });
 }
 
 function adicionarProduto() {
-    const produtoId = produtoSelect.value;
-    const quantidade = quantidadeInput.value;
-    const preco = valorUnitarioInput.value;
+  const produtoId = document.getElementById("produto").value;
+  const quantidade = document.getElementById("quantidade").value;
+  const valorUnitario = document.getElementById("valorUnitario").value;
 
-    if (!produtoId || !quantidade) return;
+  if (!produtoId || !quantidade || !valorUnitario) return;
 
-    const nomeProduto = produtoSelect.selectedOptions[0].text;
+  const tbody = document.getElementById("itensLista");
 
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-        <td data-produto="${produtoId}">${nomeProduto}</td>
+  const tr = document.createElement("tr");
+  tr.innerHTML = `
+        <td data-produto="${produtoId}">${
+    document.querySelector(`#produto option[value="${produtoId}"]`).text
+  }</td>
         <td>${quantidade}</td>
-        <td>R$ ${parseFloat(preco).toFixed(2)}</td>
-        <td>
-            <button class="btn btn-sm btn-danger remover-item">Remover</button>
-        </td>
+        <td>R$ ${parseFloat(valorUnitario).toFixed(2)}</td>
+        <td><button class="remover-item">Remover</button></td>
     `;
 
-    itensLista.appendChild(tr);
+  tbody.appendChild(tr);
 
-    tr.querySelector(".remover-item").addEventListener("click", () => {
-        tr.remove();
-        recalcularValorTotal();
-    });
-
-    recalcularValorTotal();
+  tr.querySelector(".remover-item").addEventListener("click", () =>
+    tr.remove()
+  );
 }
 
-async function salvar() {
-    const usuarioId = Number(usuarioSelect.value);
-    const valor = Number(valorTotalInput.value);
+async function salvar(event) {
+  event.preventDefault();
 
-    const produtos = [...document.querySelectorAll("#itensLista tr")].map(tr => ({
-        produtoId: Number(tr.children[0].dataset.produto),
-        quantidade: Number(tr.children[1].textContent),
-        valorUnitario: Number(tr.children[2].textContent.replace("R$ ", ""))
-    }));
+  const usuarioId = parseInt(document.getElementById("usuario").value);
+  const valor = parseFloat(document.getElementById("valor").value);
 
-    const novaLista = {
-        usuarioId,
-        valor,
-        produtos,
-        criadoEm: new Date().toISOString()
-    };
+  const produtos = [...document.querySelectorAll("#itensLista tr")].map(
+    (tr) => ({
+      produtoId: parseInt(tr.children[0].getAttribute("data-produto")),
+      quantidade: parseInt(tr.children[1].textContent),
+      valorUnitario: parseFloat(tr.children[2].textContent.replace("R$ ", "")),
+    })
+  );
 
-    await listasService.criarLista(novaLista);
-    window.location.assign("index.html");
+  const novaLista = {
+    usuarioId,
+    valor,
+    produtos,
+  };
+
+  await ListasComprasService.create(novaLista);
+
+  window.location.href = "index.html";
 }
-
-addProdutoBtn.addEventListener("click", adicionarProduto);
-salvarBtn.addEventListener("click", salvar);
-
-carregarProdutos();
-carregarUsuarios();

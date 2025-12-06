@@ -4,14 +4,14 @@ const service = new AvaliacaoService();
 const tabela = document.querySelector("#tabela-avaliacoes tbody");
 
 async function carregarAvaliacoes() {
-    const avaliacoes = await service.getAvaliacoes();
+  const avaliacoes = await service.getAvaliacoes();
 
-    tabela.innerHTML = "";
+  tabela.innerHTML = "";
 
-    avaliacoes.forEach(av => {
-        const tr = document.createElement("tr");
+  avaliacoes.forEach((av) => {
+    const tr = document.createElement("tr");
 
-        tr.innerHTML = `
+    tr.innerHTML = `
             <td>${av.id}</td>
             <td>${av.usuarioId}</td>
             <td>${av.mercadoId}</td>
@@ -24,26 +24,26 @@ async function carregarAvaliacoes() {
             </td>
         `;
 
-        tabela.appendChild(tr);
-    });
+    tabela.appendChild(tr);
+  });
 
-    adicionarEventos();
+  adicionarEventos();
 }
 
 function adicionarEventos() {
-    document.querySelectorAll(".btn-editar").forEach(btn => {
-        btn.addEventListener("click", () => {
-            sessionStorage.setItem("avaliacaoId", btn.dataset.id);
-            window.location.href = "./editar.html";
-        });
+  document.querySelectorAll(".btn-editar").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      sessionStorage.setItem("avaliacaoId", btn.dataset.id);
+      window.location.href = "./editar.html";
     });
+  });
 
-    document.querySelectorAll(".btn-excluir").forEach(btn => {
-        btn.addEventListener("click", () => {
-            sessionStorage.setItem("avaliacaoId", btn.dataset.id);
-            window.location.href = "./excluir.html";
-        });
+  document.querySelectorAll(".btn-excluir").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      sessionStorage.setItem("avaliacaoId", btn.dataset.id);
+      window.location.href = "./excluir.html";
     });
+  });
 }
 
 carregarAvaliacoes();

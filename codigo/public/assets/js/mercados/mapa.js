@@ -15,7 +15,6 @@ let mercados = [];
 let marcadoresMercados = [];
 let marcadorMaisProximo = null;
 
-// Ícones
 const iconeUsuario = L.icon({
   iconUrl: "../../assets/img/user.png",
   iconAnchor: [15, 40],
@@ -29,7 +28,6 @@ const iconeMercadoVermelho = L.icon({
   iconAnchor: [15, 40],
 });
 
-// Função para criar botão de detalhes
 function criarBotaoDetalhes(mercado) {
   return `<button 
             style="padding:8px 16px; background:#000; color:#fff; border:none; border-radius:8px; font-weight:600;"
@@ -38,15 +36,17 @@ function criarBotaoDetalhes(mercado) {
           </button>`;
 }
 
-// Carregar mercados e adicionar marcadores
 async function carregarMercados() {
   try {
     mercados = await service.getMercados();
 
     mercados.forEach((m) => {
-      const marker = L.marker([m.localizacao.latitude, m.localizacao.longitude], {
-        icon: iconeMercadoAzul,
-      }).addTo(map).bindPopup(`
+      const marker = L.marker(
+        [m.localizacao.latitude, m.localizacao.longitude],
+        {
+          icon: iconeMercadoAzul,
+        }
+      ).addTo(map).bindPopup(`
         <div style="text-align:center;">
           <b>${m.nome}</b><br>
           ${m.endereco}<br><br>
@@ -62,17 +62,23 @@ async function carregarMercados() {
   }
 }
 
-// Localizar usuário
 function localizarUsuario() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        usuarioAtual = { latitude: pos.coords.latitude, longitude: pos.coords.longitude };
-        status.textContent = `📍 Você está em: ${usuarioAtual.latitude.toFixed(5)}, ${usuarioAtual.longitude.toFixed(5)}`;
+        usuarioAtual = {
+          latitude: pos.coords.latitude,
+          longitude: pos.coords.longitude,
+        };
+        status.textContent = `📍 Você está em: ${usuarioAtual.latitude.toFixed(
+          5
+        )}, ${usuarioAtual.longitude.toFixed(5)}`;
 
         map.setView([usuarioAtual.latitude, usuarioAtual.longitude], 15);
 
-        L.marker([usuarioAtual.latitude, usuarioAtual.longitude], { icon: iconeUsuario })
+        L.marker([usuarioAtual.latitude, usuarioAtual.longitude], {
+          icon: iconeUsuario,
+        })
           .addTo(map)
           .bindPopup("📍 Sua localização atual")
           .openPopup();
@@ -92,7 +98,6 @@ function localizarUsuario() {
   }
 }
 
-// Destacar mercado mais próximo
 function destacarMaisProximo() {
   if (!usuarioAtual || mercados.length === 0) return;
 
@@ -120,20 +125,28 @@ function destacarMaisProximo() {
 
   marcadoresMercados.forEach((m) => m.marker.setIcon(iconeMercadoAzul));
 
-  marcadorMaisProximo = marcadoresMercados.find((m) => m.id === maisProximo.id).marker;
+  marcadorMaisProximo = marcadoresMercados.find(
+    (m) => m.id === maisProximo.id
+  ).marker;
   marcadorMaisProximo.setIcon(iconeMercadoVermelho);
-  marcadorMaisProximo.bindPopup(`
+  marcadorMaisProximo
+    .bindPopup(
+      `
     <div style="text-align:center;">
       <b>${maisProximo.nome} (mais próximo)</b><br>
       ${maisProximo.endereco}<br><br>
       ${criarBotaoDetalhes(maisProximo)}
     </div>
-  `).openPopup();
+  `
+    )
+    .openPopup();
 
-  map.setView([maisProximo.localizacao.latitude, maisProximo.localizacao.longitude], 17);
+  map.setView(
+    [maisProximo.localizacao.latitude, maisProximo.localizacao.longitude],
+    17
+  );
 }
 
-// Buscar mercado pelo input
 function buscarMercado(termo) {
   if (!usuarioAtual) return alert("Localização não obtida ainda.");
 
@@ -152,25 +165,32 @@ function buscarMercado(termo) {
 
   if (encontrados.length > 0) {
     const maisProximo = encontrados[0];
-    map.setView([maisProximo.localizacao.latitude, maisProximo.localizacao.longitude], 17);
+    map.setView(
+      [maisProximo.localizacao.latitude, maisProximo.localizacao.longitude],
+      17
+    );
 
     L.popup()
-      .setLatLng([maisProximo.localizacao.latitude, maisProximo.localizacao.longitude])
-      .setContent(`
+      .setLatLng([
+        maisProximo.localizacao.latitude,
+        maisProximo.localizacao.longitude,
+      ])
+      .setContent(
+        `
         <div style="text-align:center;">
           <b>${maisProximo.nome}</b><br>
           ${maisProximo.endereco}<br>
           Distância: ${maisProximo.distancia.toFixed(2)} km<br><br>
           ${criarBotaoDetalhes(maisProximo)}
         </div>
-      `)
+      `
+      )
       .openOn(map);
   } else {
     alert("Nenhum mercado encontrado.");
   }
 }
 
-// Calcular distância em km
 function calcularDistancia(lat1, lon1, lat2, lon2) {
   const R = 6371;
   const dLat = ((lat2 - lat1) * Math.PI) / 180;
@@ -184,10 +204,8 @@ function calcularDistancia(lat1, lon1, lat2, lon2) {
   return R * c;
 }
 
-// Eventos
 inputBusca.addEventListener("keypress", (e) => {
   if (e.key === "Enter") buscarMercado(inputBusca.value);
 });
 
-// Inicializar
 localizarUsuario();

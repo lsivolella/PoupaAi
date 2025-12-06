@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cadastro</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="/codigo/public/assets/css/style.css" />
+  </head>
+  <body>
+    <div class="auth-container">
+      <div class="auth-card">
+        <div class="text-center mb-4">
+          <img
+            src="/codigo/public/assets/img/Logo_PoupaAI.svg"
+            alt="PoupaAí"
+            class="logo-auth"
+          />
+        </div>
+
+        <h2 class="text-center mb-4">Criar Conta</h2>
+
+        <div id="alert-container"></div>
+
+        <form id="form-cadastro">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="nome" class="form-label">
+                <i class="bi bi-person"></i> Nome
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                id="nome"
+                placeholder="Seu nome"
+                required
+                minlength="2"
+              />
+              <div class="invalid-feedback">
+                Nome deve ter pelo menos 2 caracteres
+              </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="sobrenome" class="form-label">
+                <i class="bi bi-person"></i> Sobrenome
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                id="sobrenome"
+                placeholder="Seu sobrenome"
+                required
+                minlength="2"
+              />
+              <div class="invalid-feedback">
+                Sobrenome deve ter pelo menos 2 caracteres
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="telefone" class="form-label">
+              <i class="bi bi-telephone"></i> Telefone
+            </label>
+            <input
+              type="tel"
+              class="form-control"
+              id="telefone"
+              placeholder="(00) 00000-0000"
+              required
+            />
+            <div class="invalid-feedback">Digite um telefone válido</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">
+              <i class="bi bi-envelope"></i> E-mail
+            </label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="seu@email.com"
+              required
+            />
+            <div class="invalid-feedback">Digite um e-mail válido</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="senha" class="form-label">
+              <i class="bi bi-lock"></i> Senha
+            </label>
+            <div class="password-input">
+              <input
+                type="password"
+                class="form-control"
+                id="senha"
+                placeholder="Mínimo 6 caracteres"
+                required
+                minlength="6"
+              />
+              <button
+                type="button"
+                class="btn-toggle-password"
+                id="toggle-password"
+              >
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+            <div class="password-strength" id="password-strength"></div>
+            <div class="invalid-feedback">
+              A senha deve ter pelo menos 6 caracteres
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="confirmar-senha" class="form-label">
+              <i class="bi bi-lock-fill"></i> Confirmar Senha
+            </label>
+            <div class="password-input">
+              <input
+                type="password"
+                class="form-control"
+                id="confirmar-senha"
+                placeholder="Digite a senha novamente"
+                required
+              />
+              <button
+                type="button"
+                class="btn-toggle-password"
+                id="toggle-confirm-password"
+              >
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+            <div class="invalid-feedback">As senhas não coincidem</div>
+          </div>
+
+          <div class="mb-3 form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="termos"
+              required
+            />
+            <label class="form-check-label" for="termos">
+              Aceito os <a href="#" target="_blank">termos de uso</a> e a
+              <a href="#" target="_blank">política de privacidade</a>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100 mb-3">
+            <i class="bi bi-person-plus"></i> Criar Conta
+          </button>
+
+          <div class="text-center">
+            <p class="mb-0">
+              Já tem uma conta? <a href="login.html">Faça login</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="../../assets/js/usuarios/cadastro.js"></script>
+  </body>
+</html>

@@ -2,208 +2,830 @@
   "usuarios": [
     {
       "id": 1,
-      "nome": "Sofia",
+      "nome": "Sofia Almeida",
+      "sobrenome": "Santos",
+      "telefone": "(31) 98765-4321",
       "email": "sofia@example.com",
-      "senha": "@senha"
+      "senha": "@senha123",
+      "avatar": "../assets/img/avatar-default.svg",
+      "dataCadastro": "2024-01-15T10:30:00",
+      "endereco": {
+        "cep": "33400-000",
+        "rua": "Rua das Flores",
+        "numero": "123",
+        "bairro": "Centro",
+        "cidade": "Lagoa Santa",
+        "estado": "MG"
+      }
     },
     {
-      "nome": "Teste",
-      "email": "teste@t.com",
-      "senha": "1408",
-      "id": 2
+      "id": 2,
+      "nome": "João Pedro",
+      "sobrenome": "Costa",
+      "telefone": "(31) 99876-5432",
+      "email": "joao@example.com",
+      "senha": "joao@2024",
+      "avatar": "../assets/img/avatar-default.svg",
+      "dataCadastro": "2024-02-20T14:15:00",
+      "endereco": {
+        "cep": "33400-100",
+        "rua": "Av. Principal",
+        "numero": "456",
+        "bairro": "Lagoa",
+        "cidade": "Lagoa Santa",
+        "estado": "MG"
+      }
+    },
+    {
+      "id": 3,
+      "nome": "Maria Clara",
+      "sobrenome": "Oliveira",
+      "telefone": "(31) 97654-3210",
+      "email": "maria@example.com",
+      "senha": "maria@2024",
+      "avatar": "../assets/img/avatar-default.svg",
+      "dataCadastro": "2024-03-10T09:45:00",
+      "endereco": {
+        "cep": "33400-200",
+        "rua": "Rua das Palmeiras",
+        "numero": "789",
+        "bairro": "Jardim",
+        "cidade": "Lagoa Santa",
+        "estado": "MG"
+      }
     }
   ],
+
   "mercados": [
     {
       "id": 1,
-      "nome": "Supermercado Central",
-      "endereco": "Rua A, 123",
-      "acessibilidades": [
-        1,
-        2
-      ],
-      "avaliacoes": [
-        1
-      ],
-      "produtos": [
-        1,
-        2,
-        3
-      ],
-      "mediaAvaliacoes": 4.2,
-      "numeroDeAvaliacoes": 3,
-      "logo": "https://static.ifood-static.com.br/image/upload/t_medium/logosgde/d24ab004-d1f7-4da4-b131-39be54b5e7d2/202308101634_wQ4D_i.jpg",
+      "nome": "Supermercado Lagoa",
+      "logo": "https://via.placeholder.com/200x100?text=Supermercado+Lagoa",
+      "endereco": {
+        "cep": "33400-000",
+        "rua": "Rua Principal",
+        "numero": "100",
+        "bairro": "Centro",
+        "cidade": "Lagoa Santa",
+        "estado": "MG",
+        "pais": "Brasil"
+      },
       "telefone": "(31) 3333-4444",
+      "email": "contato@superlagoa.com.br",
       "horarioFuncionamento": "Seg-Sáb: 7h às 22h, Dom: 8h às 20h",
       "localizacao": {
         "latitude": -19.6305,
         "longitude": -43.936
-      }
+      },
+      "acessibilidade": {
+        "rampa": null,
+        "elevador": null,
+        "vagas": null,
+        "piso": true,
+        "braille": true,
+        "preferencial": true,
+        "libras": null
+      },
+      "votos": {
+        "rampa": { "likes": 0, "dislikes": 0 },
+        "elevador": { "likes": 0, "dislikes": 0 },
+        "vagas": { "likes": 0, "dislikes": 0 },
+        "piso": { "likes": 5, "dislikes": 0 },
+        "braille": { "likes": 3, "dislikes": 0 },
+        "preferencial": { "likes": 8, "dislikes": 0 },
+        "libras": { "likes": 0, "dislikes": 0 }
+      },
+      "mediaAvaliacoes": 4.5,
+      "numeroDeAvaliacoes": 12,
+      "dataAtualizacao": "2025-01-28T10:30:00"
     },
     {
-      "nome": "Supermercados Celeste",
-      "logo": "https://raichu-uploads.s3.amazonaws.com/logo_supermercados-bh_UpPNOh.png",
+      "id": 2,
+      "nome": "Mercado Central Lagoa Santa",
+      "logo": "https://via.placeholder.com/200x100?text=Mercado+Central",
       "endereco": {
-        "cep": "30180-111",
-        "rua": "Av. Olegário Maciel",
-        "numero": "742",
+        "cep": "33400-050",
+        "rua": "Av. Minas Gerais",
+        "numero": "250",
         "bairro": "Centro",
-        "cidade": "Belo Horizonte",
+        "cidade": "Lagoa Santa",
         "estado": "MG",
         "pais": "Brasil"
       },
-      "telefone": "(31) 3271-8000",
-      "email": "atendimento@superceleste.com.br",
-      "acessibilidades": [
-        1
-      ],
-      "id": 2
+      "telefone": "(31) 3444-5555",
+      "email": "contato@mercadocentral.com.br",
+      "horarioFuncionamento": "Segunda a Domingo: 6h às 23h",
+      "localizacao": {
+        "latitude": -19.629,
+        "longitude": -43.9385
+      },
+      "acessibilidade": {
+        "rampa": true,
+        "elevador": false,
+        "vagas": true,
+        "piso": true,
+        "braille": false,
+        "preferencial": true,
+        "libras": false
+      },
+      "votos": {
+        "rampa": { "likes": 10, "dislikes": 0 },
+        "elevador": { "likes": 0, "dislikes": 2 },
+        "vagas": { "likes": 15, "dislikes": 1 },
+        "piso": { "likes": 8, "dislikes": 0 },
+        "braille": { "likes": 0, "dislikes": 3 },
+        "preferencial": { "likes": 18, "dislikes": 0 },
+        "libras": { "likes": 0, "dislikes": 5 }
+      },
+      "mediaAvaliacoes": 4.2,
+      "numeroDeAvaliacoes": 28,
+      "dataAtualizacao": "2025-01-15T10:30:00"
     },
     {
-      "nome": "Mercado Super",
-      "logo": "https://img.cdndsgni.com/preview/10438126.jpg",
+      "id": 3,
+      "nome": "Hipermercado Popular",
+      "logo": "https://via.placeholder.com/200x100?text=Hiper+Popular",
       "endereco": {
-        "cep": "32315-000",
-        "rua": "Av. João César de Oliveira",
-        "numero": "5400",
-        "bairro": "Eldorado",
-        "cidade": "Contagem",
+        "cep": "33400-100",
+        "rua": "Rua das Flores",
+        "numero": "45",
+        "bairro": "Jardim",
+        "cidade": "Lagoa Santa",
         "estado": "MG",
         "pais": "Brasil"
       },
-      "telefone": "(31) 3392-4000",
-      "email": "contato@mercadosuper.com",
-      "acessibilidades": [
-        2
-      ],
-      "id": 3
+      "telefone": "(31) 3555-6666",
+      "email": "sac@hiperpopular.com.br",
+      "horarioFuncionamento": "Seg-Sáb: 8h às 21h, Dom: 9h às 18h",
+      "localizacao": {
+        "latitude": -19.6312,
+        "longitude": -43.935
+      },
+      "acessibilidade": {
+        "rampa": true,
+        "elevador": true,
+        "vagas": true,
+        "piso": true,
+        "braille": true,
+        "preferencial": true,
+        "libras": true
+      },
+      "votos": {
+        "rampa": { "likes": 20, "dislikes": 0 },
+        "elevador": { "likes": 15, "dislikes": 1 },
+        "vagas": { "likes": 25, "dislikes": 0 },
+        "piso": { "likes": 18, "dislikes": 0 },
+        "braille": { "likes": 12, "dislikes": 0 },
+        "preferencial": { "likes": 22, "dislikes": 0 },
+        "libras": { "likes": 10, "dislikes": 2 }
+      },
+      "mediaAvaliacoes": 4.8,
+      "numeroDeAvaliacoes": 45,
+      "dataAtualizacao": "2025-01-20T14:45:00"
     }
   ],
-  "acessibilidades": [
+
+  "produtos": [
     {
       "id": 1,
-      "tipo": "Rampa de acesso"
+      "nome": "Arroz Branco",
+      "marca": "Camil",
+      "categoria": "Alimentos",
+      "unidade_medida": "kg",
+      "tamanho_embalagem": "1",
+      "descricao": "Arroz branco tipo 1, grãos selecionados",
+      "imagem_url": "../assets/img/arroz_branco_camil_1kg.jpg",
+      "criadoEm": "2024-01-01T10:00:00",
+      "atualizadoEm": "2025-01-28T10:00:00",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 7.2,
+          "precoAnterior": 7.9,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-01-28T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 7.5,
+          "precoAnterior": 8.0,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-01-27T14:30:00"
+        },
+        {
+          "mercadoId": 3,
+          "preco": 6.9,
+          "precoAnterior": 7.8,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-01-28T09:15:00"
+        }
+      ]
     },
     {
-      "tipo": "Elevador",
-      "id": 2
+      "id": 2,
+      "nome": "Aveia Integral",
+      "marca": "Quaker",
+      "categoria": "Alimentos",
+      "unidade_medida": "g",
+      "tamanho_embalagem": "400",
+      "descricao": "Aveia integral em flocos finos",
+      "imagem_url": "../assets/img/aveia_integral_quaker_400g.png",
+      "criadoEm": "2024-01-02T10:00:00",
+      "atualizadoEm": "2025-01-28T10:00:00",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 8.5,
+          "precoAnterior": 9.2,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-01-28T10:00:00"
+        },
+        {
+          "mercadoId": 3,
+          "preco": 8.8,
+          "precoAnterior": 9.5,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-01-27T16:20:00"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nome": "Feijão Preto",
+      "marca": "Kicaldo",
+      "categoria": "Alimentos",
+      "unidade_medida": "kg",
+      "tamanho_embalagem": "1",
+      "descricao": "Feijão preto tipo 1, grãos selecionados",
+      "imagem_url": "../assets/img/feijao_preto_kicaldo_1kg.png",
+      "criadoEm": "2024-01-03T10:00:00",
+      "atualizadoEm": "2025-01-28T10:00:00",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 9.1,
+          "precoAnterior": 9.8,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-01-28T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 9.3,
+          "precoAnterior": 10.0,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-01-27T11:45:00"
+        },
+        {
+          "mercadoId": 3,
+          "preco": 8.9,
+          "precoAnterior": 9.7,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-01-28T08:30:00"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nome": "Pão de Forma Integral",
+      "marca": "Visconti",
+      "categoria": "Alimentos",
+      "unidade_medida": "g",
+      "tamanho_embalagem": "500",
+      "descricao": "Pão de forma integral com fibras",
+      "imagem_url": "../assets/img/pao_forma_integral_visconti_500g.png",
+      "criadoEm": "2024-01-04T10:00:00",
+      "atualizadoEm": "2025-01-28T10:00:00",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 8.9,
+          "precoAnterior": 9.5,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-01-28T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 9.2,
+          "precoAnterior": 9.8,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-01-27T15:00:00"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "nome": "Veja Multiuso",
+      "marca": "Veja",
+      "categoria": "Limpeza",
+      "unidade_medida": "ml",
+      "tamanho_embalagem": "500",
+      "descricao": "Limpador multiuso limão",
+      "imagem_url": "../assets/img/veja_multiuso_500ml.png",
+      "criadoEm": "2024-01-05T10:00:00",
+      "atualizadoEm": "2025-01-28T10:00:00",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 6.7,
+          "precoAnterior": 7.5,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-01-28T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 6.9,
+          "precoAnterior": 7.7,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-01-27T13:20:00"
+        },
+        {
+          "mercadoId": 3,
+          "preco": 6.5,
+          "precoAnterior": 7.3,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-01-28T09:45:00"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "nome": "Óleo de Soja",
+      "marca": "Liza",
+      "categoria": "Alimentos",
+      "unidade_medida": "ml",
+      "tamanho_embalagem": "900",
+      "descricao": "Óleo de soja refinado",
+      "imagem_url": "../assets/img/oleo_soja_liza_900ml.png",
+      "criadoEm": "2024-01-06T10:00:00",
+      "atualizadoEm": "2025-01-28T10:00:00",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 8.9,
+          "precoAnterior": 9.9,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-01-28T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 9.2,
+          "precoAnterior": 10.2,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-01-27T12:00:00"
+        },
+        {
+          "mercadoId": 3,
+          "preco": 8.7,
+          "precoAnterior": 9.7,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-01-28T08:00:00"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "nome": "Leite Integral",
+      "marca": "Itambé",
+      "categoria": "Alimentos",
+      "unidade_medida": "L",
+      "tamanho_embalagem": "1",
+      "descricao": "Leite integral UHT",
+      "imagem_url": "../assets/img/leite_integral_itambe_1l.png",
+      "criadoEm": "2024-01-07T10:00:00",
+      "atualizadoEm": "2025-01-28T10:00:00",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 4.5,
+          "precoAnterior": 5.0,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-01-28T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 4.7,
+          "precoAnterior": 5.2,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-01-27T14:00:00"
+        },
+        {
+          "mercadoId": 3,
+          "preco": 4.4,
+          "precoAnterior": 4.9,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-01-28T09:30:00"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "nome": "Açúcar Cristal",
+      "marca": "União",
+      "categoria": "Alimentos",
+      "unidade_medida": "kg",
+      "tamanho_embalagem": "1",
+      "descricao": "Açúcar cristal refinado",
+      "imagem_url": "../assets/img/acucar_cristal_uniao_1kg.png",
+      "criadoEm": "2024-01-08T10:00:00",
+      "atualizadoEm": "2025-01-28T10:00:00",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 3.9,
+          "precoAnterior": 4.5,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-01-28T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 4.1,
+          "precoAnterior": 4.7,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-01-27T11:00:00"
+        }
+      ]
     }
   ],
+
+  "listasCompras": [
+    {
+      "id": 1,
+      "usuarioId": 1,
+      "nome": "Lista Mensal - Janeiro",
+      "dataCriacao": "2025-01-15T10:00:00",
+      "dataAtualizacao": "2025-01-28T14:30:00",
+      "status": "ativa",
+      "valorEstimado": 150.5,
+      "produtos": [
+        {
+          "produtoId": 1,
+          "quantidade": 5,
+          "precoUnitario": 7.2,
+          "mercadoId": 1
+        },
+        {
+          "produtoId": 3,
+          "quantidade": 3,
+          "precoUnitario": 9.1,
+          "mercadoId": 1
+        },
+        {
+          "produtoId": 7,
+          "quantidade": 10,
+          "precoUnitario": 4.5,
+          "mercadoId": 1
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "usuarioId": 1,
+      "nome": "Lista Semanal",
+      "dataCriacao": "2025-01-25T08:00:00",
+      "dataAtualizacao": "2025-01-28T10:00:00",
+      "status": "ativa",
+      "valorEstimado": 85.3,
+      "produtos": [
+        {
+          "produtoId": 4,
+          "quantidade": 2,
+          "precoUnitario": 8.9,
+          "mercadoId": 1
+        },
+        {
+          "produtoId": 7,
+          "quantidade": 6,
+          "precoUnitario": 4.5,
+          "mercadoId": 1
+        },
+        {
+          "produtoId": 8,
+          "quantidade": 2,
+          "precoUnitario": 3.9,
+          "mercadoId": 1
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "usuarioId": 2,
+      "nome": "Compras do Mês",
+      "dataCriacao": "2025-01-20T14:30:00",
+      "dataAtualizacao": "2025-01-27T16:00:00",
+      "status": "ativa",
+      "valorEstimado": 200.0,
+      "produtos": [
+        {
+          "produtoId": 1,
+          "quantidade": 10,
+          "precoUnitario": 6.9,
+          "mercadoId": 3
+        },
+        {
+          "produtoId": 3,
+          "quantidade": 5,
+          "precoUnitario": 8.9,
+          "mercadoId": 3
+        },
+        {
+          "produtoId": 6,
+          "quantidade": 4,
+          "precoUnitario": 8.7,
+          "mercadoId": 3
+        }
+      ]
+    }
+  ],
+
+  "historicoCompras": [
+    {
+      "id": 1,
+      "usuarioId": 1,
+      "mercadoId": 1,
+      "data": "2025-01-20T15:30:00",
+      "status": "Finalizado",
+      "total": 62.48,
+      "metodoPagamento": "Cartão de Crédito",
+      "itens": [
+        {
+          "produtoId": 1,
+          "quantidade": 2,
+          "precoUnitario": 7.2,
+          "subtotal": 14.4
+        },
+        {
+          "produtoId": 3,
+          "quantidade": 2,
+          "precoUnitario": 9.1,
+          "subtotal": 18.2
+        },
+        {
+          "produtoId": 7,
+          "quantidade": 4,
+          "precoUnitario": 4.5,
+          "subtotal": 18.0
+        },
+        {
+          "produtoId": 5,
+          "quantidade": 2,
+          "precoUnitario": 6.7,
+          "subtotal": 13.4
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "usuarioId": 1,
+      "mercadoId": 2,
+      "data": "2025-01-15T10:15:00",
+      "status": "Finalizado",
+      "total": 45.8,
+      "metodoPagamento": "PIX",
+      "itens": [
+        {
+          "produtoId": 1,
+          "quantidade": 1,
+          "precoUnitario": 7.5,
+          "subtotal": 7.5
+        },
+        {
+          "produtoId": 4,
+          "quantidade": 2,
+          "precoUnitario": 9.2,
+          "subtotal": 18.4
+        },
+        {
+          "produtoId": 7,
+          "quantidade": 3,
+          "precoUnitario": 4.7,
+          "subtotal": 14.1
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "usuarioId": 2,
+      "mercadoId": 3,
+      "data": "2025-01-25T14:00:00",
+      "status": "Finalizado",
+      "total": 89.5,
+      "metodoPagamento": "Dinheiro",
+      "itens": [
+        {
+          "produtoId": 1,
+          "quantidade": 5,
+          "precoUnitario": 6.9,
+          "subtotal": 34.5
+        },
+        {
+          "produtoId": 3,
+          "quantidade": 3,
+          "precoUnitario": 8.9,
+          "subtotal": 26.7
+        },
+        {
+          "produtoId": 6,
+          "quantidade": 2,
+          "precoUnitario": 8.7,
+          "subtotal": 17.4
+        },
+        {
+          "produtoId": 7,
+          "quantidade": 2,
+          "precoUnitario": 4.4,
+          "subtotal": 8.8
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "usuarioId": 1,
+      "mercadoId": 1,
+      "data": "2025-01-28T11:45:00",
+      "status": "Em andamento",
+      "total": 35.6,
+      "metodoPagamento": "Cartão de Débito",
+      "itens": [
+        {
+          "produtoId": 2,
+          "quantidade": 2,
+          "precoUnitario": 8.5,
+          "subtotal": 17.0
+        },
+        {
+          "produtoId": 5,
+          "quantidade": 1,
+          "precoUnitario": 6.7,
+          "subtotal": 6.7
+        },
+        {
+          "produtoId": 8,
+          "quantidade": 3,
+          "precoUnitario": 3.9,
+          "subtotal": 11.7
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "usuarioId": 3,
+      "mercadoId": 2,
+      "data": "2025-01-22T16:30:00",
+      "status": "Finalizado",
+      "total": 78.9,
+      "metodoPagamento": "Cartão de Crédito",
+      "itens": [
+        {
+          "produtoId": 1,
+          "quantidade": 3,
+          "precoUnitario": 7.5,
+          "subtotal": 22.5
+        },
+        {
+          "produtoId": 3,
+          "quantidade": 2,
+          "precoUnitario": 9.3,
+          "subtotal": 18.6
+        },
+        {
+          "produtoId": 4,
+          "quantidade": 2,
+          "precoUnitario": 9.2,
+          "subtotal": 18.4
+        },
+        {
+          "produtoId": 7,
+          "quantidade": 4,
+          "precoUnitario": 4.7,
+          "subtotal": 18.8
+        }
+      ]
+    }
+  ],
+
   "avaliacoes": [
     {
       "id": 1,
       "usuarioId": 1,
       "mercadoId": 1,
       "nota": 5,
-      "comentario": "Muito bom!"
+      "comentario": "Excelente supermercado! Preços justos e boa variedade de produtos.",
+      "data": "2025-01-20T16:00:00"
     },
     {
+      "id": 2,
       "usuarioId": 1,
       "mercadoId": 2,
+      "nota": 4,
+      "comentario": "Bom atendimento, mas os preços poderiam ser melhores.",
+      "data": "2025-01-15T11:00:00"
+    },
+    {
+      "id": 3,
+      "usuarioId": 2,
+      "mercadoId": 3,
       "nota": 5,
-      "comentario": "Cabuloso!",
-      "criadoEm": "2025-12-03T22:21:43.399Z",
-      "id": 2
-    }
-  ],
-  "produtos": [
-    {
-      "nome": "Arroz Branco Tipo 1 – 5kg",
-      "categoria": "Alimentos",
-      "preco": 18.9,
-      "marca": "Tio João",
-      "unidade_medida": "Kg",
-      "tamanho_embalagem": "5",
-      "descricao": "Arroz branco tipo 1, grãos selecionados.",
-      "Mercado": [
-        1
-      ],
-      "imagem_url": "https://m.media-amazon.com/images/I/717Fu8J1nrL._AC_SX425_.jpg",
-      "criadoEm": "2025-12-03T00:23:18.642Z",
-      "atualizadoEm": "2025-12-03T00:23:18.642Z",
-      "id": 1
+      "comentario": "Melhor supermercado da região! Ótima acessibilidade.",
+      "data": "2025-01-25T15:00:00"
     },
     {
-      "nome": "Arroz Branquinho",
-      "categoria": "Alimentos",
-      "preco": 17.5,
-      "marca": "Tio João",
-      "unidade_medida": "Kg",
-      "tamanho_embalagem": "5",
-      "descricao": "Arroz branco tipo 1, grãos selecionados.",
-      "Mercado": [
-        2
-      ],
-      "imagem_url": "https://m.media-amazon.com/images/I/717Fu8J1nrL._AC_SX425_.jpg",
-      "criadoEm": "2025-12-03T00:24:32.332Z",
-      "atualizadoEm": "2025-12-03T00:24:32.332Z",
-      "id": 2
+      "id": 4,
+      "usuarioId": 3,
+      "mercadoId": 2,
+      "nota": 4,
+      "comentario": "Produtos frescos e boa localização.",
+      "data": "2025-01-22T17:00:00"
+    }
+  ],
+
+  "acessibilidades": [
+    {
+      "id": 1,
+      "tipo": "Rampa de acesso"
     },
     {
-      "nome": "Arroz Branco",
-      "categoria": "Alimentos",
-      "preco": 20.29,
-      "marca": "Camil",
-      "unidade_medida": "Kg",
-      "tamanho_embalagem": "5",
-      "descricao": "Arroz branco tipo 1, grãos selecionados.",
-      "Mercado": [
-        3
-      ],
-      "imagem_url": "https://m.media-amazon.com/images/I/81-Yw7YyRBL._AC_UF894,1000_QL80_.jpg",
-      "criadoEm": "2025-12-03T00:30:09.490Z",
-      "atualizadoEm": "2025-12-03T00:30:09.490Z",
-      "id": 3
-    }
-  ],
-  "listasCompras": [
+      "id": 2,
+      "tipo": "Elevador"
+    },
     {
-      "usuarioId": 1,
-      "valor": 101.45,
-      "produtos": [
-        {
-          "produtoId": 3,
-          "quantidade": 5,
-          "valorUnitario": 20.29
-        }
-      ],
-      "criadoEm": "2025-12-03T22:49:19.718Z",
-      "id": 2
+      "id": 3,
+      "tipo": "Vagas preferenciais"
+    },
+    {
+      "id": 4,
+      "tipo": "Piso tátil"
+    },
+    {
+      "id": 5,
+      "tipo": "Sinalização em Braille"
+    },
+    {
+      "id": 6,
+      "tipo": "Atendimento em Libras"
+    },
+    {
+      "id": 7,
+      "tipo": "Caixa preferencial"
     }
   ],
-  "historicoCompras": [
+
+  "categorias": [
+    {
+      "id": 1,
+      "nome": "Alimentos",
+      "icone": "bi-basket",
+      "descricao": "Produtos alimentícios em geral"
+    },
+    {
+      "id": 2,
+      "nome": "Limpeza",
+      "icone": "bi-droplet",
+      "descricao": "Produtos de limpeza e higiene do lar"
+    },
+    {
+      "id": 3,
+      "nome": "Higiene",
+      "icone": "bi-hand-soap",
+      "descricao": "Produtos de higiene pessoal"
+    },
+    {
+      "id": 4,
+      "nome": "Bebidas",
+      "icone": "bi-cup-straw",
+      "descricao": "Bebidas em geral"
+    },
+    {
+      "id": 5,
+      "nome": "Padaria",
+      "icone": "bi-shop-window",
+      "descricao": "Pães e produtos de padaria"
+    }
+  ],
+
+  "alertasPreco": [
     {
       "id": 1,
       "usuarioId": 1,
-      "data": "2025-11-28T15:20:00",
-      "total": 62.48,
-      "itens": [
-        {
-          "produtoId": 1,
-          "quantidade": 2,
-          "precoUnitario": 25.99
-        },
-        {
-          "produtoId": 2,
-          "quantidade": 1,
-          "precoUnitario": 10.5
-        }
-      ],
-      "mercadoId": 1
+      "produtoId": 1,
+      "precoDesejado": 6.5,
+      "ativo": true,
+      "dataCriacao": "2025-01-15T10:00:00"
     },
     {
+      "id": 2,
       "usuarioId": 1,
-      "data": "2025-12-03T23:31:37.766Z",
-      "total": 17.5,
-      "itens": [
-        {
-          "produtoId": 2,
-          "quantidade": 1,
-          "precoUnitario": 17.5
-        }
-      ],
-      "status": "finalizada",
-      "id": 2
+      "produtoId": 3,
+      "precoDesejado": 8.0,
+      "ativo": true,
+      "dataCriacao": "2025-01-20T14:30:00"
+    },
+    {
+      "id": 3,
+      "usuarioId": 2,
+      "produtoId": 6,
+      "precoDesejado": 8.0,
+      "ativo": true,
+      "dataCriacao": "2025-01-22T09:00:00"
     }
   ]
 }

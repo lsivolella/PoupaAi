@@ -1,80 +1,64 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Históricos de Compras</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Históricos de Compras</title>
+    <link rel="stylesheet" href="/codigo/public/assets/css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
 
-  <link rel="stylesheet" href="../../assets/css/style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script
+      defer
+      type="module"
+      src="../../assets/js/historicos/visualizar.js"
+    ></script>
+  </head>
 
-  <script defer type="module" src="../../assets/js/historicos/visualizar.js"></script>
-</head>
+  <body>
+    <header class="container py-4 text-center">
+      <img
+        src="../../assets/img/Logo_PoupaAI.svg"
+        class="img-fluid"
+        alt="Logo Poupa Aí"
+      />
+    </header>
 
-<body>
-  <header class="container py-4 text-center">
-    <img src="../../assets/img/Logo_PoupaAI.svg" class="img-fluid" alt="Logo Poupa Aí">
-  </header>
-
-  <main class="container">
-
-    <a href="../index.html" class="btn btn-outline-secondary mb-3">
-      <i class="bi bi-arrow-left"></i>
-    </a>
-
-    <h1 class="text-center mb-4">Históricos de Compras</h1>
-
-    <div class="d-flex justify-content-end mb-3">
-      <a href="criar.html" class="btn btn-primary">
-        <i class="bi bi-plus-lg"></i> Novo Histórico
+    <main class="container">
+      <a href="../index.html" class="btn btn-outline-secondary mb-3">
+        <i class="bi bi-arrow-left"></i>
       </a>
-    </div>
 
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Usuário</th>
-          <th>Data</th>
-          <th>Total</th>
-          <th>Itens</th>
-          <th>Mercado</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody id="tabela-historico"></tbody>
-    </table>
+      <h1 class="text-center mb-4">Históricos de Compras</h1>
 
-  </main>
+      <div class="d-flex justify-content-end mb-3">
+        <a href="criar.html" class="btn btn-primary">
+          <i class="bi bi-plus-lg"></i> Novo Histórico
+        </a>
+      </div>
 
-  <div class="bottom-nav">
-    <a href="../index.html" class="nav-item">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
-        <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5"/>
-      </svg>
-    </a>
-    <a href="../produtos/index.html" class="nav-item">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket3-fill" viewBox="0 0 16 16">
-        <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.468 15.426.943 9h14.114l-1.525 6.426a.75.75 0 0 1-.729.574H3.197a.75.75 0 0 1-.73-.574z"/>
-      </svg>
-    </a>
-    <a href="../usuarios/index.html" class="nav-item center">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-      </svg>
-    </a>
-    <a href="../mercados/index.html" class="nav-item">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
-        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
-      </svg>
-    </a>
-    <a href="../mercados/mapa.html" class="nav-item">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe-americas" viewBox="0 0 16 16">
-        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M2.04 4.326c.325 1.329 2.532 2.54 3.717 3.19.48.263.793.434.743.484q-.121.12-.242.234c-.416.396-.787.749-.758 1.266.035.634.618.824 1.214 1.017.577.188 1.168.38 1.286.983.082.417-.075.988-.22 1.52-.215.782-.406 1.48.22 1.48 1.5-.5 3.798-3.186 4-5 .138-1.243-2-2-3.5-2.5-.478-.16-.755.081-.99.284-.172.15-.322.279-.51.216-.445-.148-2.5-2-1.5-2.5.78-.39.952-.171 1.227.182.078.099.163.208.273.318.609.304.662-.132.723-.633.039-.322.081-.671.277-.867.434-.434 1.265-.791 2.028-1.12.712-.306 1.365-.587 1.579-.88A7 7 0 1 1 2.04 4.327Z"/>
-      </svg>
-    </a>
-  </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Usuário</th>
+            <th>Data</th>
+            <th>Total</th>
+            <th>Itens</th>
+            <th>Mercado</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-historico"></tbody>
+      </table>
+    </main>
 
-</body>
+    <script type="module" src="../assets/js/historico_index.js"></script>
+  </body>
 </html>

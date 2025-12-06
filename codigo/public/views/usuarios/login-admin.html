@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login Admin</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="/codigo/public/assets/css/style.css" />
+  </head>
+  <body>
+    <div class="auth-container">
+      <div class="auth-card admin-card">
+        <div class="text-center mb-4">
+          <img
+            src="/codigo/public/assets/img/Logo_PoupaAI.svg"
+            alt="PoupaAí"
+            class="logo-auth"
+          />
+          <div class="admin-badge">
+            <i class="bi bi-shield-fill-check"></i> Administrador
+          </div>
+        </div>
+
+        <h2 class="text-center mb-4">Acesso Administrativo</h2>
+
+        <div id="alert-container"></div>
+
+        <form id="form-login-admin">
+          <div class="mb-3">
+            <label for="email" class="form-label">
+              <i class="bi bi-person-badge"></i> E-mail Admin
+            </label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="admin@poupai.com"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="senha" class="form-label">
+              <i class="bi bi-key"></i> Senha Admin
+            </label>
+            <div class="password-input">
+              <input
+                type="password"
+                class="form-control"
+                id="senha"
+                placeholder="••••••••"
+                required
+              />
+              <button
+                type="button"
+                class="btn-toggle-password"
+                id="toggle-password"
+              >
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-danger w-100 mb-3">
+            <i class="bi bi-shield-lock"></i> Acessar Painel Admin
+          </button>
+
+          <div class="text-center">
+            <p class="mb-0 text-muted">
+              <a href="login.html">
+                <i class="bi bi-arrow-left"></i> Voltar ao login normal
+              </a>
+            </p>
+          </div>
+        </form>
+
+        <div class="alert alert-info mt-4" role="alert">
+          <i class="bi bi-info-circle"></i>
+          <strong>Credenciais de teste:</strong><br />
+          Email: admin@poupai.com<br />
+          Senha: admin123
+        </div>
+      </div>
+    </div>
+
+    <script
+      type="module"
+      src="/codigo/public/assets/js/usuarios/login-admin.js"
+    ></script>
+  </body>
+</html>

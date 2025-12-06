@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gerenciar Alertas</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="/codigo/public/assets/css/style.css" />
+  </head>
+
+  <body class="page-internal">
+    <header class="navbar">
+      <div class="navbar-container">
+        <div class="logo">
+          <a href="/codigo/public/views/index.html">
+            <img
+              src="/codigo/public/assets/img/Logo_PoupaAI_Branco.svg"
+              alt="PoupaAí"
+              class="logo-img"
+            />
+          </a>
+        </div>
+
+        <div class="search-bar">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Busque produtos..."
+            class="search-input"
+          />
+          <button class="search-button" id="searchButton">
+            <i class="bi bi-search"></i>
+            BUSCAR
+          </button>
+        </div>
+
+        <div class="user-actions">
+          <button class="user-btn" id="loginBtn" style="display: none">
+            <i class="bi bi-person-circle"></i>
+            <span>Entrar</span>
+          </button>
+
+          <div class="user-logged" id="userLogged" style="display: none">
+            <div class="user-info">
+              <img
+                src="/codigo/public/assets/img/Avatar_Usuario.svg"
+                alt="Avatar"
+                class="user-avatar"
+                id="userAvatar"
+              />
+              <span class="user-greeting" id="userGreeting">Olá, Usuário!</span>
+            </div>
+            <button class="btn-logout" id="logoutBtn" title="Sair">
+              <i class="bi bi-box-arrow-right"></i>
+            </button>
+          </div>
+
+          <button class="cart-btn" id="cartBtn">
+            <i class="bi bi-cart3"></i>
+            <span class="cart-badge" id="cartBadge">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <nav class="categories-nav">
+      <div class="container">
+        <ul class="categories-list">
+          <li>
+            <a href="/codigo/public/views/index.html"
+              ><i class="bi bi-house-door"></i> Início</a
+            >
+          </li>
+          <li>
+            <a href="/codigo/public/views/usuarios/dashboard-cliente.html"
+              ><i class="bi bi-speedometer2"></i> Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="/codigo/public/views/listas/index.html"
+              ><i class="bi bi-list-check"></i> Minhas Listas</a
+            >
+          </li>
+          <li>
+            <a href="/codigo/public/views/mercados/index.html"
+              ><i class="bi bi-shop"></i> Supermercados</a
+            >
+          </li>
+          <li>
+            <a href="/codigo/public/views/produtos/index.html"
+              ><i class="bi bi-box-seam"></i> Produtos</a
+            >
+          </li>
+          <li>
+            <a href="../promocoes/index.html"
+              ><i class="bi bi-tag"></i> Promoções</a
+            >
+          </li>
+          <li>
+            <a href="index.html" class="active"
+              ><i class="bi bi-bell"></i> Alertas</a
+            >
+          </li>
+          <li>
+            <a href="/codigo/public/views/historicos/index.html"
+              ><i class="bi bi-clock-history"></i> Histórico</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <div class="container">
+        <nav aria-label="breadcrumb" class="breadcrumb-nav">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="/codigo/public/views/index.html">Início</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="/codigo/public/views/alertas/index.html">Alertas</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Gerenciar
+            </li>
+          </ol>
+        </nav>
+
+        <div class="page-header">
+          <div class="page-header-content">
+            <div class="page-title-wrapper">
+              <i class="bi bi-gear-fill page-icon"></i>
+              <h1 class="page-title">Gerenciar Alertas</h1>
+            </div>
+            <p class="page-subtitle">
+              Configure e controle seus alertas de preço ativos
+            </p>
+          </div>
+          <div class="page-header-actions">
+            <a
+              href="/codigo/public/views/alertas/index.html"
+              class="btn btn-outline-primary"
+            >
+              <i class="bi bi-bell"></i>
+              Ver Notificações
+            </a>
+            <a href="criar.html" class="btn btn-primary">
+              <i class="bi bi-plus-lg"></i>
+              Novo Alerta
+            </a>
+          </div>
+        </div>
+
+        <div class="manage-toolbar">
+          <div class="manage-filters">
+            <select class="filter-select" id="filterStatus">
+              <option value="todos">Todos os status</option>
+              <option value="ativos">Ativos</option>
+              <option value="pausados">Pausados</option>
+            </select>
+
+            <select class="filter-select" id="filterMercado">
+              <option value="todos">Todos os mercados</option>
+            </select>
+          </div>
+
+          <div class="manage-actions">
+            <span class="total-alertas">
+              <i class="bi bi-list"></i>
+              <strong id="totalAlertas">0</strong> alertas cadastrados
+            </span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">
+              <i class="bi bi-table"></i>
+              Seus Alertas Cadastrados
+            </h2>
+          </div>
+
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table-modern" id="alertasTable">
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Produto</th>
+                    <th>Tipo</th>
+                    <th>Valor Alerta</th>
+                    <th>Preço Atual</th>
+                    <th>Supermercado</th>
+                    <th>Criado em</th>
+                    <th class="text-center">Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="alertasTableBody">
+                  <tr id="loadingRow">
+                    <td colspan="8" class="text-center py-5">
+                      <div class="spinner"></div>
+                      <p class="mt-3 text-muted">Carregando alertas...</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div id="emptyState" class="empty-state" style="display: none">
+              <i class="bi bi-inbox empty-icon"></i>
+              <h3>Nenhum alerta cadastrado</h3>
+              <p>
+                Crie seu primeiro alerta para ser notificado quando os preços
+                baixarem!
+              </p>
+              <a href="criar.html" class="btn btn-primary">
+                <i class="bi bi-plus-lg"></i>
+                Criar Primeiro Alerta
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 PoupaAí. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+
+    <div class="modal-overlay" id="modalOverlay" style="display: none">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="modalTitle">Confirmar Ação</h3>
+          <button class="modal-close" id="modalClose">
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="modalMessage">Deseja realmente excluir este alerta?</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" id="modalCancel">Cancelar</button>
+          <button class="btn btn-danger" id="modalConfirm">
+            <i class="bi bi-trash"></i>
+            Excluir
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/codigo/navbar.js"></script>
+    <script
+      type="module"
+      src="/codigo/public/assets/js/alertas/gerenciar.js"
+    ></script>
+  </body>
+</html>

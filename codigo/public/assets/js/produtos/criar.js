@@ -17,7 +17,7 @@ async function carregarMercados() {
   const r = await fetch("http://localhost:3001/mercados");
   const mercados = await r.json();
 
-  mercados.forEach(m => {
+  mercados.forEach((m) => {
     const opt = document.createElement("option");
     opt.value = m.id;
     opt.textContent = m.nome;
@@ -37,7 +37,7 @@ async function salvar() {
     Mercado: mercadoSelect.value ? [Number(mercadoSelect.value)] : [],
     imagem_url: imagemInput.value.trim(),
     criadoEm: new Date().toISOString(),
-    atualizadoEm: new Date().toISOString()
+    atualizadoEm: new Date().toISOString(),
   };
 
   await produtoService.criarProduto(produto);

@@ -3,98 +3,113 @@ import UsuariosService from "../../../services/usuario-service.js";
 import ProdutosService from "../../../services/produto-service.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    carregarSelects();
-    carregarDados();
-    document.getElementById("addProduto").addEventListener("click", adicionarProduto);
-    document.getElementById("formLista").addEventListener("submit", salvar);
+  carregarSelects();
+  carregarDados();
+  document
+    .getElementById("addProduto")
+    .addEventListener("click", adicionarProduto);
+  document.getElementById("formLista").addEventListener("submit", salvar);
 });
 
 async function carregarSelects() {
-    const usuarios = await UsuariosService.getAll();
-    const produtos = await ProdutosService.getAll();
+  const usuarios = await UsuariosService.getAll();
+  const produtos = await ProdutosService.getAll();
 
-    const usuarioSelect = document.getElementById("usuario");
-    const produtoSelect = document.getElementById("produto");
+  const usuarioSelect = document.getElementById("usuario");
+  const produtoSelect = document.getElementById("produto");
 
-    usuarios.forEach(u => {
-        usuarioSelect.innerHTML += `<option value="${u.id}">${u.nome}</option>`;
-    });
+  usuarios.forEach((u) => {
+    usuarioSelect.innerHTML += `<option value="${u.id}">${u.nome}</option>`;
+  });
 
-    produtos.forEach(p => {
-        produtoSelect.innerHTML += `<option value="${p.id}">${p.nome}</option>`;
-    });
+  produtos.forEach((p) => {
+    produtoSelect.innerHTML += `<option value="${p.id}">${p.nome}</option>`;
+  });
 }
 
 async function carregarDados() {
-    const id = sessionStorage.getItem("listaEdicaoId");
-    const lista = await ListasComprasService.getById(id);
+  const id = sessionStorage.getItem("listaEdicaoId");
+  const lista = await ListasComprasService.getById(id);
 
-    document.getElementById("usuario").value = lista.usuarioId;
-    document.getElementById("valor").value = lista.valor;
+  document.getElementById("usuario").value = lista.usuarioId;
+  document.getElementById("valor").value = lista.valor;
 
-    const tbody = document.getElementById("itensLista");
+  const tbody = document.getElementById("itensLista");
 
-    lista.produtos.forEach(item => {
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
+  lista.produtos.forEach((item) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
             <td data-produto="${item.produtoId}">
-                ${document.querySelector(`#produto option[value="${item.produtoId}"]`).text}
+                ${
+                  document.querySelector(
+                    `#produto option[value="${item.produtoId}"]`
+                  ).text
+                }
             </td>
             <td>${item.quantidade}</td>
             <td>R$ ${parseFloat(item.valorUnitario).toFixed(2)}</td>
             <td><button class="remover-item">Remover</button></td>
         `;
-        tbody.appendChild(tr);
+    tbody.appendChild(tr);
 
-        tr.querySelector(".remover-item").addEventListener("click", () => tr.remove());
-    });
+    tr.querySelector(".remover-item").addEventListener("click", () =>
+      tr.remove()
+    );
+  });
 }
 
 function adicionarProduto() {
-    const produtoId = document.getElementById("produto").value;
-    const quantidade = document.getElementById("quantidade").value;
-    const valorUnitario = document.getElementById("valorUnitario").value;
+  const produtoId = document.getElementById("produto").value;
+  const quantidade = document.getElementById("quantidade").value;
+  const valorUnitario = document.getElementById("valorUnitario").value;
 
-    if (!produtoId || !quantidade || !valorUnitario) return;
+  if (!produtoId || !quantidade || !valorUnitario) return;
 
-    const tbody = document.getElementById("itensLista");
+  const tbody = document.getElementById("itensLista");
 
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
+  const tr = document.createElement("tr");
+  tr.innerHTML = `
         <td data-produto="${produtoId}">
-            ${document.querySelector(`#produto option[value="${produtoId}"]`).text}
+            ${
+              document.querySelector(`#produto option[value="${produtoId}"]`)
+                .text
+            }
         </td>
         <td>${quantidade}</td>
         <td>R$ ${parseFloat(valorUnitario).toFixed(2)}</td>
         <td><button class="remover-item">Remover</button></td>
     `;
 
-    tbody.appendChild(tr);
+  tbody.appendChild(tr);
 
-    tr.querySelector(".remover-item").addEventListener("click", () => tr.remove());
+  tr.querySelector(".remover-item").addEventListener("click", () =>
+    tr.remove()
+  );
 }
 
 async function salvar(event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    const id = parseInt(sessionStorage.getItem("listaEdicaoId"));
-    const usuarioId = parseInt(document.getElementById("usuario").value);
-    const valor = parseFloat(document.getElementById("valor").value);
+  const id = parseInt(sessionStorage.getItem("listaEdicaoId"));
+  const usuarioId = parseInt(document.getElementById("usuario").value);
+  const valor = parseFloat(document.getElementById("valor").value);
 
-    const produtos = [...document.querySelectorAll("#itensLista tr")].map(tr => ({
-        produtoId: parseInt(tr.children[0].getAttribute("data-produto")),
-        quantidade: parseInt(tr.children[1].textContent),
-        valorUnitario: parseFloat(tr.children[2].textContent.replace("R$ ", ""))
-    }));
+  const produtos = [...document.querySelectorAll("#itensLista tr")].map(
+    (tr) => ({
+      produtoId: parseInt(tr.children[0].getAttribute("data-produto")),
+      quantidade: parseInt(tr.children[1].textContent),
+      valorUnitario: parseFloat(tr.children[2].textContent.replace("R$ ", "")),
+    })
+  );
 
-    const listaAtualizada = {
-        id,
-        usuarioId,
-        valor,
-        produtos
-    };
+  const listaAtualizada = {
+    id,
+    usuarioId,
+    valor,
+    produtos,
+  };
 
-    await ListasComprasService.update(listaAtualizada);
+  await ListasComprasService.update(listaAtualizada);
 
-    window.location.href = "index.html";
+  window.location.href = "index.html";
 }
