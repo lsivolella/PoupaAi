@@ -1,54 +1,3 @@
-/* SEARCH */
-.search-bar {
-  position: relative;
-  width: 100%;
-  max-width: 900px;
-  margin: 1rem auto;
-}
-
-.search-bar i {
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: gray;
-  font-size: 1.7rem;
-}
-
-.search-bar input {
-  width: 100%;
-  padding-left: 60px;
-  background-color: #f5f5f5;
-  border: none;
-  border-radius: 7px;
-  font-size: 1.2rem;
-}
-
-.search-bar input:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px #ccc;
-}
-
-@media (max-width: 768px) {
-  .search-bar input {
-    font-size: 0.9rem;
-    height: 36px;
-  }
-  .search-bar i {
-    font-size: 1.3rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .search-bar input {
-    font-size: 0.85rem;
-    height: 34px;
-  }
-  .search-bar i {
-    font-size: 1.1rem;
-  }
-}
-
 /* MAP */
 html,
 body {
@@ -68,37 +17,6 @@ body {
 #status {
   text-align: center;
   margin-bottom: 1rem;
-}
-
-.search-bar {
-  position: relative;
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto 16px auto;
-}
-
-.search-bar i {
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: gray;
-  font-size: 1.7rem;
-}
-
-.search-bar input {
-  width: 100%;
-  padding-left: 50px;
-  background-color: #f5f5f5;
-  border: none;
-  border-radius: 7px;
-  font-size: 1.2rem;
-  height: 45px;
-}
-
-.search-bar input:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px #ccc;
 }
 
 .filtros-container {
@@ -246,6 +164,35 @@ body {
   gap: 30px;
 }
 
+.navbar-admin {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+.navbar-admin .logo a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-admin .admin-badge-nav {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.navbar-admin .search-button {
+  background-color: #bd2130;
+}
+
+.navbar-admin .search-button:hover {
+  background-color: #a71d2a;
+}
+
 /* Logo */
 .logo {
   display: flex;
@@ -267,16 +214,35 @@ body {
   flex: 1;
   display: flex;
   gap: 0;
-  max-width: 700px;
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 1rem auto;
 }
 
-.search-input {
+.search-bar i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: gray;
+  font-size: 1.7rem;
+}
+
+.search-bar input {
   flex: 1;
-  padding: 12px 20px;
+  padding: 12px 20px 12px 50px;
+  background-color: #f5f5f5;
   border: none;
-  border-radius: 4px 0 0 4px;
-  font-size: 14px;
+  border-radius: 7px 0 0 7px;
+  font-size: 1.2rem;
+  height: 45px;
   outline: none;
+}
+
+.search-bar input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #ccc;
 }
 
 .search-input::placeholder {
@@ -304,6 +270,34 @@ body {
 
 .search-button i {
   font-size: 16px;
+}
+
+@media (max-width: 968px) {
+  .search-bar {
+    order: 3;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-bar input {
+    font-size: 0.9rem;
+    height: 36px;
+  }
+  .search-bar i {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-bar input {
+    font-size: 0.85rem;
+    height: 34px;
+  }
+  .search-bar i {
+    font-size: 1.1rem;
+  }
 }
 
 /* Ações do Usuário */
@@ -499,12 +493,6 @@ body {
   .navbar-container {
     flex-wrap: wrap;
     gap: 15px;
-  }
-
-  .search-bar {
-    order: 3;
-    width: 100%;
-    max-width: 100%;
   }
 
   .main-nav {
@@ -5117,35 +5105,6 @@ body.page-internal .container {
 
 .page-admin {
   background-color: #f8f9fa;
-}
-
-.navbar-admin {
-  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
-  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
-}
-
-.navbar-admin .logo a {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.navbar-admin .admin-badge-nav {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-.navbar-admin .search-button {
-  background-color: #bd2130;
-}
-
-.navbar-admin .search-button:hover {
-  background-color: #a71d2a;
 }
 
 .notifications-btn {
