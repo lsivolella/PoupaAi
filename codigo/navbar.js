@@ -5,7 +5,7 @@ const userGreeting = document.getElementById("userGreeting");
 const userAvatar = document.getElementById("userAvatar");
 const cartBadge = document.getElementById("cartBadge");
 
-const LOGIN_PAGE = "../views/usuarios/login.html";
+const LOGIN_PAGE = "/codigo/public/views/usuarios/login.html";
 const DEFAULT_AVATAR = "/codigo/public/assets/img/Avatar_Usuario.svg";
 
 document.addEventListener("DOMContentLoaded", () => {
