@@ -7,7 +7,7 @@ const UsuariosService = new UsuarioService();
 let listas;
 
 document.addEventListener("DOMContentLoaded", async () => {
-  carregarListasCompras();
+  await carregarListasCompras();
 });
 
 async function carregarListasCompras() {
