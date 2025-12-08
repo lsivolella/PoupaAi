@@ -2,6 +2,7 @@ import { MercadoService } from "../../../services/mercado-service.js";
 
 const service = new MercadoService();
 const container = document.getElementById("cards-mercados");
+const btnCadastrar = document.getElementById("cadastraBtn");
 const inputPesquisa = document.getElementById("pesquisa-mercado");
 const btnTodos = document.getElementById("filtro-todos");
 const btnAcessivel = document.getElementById("filtro-acessivel");
@@ -10,6 +11,26 @@ const btnSemAcessibilidade = document.getElementById(
 );
 
 let todosMercados = [];
+
+document.addEventListener("DOMContentLoaded", async () => {
+  await aplicarFormatacaoUsuario();
+  await carregarMercados();
+});
+
+async function aplicarFormatacaoUsuario() {
+  const userStr = localStorage.getItem("usuarioLogado");
+  let user;
+  
+  if (userStr)
+  {
+    user = JSON.parse(userStr);
+  }
+  if (user && user.role === "admin") {
+    btnCadastrar.style.display = "inline-block";
+  } else {
+    btnCadastrar.style.display = "none";
+  }
+}
 
 async function carregarMercados() {
   try {
@@ -122,5 +143,3 @@ btnSemAcessibilidade.addEventListener("click", () => {
   );
   atualizarFiltroAtivo(btnSemAcessibilidade);
 });
-
-carregarMercados();

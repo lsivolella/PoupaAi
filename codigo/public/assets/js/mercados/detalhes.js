@@ -8,6 +8,13 @@ const cardAvaliacoes = document.getElementById("card-avaliacoes");
 
 const mercadoId = sessionStorage.getItem("mercadoId");
 
+let isAdmin = false;
+
+document.addEventListener("DOMContentLoaded", async () => {
+  await carregarStatusUsuario();
+  await carregarDetalhes();
+});
+
 async function carregarDetalhes() {
   if (!mercadoId) {
     alert("Mercado não selecionado!");
@@ -25,13 +32,19 @@ async function carregarDetalhes() {
     }" style="width: 250px; object-fit: cover;">
         <div class="card-body flex-grow-1">
           <h3 class="card-title">${mercado.nome}</h3>
-          <p><b>Endereço:</b> ${mercado.endereco}</p>
+          <p><b>Endereço:</b> ${mercado.endereco.rua} ${mercado.endereco.numero}, ${mercado.endereco.bairro}. ${mercado.endereco.cidade} - ${mercado.endereco.estado}</p>
           <p><b>Telefone:</b> ${mercado.telefone}</p>
           <p><b>Funcionamento:</b> ${mercado.horarioFuncionamento}</p>
           <p><b>Média Avaliações:</b> ${mercado.mediaAvaliacoes ?? "-"}</p>
           <div class="mt-2 d-flex gap-2">
-            <button class="btn btn-warning" id="btn-editar">Editar</button>
-            <button class="btn btn-danger" id="btn-excluir">Excluir</button>
+            ${
+              isAdmin
+                ? `
+                  <button class="btn btn-warning" id="btn-editar">Editar</button>
+                  <button class="btn btn-danger" id="btn-excluir">Excluir</button>
+                `
+                : ""
+            }
             <button class="btn btn-success" id="btn-adicionar-avaliacao">
               <i class="bi bi-star-fill"></i> Adicionar Avaliação
             </button>
@@ -40,12 +53,16 @@ async function carregarDetalhes() {
       </div>
     `;
 
-    const acessibilidadesAll = await fetch(
-      "http://localhost:3001/acessibilidades"
-    ).then((r) => r.json());
-    const acessibilidadesMercado = acessibilidadesAll.filter((a) =>
-      mercado.acessibilidades.includes(a.id)
-    );
+    let acessibilidadesAll = [];
+    let acessibilidadesMercado = [];
+    if (mercado.acessibilidades && mercado.acessibilidades.length > 0) {
+        acessibilidadesAll = await fetch(
+          "http://localhost:3001/acessibilidades"
+        ).then((r) => r.json());
+        acessibilidadesMercado = acessibilidadesAll.filter((a) =>
+          mercado.acessibilidades.includes(a.id)
+        );
+    }
 
     cardAcessibilidade.innerHTML = `
       <div class="card mb-3">
@@ -97,13 +114,26 @@ async function carregarDetalhes() {
   }
 }
 
-function adicionarEventos(id) {
-  document.getElementById("btn-editar").addEventListener("click", () => {
-    sessionStorage.setItem("mercadoId", id);
-    window.location.href = "./editar.html";
-  });
+async function carregarStatusUsuario() {
+  const userStr = localStorage.getItem("usuarioLogado");
+  let user;
+  
+  if (userStr)
+  {
+    user = JSON.parse(userStr);
+  }
+  isAdmin = user && user.role === "admin";
+}
 
-  document.getElementById("btn-excluir").addEventListener("click", async () => {
+function adicionarEventos(id) {
+  const buttonEditar = document.getElementById("btn-editar");
+  buttonEditar?.addEventListener("click", () => {
+        sessionStorage.setItem("mercadoId", id);
+        window.location.href = "./editar.html";
+      });
+
+  const buttonExcluir = document.getElementById("btn-excluir")
+  buttonExcluir?.addEventListener("click", async () => {
     if (confirm("Deseja realmente excluir este mercado?")) {
       try {
         await service.excluirMercado(id);
@@ -122,5 +152,3 @@ function adicionarEventos(id) {
       window.location.href = "../avaliacoes/criar.html";
     });
 }
-
-carregarDetalhes();

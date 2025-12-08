@@ -1842,6 +1842,8 @@ body.page-internal .container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .categories-list,
