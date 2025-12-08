@@ -377,13 +377,28 @@ Esta seção apresenta os módulos e APIs utilizados na solução
 
 As referências utilizadas no trabalho foram:
 
-- SOBRENOME, Nome do autor. Título da obra. 8. ed. Cidade: Editora, 2000. 287 p ⚠️ EXEMPLO ⚠️
+- NEGÓCIOS SC. *Entenda o impacto dos preços nas compras de supermercado*. Florianópolis, 01 out. 2024. Disponível em: <https://www.negociossc.com.br/blog/entenda-o-impacto-dos-precos-nas-compras-de-supermercado/>. Acesso em: 08 dez. 2025.
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Inclua todas as referências (livros, artigos, sites, etc) utilizados no desenvolvimento do trabalho.
->
-> **Orientações**:
->
-> - [Formato ABNT](https://www.normastecnicas.com/abnt/trabalhos-academicos/referencias/)
-> - [Referências Bibliográficas da ABNT](https://comunidade.rockcontent.com/referencia-bibliografica-abnt/)
+- ASSOCIAÇÃO PAULISTA DE SUPERMERCADOS – APAS. *71% dos brasileiros mudaram seus hábitos de compra em um ano, aponta APAS*. São Paulo, 06 jun. 2025. Disponível em: <https://apas.com.br/71-dos-brasileiros-mudaram-seus-habitos-de-compra-em-um-ano-aponta-apas/>. Acesso em: 08 dez. 2025.
+
+- CHALEGRA, Jessica. *Consumidor brasileiro: entre preços e comportamentos no supermercado*. Consumidor Moderno, 07 mar. 2024. Disponível em: <https://consumidormoderno.com.br/consumidor-brasileiro-supermercado/>. Acesso em: 08 dez. 2025.
+
+- INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA – IBGE. *POF 2024-2025 – Pesquisa de Orçamentos Familiares*. Disponível em: <https://www.ibge.gov.br/pof2024/>. Acesso em: 08 dez. 2025.
+
+- NEOGRID; OPINION BOX. *Hábitos de compra no varejo alimentar*. jun. 2024. Disponível em: <https://hub.neogrid.com/hubfs/neogrid_opinion-box_relatorio_habitos-de-compra-varejo-alimentar_2024_v3.pdf?hsLang=en>. Acesso em: 08 dez. 2025.
+
+- SCANNTECH. *Perfil de consumo nos supermercados brasileiros muda em 2025*. São Paulo, 21 maio 2025. Disponível em: <https://www.scanntech.com.br/perfil-consumo-supermercados-2025-2/>. Acesso em: 08 dez. 2025.
+
+- EM TEMPO. *Serasa: 59% das dívidas de cartão de crédito são de compras em supermercados*. 13 nov. 2023. Disponível em: <https://emtempo.com.br/191618/economia/serasa-59-das-dividas-de-cartao-de-credito-sao-de-compras-em-supermercados/>. Acesso em: 08 dez. 2025.
+
+- GB NEWS. *Pesquisa inédita revela hábito de compra dos consumidores*. 23 nov. 2020. Disponível em: <https://www.gbnews.com.br/single-post/2020/11/23/pesquisa-in%C3%A9dita-revela-h%C3%A1bito-de-compra-consumidores>. Acesso em: 08 dez. 2025.
+
+- NEOGRID. *Brasileiros gastaram 19,7% a mais nos supermercados em 2023, aponta levantamento exclusivo da Neogrid*. 26 fev. 2024. Disponível em: <https://www.neogrid.com/noticias/panorama-bens-de-consumo/>. Acesso em: 08 dez. 2025.
+
+- ASSERJ – ASSOCIAÇÃO DE SUPERMERCADOS DO ESTADO DO RIO DE JANEIRO. *Consumo em supermercados supera 15% de crescimento em 2023, aponta pesquisa*. 23 jan. 2024. Disponível em: <https://asserj.com.br/pt/w/consumo-em-supermercados-superam-15-de-crescimento-em-2023-aponta-pesquisa>. Acesso em: 08 dez. 2025.
+
+- MOTA, Gabriel da. *59% das dívidas de brasileiros no cartão de crédito são com supermercado, diz Serasa*. O Liberal, 02 jan. 2024. Disponível em: <https://www.oliberal.com/economia/59-dos-brasileiros-se-endividam-no-cartao-de-credito-com-supermercado-diz-serasa-1.763079>. Acesso em: 08 dez. 2025.
+
+- GRUPO REPÓRTER. *Consumo em supermercados no Brasil cresce 4% em julho de 2025*. 22 ago. 2025. Disponível em: <https://gruporeporter.com.br/consumo-em-supermercados-no-brasil-cresce-4-em-julho-de-2025/>. Acesso em: 08 dez. 2025.
+
+- CNN BRASIL. *Supermercados faturam R$ 1 tri em 2024, equivalente a 9% do PIB, diz Abras*. 15 abr. 2025. Disponível em: <https://www.cnnbrasil.com.br/economia/negocios/supermercados-faturam-r-1-tri-em-2024-equivalente-a-9-do-pib-diz-abras/>. Acesso em: 08 dez. 2025.

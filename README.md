@@ -1,10 +1,7 @@
 [![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=20612906)
 
-# Nome do projeto
+# PoupaAí
 
-Escreva um ou dois parágrafo resumindo o objetivo do seu projeto.
-
-PoupaAí
 Uma plataforma voltada para ajudar consumidores a encontrarem os melhores preços nos mercados e a economizar seu tempo ao realizar compras.
 
 ## Alunos integrantes da equipe
@@ -23,16 +20,48 @@ Uma plataforma voltada para ajudar consumidores a encontrarem os melhores preço
 
 ## Instruções de utilização
 
-> **IMPORTANTE: APAGUE ESSA SEÇÃO DE INSTRUÇÕES ANTES DE ENTREGAR SEU TRABALHO**
+Para testar esta aplicação localmente, você precisará do **Node.js** e do **JSON Server**, que é usado como API REST simulada. Siga os passos abaixo:
 
-No desenvolvimento desse trabalho, o grupo deverá utilizar esse repositório como local para entrega de todos os artefatos a serem produzidos. Em especial, o grupo deverá providenciar a alteração dos seguintes arquivos:
+---
 
-- **Capa do projeto** (Esse arquivo aqui): Informação básica sobre o projeto, alunos do grupo e professores responsáveis;
-- **Arquivo CITATION.cff**: descritor do projeto, utilizado para geração do certificado ao final da disciplina.
-- **Pasta código**: todos os arquivos resultantes da programação do software.
-- **Pasta docs --> arquivo README.md**: Documentação completa do projeto.
+### 1. Instalar o Node.js
 
-Toda a documentação do projeto é realizado por meio do Markdown, uma linguagem de formatação adotada pelo GitHub e por diversas outras plataformas. Aprenda Markdown e use-o para documentar o projeto:
+Se ainda não tiver instalado, baixe e instale pela página oficial:
 
-- [Sintaxe básica de gravação e formatação no GitHub - GitHub Docs](https://docs.github.com/pt/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
-- [Markdown® Básico: Sintaxe, Uso &amp; Exemplos [Passo a Passo]](https://markdown.net.br/sintaxe-basica/)
+https://nodejs.org
+
+---
+
+### 2. Inicializar o projeto (caso ainda não exista um package.json)
+
+No diretório raiz do projeto, execute:
+
+```bash
+npm init -y
+```
+
+Isso criará o arquivo package.json, necessário para gerenciar dependências.
+
+### 3. Instalar o JSON Server
+
+Com o arquivo package.json criado, instale o JSON Server:
+
+```bash
+npm install json-server
+```
+
+Execute o servidor apontando para o arquivo db.json:
+
+```bash
+npx json-server --watch db/db.json --port 3000
+```
+
+Após iniciar, a API estará disponível em:
+
+```bash
+http://localhost:3000
+```
+
+### 5. Testar a aplicação
+
+Agora basta abrir o arquivo public/index.html no navegador para acessar a aplicação e testar todas as funcionalidades.
