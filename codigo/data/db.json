@@ -455,24 +455,24 @@
       "dataCriacao": "2025-01-15T10:00:00",
       "dataAtualizacao": "2025-01-28T14:30:00",
       "status": "ativa",
-      "valorEstimado": 150.5,
+      "valor": 150.5,
       "produtos": [
         {
           "produtoId": 1,
           "quantidade": 5,
-          "precoUnitario": 7.2,
+          "valorUnitario": 7.2,
           "mercadoId": 1
         },
         {
           "produtoId": 3,
           "quantidade": 3,
-          "precoUnitario": 9.1,
+          "valorUnitario": 9.1,
           "mercadoId": 1
         },
         {
           "produtoId": 7,
           "quantidade": 10,
-          "precoUnitario": 4.5,
+          "valorUnitario": 4.5,
           "mercadoId": 1
         }
       ]
@@ -484,24 +484,24 @@
       "dataCriacao": "2025-01-25T08:00:00",
       "dataAtualizacao": "2025-01-28T10:00:00",
       "status": "ativa",
-      "valorEstimado": 85.3,
+      "valor": 85.3,
       "produtos": [
         {
           "produtoId": 4,
           "quantidade": 2,
-          "precoUnitario": 8.9,
+          "valorUnitario": 8.9,
           "mercadoId": 1
         },
         {
           "produtoId": 7,
           "quantidade": 6,
-          "precoUnitario": 4.5,
+          "valorUnitario": 4.5,
           "mercadoId": 1
         },
         {
           "produtoId": 8,
           "quantidade": 2,
-          "precoUnitario": 3.9,
+          "valorUnitario": 3.9,
           "mercadoId": 1
         }
       ]
@@ -513,24 +513,24 @@
       "dataCriacao": "2025-01-20T14:30:00",
       "dataAtualizacao": "2025-01-27T16:00:00",
       "status": "ativa",
-      "valorEstimado": 200.0,
+      "valor": 200.0,
       "produtos": [
         {
           "produtoId": 1,
           "quantidade": 10,
-          "precoUnitario": 6.9,
+          "valorUnitario": 6.9,
           "mercadoId": 3
         },
         {
           "produtoId": 3,
           "quantidade": 5,
-          "precoUnitario": 8.9,
+          "valorUnitario": 8.9,
           "mercadoId": 3
         },
         {
           "produtoId": 6,
           "quantidade": 4,
-          "precoUnitario": 8.7,
+          "valorUnitario": 8.7,
           "mercadoId": 3
         }
       ]
