@@ -280,29 +280,21 @@ Relação de ferramentas empregadas pelo grupo durante o projeto.
 | --------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------ |
 | Processo de Design Thinking | Miro               | https://miro.com/app/board/uXjVJRfmPqM=/                                                                     |
 | Comunicação                 | Google Meet        | https://meet.google.com/                                                                                     |
+| Comunicação                 | Whatsapp        | https://web.whatsapp.com/                                                                                     |
 | Repositório de código       | GitHub             | https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2025-2-ti1-5567100-precos_mercado.git                      |
 | Editor de código            | Visual Studio Code | https://code.visualstudio.com/                                                                               |
 | Protótipo Interativo        | Figma              | https://www.figma.com/design/LlSi6oktUlezQnomFvF1KN/Pre%C3%A7os-Mercado?node-id=0-1&p=f&t=DBwjVbY4Q0JGavk3-0 |
 
 ## Gerenciamento do Projeto
 
-Divisão de papéis no grupo e apresentação da estrutura da ferramenta de controle de tarefas (Kanban).
+Divisão de papéis no grupo e apresentação da estrutura da ferramenta de controle de tarefas.
 
-![Exemplo de Kanban](images/exemplo-kanban.png)
+O grupo se organizou para a realização do trabalho adotando a metodologia Scrum, em que, antes de cada uma das três sprints, foi realizada uma reunião de planejamento utilizando o Google Meet, mantendo também a comunicação no meio e no fim das sprints para alinhamento e conformidade do projeto. Todos atuaram no levantamento e organização de requisitos e também como desenvolvedores, de forma autogerenciável.
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Nesta parte do documento, você deve apresentar o processo de trabalho baseado nas metodologias ágeis, a divisão de papéis e tarefas, as ferramentas empregadas e como foi realizada a gestão de configuração do projeto via GitHub.
->
-> Coloque detalhes sobre o processo de Design Thinking e a implementação do Framework Scrum seguido pelo grupo. O grupo poderá fazer uso de ferramentas on-line para acompanhar o andamento do projeto, a execução das tarefas e o status de desenvolvimento da solução.
->
-> **Orientações**:
->
-> - [Sobre Projects - GitHub Docs](https://docs.github.com/pt/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
-> - [Gestão de projetos com GitHub | balta.io](https://balta.io/blog/gestao-de-projetos-com-github)
-> - [(460) GitHub Projects - YouTube](https://www.youtube.com/playlist?list=PLiO7XHcmTsldZR93nkTFmmWbCEVF_8F5H)
-> - [11 Passos Essenciais para Implantar Scrum no seu Projeto](https://mindmaster.com.br/scrum-11-passos/)
-> - [Scrum em 9 minutos](https://www.youtube.com/watch?v=XfvQWnRgxG0)
+Cada integrante se organizou para realizar seu próprio controle de tarefas (em tarefas individuais) e, nas tarefas que dependiam de mais membros, o controle foi feito por mensagens em um grupo no WhatsApp.
+
+A gestão de configuração do projeto via GitHub foi feita hora diretamente na master, hora em branches separadas, para posterior merge na master. Assim respeitando o controle de versão e permitindo que os integrantes trabalhassem de maneira simultânea.
+
 
 # Solução Implementada
 
