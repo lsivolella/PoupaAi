@@ -1,4 +1,6 @@
-import ListasComprasService from "../../../services/listas-service.js";
+import { ListasService } from "../../../services/listas-service.js";
+
+const ListasComprasService = new ListasService();
 
 document.addEventListener("DOMContentLoaded", () => {
   carregarLista();
@@ -6,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function carregarLista() {
   const id = sessionStorage.getItem("listaExclusaoId");
-  const lista = await ListasComprasService.getById(id);
+  const lista = await ListasComprasService.getLista(id);
 
   document.getElementById(
     "info"

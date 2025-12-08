@@ -17,12 +17,58 @@
   </head>
 
   <body>
-    <header class="container py-4 text-center">
-      <img
-        src="../../assets/img/Logo_PoupaAI.svg"
-        class="img-fluid"
-        alt="Logo Poupa Aí"
-      />
+    <header class="navbar">
+      <div class="navbar-container">
+        <div class="logo">
+          <a href="/codigo/public/views/index.html">
+            <img
+              src="/codigo/public/assets/img/Logo_PoupaAI_Branco.svg"
+              alt="PoupaAí"
+              class="logo-img"
+            />
+          </a>
+        </div>
+
+        <div class="search-bar">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Busque usando vírgula, ex: leite, cerveja, azeite, arroz, iogurte"
+            class="search-input"
+          />
+          <button class="search-button" id="searchButton">
+            <i class="bi bi-search"></i>
+            BUSCAR
+          </button>
+        </div>
+
+        <div class="user-actions">
+          <button class="user-btn action-btn" id="loginBtn">
+            <i class="bi bi-person-circle"></i>
+            <span>Entrar</span>
+          </button>
+
+          <div class="user-logged" id="userLogged" style="display: none">
+            <div class="user-info">
+              <img
+                src="/codigo/public/assets/img/Avatar_Usuario.svg"
+                alt="Avatar"
+                class="user-avatar"
+                id="userAvatar"
+              />
+              <span class="user-greeting" id="userGreeting">Olá, Usuário!</span>
+            </div>
+            <button class="btn-logout" id="logoutBtn" title="Sair">
+              <i class="bi bi-box-arrow-right"></i>
+            </button>
+          </div>
+
+          <button class="cart-btn action-btn" id="cartBtn">
+            <i class="bi bi-cart3"></i>
+            <span class="cart-badge" id="cartBadge">0</span>
+          </button>
+        </div>
+      </div>
     </header>
 
     <main class="container">
@@ -35,7 +81,7 @@
       </div>
 
       <form id="formLista">
-        <div class="mb-3">
+        <div class="mb-3" style="display: none;">
           <label class="form-label">Usuário</label>
           <select id="usuario" class="form-select"></select>
         </div>

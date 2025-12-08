@@ -1,8 +1,12 @@
-import ListasComprasService from "../../../services/listas-service.js";
-import UsuariosService from "../../../services/usuario-service.js";
-import ProdutosService from "../../../services/produto-service.js";
+import { ListasService } from "../../../services/listas-service.js";
+import { UsuarioService } from "../../../services/usuario-service.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+const ListasComprasService = new ListasService();
+const UsuariosService = new UsuarioService();
+
+let listas;
+
+document.addEventListener("DOMContentLoaded", async () => {
   carregarListasCompras();
 });
 
@@ -13,8 +17,8 @@ async function carregarListasCompras() {
   const totalListasBadge = document.getElementById("totalListas");
 
   try {
-    const listas = await ListasComprasService.getAll();
-    const usuarios = await UsuariosService.getAll();
+    const usuario = await carregarUsuario();
+    listas = await carregarListasUsuario(usuario.id);
 
     if (loadingRow) loadingRow.remove();
 
@@ -28,15 +32,10 @@ async function carregarListasCompras() {
     emptyState.style.display = "none";
     tbody.innerHTML = "";
 
-    totalListasBadge.textContent = `${listas.length} ${
-      listas.length === 1 ? "lista" : "listas"
-    }`;
+    totalListasBadge.textContent = `${listas.length} ${listas.length === 1 ? "lista" : "listas"
+      }`;
 
     listas.forEach((lista) => {
-      const usuario =
-        usuarios.find((u) => u.id === lista.usuarioId)?.nome ||
-        "Usuário não encontrado";
-
       const totalItens = lista.produtos.reduce(
         (acc, p) => acc + p.quantidade * p.valorUnitario,
         0
@@ -48,7 +47,6 @@ async function carregarListasCompras() {
       const tr = document.createElement("tr");
       tr.innerHTML = `
                 <td data-label="#">${lista.id}</td>
-                <td data-label="Usuário">${usuario}</td>
                 <td data-label="Valor Total">
                     <strong>R$ ${formatarPreco(valorTotal)}</strong>
                 </td>
@@ -56,24 +54,21 @@ async function carregarListasCompras() {
                     R$ ${formatarPreco(totalItens)}
                 </td>
                 <td data-label="Diferença">
-                    <span class="${
-                      diferenca >= 0 ? "text-success" : "text-danger"
-                    }">
+                    <span class="${diferenca >= 0 ? "text-success" : "text-danger"
+        }">
                         ${diferenca >= 0 ? "+" : ""}R$ ${formatarPreco(
-        diferenca
-      )}
+          diferenca
+        )}
                     </span>
                 </td>
                 <td data-label="Ações" class="text-center">
-                    <button class="btn-action btn-edit" data-id="${
-                      lista.id
-                    }" title="Editar">
+                    <button class="btn-action btn-edit" data-id="${lista.id
+        }" title="Editar">
                         <i class="bi bi-pencil"></i>
                         Editar
                     </button>
-                    <button class="btn-action btn-delete" data-id="${
-                      lista.id
-                    }" title="Excluir">
+                    <button class="btn-action btn-delete" data-id="${lista.id
+        }" title="Excluir">
                         <i class="bi bi-trash"></i>
                         Excluir
                     </button>
@@ -97,6 +92,22 @@ async function carregarListasCompras() {
   }
 }
 
+async function carregarUsuario() {
+  const userStr = localStorage.getItem("usuarioLogado");
+
+  if (!userStr) {
+    console.error("Usuário não logado.");
+    return;
+  }
+
+  const user = JSON.parse(userStr);
+  return await UsuariosService.getUsuario(user.id);
+}
+
+async function carregarListasUsuario(usuarioId) {
+  return await ListasComprasService.getListasPorUsuario(usuarioId);
+}
+
 function adicionarEventos() {
   document.querySelectorAll(".btn-edit").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -115,7 +126,7 @@ function adicionarEventos() {
           btn.innerHTML =
             '<span class="spinner" style="width: 16px; height: 16px; border-width: 2px;"></span>';
 
-          await ListasComprasService.delete(btn.dataset.id);
+          await ListasComprasService.excluirLista(btn.dataset.id);
 
           mostrarNotificacao("Lista excluída com sucesso!", "success");
 
@@ -145,13 +156,12 @@ function mostrarNotificacao(mensagem, tipo = "info") {
         position: fixed;
         top: 20px;
         right: 20px;
-        background: ${
-          tipo === "success"
-            ? "#28a745"
-            : tipo === "error"
-            ? "#dc3545"
-            : "#0066cc"
-        };
+        background: ${tipo === "success"
+      ? "#28a745"
+      : tipo === "error"
+        ? "#dc3545"
+        : "#0066cc"
+    };
         color: white;
         padding: 15px 20px;
         border-radius: 8px;
@@ -160,13 +170,12 @@ function mostrarNotificacao(mensagem, tipo = "info") {
         animation: slideIn 0.3s ease-out;
     `;
   notificacao.innerHTML = `
-        <i class="bi bi-${
-          tipo === "success"
-            ? "check-circle"
-            : tipo === "error"
-            ? "x-circle"
-            : "info-circle"
-        }"></i>
+        <i class="bi bi-${tipo === "success"
+      ? "check-circle"
+      : tipo === "error"
+        ? "x-circle"
+        : "info-circle"
+    }"></i>
         ${mensagem}
     `;
 

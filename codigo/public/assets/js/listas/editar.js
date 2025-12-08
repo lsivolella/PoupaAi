@@ -1,10 +1,16 @@
-import ListasComprasService from "../../../services/listas-service.js";
-import UsuariosService from "../../../services/usuario-service.js";
-import ProdutosService from "../../../services/produto-service.js";
+import { ListasService } from "../../../services/listas-service.js";
+import { UsuarioService } from "../../../services/usuario-service.js";
+import { ProdutoService } from "../../../services/produto-service.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-  carregarSelects();
-  carregarDados();
+const ListasComprasService = new ListasService();
+const UsuariosService = new UsuarioService();
+const ProdutosService = new ProdutoService();
+
+let lista;
+
+document.addEventListener("DOMContentLoaded", async () => {
+  await carregarSelects();
+  await carregarDados();
   document
     .getElementById("addProduto")
     .addEventListener("click", adicionarProduto);
@@ -12,16 +18,14 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function carregarSelects() {
-  const usuarios = await UsuariosService.getAll();
-  const produtos = await ProdutosService.getAll();
+  // const usuarios = await UsuariosService.getUsuarios();
+  // const usuarioSelect = document.getElementById("usuario");
+  // usuarios.forEach((u) => {
+  //   usuarioSelect.innerHTML += `<option value="${u.id}">${u.nome}</option>`;
+  // });
 
-  const usuarioSelect = document.getElementById("usuario");
+  const produtos = await ProdutosService.getProdutos();
   const produtoSelect = document.getElementById("produto");
-
-  usuarios.forEach((u) => {
-    usuarioSelect.innerHTML += `<option value="${u.id}">${u.nome}</option>`;
-  });
-
   produtos.forEach((p) => {
     produtoSelect.innerHTML += `<option value="${p.id}">${p.nome}</option>`;
   });
@@ -29,9 +33,8 @@ async function carregarSelects() {
 
 async function carregarDados() {
   const id = sessionStorage.getItem("listaEdicaoId");
-  const lista = await ListasComprasService.getById(id);
+  lista = await ListasComprasService.getLista(id);
 
-  document.getElementById("usuario").value = lista.usuarioId;
   document.getElementById("valor").value = lista.valor;
 
   const tbody = document.getElementById("itensLista");
@@ -40,11 +43,10 @@ async function carregarDados() {
     const tr = document.createElement("tr");
     tr.innerHTML = `
             <td data-produto="${item.produtoId}">
-                ${
-                  document.querySelector(
-                    `#produto option[value="${item.produtoId}"]`
-                  ).text
-                }
+                ${document.querySelector(
+      `#produto option[value="${item.produtoId}"]`
+    ).text
+      }
             </td>
             <td>${item.quantidade}</td>
             <td>R$ ${parseFloat(item.valorUnitario).toFixed(2)}</td>
@@ -52,9 +54,10 @@ async function carregarDados() {
         `;
     tbody.appendChild(tr);
 
-    tr.querySelector(".remover-item").addEventListener("click", () =>
-      tr.remove()
-    );
+    tr.querySelector(".remover-item").addEventListener("click", () => {
+      removerProduto(item.produtoId);
+      tr.remove();
+    });
   });
 }
 
@@ -65,15 +68,17 @@ function adicionarProduto() {
 
   if (!produtoId || !quantidade || !valorUnitario) return;
 
+  atualizarListaProdutos(produtoId, quantidade, valorUnitario);
+  atualizarValorTotal();
+
   const tbody = document.getElementById("itensLista");
 
   const tr = document.createElement("tr");
   tr.innerHTML = `
         <td data-produto="${produtoId}">
-            ${
-              document.querySelector(`#produto option[value="${produtoId}"]`)
-                .text
-            }
+            ${document.querySelector(`#produto option[value="${produtoId}"]`)
+      .text
+    }
         </td>
         <td>${quantidade}</td>
         <td>R$ ${parseFloat(valorUnitario).toFixed(2)}</td>
@@ -82,16 +87,45 @@ function adicionarProduto() {
 
   tbody.appendChild(tr);
 
-  tr.querySelector(".remover-item").addEventListener("click", () =>
-    tr.remove()
-  );
+  tr.querySelector(".remover-item").addEventListener("click", () => {
+    removerProduto(produtoId);
+    tr.remove();
+  });
+}
+
+function atualizarListaProdutos(produtoId, quantidade, valorUnitario) {
+  lista.produtos.push({
+    produtoId,
+    quantidade,
+    valorUnitario
+  });
+}
+
+function atualizarValorTotal() {
+  if (!lista) return;
+
+  const valorInput = document.getElementById("valor");
+  let total = 0;
+  lista.produtos.forEach((item) => {
+    total += item.quantidade * item.valorUnitario;
+  });
+  valorInput.value = total.toFixed(2);
+}
+
+function removerProduto(produtoId) {
+  lista.produtos = lista.produtos.filter(p => p.produtoId !== produtoId);
+  atualizarValorTotal();
 }
 
 async function salvar(event) {
   event.preventDefault();
 
+  const usuario = await carregarUsuario();
+  if (!usuario) return;
+
+  atualizarValorTotal();
   const id = parseInt(sessionStorage.getItem("listaEdicaoId"));
-  const usuarioId = parseInt(document.getElementById("usuario").value);
+  const usuarioId = usuario.id;
   const valor = parseFloat(document.getElementById("valor").value);
 
   const produtos = [...document.querySelectorAll("#itensLista tr")].map(
@@ -109,7 +143,19 @@ async function salvar(event) {
     produtos,
   };
 
-  await ListasComprasService.update(listaAtualizada);
+  await ListasComprasService.atualizarLista(id, listaAtualizada);
 
   window.location.href = "index.html";
+}
+
+async function carregarUsuario() {
+  const userStr = localStorage.getItem("usuarioLogado");
+
+  if (!userStr) {
+    console.error("Usuário não logado.");
+    return;
+  }
+
+  const user = JSON.parse(userStr);
+  return await UsuariosService.getUsuario(user.id);
 }

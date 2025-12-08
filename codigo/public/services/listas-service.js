@@ -13,6 +13,11 @@ export class ListasService {
       const r = await fetch(`${this.endpoint}/${id}`);
       return r.json();
     }
+
+    async getListasPorUsuario(usuarioId) {
+      const r = await fetch(`${this.endpoint}?usuarioId=${usuarioId}`);
+      return r.json();
+    }
   
     async criarLista(lista) {
       await fetch(this.endpoint, {
