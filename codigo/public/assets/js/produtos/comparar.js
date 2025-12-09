@@ -105,5 +105,19 @@ function filtrarProdutos() {
   });
 }
 
-window.addEventListener("load", carregarDados);
+function executarBuscaProduto(){
+    const termoBusca = sessionStorage.getItem("searchKey");
+    sessionStorage.removeItem("searchKey");
+
+    if (!campoBusca) return;
+
+    campoBusca.value = termoBusca;
+    filtrarProdutos();
+}
+
+window.addEventListener("load", async () => {
+  await carregarDados();
+  executarBuscaProduto();
+});
+
 campoBusca.addEventListener("input", filtrarProdutos);

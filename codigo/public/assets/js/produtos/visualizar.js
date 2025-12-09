@@ -211,8 +211,8 @@ style.textContent = `
 document.head.appendChild(style);
 
 // Executa ao carregar a página
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
   controlarBotaoCadastrar();
-  criarListaDetalhes();
+  await criarListaDetalhes();
 });
 
