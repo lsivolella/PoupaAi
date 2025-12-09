@@ -8,6 +8,7 @@ const cardAvaliacoes = document.getElementById("card-avaliacoes");
 
 const mercadoId = sessionStorage.getItem("mercadoId");
 
+let isLogged = false;
 let isAdmin = false;
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -25,7 +26,7 @@ async function carregarDetalhes() {
   try {
     const mercado = await service.getMercado(mercadoId);
 
-    // ✅ Corrige caminho da logo
+    // Corrige caminho da logo
     let logoUrl = mercado.logo || "";
 
     if (logoUrl && !logoUrl.startsWith("http")) {
@@ -64,18 +65,15 @@ async function carregarDetalhes() {
         >
         <div class="card-body flex-grow-1">
           <h3 class="card-title">${mercado.nome}</h3>
-          <p><b>Endereço:</b> ${mercado.endereco.rua} ${
-      mercado.endereco.numero
-    }, ${mercado.endereco.bairro}. ${mercado.endereco.cidade} - ${
-      mercado.endereco.estado
-    }</p>
+          <p><b>Endereço:</b> ${mercado.endereco.rua} ${mercado.endereco.numero
+      }, ${mercado.endereco.bairro}. ${mercado.endereco.cidade} - ${mercado.endereco.estado
+      }</p>
           <p><b>Telefone:</b> ${mercado.telefone}</p>
           <p><b>Funcionamento:</b> ${mercado.horarioFuncionamento}</p>
           <p><b>Média Avaliações:</b> ${mercado.mediaAvaliacoes ?? "-"}</p>
           <div class="mt-2 d-flex gap-2">
-            ${
-              isAdmin
-                ? `
+            ${isAdmin
+        ? `
                   <button class="btn btn-warning" id="btn-editar">
                     <i class="bi bi-pencil"></i> Editar
                   </button>
@@ -83,8 +81,8 @@ async function carregarDetalhes() {
                     <i class="bi bi-trash"></i> Excluir
                   </button>
                 `
-                : ""
-            }
+        : ""
+      }
             <button class="btn btn-success" id="btn-adicionar-avaliacao">
               <i class="bi bi-star-fill"></i> Adicionar Avaliação
             </button>
@@ -108,13 +106,12 @@ async function carregarDetalhes() {
       <div class="card mb-3">
         <div class="card-header"><b>Acessibilidades</b></div>
         <div class="card-body">
-          ${
-            acessibilidadesMercado.length > 0
-              ? `<ul>${acessibilidadesMercado
-                  .map((a) => `<li>${a.tipo}</li>`)
-                  .join("")}</ul>`
-              : "<p>Nenhuma acessibilidade cadastrada.</p>"
-          }
+          ${acessibilidadesMercado.length > 0
+        ? `<ul>${acessibilidadesMercado
+          .map((a) => `<li>${a.tipo}</li>`)
+          .join("")}</ul>`
+        : "<p>Nenhuma acessibilidade cadastrada.</p>"
+      }
         </div>
       </div>
     `;
@@ -132,16 +129,15 @@ async function carregarDetalhes() {
         <div class="card-body">
           <p><b>Média:</b> ${mercado.mediaAvaliacoes ?? "-"}</p>
           <p><b>Total de Avaliações:</b> ${mercado.numeroDeAvaliacoes ?? 0}</p>
-          ${
-            avaliacoesMercado.length > 0
-              ? `<ul>${avaliacoesMercado
-                  .map(
-                    (av) =>
-                      `<li><b>Usuário ${av.usuarioId}:</b> ${av.comentario} (Nota: ${av.nota})</li>`
-                  )
-                  .join("")}</ul>`
-              : "<p>Sem avaliações.</p>"
-          }
+          ${avaliacoesMercado.length > 0
+        ? `<ul>${avaliacoesMercado
+          .map(
+            (av) =>
+              `<li><b>Usuário ${av.usuarioId}:</b> ${av.comentario} (Nota: ${av.nota})</li>`
+          )
+          .join("")}</ul>`
+        : "<p>Sem avaliações.</p>"
+      }
         </div>
       </div>
     `;
@@ -162,7 +158,8 @@ async function carregarStatusUsuario() {
     user = JSON.parse(userStr);
   }
 
-  // ✅ Verifica se é admin (aceita "admin" ou "role === admin")
+  isLogged = user;
+  // Verifica se é admin (aceita "admin" ou "role === admin")
   isAdmin = user && (user.tipo === "admin" || user.role === "admin");
 
   console.log(isAdmin ? "👨‍💼 Admin logado" : "👤 Usuário comum");
@@ -189,12 +186,16 @@ function adicionarEventos(id) {
     }
   });
 
-  document
-    .getElementById("btn-adicionar-avaliacao")
-    .addEventListener("click", () => {
-      sessionStorage.setItem("mercadoId", id);
-      window.location.href = "../avaliacoes/criar.html";
-    });
+  const buttonAvaliar = document.getElementById("btn-adicionar-avaliacao");
+  buttonAvaliar?.addEventListener("click", () => {
+
+    if (!isLogged) {
+      alert("Voce precisa estar logado para avaliar um mercado");
+      return;
+    }
+    sessionStorage.setItem("mercadoId", id);
+    window.location.href = "../avaliacoes/criar.html";
+  });
 }
 
-console.log("✅ Sistema de detalhes do mercado carregado!");
+console.log("Sistema de detalhes do mercado carregado!");
