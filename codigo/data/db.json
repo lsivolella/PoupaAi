@@ -194,7 +194,7 @@
       "unidade_medida": "kg",
       "tamanho_embalagem": "1",
       "descricao": "Arroz branco tipo 1, grãos selecionados",
-      "imagem_url": "../assets/img/arroz_branco_camil_1kg.jpg",
+      "imagem_url": "/codigo/public/assets/img/arroz_branco_camil_1kg.jpg",
       "criadoEm": "2024-01-01T10:00:00",
       "atualizadoEm": "2025-01-28T10:00:00",
       "ocorrencias": [
@@ -229,7 +229,7 @@
       "unidade_medida": "g",
       "tamanho_embalagem": "400",
       "descricao": "Aveia integral em flocos finos",
-      "imagem_url": "../assets/img/aveia_integral_quaker_400g.png",
+      "imagem_url": "/codigo/public/assets/img/aveia_integral_quaker_400g.png",
       "criadoEm": "2024-01-02T10:00:00",
       "atualizadoEm": "2025-01-28T10:00:00",
       "ocorrencias": [
@@ -257,7 +257,7 @@
       "unidade_medida": "kg",
       "tamanho_embalagem": "1",
       "descricao": "Feijão preto tipo 1, grãos selecionados",
-      "imagem_url": "../assets/img/feijao_preto_kicaldo_1kg.png",
+      "imagem_url": "/codigo/public/assets/img/feijao_preto_kicaldo_1kg.png",
       "criadoEm": "2024-01-03T10:00:00",
       "atualizadoEm": "2025-01-28T10:00:00",
       "ocorrencias": [
@@ -292,7 +292,7 @@
       "unidade_medida": "g",
       "tamanho_embalagem": "500",
       "descricao": "Pão de forma integral com fibras",
-      "imagem_url": "../assets/img/pao_forma_integral_visconti_500g.png",
+      "imagem_url": "/codigo/public/assets/img/pao_forma_integral_visconti_500g.png",
       "criadoEm": "2024-01-04T10:00:00",
       "atualizadoEm": "2025-01-28T10:00:00",
       "ocorrencias": [
@@ -320,7 +320,7 @@
       "unidade_medida": "ml",
       "tamanho_embalagem": "500",
       "descricao": "Limpador multiuso limão",
-      "imagem_url": "../assets/img/veja_multiuso_500ml.png",
+      "imagem_url": "/codigo/public/assets/img/veja_multiuso_500ml.png",
       "criadoEm": "2024-01-05T10:00:00",
       "atualizadoEm": "2025-01-28T10:00:00",
       "ocorrencias": [
@@ -355,7 +355,7 @@
       "unidade_medida": "ml",
       "tamanho_embalagem": "900",
       "descricao": "Óleo de soja refinado",
-      "imagem_url": "../assets/img/oleo_soja_liza_900ml.png",
+      "imagem_url": "/codigo/public/assets/img/oleo_soja_liza_900ml.png",
       "criadoEm": "2024-01-06T10:00:00",
       "atualizadoEm": "2025-01-28T10:00:00",
       "ocorrencias": [
@@ -390,7 +390,7 @@
       "unidade_medida": "L",
       "tamanho_embalagem": "1",
       "descricao": "Leite integral UHT",
-      "imagem_url": "../assets/img/leite_integral_itambe_1l.png",
+      "imagem_url": "/codigo/public/assets/img/leite_integral_itambe_1l.png",
       "criadoEm": "2024-01-07T10:00:00",
       "atualizadoEm": "2025-01-28T10:00:00",
       "ocorrencias": [
@@ -425,7 +425,7 @@
       "unidade_medida": "kg",
       "tamanho_embalagem": "1",
       "descricao": "Açúcar cristal refinado",
-      "imagem_url": "../assets/img/acucar_cristal_uniao_1kg.png",
+      "imagem_url": "/codigo/public/assets/img/acucar_cristal_uniao_1kg.png",
       "criadoEm": "2024-01-08T10:00:00",
       "atualizadoEm": "2025-01-28T10:00:00",
       "ocorrencias": [
