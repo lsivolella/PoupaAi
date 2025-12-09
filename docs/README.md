@@ -328,7 +328,7 @@ Permite o cadastro de novo usuário para o sistema, e caso ja seja cadastrado, p
 
 ![Tela inicial](images/tela-inicial.png)
 
-![Tela de login](images/login.png)
+![Tela de login](images/login-site.png)
 
 ![Tela de cadastro](images/cadastro-usuario.png)
 
@@ -423,6 +423,157 @@ Mercados
       "mediaAvaliacoes": 4.5,
       "numeroDeAvaliacoes": 12,
       "dataAtualizacao": "2025-01-28T10:30:00"
+    }
+```
+
+##### Funcionalidade 3 - Visualizar, ver detalhes, cadastrar e excluir produtos
+
+Permite Que o usuário veja o produto e seus detalhes. Ao administrador, permite cadastrar e excluir produtos
+
+- **Instruções de acesso:**
+  - Na barra de navegação, vá em "Produtos"
+  - No produto desejado, clique em detalhes
+  - Se o administrador desejar cadastrar um novo produto, clique em "Cadastrar Produto"
+  - Em produtos, se o administrador desejar excluir um produto, clique em "excluir"
+- **Tela da funcionalidade**:
+
+![Tela produtos](images/produtos.png)
+
+![Tela de detalhes do produto](images/detalhes-produto.png)
+
+![Tela de cadastro de produtos](images/cadastrar-produto.png)
+
+- **Estrutura de dados:**
+
+Produtos
+
+```json
+    {
+      "id": 1,
+      "nome": "Arroz Branco",
+      "marca": "Camil",
+      "categoria": "Alimentos",
+      "unidade_medida": "kg",
+      "tamanho_embalagem": "1",
+      "descricao": "Arroz branco tipo 1, grãos selecionados",
+      "imagem_url": "/codigo/public/assets/img/arroz_branco_camil_1kg.jpg",
+      "criadoEm": "2024-01-01T10:00:00",
+      "atualizadoEm": "2025-01-28T10:00:00",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 7.2,
+          "precoAnterior": 7.9,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-01-28T10:00:00"
+        }
+      ]
+    }
+```
+
+##### Funcionalidade 4 - Visualizar, criar, editar e excluir listas de compras
+
+Permite Que o usuário veja, crie, edite e exclua suas listas de compras
+
+- **Instruções de acesso:**
+  - Na barra de navegação, vá em "Minhas Listas"
+  - Clique em "Nova Lista"
+  - Após já ter alguma lista, clique em "Editar", caso deseje editar a lista pronta
+  - Se não queira mais ter alguma lista de compras, clique em "excluir" na lista desejada
+- **Tela da funcionalidade**:
+
+![Tela onde ficam as listas](images/listas.png)
+
+![Tela de criar lista](images/criar-lista.png)
+
+![Tela de editar lista](images/editar-lista.png)
+
+- **Estrutura de dados:**
+
+Listas
+
+```json
+    {
+      "id": 1,
+      "usuarioId": 1,
+      "nome": "Lista Mensal - Janeiro",
+      "dataCriacao": "2025-01-15T10:00:00",
+      "dataAtualizacao": "2025-01-28T14:30:00",
+      "status": "ativa",
+      "valor": 150.5,
+      "produtos": [
+        {
+          "produtoId": 1,
+          "quantidade": 5,
+          "valorUnitario": 7.2,
+          "mercadoId": 1
+        },
+        {
+          "produtoId": 3,
+          "quantidade": 3,
+          "valorUnitario": 9.1,
+          "mercadoId": 1
+        },
+        {
+          "produtoId": 7,
+          "quantidade": 10,
+          "valorUnitario": 4.5,
+          "mercadoId": 1
+        }
+      ]
+    }
+```
+
+##### Funcionalidade 5 - Visualizar, e excluir hisórico de compras
+
+Permite Que o usuário veja seu histórico de compras e exclua alguma compra do histórico
+
+- **Instruções de acesso:**
+  - Na barra de navegação, vá em "Histórico"
+  - Após visualizar seu histórico de compras, se desejar excluir alguma compra, clique em "excluir" na compra desejada
+- **Tela da funcionalidade**:
+
+![Tela onde fica o histórico de compras](images/historico-compras.png)
+
+- **Estrutura de dados:**
+
+Histórico de compras
+
+```json
+    {
+      "id": 1,
+      "usuarioId": 1,
+      "mercadoId": 1,
+      "data": "2025-01-20T15:30:00",
+      "status": "Finalizado",
+      "total": 62.48,
+      "metodoPagamento": "Cartão de Crédito",
+      "itens": [
+        {
+          "produtoId": 1,
+          "quantidade": 2,
+          "precoUnitario": 7.2,
+          "subtotal": 14.4
+        },
+        {
+          "produtoId": 3,
+          "quantidade": 2,
+          "precoUnitario": 9.1,
+          "subtotal": 18.2
+        },
+        {
+          "produtoId": 7,
+          "quantidade": 4,
+          "precoUnitario": 4.5,
+          "subtotal": 18.0
+        },
+        {
+          "produtoId": 5,
+          "quantidade": 2,
+          "precoUnitario": 6.7,
+          "subtotal": 13.4
+        }
+      ]
     }
 ```
 
