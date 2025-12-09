@@ -306,7 +306,7 @@ Esta seção apresenta todos os detalhes da solução criada no projeto.
 
 ## Funcionalidades
 
-Esta seção apresenta as funcionalidades da solução.Info
+Esta seção apresenta as funcionalidades da solução
 
 ##### Funcionalidade 1 - Cadastro de usuário e login
 
@@ -349,9 +349,55 @@ Usuário
     }
 ```
 
-##### Funcionalidade 2 - Visualizar, ver detalhes, avaliar e ver mercados no mapa
+##### Funcionalidade 2 - Tela inicial para ter acesso a promoções e carrinho de compras
 
-Permite o usuário veja os mercados disponíveis, veja seus detalhes, avalie e veja o mercado no mapa
+Permite que o usuário veja os produtos que estão disponíveis e se desejar, adicionar esses produtos em seu carrinho de compras, onde pode visualizar produto, preço e supermecado do produto adicionado, editar a quantidade e a forma de pagamento, e registrar sua compra.
+
+- **Instruções de acesso:**
+  - Na tela inicial, role para baixo para ver os produtos em destaque
+  - Se desejar, adicione algum deles ao carrinho
+  - Ainda na tela inicial, clique na imagem do carrinho, no canto superior direito
+  - No carrinho, clique em "+" se desejar aumentar a quantidade do produto
+  - Clique em "-" se desejar diminuir a quantidade do produto
+  - Ou clique na imagem da lixeira se desejar excluir o produto do carrinho
+  - No canto direito, também se é possível alterar a forma de pagamento, selecionando as opções disponíveis
+- **Tela da funcionalidade**:
+
+![Tela inicial para ver o carrinho com item](images/tela-inicial-carrinho.png)
+
+![Tela do carrinho com produto](images/carrinho-produto.png)
+
+- **Estrutura de dados:**
+
+Produtos
+
+```json
+    {
+      "id": 1,
+      "nome": "Arroz Branco",
+      "marca": "Camil",
+      "categoria": "Alimentos",
+      "unidade_medida": "kg",
+      "tamanho_embalagem": "1",
+      "descricao": "Arroz branco tipo 1, grãos selecionados",
+      "imagem_url": "/codigo/public/assets/img/arroz_branco_camil_1kg.jpg",
+      "criadoEm": "2024-01-01T10:00:00",
+      "atualizadoEm": "2025-01-28T10:00:00",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 7.2,
+          "precoAnterior": 7.9,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-01-28T10:00:00"
+        }
+      ]
+    }
+```
+
+##### Funcionalidade 3 - Visualizar, ver detalhes, avaliar e ver mercados no mapa
+
+Permite que o usuário veja os mercados disponíveis, veja seus detalhes, avalie e veja o mercado no mapa
 
 - **Instruções de acesso:**
   - Na barra de navegação, vá em "Supermercados"
@@ -366,6 +412,8 @@ Permite o usuário veja os mercados disponíveis, veja seus detalhes, avalie e v
 ![Tela detalhes do supermercado](images/detalhes-mercado.png)
 
 ![Tela de avaliação do supermercado](images/avaliacao-mercado.png)
+
+![Tela com minhas avaliações](images/minhas-avaliacoes.png)
 
 ![Tela de mapa  do supermercado](images/mapa-mercado.png)
 
@@ -417,17 +465,67 @@ Mercados
       "dataAtualizacao": "2025-01-28T10:30:00"
     }
 ```
+Acessibilidade
 
-##### Funcionalidade 3 - Visualizar, ver detalhes, cadastrar e excluir produtos
+```json
+    {
+      "id": 1,
+      "tipo": "Rampa de acesso"
+    },
+    {
+      "id": 2,
+      "tipo": "Elevador"
+    },
+    {
+      "id": 3,
+      "tipo": "Vagas preferenciais"
+    },
+    {
+      "id": 4,
+      "tipo": "Piso tátil"
+    },
+    {
+      "id": 5,
+      "tipo": "Sinalização em Braille"
+    },
+    {
+      "id": 6,
+      "tipo": "Atendimento em Libras"
+    },
+    {
+      "id": 7,
+      "tipo": "Caixa preferencial"
+    }
+```
+Avaliações
 
-Permite Que o usuário veja o produto e seus detalhes. Ao administrador, permite cadastrar e excluir produtos
+```json
+    {
+      "id": 1,
+      "usuarioId": 1,
+      "mercadoId": 1,
+      "nota": 5,
+      "comentario": "Excelente supermercado! Preços justos e boa variedade.",
+      "data": "2025-11-20T16:00:00"
+    }
+```
+
+##### Funcionalidade 4 - Buscar, filtrar, visualizar, ver detalhes, cadastrar e excluir produtos
+
+Permite Que o usuário busque, filtre, veja o produto e seus detalhes. Ao administrador, permite cadastrar e excluir produtos
 
 - **Instruções de acesso:**
   - Na barra de navegação, vá em "Produtos"
+  - Se desejar, na barra de pesquisa busque por um produto específico
+  - Também é possível ir em "Por Categoria" para filtragem
   - No produto desejado, clique em detalhes
   - Se o administrador desejar cadastrar um novo produto, clique em "Cadastrar Produto"
   - Em produtos, se o administrador desejar excluir um produto, clique em "excluir"
 - **Tela da funcionalidade**:
+
+![Tela buscar produtos](images/buscar-produtos.png)
+
+![Tela filtrar produtos](images/filtrar-produtos.png)
 
 ![Tela produtos](images/produtos.png)
 
@@ -463,7 +561,24 @@ Produtos
     }
 ```
 
-##### Funcionalidade 4 - Visualizar, criar, editar e excluir listas de compras
+Categorias
+
+```json
+    {
+      "id": 1,
+      "nome": "Alimentos",
+      "icone": "bi-basket",
+      "descricao": "Produtos alimentícios em geral"
+    },
+    {
+      "id": 2,
+      "nome": "Limpeza",
+      "icone": "bi-droplet",
+      "descricao": "Produtos de limpeza e higiene do lar"
+    }
+```
+
+##### Funcionalidade 5 - Visualizar, criar, editar e excluir listas de compras
 
 Permite Que o usuário veja, crie, edite e exclua suas listas de compras
 
@@ -516,9 +631,135 @@ Listas
     }
 ```
 
-##### Funcionalidade 5 - Visualizar, e excluir hisórico de compras
+##### Funcionalidade 6 - Comparador de preços
 
-Permite Que o usuário veja seu histórico de compras e exclua alguma compra do histórico
+Permite que o usuário compare preços tanto de produtos específicos quanto preços de listas
+
+- **Instruções de acesso:**
+  - Na barra de navegação, vá em "Comparador"
+  - Em "Buscar Produto", digite o nome do produto que se deseja visualizar e comparar preços
+  - Se desejar comparar listas, clique em "Comparar lista", digite o nome da lista
+- **Tela da funcionalidade**:
+
+![Tela comparar produto](images/comparar-produto.png)
+![Tela comparar produto](images/comparar-lista.png)
+
+- **Estrutura de dados:**
+
+Produtos
+
+```json
+    {
+      "id": 1,
+      "nome": "Arroz Branco",
+      "marca": "Camil",
+      "categoria": "Alimentos",
+      "unidade_medida": "kg",
+      "tamanho_embalagem": "1",
+      "descricao": "Arroz branco tipo 1, grãos selecionados",
+      "imagem_url": "/codigo/public/assets/img/arroz_branco_camil_1kg.jpg",
+      "criadoEm": "2024-01-01T10:00:00",
+      "atualizadoEm": "2025-01-28T10:00:00",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 7.2,
+          "precoAnterior": 7.9,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-01-28T10:00:00"
+        }
+      ]
+    }
+```
+
+Listas
+
+```json
+    {
+      "id": 1,
+      "usuarioId": 1,
+      "nome": "Lista Mensal - Janeiro",
+      "dataCriacao": "2025-01-15T10:00:00",
+      "dataAtualizacao": "2025-01-28T14:30:00",
+      "status": "ativa",
+      "valor": 150.5,
+      "produtos": [
+        {
+          "produtoId": 1,
+          "quantidade": 5,
+          "valorUnitario": 7.2,
+          "mercadoId": 1
+        },
+        {
+          "produtoId": 3,
+          "quantidade": 3,
+          "valorUnitario": 9.1,
+          "mercadoId": 1
+        },
+        {
+          "produtoId": 7,
+          "quantidade": 10,
+          "valorUnitario": 4.5,
+          "mercadoId": 1
+        }
+      ]
+    }
+```
+
+##### Funcionalidade 7 - Alertas
+
+Permite que o usuário receba/veja alertas de preço abaixando, e crie novos alertas de produtos que desejar
+
+- **Instruções de acesso:**
+  - Na barra de navegação, vá em "Alertas"
+  - Agora se é possível ver os alertas já criados (ativos e lidos)
+  - Se desejar alterar algum alerta, clique em "Gerenciar Alertas"
+  - Também, se desejar, é possível criar um novo alerta, clicando em "Novo Alerta"
+
+- **Tela da funcionalidade**:
+
+![Tela com alertas ativos](images/alerta-preco-ativos.png)
+![Tela com alertas lidos](images/alerta-preco-lidos.png)
+![Tela de gerenciamento de alertas](images/gerenciar-alertas.png)
+![Tela de criação de alerta](images/criar-alerta.png)
+
+- **Estrutura de dados:**
+
+AlertasConfig
+
+```json
+    {
+      "id": 1,
+      "usuarioId": 1,
+      "produtoId": 1,
+      "mercadoId": null,
+      "tipo": "abaixo",
+      "valorAlerta": 6,
+      "ativo": true,
+      "dataCriacao": "2025-11-15T10:00:00"
+    }
+```
+
+Alertas
+
+```json
+    {
+      "id": 1,
+      "usuarioId": 1,
+      "produtoId": 1,
+      "mercadoId": 3,
+      "tipo": "abaixo",
+      "valorAlerta": 6,
+      "precoAnterior": 8.2,
+      "precoNovo": 6.5,
+      "dataNotificacao": "2025-12-08T08:15:00",
+      "lido": false
+    }
+```
+
+##### Funcionalidade 8 - Visualizar, e excluir hisórico de compras
+
+Permite que o usuário veja seu histórico de compras e exclua alguma compra do histórico
 
 - **Instruções de acesso:**
   - Na barra de navegação, vá em "Histórico"
