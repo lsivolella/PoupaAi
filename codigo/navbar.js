@@ -1,3 +1,5 @@
+const serachInput = document.querySelector("#searchInput");
+const searchButton = document.querySelector("#searchButton");
 const loginBtn = document.getElementById("loginBtn");
 const logoutBtn = document.getElementById("logoutBtn");
 const userLogged = document.getElementById("userLogged");
@@ -9,6 +11,7 @@ const LOGIN_PAGE = "/codigo/public/views/usuarios/login.html";
 const DEFAULT_AVATAR = "/codigo/public/assets/img/Avatar_Usuario.svg";
 
 document.addEventListener("DOMContentLoaded", () => {
+  configurarSearchInput();
   verificarLogin();
   carregarCarrinho();
 });
@@ -23,21 +26,17 @@ function verificarLogin() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const searchInput = document.getElementById("searchInput");
-  const searchButton = document.getElementById("searchButton");
+function configurarSearchInput() {
+  if (!searchInput || !searchButton) return;
 
-  if (searchButton && searchInput) {
-    searchButton.addEventListener("click", () => {
-      const query = searchInput.value.trim();
-      if (query) {
-        window.location.href = `/codigo/public/views/produtos/index.html?busca=${encodeURIComponent(
-          query
-        )}`;
-      }
-    });
-  }
-});
+  searchButton.addEventListener("click", () => {
+    const query = searchInput.value.trim();
+    if (query) {
+      sessionStorage.setItem("searchKey", String(query));
+      window.location.href = `/codigo/public/views/produtos/index.html`;
+    }
+  });
+}
 
 function mostrarUsuarioLogado(usuario) {
   if (loginBtn) {
@@ -112,7 +111,7 @@ function carregarCarrinho() {
   }
 }
 
-// ✅ CORRIGIDO: Caminho absoluto para funcionar em todas as páginas
+// CORRIGIDO: Caminho absoluto para funcionar em todas as páginas
 if (document.getElementById("cartBtn")) {
   document.getElementById("cartBtn").addEventListener("click", () => {
     console.log("🛒 Abrindo carrinho...");
@@ -160,8 +159,7 @@ function mostrarNotificacao(mensagem, tipo = "success") {
     position: fixed;
     top: 20px;
     right: 20px;
-    background: ${
-      tipo === "success" ? "#28a745" : tipo === "error" ? "#dc3545" : "#0066cc"
+    background: ${tipo === "success" ? "#28a745" : tipo === "error" ? "#dc3545" : "#0066cc"
     };
     color: white;
     padding: 15px 25px;
@@ -221,4 +219,4 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-console.log("✅ Navbar carregado com sucesso!");
+console.log("Navbar carregado com sucesso!");
