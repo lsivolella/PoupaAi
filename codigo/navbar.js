@@ -23,6 +23,22 @@ function verificarLogin() {
   }
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("searchInput");
+  const searchButton = document.getElementById("searchButton");
+
+  if (searchButton && searchInput) {
+    searchButton.addEventListener("click", () => {
+      const query = searchInput.value.trim();
+      if (query) {
+        window.location.href = `/codigo/public/views/produtos/index.html?busca=${encodeURIComponent(
+          query
+        )}`;
+      }
+    });
+  }
+});
+
 function mostrarUsuarioLogado(usuario) {
   if (loginBtn) {
     loginBtn.style.display = "none";
