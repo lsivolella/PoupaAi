@@ -1,4 +1,4 @@
-const serachInput = document.querySelector("#searchInput");
+const searchInput = document.querySelector("#searchInput");
 const searchButton = document.querySelector("#searchButton");
 const loginBtn = document.getElementById("loginBtn");
 const logoutBtn = document.getElementById("logoutBtn");
@@ -27,15 +27,27 @@ function verificarLogin() {
 }
 
 function configurarSearchInput() {
-  if (!searchInput || !searchButton) return;
+  if (searchButton && searchInput) {
+    searchButton.addEventListener("click", realizarBusca);
 
-  searchButton.addEventListener("click", () => {
-    const query = searchInput.value.trim();
-    if (query) {
-      sessionStorage.setItem("searchKey", String(query));
-      window.location.href = `/codigo/public/views/produtos/index.html`;
-    }
-  });
+    searchInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        realizarBusca();
+      }
+    });
+  }
+}
+
+function realizarBusca() {
+  const termo = searchInput.value.trim();
+
+  if (termo === "") {
+    mostrarNotificacao("Digite algo para buscar", "warning");
+    return;
+  }
+
+  sessionStorage.setItem("searchKey", String(termo));
+  window.location.href = `/codigo/public/views/produtos/index.html`;
 }
 
 function mostrarUsuarioLogado(usuario) {
