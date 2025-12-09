@@ -235,35 +235,6 @@ async function adicionarAoCarrinho(produtoId, mercadoId) {
   }
 }
 
-// ✅ SISTEMA DE BUSCA - CORRIGIDO PARA PRODUTOS/INDEX.HTML
-const searchButton = document.getElementById("searchButton");
-const searchInput = document.getElementById("searchInput");
-
-if (searchButton && searchInput) {
-  searchButton.addEventListener("click", realizarBusca);
-
-  searchInput.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-      realizarBusca();
-    }
-  });
-}
-
-function realizarBusca() {
-  const termo = searchInput.value.trim();
-
-  if (termo === "") {
-    mostrarNotificacao("Digite algo para buscar", "warning");
-    return;
-  }
-
-  // ✅ Redireciona para /produtos/index.html (arquivo que EXISTE)
-  console.log("🔍 Redirecionando para busca:", termo);
-  window.location.href = `/codigo/public/views/produtos/index.html?busca=${encodeURIComponent(
-    termo
-  )}`;
-}
-
 function calcularDesconto(precoOriginal, precoPromocional) {
   const desconto = ((precoOriginal - precoPromocional) / precoOriginal) * 100;
   return Math.round(desconto);

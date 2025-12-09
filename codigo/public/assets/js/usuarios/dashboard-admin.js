@@ -34,80 +34,84 @@ async function carregarDashboardAdmin() {
 
 async function carregarEstatisticasGlobais() {
   try {
-    const [usuarios, listas, produtos, mercados, alertasConfig, alertas] =
+    const [usuarios, listas, historico, produtos, mercados, alertasConfig] =
       await Promise.all([
         fetch(`${API_URL}/usuarios`).then((r) => r.json()),
-        fetch(`${API_URL}/listas-compras`).then((r) => r.json()),
+        fetch(`${API_URL}/listasCompras`).then((r) => r.json()),
+        fetch(`${API_URL}/historicoCompras`).then((r) => r.json()),
         fetch(`${API_URL}/produtos`).then((r) => r.json()),
         fetch(`${API_URL}/mercados`).then((r) => r.json()),
-        fetch(`${API_URL}/alertas-config`).then((r) => r.json()),
-        fetch(`${API_URL}/alertas`).then((r) => r.json()),
+        fetch(`${API_URL}/alertasConfig`).then((r) => r.json()),
       ]);
 
     const totalUsuarios = usuarios.length;
-    const totalCompras = listas.length;
+    const totalCompras = historico.length;
     const totalProdutos = produtos.length;
     const totalMercados = mercados.length;
     const totalAlertas = alertasConfig.filter((a) => a.ativo).length;
-    const mesAtual = new Date().getMonth();
-    const usuariosNovos = usuarios.filter((u) => {
-      const dataCadastro = new Date(u.dataCadastro);
-      return dataCadastro.getMonth() === mesAtual;
-    }).length;
 
-    const comprasMes = listas.filter((l) => {
-      const dataLista = new Date(l.dataCriacao);
-      return dataLista.getMonth() === mesAtual;
-    }).length;
+    // Economia global simulada (15% de desconto médio)
+    let economiaGlobal = 0;
+    historico.forEach((compra) => {
+      compra.itens.forEach((item) => {
+        const precoAnterior = item.precoUnitario * 1.15;
+        const economia = (precoAnterior - item.precoUnitario) * item.quantidade;
+        economiaGlobal += economia;
+      });
+    });
 
-    const economiaGlobal = listas.reduce((total, lista) => {
-      const valorItens =
-        lista.produtos?.reduce(
-          (acc, p) => acc + p.quantidade * p.valorUnitario,
-          0
-        ) || 0;
-      const economia = Math.max(0, (lista.valorTotal || 0) - valorItens);
-      return total + economia;
-    }, 0);
-
-    const produtosPendentes = produtos.filter((p) => !p.imagem).length;
-    const mercadosAtivos = mercados.filter((m) => m.ativo !== false).length;
-    const hoje = new Date().toDateString();
-    const alertasHoje = alertas.filter((a) => {
-      const dataAlerta = new Date(a.dataNotificacao);
-      return dataAlerta.toDateString() === hoje;
-    }).length;
-
+    // Atualiza interface
     document.getElementById("totalUsuarios").textContent = totalUsuarios;
-    document.getElementById("usuariosNovos").textContent = `+${usuariosNovos}`;
+    document.getElementById("usuariosNovos").textContent =
+      "+" +
+      usuarios.filter((u) => {
+        const dataCadastro = new Date(u.dataCadastro);
+        return dataCadastro.getMonth() === new Date().getMonth();
+      }).length;
+
     document.getElementById("totalCompras").textContent = totalCompras;
-    document.getElementById("comprasMes").textContent = comprasMes;
-    document.getElementById("economiaGlobal").textContent = `R$ ${formatarPreco(
-      economiaGlobal
-    )}`;
+    document.getElementById("comprasMes").textContent = historico.filter(
+      (h) => {
+        const d = new Date(h.data);
+        return d.getMonth() === new Date().getMonth();
+      }
+    ).length;
+
+    document.getElementById("economiaGlobal").textContent =
+      "R$ " + formatarPreco(economiaGlobal);
+
     document.getElementById("totalProdutos").textContent = totalProdutos;
-    document.getElementById("produtosPendentes").textContent =
-      produtosPendentes;
+    document.getElementById("produtosPendentes").textContent = produtos.filter(
+      (p) => !p.imagem
+    ).length;
+
     document.getElementById("totalMercados").textContent = totalMercados;
-    document.getElementById("mercadosAtivos").textContent = mercadosAtivos;
+    document.getElementById("mercadosAtivos").textContent = mercados.filter(
+      (m) => m.ativo !== false
+    ).length;
+
     document.getElementById("totalAlertas").textContent = totalAlertas;
-    document.getElementById("alertasDisparo").textContent = alertasHoje;
+    document.getElementById("alertasDisparo").textContent =
+      alertasConfig.filter((a) => {
+        const dataAlerta = new Date(a.dataCriacao);
+        return dataAlerta.toDateString() === new Date().toDateString();
+      }).length;
   } catch (error) {
-    console.error("Erro ao carregar estatísticas:", error);
+    console.error("Erro ao carregar estatísticas globais:", error);
   }
 }
 
 async function carregarGraficosAdmin() {
   try {
-    const [usuarios, listas, produtos] = await Promise.all([
+    const [usuarios, historico, produtos] = await Promise.all([
       fetch(`${API_URL}/usuarios`).then((r) => r.json()),
-      fetch(`${API_URL}/listas-compras`).then((r) => r.json()),
+      fetch(`${API_URL}/historicoCompras`).then((r) => r.json()),
       fetch(`${API_URL}/produtos`).then((r) => r.json()),
     ]);
 
     criarGraficoUsuarios(usuarios);
-    criarGraficoCompras(listas);
-    criarGraficoProdutos(listas, produtos);
+    criarGraficoCompras(historico);
+    criarGraficoProdutos(historico, produtos);
   } catch (error) {
     console.error("Erro ao carregar gráficos:", error);
   }
@@ -138,7 +142,6 @@ function criarGraficoUsuarios(usuarios) {
   }
 
   if (usuariosChart) usuariosChart.destroy();
-
   usuariosChart = new Chart(ctx, {
     type: "bar",
     data: {
@@ -157,24 +160,13 @@ function criarGraficoUsuarios(usuarios) {
     options: {
       responsive: true,
       maintainAspectRatio: true,
-      plugins: {
-        legend: {
-          display: false,
-        },
-      },
-      scales: {
-        y: {
-          beginAtZero: true,
-          ticks: {
-            stepSize: 1,
-          },
-        },
-      },
+      plugins: { legend: { display: false } },
+      scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } },
     },
   });
 }
 
-function criarGraficoCompras(listas) {
+function criarGraficoCompras(historico) {
   const ctx = document.getElementById("comprasChart");
   if (!ctx) return;
 
@@ -187,23 +179,19 @@ function criarGraficoCompras(listas) {
     const mes = data.toLocaleDateString("pt-BR", { month: "short" });
     meses.push(mes.charAt(0).toUpperCase() + mes.slice(1));
 
-    const listasDoMes = listas.filter((l) => {
-      const dataLista = new Date(l.dataCriacao);
+    const comprasDoMes = historico.filter((h) => {
+      const d = new Date(h.data);
       return (
-        dataLista.getMonth() === data.getMonth() &&
-        dataLista.getFullYear() === data.getFullYear()
+        d.getMonth() === data.getMonth() &&
+        d.getFullYear() === data.getFullYear()
       );
     });
 
-    const valorTotal = listasDoMes.reduce(
-      (acc, l) => acc + (l.valorTotal || 0),
-      0
-    );
+    const valorTotal = comprasDoMes.reduce((acc, h) => acc + (h.total || 0), 0);
     valores.push(valorTotal);
   }
 
   if (comprasChart) comprasChart.destroy();
-
   comprasChart = new Chart(ctx, {
     type: "line",
     data: {
@@ -228,9 +216,7 @@ function criarGraficoCompras(listas) {
       responsive: true,
       maintainAspectRatio: true,
       plugins: {
-        legend: {
-          display: false,
-        },
+        legend: { display: false },
         tooltip: {
           callbacks: {
             label: function (context) {
@@ -253,14 +239,13 @@ function criarGraficoCompras(listas) {
   });
 }
 
-async function criarGraficoProdutos(listas, produtos) {
+function criarGraficoProdutos(historico, produtos) {
   const ctx = document.getElementById("produtosChart");
   if (!ctx) return;
 
   const contagemProdutos = {};
-
-  listas.forEach((lista) => {
-    lista.produtos?.forEach((item) => {
+  historico.forEach((compra) => {
+    compra.itens?.forEach((item) => {
       if (!contagemProdutos[item.produtoId]) {
         contagemProdutos[item.produtoId] = 0;
       }
@@ -282,7 +267,6 @@ async function criarGraficoProdutos(listas, produtos) {
   }
 
   if (produtosChart) produtosChart.destroy();
-
   produtosChart = new Chart(ctx, {
     type: "bar",
     data: {
@@ -313,26 +297,23 @@ async function criarGraficoProdutos(listas, produtos) {
       responsive: true,
       maintainAspectRatio: true,
       plugins: {
-        legend: {
-          display: false,
-        },
+        legend: { display: false },
       },
       scales: {
         x: {
           beginAtZero: true,
-          ticks: {
-            stepSize: 1,
-          },
+          ticks: { stepSize: 1 },
         },
       },
     },
   });
 }
 
+// ================== Extras ==================
+
 async function carregarUsuariosRecentes() {
   try {
     const usuarios = await fetch(`${API_URL}/usuarios`).then((r) => r.json());
-
     const recentes = usuarios
       .sort((a, b) => new Date(b.dataCadastro) - new Date(a.dataCadastro))
       .slice(0, 5);
@@ -347,27 +328,17 @@ async function carregarUsuariosRecentes() {
             <i class="bi bi-inbox" style="font-size: 48px; color: #e0e0e0;"></i>
             <p class="mt-3 text-muted">Nenhum usuário cadastrado</p>
           </td>
-        </tr>
-      `;
+        </tr>`;
       return;
     }
 
     recentes.forEach((usuario) => {
       const tr = document.createElement("tr");
       tr.innerHTML = `
-        <td data-label="Usuário">
-          <strong>${usuario.nome}</strong>
-        </td>
-        <td data-label="Email">
-          ${usuario.email}
-        </td>
-        <td data-label="Cadastro">
-          ${formatarData(usuario.dataCadastro)}
-        </td>
-        <td data-label="Status">
-          <span class="status-badge-active">Ativo</span>
-        </td>
-      `;
+        <td data-label="Usuário"><strong>${usuario.nome}</strong></td>
+        <td data-label="Email">${usuario.email}</td>
+        <td data-label="Cadastro">${formatarData(usuario.dataCadastro)}</td>
+        <td data-label="Status"><span class="status-badge-active">Ativo</span></td>`;
       tbody.appendChild(tr);
     });
   } catch (error) {
@@ -377,13 +348,13 @@ async function carregarUsuariosRecentes() {
 
 async function carregarUltimasCompras() {
   try {
-    const listas = await fetch(`${API_URL}/listas-compras`).then((r) =>
+    const listas = await fetch(`${API_URL}/historicoCompras`).then((r) =>
       r.json()
     );
     const usuarios = await fetch(`${API_URL}/usuarios`).then((r) => r.json());
 
     const recentes = listas
-      .sort((a, b) => new Date(b.dataCriacao) - new Date(a.dataCriacao))
+      .sort((a, b) => new Date(b.data) - new Date(a.data))
       .slice(0, 5);
 
     const tbody = document.getElementById("comprasTableBody");
@@ -396,29 +367,20 @@ async function carregarUltimasCompras() {
             <i class="bi bi-inbox" style="font-size: 48px; color: #e0e0e0;"></i>
             <p class="mt-3 text-muted">Nenhuma compra registrada</p>
           </td>
-        </tr>
-      `;
+        </tr>`;
       return;
     }
 
     recentes.forEach((lista) => {
       const usuario = usuarios.find((u) => u.id === lista.usuarioId);
-
       const tr = document.createElement("tr");
       tr.innerHTML = `
-        <td data-label="Usuário">
-          ${usuario?.nome || "Desconhecido"}
-        </td>
-        <td data-label="Lista">
-          <strong>${lista.nome || "Sem nome"}</strong>
-        </td>
-        <td data-label="Valor">
-          <strong>R$ ${formatarPreco(lista.valorTotal || 0)}</strong>
-        </td>
-        <td data-label="Data">
-          ${formatarData(lista.dataCriacao)}
-        </td>
-      `;
+        <td data-label="Usuário">${usuario?.nome || "Desconhecido"}</td>
+        <td data-label="Lista"><strong>${lista.nome || "Sem nome"}</strong></td>
+        <td data-label="Valor"><strong>R$ ${formatarPreco(
+          lista.total || 0
+        )}</strong></td>
+        <td data-label="Data">${formatarData(lista.data)}</td>`;
       tbody.appendChild(tr);
     });
   } catch (error) {
@@ -450,8 +412,7 @@ function atualizarHorario() {
 
 function calcularTempo(data) {
   const agora = new Date();
-  const diff = Math.floor((agora - data) / 1000); // segundos
-
+  const diff = Math.floor((agora - data) / 1000);
   if (diff < 60) return `${diff}s`;
   if (diff < 3600) return `${Math.floor(diff / 60)}min`;
   if (diff < 86400) return `${Math.floor(diff / 3600)}h`;
