@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Avaliações</title>
+    <title>Minhas Avaliações</title>
     <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-    rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
     />
     <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <link rel="stylesheet" href="/codigo/public/assets/css/style.css"/>
+    <link rel="stylesheet" href="/codigo/public/assets/css/style.css" />
     <script
       defer
       type="module"
@@ -75,12 +75,61 @@
       </div>
     </header>
 
-    <main class="container">
-      <a href="index.html" class="btn btn-outline-secondary mb-3">
-        <i class="bi bi-arrow-left"></i>
+    <nav class="categories-nav">
+      <div class="container">
+        <ul class="categories-list">
+          <li>
+            <a href="/codigo/public/views/index.html"
+              ><i class="bi bi-house-door"></i> Início</a
+            >
+          </li>
+          <li>
+            <a href="/codigo/public/views/usuarios/dashboard-cliente.html"
+              ><i class="bi bi-speedometer2"></i> Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="/codigo/public/views/listas/index.html"
+              ><i class="bi bi-list-check"></i> Minhas Listas</a
+            >
+          </li>
+          <li>
+            <a href="/codigo/public/views/mercados/index.html"
+              ><i class="bi bi-shop"></i> Supermercados</a
+            >
+          </li>
+          <li>
+            <a href="/codigo/public/views/produtos/index.html"
+              ><i class="bi bi-box-seam"></i> Produtos</a
+            >
+          </li>
+          <li>
+            <a href="/codigo/public/views/comparar/index.html"
+              ><i class="bi bi-arrows-angle-contract"></i> Comparador</a
+            >
+          </li>
+          <li>
+            <a href="/codigo/public/views/alertas/index.html"
+              ><i class="bi bi-bell"></i> Alertas</a
+            >
+          </li>
+          <li>
+            <a href="/codigo/public/views/historicos/index.html"
+              ><i class="bi bi-clock-history"></i> Histórico</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="container mt-4 mb-5">
+      <a href="../mercados/index.html" class="btn btn-outline-secondary mb-3">
+        <i class="bi bi-arrow-left"></i> Voltar
       </a>
 
-      <h1 class="text-center mb-4">Avaliações</h1>
+      <h1 class="text-center mb-4">
+        <i class="bi bi-star-fill text-warning"></i> Minhas Avaliações
+      </h1>
 
       <div class="d-flex justify-content-end mb-3">
         <a href="criar.html" class="btn btn-primary">
@@ -88,20 +137,19 @@
         </a>
       </div>
 
-      <table class="table table-striped">
-        <thead>
+      <table class="table table-hover">
+        <thead class="table-light">
           <tr>
-            <th>ID</th>
-            <th>ID Usuário</th>
-            <th>ID Mercado</th>
-            <th>Nota</th>
+            <th>Mercado / Data</th>
+            <th class="text-center">Avaliação</th>
             <th>Comentário</th>
-            <th>Ações</th>
+            <th class="text-center">Ações</th>
           </tr>
         </thead>
         <tbody id="tabela-avaliacoes"></tbody>
       </table>
     </main>
+
     <script src="/codigo/navbar.js"></script>
   </body>
 </html>

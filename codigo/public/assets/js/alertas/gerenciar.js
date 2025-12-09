@@ -17,10 +17,15 @@ async function carregarAlertas() {
       return;
     }
 
+    console.log("🔍 Carregando alertas para usuário:", usuarioLogado.id);
+
+    // ✅ CORRIGIDO: alertasConfig (sem hífen)
     const response = await fetch(
-      `${API_URL}/alertas-config?usuarioId=${usuarioLogado.id}`
+      `${API_URL}/alertasConfig?usuarioId=${usuarioLogado.id}`
     );
     alertasCadastrados = await response.json();
+
+    console.log(`✅ ${alertasCadastrados.length} alertas carregados`);
 
     document.getElementById("totalAlertas").textContent =
       alertasCadastrados.length;
@@ -48,6 +53,8 @@ async function renderizarTabela(alertas) {
   emptyState.style.display = "none";
   tbody.innerHTML = "";
 
+  console.log("📊 Renderizando tabela com", alertas.length, "alertas");
+
   for (const alerta of alertas) {
     const produto = await buscarProduto(alerta.produtoId);
     const mercado = alerta.mercadoId
@@ -72,8 +79,11 @@ async function renderizarTabela(alertas) {
       <td data-label="Produto">
         <div class="table-product">
           <img src="${
-            produto.imagem || "https://via.placeholder.com/50"
-          }" alt="${produto.nome}" class="table-product-img">
+            produto.imagem_url ||
+            "https://ui-avatars.com/api/?name=Produto&size=50&background=e0e0e0&color=666"
+          }" alt="${
+      produto.nome
+    }" class="table-product-img" onerror="this.src='https://ui-avatars.com/api/?name=Produto&size=50&background=e0e0e0&color=666'">
           <div>
             <strong>${produto.nome}</strong>
             <small>${produto.marca || ""}</small>
@@ -147,6 +157,7 @@ async function renderizarTabela(alertas) {
     tbody.appendChild(tr);
   }
 
+  console.log("✅ Tabela renderizada!");
   adicionarEventos();
 }
 
@@ -155,7 +166,8 @@ async function buscarProduto(id) {
     const response = await fetch(`${API_URL}/produtos/${id}`);
     return await response.json();
   } catch (error) {
-    return { nome: "Produto não encontrado", imagem: null };
+    console.error("Erro ao buscar produto:", id, error);
+    return { nome: "Produto não encontrado", imagem_url: null };
   }
 }
 
@@ -164,6 +176,7 @@ async function buscarMercado(id) {
     const response = await fetch(`${API_URL}/mercados/${id}`);
     return await response.json();
   } catch (error) {
+    console.error("Erro ao buscar mercado:", id, error);
     return null;
   }
 }
@@ -184,6 +197,7 @@ async function buscarPrecoAtual(produtoId, mercadoId) {
       return precos.length > 0 ? Math.min(...precos) : null;
     }
   } catch (error) {
+    console.error("Erro ao buscar preço:", error);
     return null;
   }
 }
@@ -238,7 +252,8 @@ function adicionarEventos() {
 
 async function toggleAlerta(id, estaAtivo) {
   try {
-    await fetch(`${API_URL}/alertas-config/${id}`, {
+    // ✅ CORRIGIDO: alertasConfig (sem hífen)
+    await fetch(`${API_URL}/alertasConfig/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ativo: !estaAtivo }),
@@ -284,7 +299,8 @@ async function confirmarExclusao() {
   if (!alertaParaExcluir) return;
 
   try {
-    await fetch(`${API_URL}/alertas-config/${alertaParaExcluir}`, {
+    // ✅ CORRIGIDO: alertasConfig (sem hífen)
+    await fetch(`${API_URL}/alertasConfig/${alertaParaExcluir}`, {
       method: "DELETE",
     });
 

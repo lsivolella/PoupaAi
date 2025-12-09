@@ -2,8 +2,8 @@
   "usuarios": [
     {
       "id": 1,
-      "nome": "Sofia Almeida",
-      "sobrenome": "Santos",
+      "nome": "Sofia",
+      "sobrenome": "Almeida",
       "telefone": "(31) 98765-4321",
       "email": "sofia@example.com",
       "senha": "@senha123",
@@ -55,12 +55,11 @@
       }
     }
   ],
-
   "mercados": [
     {
       "id": 1,
       "nome": "Supermercado Lagoa",
-      "logo": "/codigo/public/assets/img/logo_super_lagoa.png",
+      "logo": "../assets/img/logo_super_lagoa.png",
       "endereco": {
         "cep": "33400-000",
         "rua": "Rua Principal",
@@ -87,22 +86,43 @@
         "libras": null
       },
       "votos": {
-        "rampa": { "likes": 0, "dislikes": 0 },
-        "elevador": { "likes": 0, "dislikes": 0 },
-        "vagas": { "likes": 0, "dislikes": 0 },
-        "piso": { "likes": 5, "dislikes": 0 },
-        "braille": { "likes": 3, "dislikes": 0 },
-        "preferencial": { "likes": 8, "dislikes": 0 },
-        "libras": { "likes": 0, "dislikes": 0 }
+        "rampa": {
+          "likes": 0,
+          "dislikes": 0
+        },
+        "elevador": {
+          "likes": 0,
+          "dislikes": 0
+        },
+        "vagas": {
+          "likes": 0,
+          "dislikes": 0
+        },
+        "piso": {
+          "likes": 5,
+          "dislikes": 0
+        },
+        "braille": {
+          "likes": 3,
+          "dislikes": 0
+        },
+        "preferencial": {
+          "likes": 8,
+          "dislikes": 0
+        },
+        "libras": {
+          "likes": 0,
+          "dislikes": 0
+        }
       },
       "mediaAvaliacoes": 4.5,
       "numeroDeAvaliacoes": 12,
-      "dataAtualizacao": "2025-01-28T10:30:00"
+      "dataAtualizacao": "2025-12-08T10:30:00"
     },
     {
       "id": 2,
-      "nome": "Mercado Central Lagoa Santa",
-      "logo": "/codigo/public/assets/img/logo_mercadao_lagoa_santa.png",
+      "nome": "Mercado Central",
+      "logo": "../assets/img/logo_mercadao_lagoa_santa.png",
       "endereco": {
         "cep": "33400-050",
         "rua": "Av. Minas Gerais",
@@ -129,22 +149,43 @@
         "libras": false
       },
       "votos": {
-        "rampa": { "likes": 10, "dislikes": 0 },
-        "elevador": { "likes": 0, "dislikes": 2 },
-        "vagas": { "likes": 15, "dislikes": 1 },
-        "piso": { "likes": 8, "dislikes": 0 },
-        "braille": { "likes": 0, "dislikes": 3 },
-        "preferencial": { "likes": 18, "dislikes": 0 },
-        "libras": { "likes": 0, "dislikes": 5 }
+        "rampa": {
+          "likes": 10,
+          "dislikes": 0
+        },
+        "elevador": {
+          "likes": 0,
+          "dislikes": 2
+        },
+        "vagas": {
+          "likes": 15,
+          "dislikes": 1
+        },
+        "piso": {
+          "likes": 8,
+          "dislikes": 0
+        },
+        "braille": {
+          "likes": 0,
+          "dislikes": 3
+        },
+        "preferencial": {
+          "likes": 18,
+          "dislikes": 0
+        },
+        "libras": {
+          "likes": 0,
+          "dislikes": 5
+        }
       },
       "mediaAvaliacoes": 4.2,
       "numeroDeAvaliacoes": 28,
-      "dataAtualizacao": "2025-01-15T10:30:00"
+      "dataAtualizacao": "2025-12-08T10:30:00"
     },
     {
       "id": 3,
       "nome": "Hipermercado Popular",
-      "logo": "/codigo/public/assets/img/logo_mercado_popular.png",
+      "logo": "../assets/img/logo_mercado_popular.png",
       "endereco": {
         "cep": "33400-100",
         "rua": "Rua das Flores",
@@ -171,20 +212,40 @@
         "libras": true
       },
       "votos": {
-        "rampa": { "likes": 20, "dislikes": 0 },
-        "elevador": { "likes": 15, "dislikes": 1 },
-        "vagas": { "likes": 25, "dislikes": 0 },
-        "piso": { "likes": 18, "dislikes": 0 },
-        "braille": { "likes": 12, "dislikes": 0 },
-        "preferencial": { "likes": 22, "dislikes": 0 },
-        "libras": { "likes": 10, "dislikes": 2 }
+        "rampa": {
+          "likes": 20,
+          "dislikes": 0
+        },
+        "elevador": {
+          "likes": 15,
+          "dislikes": 1
+        },
+        "vagas": {
+          "likes": 25,
+          "dislikes": 0
+        },
+        "piso": {
+          "likes": 18,
+          "dislikes": 0
+        },
+        "braille": {
+          "likes": 12,
+          "dislikes": 0
+        },
+        "preferencial": {
+          "likes": 22,
+          "dislikes": 0
+        },
+        "libras": {
+          "likes": 10,
+          "dislikes": 2
+        }
       },
       "mediaAvaliacoes": 4.8,
       "numeroDeAvaliacoes": 45,
-      "dataAtualizacao": "2025-01-20T14:45:00"
+      "dataAtualizacao": "2025-12-08T14:45:00"
     }
   ],
-
   "produtos": [
     {
       "id": 1,
@@ -193,31 +254,35 @@
       "categoria": "Alimentos",
       "unidade_medida": "kg",
       "tamanho_embalagem": "1",
-      "descricao": "Arroz branco tipo 1, grãos selecionados",
-      "imagem_url": "/codigo/public/assets/img/arroz_branco_camil_1kg.jpg",
-      "criadoEm": "2024-01-01T10:00:00",
-      "atualizadoEm": "2025-01-28T10:00:00",
+      "descricao": "Arroz branco tipo 1",
+      "imagem_url": "../assets/img/arroz_branco_camil_1kg.jpg",
+      "emPromocao": true,
+      "criadoEm": "2024-01-01",
+      "atualizadoEm": "2025-12-08",
       "ocorrencias": [
         {
           "mercadoId": 1,
-          "preco": 7.2,
-          "precoAnterior": 7.9,
+          "preco": 6.9,
+          "precoAnterior": 8.9,
+          "desconto": 22,
           "estoque": "Em estoque",
-          "ultimaAtualizacao": "2025-01-28T10:00:00"
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
         },
         {
           "mercadoId": 2,
           "preco": 7.5,
-          "precoAnterior": 8.0,
+          "precoAnterior": 8.5,
+          "desconto": 12,
           "estoque": "Em estoque",
-          "ultimaAtualizacao": "2025-01-27T14:30:00"
+          "ultimaAtualizacao": "2025-12-08T09:30:00"
         },
         {
           "mercadoId": 3,
-          "preco": 6.9,
-          "precoAnterior": 7.8,
+          "preco": 6.5,
+          "precoAnterior": 8.2,
+          "desconto": 21,
           "estoque": "Em estoque",
-          "ultimaAtualizacao": "2025-01-28T09:15:00"
+          "ultimaAtualizacao": "2025-12-08T08:15:00"
         }
       ]
     },
@@ -228,24 +293,27 @@
       "categoria": "Alimentos",
       "unidade_medida": "g",
       "tamanho_embalagem": "400",
-      "descricao": "Aveia integral em flocos finos",
-      "imagem_url": "/codigo/public/assets/img/aveia_integral_quaker_400g.png",
-      "criadoEm": "2024-01-02T10:00:00",
-      "atualizadoEm": "2025-01-28T10:00:00",
+      "descricao": "Aveia em flocos finos",
+      "imagem_url": "../assets/img/aveia_integral_quaker_400g.png",
+      "emPromocao": false,
+      "criadoEm": "2024-01-02",
+      "atualizadoEm": "2025-12-08",
       "ocorrencias": [
         {
           "mercadoId": 1,
-          "preco": 8.5,
-          "precoAnterior": 9.2,
+          "preco": 9.9,
+          "precoAnterior": 10.8,
+          "desconto": 8,
           "estoque": "Em estoque",
-          "ultimaAtualizacao": "2025-01-28T10:00:00"
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
         },
         {
           "mercadoId": 3,
-          "preco": 8.8,
-          "precoAnterior": 9.5,
+          "preco": 10.5,
+          "precoAnterior": 11.5,
+          "desconto": 9,
           "estoque": "Em estoque",
-          "ultimaAtualizacao": "2025-01-27T16:20:00"
+          "ultimaAtualizacao": "2025-12-08T08:45:00"
         }
       ]
     },
@@ -256,31 +324,35 @@
       "categoria": "Alimentos",
       "unidade_medida": "kg",
       "tamanho_embalagem": "1",
-      "descricao": "Feijão preto tipo 1, grãos selecionados",
-      "imagem_url": "/codigo/public/assets/img/feijao_preto_kicaldo_1kg.png",
-      "criadoEm": "2024-01-03T10:00:00",
-      "atualizadoEm": "2025-01-28T10:00:00",
+      "descricao": "Feijão preto tipo 1",
+      "imagem_url": "../assets/img/feijao_preto_kicaldo_1kg.png",
+      "emPromocao": true,
+      "criadoEm": "2024-01-03",
+      "atualizadoEm": "2025-12-08",
       "ocorrencias": [
         {
           "mercadoId": 1,
-          "preco": 9.1,
-          "precoAnterior": 9.8,
+          "preco": 8.5,
+          "precoAnterior": 10.9,
+          "desconto": 22,
           "estoque": "Em estoque",
-          "ultimaAtualizacao": "2025-01-28T10:00:00"
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
         },
         {
           "mercadoId": 2,
-          "preco": 9.3,
-          "precoAnterior": 10.0,
+          "preco": 9,
+          "precoAnterior": 10.5,
+          "desconto": 14,
           "estoque": "Em estoque",
-          "ultimaAtualizacao": "2025-01-27T11:45:00"
+          "ultimaAtualizacao": "2025-12-08T09:00:00"
         },
         {
           "mercadoId": 3,
-          "preco": 8.9,
-          "precoAnterior": 9.7,
+          "preco": 8.2,
+          "precoAnterior": 10.2,
+          "desconto": 20,
           "estoque": "Em estoque",
-          "ultimaAtualizacao": "2025-01-28T08:30:00"
+          "ultimaAtualizacao": "2025-12-08T08:30:00"
         }
       ]
     },
@@ -288,27 +360,30 @@
       "id": 4,
       "nome": "Pão de Forma Integral",
       "marca": "Visconti",
-      "categoria": "Alimentos",
+      "categoria": "Padaria",
       "unidade_medida": "g",
       "tamanho_embalagem": "500",
-      "descricao": "Pão de forma integral com fibras",
-      "imagem_url": "/codigo/public/assets/img/pao_forma_integral_visconti_500g.png",
-      "criadoEm": "2024-01-04T10:00:00",
-      "atualizadoEm": "2025-01-28T10:00:00",
+      "descricao": "Pão integral com fibras",
+      "imagem_url": "../assets/img/pao_forma_integral_visconti_500g.png",
+      "emPromocao": false,
+      "criadoEm": "2024-01-04",
+      "atualizadoEm": "2025-12-08",
       "ocorrencias": [
         {
           "mercadoId": 1,
-          "preco": 8.9,
-          "precoAnterior": 9.5,
+          "preco": 9.5,
+          "precoAnterior": 10.2,
+          "desconto": 7,
           "estoque": "Em estoque",
-          "ultimaAtualizacao": "2025-01-28T10:00:00"
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
         },
         {
           "mercadoId": 2,
-          "preco": 9.2,
-          "precoAnterior": 9.8,
+          "preco": 9.9,
+          "precoAnterior": 10.5,
+          "desconto": 6,
           "estoque": "Em estoque",
-          "ultimaAtualizacao": "2025-01-27T15:00:00"
+          "ultimaAtualizacao": "2025-12-08T09:25:00"
         }
       ]
     },
@@ -319,31 +394,35 @@
       "categoria": "Limpeza",
       "unidade_medida": "ml",
       "tamanho_embalagem": "500",
-      "descricao": "Limpador multiuso limão",
-      "imagem_url": "/codigo/public/assets/img/veja_multiuso_500ml.png",
-      "criadoEm": "2024-01-05T10:00:00",
-      "atualizadoEm": "2025-01-28T10:00:00",
+      "descricao": "Limpador multiuso",
+      "imagem_url": "../assets/img/veja_multiuso_500ml.png",
+      "emPromocao": true,
+      "criadoEm": "2024-01-05",
+      "atualizadoEm": "2025-12-08",
       "ocorrencias": [
         {
           "mercadoId": 1,
-          "preco": 6.7,
-          "precoAnterior": 7.5,
+          "preco": 6.5,
+          "precoAnterior": 8.5,
+          "desconto": 24,
           "estoque": "Em estoque",
-          "ultimaAtualizacao": "2025-01-28T10:00:00"
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
         },
         {
           "mercadoId": 2,
           "preco": 6.9,
-          "precoAnterior": 7.7,
+          "precoAnterior": 8.9,
+          "desconto": 22,
           "estoque": "Em estoque",
-          "ultimaAtualizacao": "2025-01-27T13:20:00"
+          "ultimaAtualizacao": "2025-12-08T09:15:00"
         },
         {
           "mercadoId": 3,
-          "preco": 6.5,
-          "precoAnterior": 7.3,
+          "preco": 6.2,
+          "precoAnterior": 8.2,
+          "desconto": 24,
           "estoque": "Em estoque",
-          "ultimaAtualizacao": "2025-01-28T09:45:00"
+          "ultimaAtualizacao": "2025-12-08T08:30:00"
         }
       ]
     },
@@ -355,30 +434,34 @@
       "unidade_medida": "ml",
       "tamanho_embalagem": "900",
       "descricao": "Óleo de soja refinado",
-      "imagem_url": "/codigo/public/assets/img/oleo_soja_liza_900ml.png",
-      "criadoEm": "2024-01-06T10:00:00",
-      "atualizadoEm": "2025-01-28T10:00:00",
+      "imagem_url": "../assets/img/oleo_soja_liza_900ml.png",
+      "emPromocao": true,
+      "criadoEm": "2024-01-06",
+      "atualizadoEm": "2025-12-08",
       "ocorrencias": [
         {
           "mercadoId": 1,
-          "preco": 8.9,
+          "preco": 7.9,
           "precoAnterior": 9.9,
+          "desconto": 20,
           "estoque": "Em estoque",
-          "ultimaAtualizacao": "2025-01-28T10:00:00"
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
         },
         {
           "mercadoId": 2,
-          "preco": 9.2,
+          "preco": 8.5,
           "precoAnterior": 10.2,
+          "desconto": 17,
           "estoque": "Em estoque",
-          "ultimaAtualizacao": "2025-01-27T12:00:00"
+          "ultimaAtualizacao": "2025-12-08T09:15:00"
         },
         {
           "mercadoId": 3,
-          "preco": 8.7,
-          "precoAnterior": 9.7,
+          "preco": 7.7,
+          "precoAnterior": 9.5,
+          "desconto": 19,
           "estoque": "Em estoque",
-          "ultimaAtualizacao": "2025-01-28T08:00:00"
+          "ultimaAtualizacao": "2025-12-08T08:00:00"
         }
       ]
     },
@@ -390,30 +473,34 @@
       "unidade_medida": "L",
       "tamanho_embalagem": "1",
       "descricao": "Leite integral UHT",
-      "imagem_url": "/codigo/public/assets/img/leite_integral_itambe_1l.png",
-      "criadoEm": "2024-01-07T10:00:00",
-      "atualizadoEm": "2025-01-28T10:00:00",
+      "imagem_url": "../assets/img/leite_integral_itambe_1l.png",
+      "emPromocao": false,
+      "criadoEm": "2024-01-07",
+      "atualizadoEm": "2025-12-08",
       "ocorrencias": [
         {
           "mercadoId": 1,
-          "preco": 4.5,
-          "precoAnterior": 5.0,
+          "preco": 4.8,
+          "precoAnterior": 5.2,
+          "desconto": 8,
           "estoque": "Em estoque",
-          "ultimaAtualizacao": "2025-01-28T10:00:00"
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
         },
         {
           "mercadoId": 2,
-          "preco": 4.7,
-          "precoAnterior": 5.2,
+          "preco": 5,
+          "precoAnterior": 5.5,
+          "desconto": 9,
           "estoque": "Em estoque",
-          "ultimaAtualizacao": "2025-01-27T14:00:00"
+          "ultimaAtualizacao": "2025-12-08T09:15:00"
         },
         {
           "mercadoId": 3,
-          "preco": 4.4,
+          "preco": 4.5,
           "precoAnterior": 4.9,
+          "desconto": 8,
           "estoque": "Em estoque",
-          "ultimaAtualizacao": "2025-01-28T09:30:00"
+          "ultimaAtualizacao": "2025-12-08T08:40:00"
         }
       ]
     },
@@ -425,151 +512,1330 @@
       "unidade_medida": "kg",
       "tamanho_embalagem": "1",
       "descricao": "Açúcar cristal refinado",
-      "imagem_url": "/codigo/public/assets/img/acucar_cristal_uniao_1kg.png",
-      "criadoEm": "2024-01-08T10:00:00",
-      "atualizadoEm": "2025-01-28T10:00:00",
+      "imagem_url": "../assets/img/acucar_cristal_uniao_1kg.png",
+      "emPromocao": false,
+      "criadoEm": "2024-01-08",
+      "atualizadoEm": "2025-12-08",
       "ocorrencias": [
         {
           "mercadoId": 1,
-          "preco": 3.9,
+          "preco": 4.2,
           "precoAnterior": 4.5,
+          "desconto": 7,
           "estoque": "Em estoque",
-          "ultimaAtualizacao": "2025-01-28T10:00:00"
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
         },
         {
           "mercadoId": 2,
-          "preco": 4.1,
+          "preco": 4.5,
           "precoAnterior": 4.7,
+          "desconto": 4,
           "estoque": "Em estoque",
-          "ultimaAtualizacao": "2025-01-27T11:00:00"
+          "ultimaAtualizacao": "2025-12-08T09:00:00"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "nome": "Café Pilão",
+      "marca": "Pilão",
+      "categoria": "Alimentos",
+      "unidade_medida": "g",
+      "tamanho_embalagem": "500",
+      "descricao": "Café torrado e moído",
+      "imagem_url": "../assets/img/cafe_pilao.jpg",
+      "emPromocao": true,
+      "criadoEm": "2024-01-09",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 12.9,
+          "precoAnterior": 15.9,
+          "desconto": 19,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 13.5,
+          "precoAnterior": 16.2,
+          "desconto": 17,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T09:30:00"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "nome": "Macarrão Parafuso",
+      "marca": "Amalia",
+      "categoria": "Alimentos",
+      "unidade_medida": "g",
+      "tamanho_embalagem": "500",
+      "descricao": "Massa de sêmola",
+      "imagem_url": "../assets/img/macarrao_parafuso_amalia.jpg",
+      "emPromocao": false,
+      "criadoEm": "2024-01-10",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 5.9,
+          "precoAnterior": 6.5,
+          "desconto": 9,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 3,
+          "preco": 5.7,
+          "precoAnterior": 6.3,
+          "desconto": 10,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T08:50:00"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "nome": "Molho de Tomate",
+      "marca": "Fugini",
+      "categoria": "Alimentos",
+      "unidade_medida": "g",
+      "tamanho_embalagem": "340",
+      "descricao": "Molho tradicional",
+      "imagem_url": "../assets/img/Molho_tomate_fugini.jpeg",
+      "emPromocao": true,
+      "criadoEm": "2024-01-11",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 2.9,
+          "precoAnterior": 3.9,
+          "desconto": 26,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 3.2,
+          "precoAnterior": 4.2,
+          "desconto": 24,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T09:10:00"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "nome": "Farinha de Trigo",
+      "marca": "Dona Benta",
+      "categoria": "Alimentos",
+      "unidade_medida": "kg",
+      "tamanho_embalagem": "1",
+      "descricao": "Farinha especial",
+      "imagem_url": "../assets/img/farinha_trigo_dona_benta_1kg.jpeg",
+      "emPromocao": true,
+      "criadoEm": "2024-01-12",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 4.9,
+          "precoAnterior": 6.5,
+          "desconto": 25,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 3,
+          "preco": 4.7,
+          "precoAnterior": 6.3,
+          "desconto": 25,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T08:25:00"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "nome": "Biscoito Cream Cracker",
+      "marca": "Marilan",
+      "categoria": "Alimentos",
+      "unidade_medida": "g",
+      "tamanho_embalagem": "400",
+      "descricao": "Biscoito salgado",
+      "imagem_url": "../assets/img/biscoito-cream-cracker-marilan-350g.jpeg",
+      "emPromocao": true,
+      "criadoEm": "2024-01-13",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 4.5,
+          "precoAnterior": 5.9,
+          "desconto": 24,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 3,
+          "preco": 4.2,
+          "precoAnterior": 5.5,
+          "desconto": 24,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T08:35:00"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "nome": "Achocolatado Nescau",
+      "marca": "Nescau",
+      "categoria": "Alimentos",
+      "unidade_medida": "g",
+      "tamanho_embalagem": "400",
+      "descricao": "Achocolatado em pó",
+      "imagem_url": "../assets/img/Achocolatado-Em-Po-Nescau.jpg",
+      "emPromocao": false,
+      "criadoEm": "2024-01-14",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 10.9,
+          "precoAnterior": 11.9,
+          "desconto": 8,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 11.5,
+          "precoAnterior": 12.5,
+          "desconto": 8,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T09:20:00"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "nome": "Manteiga com Sal",
+      "marca": "Itambé",
+      "categoria": "Alimentos",
+      "unidade_medida": "g",
+      "tamanho_embalagem": "200",
+      "descricao": "Manteiga tradicional",
+      "imagem_url": "../assets/img/manteiga-itambe-200g.png",
+      "emPromocao": true,
+      "criadoEm": "2024-01-15",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 10.9,
+          "precoAnterior": 13.9,
+          "desconto": 22,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 11.5,
+          "precoAnterior": 14.5,
+          "desconto": 21,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T09:30:00"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "nome": "Queijo Mussarela",
+      "marca": "Polenghi",
+      "categoria": "Alimentos",
+      "unidade_medida": "g",
+      "tamanho_embalagem": "150",
+      "descricao": "Queijo fatiado",
+      "imagem_url": "../assets/img/queijo-mussarela-fatiado-polenghi-150g.jpg",
+      "emPromocao": false,
+      "criadoEm": "2024-01-16",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 12.9,
+          "precoAnterior": 14.2,
+          "desconto": 9,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 3,
+          "preco": 12.5,
+          "precoAnterior": 13.8,
+          "desconto": 9,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T08:50:00"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "nome": "Iogurte Natural",
+      "marca": "Danone",
+      "categoria": "Alimentos",
+      "unidade_medida": "g",
+      "tamanho_embalagem": "160",
+      "descricao": "Iogurte integral",
+      "imagem_url": "../assets/img/iogurte-danone-integral.png",
+      "emPromocao": true,
+      "criadoEm": "2024-01-17",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 3.5,
+          "precoAnterior": 4.9,
+          "desconto": 29,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 3.8,
+          "precoAnterior": 5.2,
+          "desconto": 27,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T09:20:00"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "nome": "Ovos Brancos",
+      "marca": "Mantiqueira",
+      "categoria": "Alimentos",
+      "unidade_medida": "unidades",
+      "tamanho_embalagem": "12",
+      "descricao": "Ovos brancos grandes",
+      "imagem_url": "../assets/img/ovos-brancos-mantiqueira.png",
+      "emPromocao": false,
+      "criadoEm": "2024-01-18",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 11.9,
+          "precoAnterior": 13.2,
+          "desconto": 10,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 12.5,
+          "precoAnterior": 13.8,
+          "desconto": 9,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T09:15:00"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "nome": "Frango Congelado",
+      "marca": "Sadia",
+      "categoria": "Alimentos",
+      "unidade_medida": "kg",
+      "tamanho_embalagem": "1",
+      "descricao": "Frango inteiro",
+      "imagem_url": "../assets/img/frango-sadia-1kg.png",
+      "emPromocao": true,
+      "criadoEm": "2024-01-19",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 9.9,
+          "precoAnterior": 12.9,
+          "desconto": 23,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 3,
+          "preco": 9.5,
+          "precoAnterior": 12.5,
+          "desconto": 24,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T08:40:00"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "nome": "Salsicha Hot Dog",
+      "marca": "Perdigão",
+      "categoria": "Alimentos",
+      "unidade_medida": "g",
+      "tamanho_embalagem": "500",
+      "descricao": "Salsicha tradicional",
+      "imagem_url": "../assets/img/salsicha-hotdog-perdigao-500g.jpeg",
+      "emPromocao": false,
+      "criadoEm": "2024-01-20",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 8.9,
+          "precoAnterior": 9.8,
+          "desconto": 9,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 9.5,
+          "precoAnterior": 10.5,
+          "desconto": 10,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T09:25:00"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "nome": "Detergente Ypê",
+      "marca": "Ypê",
+      "categoria": "Limpeza",
+      "unidade_medida": "ml",
+      "tamanho_embalagem": "500",
+      "descricao": "Detergente neutro",
+      "imagem_url": "../assets/img/detergente-ype-neutro.png",
+      "emPromocao": true,
+      "criadoEm": "2024-01-21",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 1.9,
+          "precoAnterior": 2.9,
+          "desconto": 34,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 2.2,
+          "precoAnterior": 3.2,
+          "desconto": 31,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T09:05:00"
+        },
+        {
+          "mercadoId": 3,
+          "preco": 1.7,
+          "precoAnterior": 2.7,
+          "desconto": 37,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T08:15:00"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "nome": "Sabão em Pó OMO",
+      "marca": "OMO",
+      "categoria": "Limpeza",
+      "unidade_medida": "g",
+      "tamanho_embalagem": "800",
+      "descricao": "Sabão lavagem perfeita",
+      "imagem_url": "../assets/img/sabao-em-po-omo-800g.png",
+      "emPromocao": false,
+      "criadoEm": "2024-01-22",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 15.9,
+          "precoAnterior": 17.5,
+          "desconto": 9,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 16.5,
+          "precoAnterior": 18.2,
+          "desconto": 9,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T09:30:00"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "nome": "Água Sanitária Qboa",
+      "marca": "Qboa",
+      "categoria": "Limpeza",
+      "unidade_medida": "L",
+      "tamanho_embalagem": "1",
+      "descricao": "Água sanitária",
+      "imagem_url": "../assets/img/agua-sanitaria-qboa-1l.png",
+      "emPromocao": true,
+      "criadoEm": "2024-01-23",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 2.5,
+          "precoAnterior": 3.5,
+          "desconto": 29,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 3,
+          "preco": 2.3,
+          "precoAnterior": 3.2,
+          "desconto": 28,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T08:40:00"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "nome": "Desinfetante Pinho Sol",
+      "marca": "Pinho Sol",
+      "categoria": "Limpeza",
+      "unidade_medida": "ml",
+      "tamanho_embalagem": "500",
+      "descricao": "Desinfetante perfumado",
+      "imagem_url": "../assets/img/Desinfetante-Lavanda-500mL-Pinho-Sol.png",
+      "emPromocao": false,
+      "criadoEm": "2024-01-24",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 5.9,
+          "precoAnterior": 6.5,
+          "desconto": 9,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 6.2,
+          "precoAnterior": 6.8,
+          "desconto": 9,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T09:20:00"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "nome": "Amaciante Comfort",
+      "marca": "Comfort",
+      "categoria": "Limpeza",
+      "unidade_medida": "L",
+      "tamanho_embalagem": "2",
+      "descricao": "Amaciante concentrado",
+      "imagem_url": "../assets/img/amaciante-comfort-2l.png",
+      "emPromocao": true,
+      "criadoEm": "2024-01-25",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 11.9,
+          "precoAnterior": 15.9,
+          "desconto": 25,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 12.5,
+          "precoAnterior": 16.5,
+          "desconto": 24,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T09:20:00"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "nome": "Esponja de Limpeza",
+      "marca": "Scotch-Brite",
+      "categoria": "Limpeza",
+      "unidade_medida": "unidades",
+      "tamanho_embalagem": "4",
+      "descricao": "Esponja dupla face",
+      "imagem_url": "../assets/img/esponja-multiuso-com-4.png",
+      "emPromocao": false,
+      "criadoEm": "2024-01-26",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 6.9,
+          "precoAnterior": 7.5,
+          "desconto": 8,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 3,
+          "preco": 6.5,
+          "precoAnterior": 7.2,
+          "desconto": 10,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T08:50:00"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "nome": "Limpador Ajax",
+      "marca": "Ajax",
+      "categoria": "Limpeza",
+      "unidade_medida": "ml",
+      "tamanho_embalagem": "500",
+      "descricao": "Limpador banheiro",
+      "imagem_url": "../assets/img/limpador-ajax-fresh.png",
+      "emPromocao": true,
+      "criadoEm": "2024-01-27",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 7.9,
+          "precoAnterior": 10.9,
+          "desconto": 28,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 8.5,
+          "precoAnterior": 11.5,
+          "desconto": 26,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T09:15:00"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "nome": "Álcool em Gel",
+      "marca": "Sulmar",
+      "categoria": "Limpeza",
+      "unidade_medida": "ml",
+      "tamanho_embalagem": "500",
+      "descricao": "Álcool 70%",
+      "imagem_url": "../assets/img/alcool-em-gel-sulmar-500ml.png",
+      "emPromocao": false,
+      "criadoEm": "2024-01-28",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 8.9,
+          "precoAnterior": 9.8,
+          "desconto": 9,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 3,
+          "preco": 8.5,
+          "precoAnterior": 9.5,
+          "desconto": 11,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T08:45:00"
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "nome": "Shampoo Clear",
+      "marca": "Clear",
+      "categoria": "Higiene",
+      "unidade_medida": "ml",
+      "tamanho_embalagem": "400",
+      "descricao": "Shampoo anticaspa",
+      "imagem_url": "../assets/img/shampoo-anticaspa-clear-400ml.png",
+      "emPromocao": false,
+      "criadoEm": "2024-01-29",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 18.9,
+          "precoAnterior": 20.5,
+          "desconto": 8,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 19.5,
+          "precoAnterior": 21.2,
+          "desconto": 8,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T09:25:00"
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "nome": "Condicionador Dove",
+      "marca": "Dove",
+      "categoria": "Higiene",
+      "unidade_medida": "ml",
+      "tamanho_embalagem": "400",
+      "descricao": "Condicionador hidratação",
+      "imagem_url": "../assets/img/condicionador-dove-reconstrucao-completa-400ml.jpg",
+      "emPromocao": true,
+      "criadoEm": "2024-01-30",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 16.9,
+          "precoAnterior": 21.9,
+          "desconto": 23,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 3,
+          "preco": 16.5,
+          "precoAnterior": 21.5,
+          "desconto": 23,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T08:45:00"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "nome": "Sabonete Protex",
+      "marca": "Protex",
+      "categoria": "Higiene",
+      "unidade_medida": "ml",
+      "tamanho_embalagem": "250",
+      "descricao": "Sabonete antibacteriano",
+      "imagem_url": "../assets/img/sabonete-protex-250ml.png",
+      "emPromocao": false,
+      "criadoEm": "2024-01-31",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 12.9,
+          "precoAnterior": 14.2,
+          "desconto": 9,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 13.5,
+          "precoAnterior": 14.8,
+          "desconto": 9,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T09:35:00"
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "nome": "Creme Dental Colgate",
+      "marca": "Colgate",
+      "categoria": "Higiene",
+      "unidade_medida": "g",
+      "tamanho_embalagem": "90",
+      "descricao": "Creme dental total 12",
+      "imagem_url": "../assets/img/creme-dental-colgate-total12.png",
+      "emPromocao": true,
+      "criadoEm": "2024-02-01",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 5.9,
+          "precoAnterior": 7.9,
+          "desconto": 25,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 6.2,
+          "precoAnterior": 8.2,
+          "desconto": 24,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T09:20:00"
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "nome": "Papel Higiênico Neve",
+      "marca": "Neve",
+      "categoria": "Higiene",
+      "unidade_medida": "unidades",
+      "tamanho_embalagem": "12",
+      "descricao": "Papel higiênico folha dupla",
+      "imagem_url": "../assets/img/papel-higienico-neve-12u.jpg",
+      "emPromocao": false,
+      "criadoEm": "2024-02-02",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 19.9,
+          "precoAnterior": 21.5,
+          "desconto": 7,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 20.5,
+          "precoAnterior": 22.2,
+          "desconto": 8,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T09:15:00"
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "nome": "Desodorante Rexona",
+      "marca": "Rexona",
+      "categoria": "Higiene",
+      "unidade_medida": "ml",
+      "tamanho_embalagem": "50",
+      "descricao": "Desodorante roll-on",
+      "imagem_url": "../assets/img/desodorante-rexona-sem-perfume.png",
+      "emPromocao": true,
+      "criadoEm": "2024-02-03",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 10.9,
+          "precoAnterior": 14.9,
+          "desconto": 27,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 3,
+          "preco": 10.5,
+          "precoAnterior": 14.5,
+          "desconto": 28,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T08:20:00"
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "nome": "Absorvente Always",
+      "marca": "Always",
+      "categoria": "Higiene",
+      "unidade_medida": "unidades",
+      "tamanho_embalagem": "8",
+      "descricao": "Absorvente com abas",
+      "imagem_url": "../assets/img/absorvente-com-abas-always-8u.png",
+      "emPromocao": false,
+      "criadoEm": "2024-02-04",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 8.9,
+          "precoAnterior": 9.8,
+          "desconto": 9,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 9.5,
+          "precoAnterior": 10.5,
+          "desconto": 10,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T09:15:00"
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "nome": "Fralda Pampers",
+      "marca": "Pampers",
+      "categoria": "Higiene",
+      "unidade_medida": "unidades",
+      "tamanho_embalagem": "48",
+      "descricao": "Fralda tamanho M",
+      "imagem_url": "../assets/img/fralda-pampers-48u.jpg",
+      "emPromocao": true,
+      "criadoEm": "2024-02-05",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 59.9,
+          "precoAnterior": 79.9,
+          "desconto": 25,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 62.5,
+          "precoAnterior": 82.5,
+          "desconto": 24,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T09:30:00"
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "nome": "Coca-Cola 2L",
+      "marca": "Coca-Cola",
+      "categoria": "Bebidas",
+      "unidade_medida": "L",
+      "tamanho_embalagem": "2",
+      "descricao": "Refrigerante original",
+      "imagem_url": "../assets/img/refrigerante-coca-cola-2l.jpg",
+      "emPromocao": true,
+      "criadoEm": "2024-02-06",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 7.9,
+          "precoAnterior": 10.9,
+          "desconto": 28,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 8.5,
+          "precoAnterior": 11.5,
+          "desconto": 26,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T09:30:00"
+        },
+        {
+          "mercadoId": 3,
+          "preco": 7.5,
+          "precoAnterior": 10.5,
+          "desconto": 29,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T08:15:00"
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "nome": "Suco Del Valle",
+      "marca": "Del Valle",
+      "categoria": "Bebidas",
+      "unidade_medida": "L",
+      "tamanho_embalagem": "1",
+      "descricao": "Suco integral laranja",
+      "imagem_url": "../assets/img/suco-del-valle-laranja-1l.png",
+      "emPromocao": false,
+      "criadoEm": "2024-02-07",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 6.9,
+          "precoAnterior": 7.5,
+          "desconto": 8,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 3,
+          "preco": 6.5,
+          "precoAnterior": 7.2,
+          "desconto": 10,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T08:40:00"
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "nome": "Água Mineral Crystal",
+      "marca": "Crystal",
+      "categoria": "Bebidas",
+      "unidade_medida": "L",
+      "tamanho_embalagem": "1.5",
+      "descricao": "Água mineral sem gás",
+      "imagem_url": "../assets/img/agua-mineral-crystal-sem-gas-1.5l.jpg",
+      "emPromocao": true,
+      "criadoEm": "2024-02-08",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 1.5,
+          "precoAnterior": 2.5,
+          "desconto": 40,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 1.7,
+          "precoAnterior": 2.7,
+          "desconto": 37,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T09:25:00"
+        },
+        {
+          "mercadoId": 3,
+          "preco": 1.4,
+          "precoAnterior": 2.4,
+          "desconto": 42,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T08:20:00"
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "nome": "Cerveja Skol Lata",
+      "marca": "Skol",
+      "categoria": "Bebidas",
+      "unidade_medida": "ml",
+      "tamanho_embalagem": "350",
+      "descricao": "Cerveja Pilsen",
+      "imagem_url": "../assets/img/cerveja-skol-pilsen-lata-350ml.jpg",
+      "emPromocao": false,
+      "criadoEm": "2024-02-09",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 2.9,
+          "precoAnterior": 3.2,
+          "desconto": 9,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 3,
+          "precoAnterior": 3.3,
+          "desconto": 9,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T09:15:00"
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "nome": "Bolo Chocolate",
+      "marca": "Seven Boys",
+      "categoria": "Padaria",
+      "unidade_medida": "g",
+      "tamanho_embalagem": "250",
+      "descricao": "Bolo pronto chocolate",
+      "imagem_url": "../assets/img/bolos-seven-boys-chocolate.png",
+      "emPromocao": true,
+      "criadoEm": "2024-02-10",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 5.9,
+          "precoAnterior": 7.9,
+          "desconto": 25,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 3,
+          "preco": 5.5,
+          "precoAnterior": 7.5,
+          "desconto": 27,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T08:35:00"
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "nome": "Pão Francês",
+      "marca": "Padaria",
+      "categoria": "Padaria",
+      "unidade_medida": "kg",
+      "tamanho_embalagem": "1",
+      "descricao": "Pão francês fresquinho",
+      "imagem_url": "../assets/img/pao-frances.png",
+      "emPromocao": false,
+      "criadoEm": "2024-02-11",
+      "atualizadoEm": "2025-12-08",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 12.9,
+          "precoAnterior": 14.2,
+          "desconto": 9,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T10:00:00"
+        },
+        {
+          "mercadoId": 2,
+          "preco": 13.5,
+          "precoAnterior": 14.8,
+          "desconto": 9,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-12-08T09:20:00"
         }
       ]
     }
   ],
-
+  "promocoes": [
+    {
+      "id": 1,
+      "produtoId": 1,
+      "mercadoId": 3,
+      "precoOriginal": 8.2,
+      "precoPromocional": 6.5,
+      "desconto": 21,
+      "descricao": "Economia de R$ 1,70 por kg!",
+      "dataInicio": "2025-12-01T00:00:00",
+      "dataFim": "2025-12-15T23:59:59",
+      "ativa": true,
+      "destaque": true
+    },
+    {
+      "id": 2,
+      "produtoId": 37,
+      "mercadoId": 3,
+      "precoOriginal": 10.5,
+      "precoPromocional": 7.5,
+      "desconto": 29,
+      "descricao": "Super promoção de Natal!",
+      "dataInicio": "2025-12-05T00:00:00",
+      "dataFim": "2025-12-25T23:59:59",
+      "ativa": true,
+      "destaque": true
+    },
+    {
+      "id": 3,
+      "produtoId": 39,
+      "mercadoId": 3,
+      "precoOriginal": 2.4,
+      "precoPromocional": 1.4,
+      "desconto": 42,
+      "descricao": "Menor preço da cidade!",
+      "dataInicio": "2025-12-01T00:00:00",
+      "dataFim": "2025-12-31T23:59:59",
+      "ativa": true,
+      "destaque": true
+    },
+    {
+      "id": 4,
+      "produtoId": 21,
+      "mercadoId": 3,
+      "precoOriginal": 2.7,
+      "precoPromocional": 1.7,
+      "desconto": 37,
+      "descricao": "Leve 3 e pague 2!",
+      "dataInicio": "2025-12-08T00:00:00",
+      "dataFim": "2025-12-20T23:59:59",
+      "ativa": true,
+      "destaque": true
+    },
+    {
+      "id": 5,
+      "produtoId": 36,
+      "mercadoId": 1,
+      "precoOriginal": 79.9,
+      "precoPromocional": 59.9,
+      "desconto": 25,
+      "descricao": "Economia de R$ 20,00!",
+      "dataInicio": "2025-12-01T00:00:00",
+      "dataFim": "2025-12-31T23:59:59",
+      "ativa": true,
+      "destaque": true
+    },
+    {
+      "id": 6,
+      "produtoId": 17,
+      "mercadoId": 1,
+      "precoOriginal": 4.9,
+      "precoPromocional": 3.5,
+      "desconto": 29,
+      "descricao": "Oferta relâmpago!",
+      "dataInicio": "2025-12-08T00:00:00",
+      "dataFim": "2025-12-15T23:59:59",
+      "ativa": true,
+      "destaque": true
+    },
+    {
+      "id": 7,
+      "produtoId": 19,
+      "mercadoId": 3,
+      "precoOriginal": 12.5,
+      "precoPromocional": 9.5,
+      "desconto": 24,
+      "descricao": "Frango fresquinho com desconto!",
+      "dataInicio": "2025-12-01T00:00:00",
+      "dataFim": "2025-12-31T23:59:59",
+      "ativa": true,
+      "destaque": true
+    },
+    {
+      "id": 8,
+      "produtoId": 30,
+      "mercadoId": 3,
+      "precoOriginal": 21.5,
+      "precoPromocional": 16.5,
+      "desconto": 23,
+      "descricao": "Cabelos hidratados por menos!",
+      "dataInicio": "2025-12-05T00:00:00",
+      "dataFim": "2025-12-20T23:59:59",
+      "ativa": true,
+      "destaque": true
+    },
+    {
+      "id": 9,
+      "produtoId": 9,
+      "mercadoId": 1,
+      "precoOriginal": 15.9,
+      "precoPromocional": 12.9,
+      "desconto": 19,
+      "descricao": "Café quentinho com desconto!",
+      "dataInicio": "2025-12-01T00:00:00",
+      "dataFim": "2025-12-15T23:59:59",
+      "ativa": true,
+      "destaque": false
+    },
+    {
+      "id": 10,
+      "produtoId": 25,
+      "mercadoId": 1,
+      "precoOriginal": 15.9,
+      "precoPromocional": 11.9,
+      "desconto": 25,
+      "descricao": "Roupas macias por mais tempo!",
+      "dataInicio": "2025-12-08T00:00:00",
+      "dataFim": "2025-12-25T23:59:59",
+      "ativa": true,
+      "destaque": false
+    },
+    {
+      "id": 11,
+      "produtoId": 12,
+      "mercadoId": 1,
+      "precoOriginal": 6.5,
+      "precoPromocional": 4.9,
+      "desconto": 25,
+      "descricao": "Farinha de qualidade com desconto!",
+      "dataInicio": "2025-12-01T00:00:00",
+      "dataFim": "2025-12-31T23:59:59",
+      "ativa": true,
+      "destaque": false
+    },
+    {
+      "id": 12,
+      "produtoId": 34,
+      "mercadoId": 3,
+      "precoOriginal": 14.5,
+      "precoPromocional": 10.5,
+      "desconto": 28,
+      "descricao": "Proteção que dura 48h!",
+      "dataInicio": "2025-12-05T00:00:00",
+      "dataFim": "2025-12-20T23:59:59",
+      "ativa": true,
+      "destaque": false
+    }
+  ],
   "listasCompras": [
     {
       "id": 1,
       "usuarioId": 1,
-      "nome": "Lista Mensal - Janeiro",
-      "dataCriacao": "2025-01-15T10:00:00",
-      "dataAtualizacao": "2025-01-28T14:30:00",
+      "mercadoId": 1,
+      "nome": "Lista Mensal - Dezembro",
+      "dataCriacao": "2025-12-01T10:00:00",
+      "dataAtualizacao": "2025-12-08T14:30:00",
       "status": "ativa",
-      "valor": 150.5,
+      "valor": 289.5,
       "produtos": [
         {
           "produtoId": 1,
           "quantidade": 5,
-          "valorUnitario": 7.2,
+          "valorUnitario": 6.9,
           "mercadoId": 1
         },
         {
           "produtoId": 3,
           "quantidade": 3,
-          "valorUnitario": 9.1,
+          "valorUnitario": 8.5,
           "mercadoId": 1
-        },
-        {
-          "produtoId": 7,
-          "quantidade": 10,
-          "valorUnitario": 4.5,
-          "mercadoId": 1
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "usuarioId": 1,
-      "nome": "Lista Semanal",
-      "dataCriacao": "2025-01-25T08:00:00",
-      "dataAtualizacao": "2025-01-28T10:00:00",
-      "status": "ativa",
-      "valor": 85.3,
-      "produtos": [
-        {
-          "produtoId": 4,
-          "quantidade": 2,
-          "valorUnitario": 8.9,
-          "mercadoId": 1
-        },
-        {
-          "produtoId": 7,
-          "quantidade": 6,
-          "valorUnitario": 4.5,
-          "mercadoId": 1
-        },
-        {
-          "produtoId": 8,
-          "quantidade": 2,
-          "valorUnitario": 3.9,
-          "mercadoId": 1
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "usuarioId": 2,
-      "nome": "Compras do Mês",
-      "dataCriacao": "2025-01-20T14:30:00",
-      "dataAtualizacao": "2025-01-27T16:00:00",
-      "status": "ativa",
-      "valor": 200.0,
-      "produtos": [
-        {
-          "produtoId": 1,
-          "quantidade": 10,
-          "valorUnitario": 6.9,
-          "mercadoId": 3
-        },
-        {
-          "produtoId": 3,
-          "quantidade": 5,
-          "valorUnitario": 8.9,
-          "mercadoId": 3
         },
         {
           "produtoId": 6,
           "quantidade": 4,
-          "valorUnitario": 8.7,
-          "mercadoId": 3
-        }
-      ]
-    }
-  ],
-
-  "historicoCompras": [
-    {
-      "id": 1,
-      "usuarioId": 1,
-      "mercadoId": 1,
-      "data": "2025-01-20T15:30:00",
-      "status": "Finalizado",
-      "total": 62.48,
-      "metodoPagamento": "Cartão de Crédito",
-      "itens": [
-        {
-          "produtoId": 1,
-          "quantidade": 2,
-          "precoUnitario": 7.2,
-          "subtotal": 14.4
-        },
-        {
-          "produtoId": 3,
-          "quantidade": 2,
-          "precoUnitario": 9.1,
-          "subtotal": 18.2
+          "valorUnitario": 7.9,
+          "mercadoId": 1
         },
         {
           "produtoId": 7,
-          "quantidade": 4,
-          "precoUnitario": 4.5,
-          "subtotal": 18.0
+          "quantidade": 10,
+          "valorUnitario": 4.8,
+          "mercadoId": 1
+        },
+        {
+          "produtoId": 10,
+          "quantidade": 5,
+          "valorUnitario": 5.9,
+          "mercadoId": 1
+        },
+        {
+          "produtoId": 21,
+          "quantidade": 3,
+          "valorUnitario": 1.9,
+          "mercadoId": 1
         },
         {
           "produtoId": 5,
           "quantidade": 2,
-          "precoUnitario": 6.7,
-          "subtotal": 13.4
+          "valorUnitario": 6.5,
+          "mercadoId": 1
+        },
+        {
+          "produtoId": 32,
+          "quantidade": 4,
+          "valorUnitario": 5.9,
+          "mercadoId": 1
+        },
+        {
+          "produtoId": 37,
+          "quantidade": 6,
+          "valorUnitario": 7.9,
+          "mercadoId": 1
         }
       ]
     },
@@ -577,28 +1843,41 @@
       "id": 2,
       "usuarioId": 1,
       "mercadoId": 2,
-      "data": "2025-01-15T10:15:00",
-      "status": "Finalizado",
-      "total": 45.8,
-      "metodoPagamento": "PIX",
-      "itens": [
-        {
-          "produtoId": 1,
-          "quantidade": 1,
-          "precoUnitario": 7.5,
-          "subtotal": 7.5
-        },
+      "nome": "Lista Semanal",
+      "dataCriacao": "2025-12-05T08:00:00",
+      "dataAtualizacao": "2025-12-08T10:00:00",
+      "status": "ativa",
+      "valor": 128.4,
+      "produtos": [
         {
           "produtoId": 4,
           "quantidade": 2,
-          "precoUnitario": 9.2,
-          "subtotal": 18.4
+          "valorUnitario": 9.9,
+          "mercadoId": 2
         },
         {
           "produtoId": 7,
+          "quantidade": 6,
+          "valorUnitario": 5,
+          "mercadoId": 2
+        },
+        {
+          "produtoId": 8,
+          "quantidade": 2,
+          "valorUnitario": 4.5,
+          "mercadoId": 2
+        },
+        {
+          "produtoId": 38,
           "quantidade": 3,
-          "precoUnitario": 4.7,
-          "subtotal": 14.1
+          "valorUnitario": 6.9,
+          "mercadoId": 2
+        },
+        {
+          "produtoId": 17,
+          "quantidade": 8,
+          "valorUnitario": 3.8,
+          "mercadoId": 2
         }
       ]
     },
@@ -606,10 +1885,144 @@
       "id": 3,
       "usuarioId": 2,
       "mercadoId": 3,
-      "data": "2025-01-25T14:00:00",
+      "nome": "Compras do Mês",
+      "dataCriacao": "2025-12-03T14:30:00",
+      "dataAtualizacao": "2025-12-07T16:00:00",
+      "status": "ativa",
+      "valor": 345.8,
+      "produtos": [
+        {
+          "produtoId": 1,
+          "quantidade": 10,
+          "valorUnitario": 6.5,
+          "mercadoId": 3
+        },
+        {
+          "produtoId": 3,
+          "quantidade": 5,
+          "valorUnitario": 8.2,
+          "mercadoId": 3
+        },
+        {
+          "produtoId": 6,
+          "quantidade": 4,
+          "valorUnitario": 7.7,
+          "mercadoId": 3
+        },
+        {
+          "produtoId": 9,
+          "quantidade": 3,
+          "valorUnitario": 12.5,
+          "mercadoId": 3
+        },
+        {
+          "produtoId": 22,
+          "quantidade": 2,
+          "valorUnitario": 15.5,
+          "mercadoId": 3
+        },
+        {
+          "produtoId": 33,
+          "quantidade": 3,
+          "valorUnitario": 19.5,
+          "mercadoId": 3
+        },
+        {
+          "produtoId": 19,
+          "quantidade": 5,
+          "valorUnitario": 9.5,
+          "mercadoId": 3
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "usuarioId": 3,
+      "mercadoId": 1,
+      "nome": "Lista de Natal",
+      "dataCriacao": "2025-12-06T09:00:00",
+      "dataAtualizacao": "2025-12-08T11:00:00",
+      "status": "ativa",
+      "valor": 218.6,
+      "produtos": [
+        {
+          "produtoId": 9,
+          "quantidade": 2,
+          "valorUnitario": 12.9,
+          "mercadoId": 1
+        },
+        {
+          "produtoId": 37,
+          "quantidade": 12,
+          "valorUnitario": 7.9,
+          "mercadoId": 1
+        },
+        {
+          "produtoId": 40,
+          "quantidade": 24,
+          "valorUnitario": 2.9,
+          "mercadoId": 1
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "usuarioId": 1,
+      "mercadoId": 2,
+      "nome": "Lista Básica",
+      "dataCriacao": "2025-11-28T16:20:00",
+      "dataAtualizacao": "2025-12-02T09:15:00",
+      "status": "finalizada",
+      "valor": 156.3,
+      "produtos": [
+        {
+          "produtoId": 1,
+          "quantidade": 3,
+          "valorUnitario": 7.5,
+          "mercadoId": 2
+        },
+        {
+          "produtoId": 3,
+          "quantidade": 2,
+          "valorUnitario": 9,
+          "mercadoId": 2
+        },
+        {
+          "produtoId": 7,
+          "quantidade": 8,
+          "valorUnitario": 5,
+          "mercadoId": 2
+        },
+        {
+          "produtoId": 10,
+          "quantidade": 3,
+          "valorUnitario": 6.2,
+          "mercadoId": 2
+        }
+      ]
+    },
+    {
+      "usuarioId": 1,
+      "valor": 78.5,
+      "produtos": [
+        {
+          "produtoId": 14,
+          "quantidade": 5,
+          "valorUnitario": 15.7
+        }
+      ],
+      "id": 6
+    }
+  ],
+  "historicoCompras": [
+    {
+      "id": 1,
+      "usuarioId": 1,
+      "mercadoId": 1,
+      "data": "2025-11-20T15:30:00",
       "status": "Finalizado",
-      "total": 89.5,
-      "metodoPagamento": "Dinheiro",
+      "total": 145.8,
+      "metodoPagamento": "Cartão de Crédito",
       "itens": [
         {
           "produtoId": 1,
@@ -620,60 +2033,31 @@
         {
           "produtoId": 3,
           "quantidade": 3,
-          "precoUnitario": 8.9,
-          "subtotal": 26.7
-        },
-        {
-          "produtoId": 6,
-          "quantidade": 2,
-          "precoUnitario": 8.7,
-          "subtotal": 17.4
+          "precoUnitario": 8.5,
+          "subtotal": 25.5
         },
         {
           "produtoId": 7,
-          "quantidade": 2,
-          "precoUnitario": 4.4,
-          "subtotal": 8.8
+          "quantidade": 10,
+          "precoUnitario": 4.8,
+          "subtotal": 48
+        },
+        {
+          "produtoId": 37,
+          "quantidade": 4,
+          "precoUnitario": 7.9,
+          "subtotal": 31.6
         }
       ]
     },
     {
-      "id": 4,
+      "id": 2,
       "usuarioId": 1,
-      "mercadoId": 1,
-      "data": "2025-01-28T11:45:00",
-      "status": "Em andamento",
-      "total": 35.6,
-      "metodoPagamento": "Cartão de Débito",
-      "itens": [
-        {
-          "produtoId": 2,
-          "quantidade": 2,
-          "precoUnitario": 8.5,
-          "subtotal": 17.0
-        },
-        {
-          "produtoId": 5,
-          "quantidade": 1,
-          "precoUnitario": 6.7,
-          "subtotal": 6.7
-        },
-        {
-          "produtoId": 8,
-          "quantidade": 3,
-          "precoUnitario": 3.9,
-          "subtotal": 11.7
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "usuarioId": 3,
       "mercadoId": 2,
-      "data": "2025-01-22T16:30:00",
+      "data": "2025-11-10T10:15:00",
       "status": "Finalizado",
-      "total": 78.9,
-      "metodoPagamento": "Cartão de Crédito",
+      "total": 98.5,
+      "metodoPagamento": "PIX",
       "itens": [
         {
           "produtoId": 1,
@@ -682,43 +2066,293 @@
           "subtotal": 22.5
         },
         {
-          "produtoId": 3,
-          "quantidade": 2,
-          "precoUnitario": 9.3,
-          "subtotal": 18.6
-        },
-        {
           "produtoId": 4,
           "quantidade": 2,
-          "precoUnitario": 9.2,
-          "subtotal": 18.4
+          "precoUnitario": 9.9,
+          "subtotal": 19.8
         },
         {
           "produtoId": 7,
-          "quantidade": 4,
-          "precoUnitario": 4.7,
-          "subtotal": 18.8
+          "quantidade": 6,
+          "precoUnitario": 5,
+          "subtotal": 30
         }
       ]
+    },
+    {
+      "id": 3,
+      "usuarioId": 2,
+      "mercadoId": 3,
+      "data": "2025-11-25T14:00:00",
+      "status": "Finalizado",
+      "total": 189.5,
+      "metodoPagamento": "Dinheiro",
+      "itens": [
+        {
+          "produtoId": 1,
+          "quantidade": 10,
+          "precoUnitario": 6.5,
+          "subtotal": 65
+        },
+        {
+          "produtoId": 3,
+          "quantidade": 5,
+          "precoUnitario": 8.2,
+          "subtotal": 41
+        },
+        {
+          "produtoId": 6,
+          "quantidade": 4,
+          "precoUnitario": 7.7,
+          "subtotal": 30.8
+        },
+        {
+          "produtoId": 19,
+          "quantidade": 5,
+          "precoUnitario": 9.5,
+          "subtotal": 47.5
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "usuarioId": 3,
+      "mercadoId": 1,
+      "data": "2025-11-28T11:45:00",
+      "status": "Finalizado",
+      "total": 125.6,
+      "metodoPagamento": "Cartão de Débito",
+      "itens": [
+        {
+          "produtoId": 9,
+          "quantidade": 2,
+          "precoUnitario": 12.9,
+          "subtotal": 25.8
+        },
+        {
+          "produtoId": 37,
+          "quantidade": 8,
+          "precoUnitario": 7.9,
+          "subtotal": 63.2
+        },
+        {
+          "produtoId": 40,
+          "quantidade": 12,
+          "precoUnitario": 2.9,
+          "subtotal": 34.8
+        }
+      ]
+    },
+    {
+      "usuarioId": 1,
+      "mercadoId": 3,
+      "data": "2025-12-09T18:12:53.699Z",
+      "status": "Finalizado",
+      "total": 9.2,
+      "metodoPagamento": "Cartão de Crédito",
+      "itens": [
+        {
+          "produtoId": 37,
+          "quantidade": 1,
+          "precoUnitario": 7.5,
+          "subtotal": 7.5
+        },
+        {
+          "produtoId": 21,
+          "quantidade": 1,
+          "precoUnitario": 1.7,
+          "subtotal": 1.7
+        }
+      ],
+      "id": 5
     }
   ],
-
+  "alertasConfig": [
+    {
+      "id": 1,
+      "usuarioId": 1,
+      "produtoId": 1,
+      "mercadoId": null,
+      "tipo": "abaixo",
+      "valorAlerta": 6,
+      "ativo": true,
+      "dataCriacao": "2025-11-15T10:00:00"
+    },
+    {
+      "id": 2,
+      "usuarioId": 1,
+      "produtoId": 9,
+      "mercadoId": 1,
+      "tipo": "abaixo",
+      "valorAlerta": 12,
+      "ativo": true,
+      "dataCriacao": "2025-11-20T14:30:00"
+    },
+    {
+      "id": 3,
+      "usuarioId": 1,
+      "produtoId": 37,
+      "mercadoId": null,
+      "tipo": "qualquer",
+      "valorAlerta": null,
+      "ativo": true,
+      "dataCriacao": "2025-11-25T09:00:00"
+    },
+    {
+      "id": 4,
+      "usuarioId": 2,
+      "produtoId": 6,
+      "mercadoId": 3,
+      "tipo": "abaixo",
+      "valorAlerta": 7.5,
+      "ativo": true,
+      "dataCriacao": "2025-11-22T11:00:00"
+    },
+    {
+      "id": 5,
+      "usuarioId": 2,
+      "produtoId": 22,
+      "mercadoId": null,
+      "tipo": "abaixo",
+      "valorAlerta": 15,
+      "ativo": false,
+      "dataCriacao": "2025-11-18T15:45:00"
+    },
+    {
+      "id": 6,
+      "usuarioId": 3,
+      "produtoId": 17,
+      "mercadoId": null,
+      "tipo": "qualquer",
+      "valorAlerta": null,
+      "ativo": true,
+      "dataCriacao": "2025-11-28T08:30:00"
+    },
+    {
+      "id": 7,
+      "usuarioId": 3,
+      "produtoId": 21,
+      "mercadoId": 2,
+      "tipo": "abaixo",
+      "valorAlerta": 2,
+      "ativo": true,
+      "dataCriacao": "2025-12-01T10:15:00"
+    }
+  ],
+  "alertas": [
+    {
+      "id": 1,
+      "usuarioId": 1,
+      "produtoId": 1,
+      "mercadoId": 3,
+      "tipo": "abaixo",
+      "valorAlerta": 6,
+      "precoAnterior": 8.2,
+      "precoNovo": 6.5,
+      "dataNotificacao": "2025-12-08T08:15:00",
+      "lido": false
+    },
+    {
+      "id": 2,
+      "usuarioId": 1,
+      "produtoId": 9,
+      "mercadoId": 1,
+      "tipo": "abaixo",
+      "valorAlerta": 12,
+      "precoAnterior": 15.9,
+      "precoNovo": 12.9,
+      "dataNotificacao": "2025-12-08T10:00:00",
+      "lido": false
+    },
+    {
+      "id": 3,
+      "usuarioId": 1,
+      "produtoId": 37,
+      "mercadoId": 1,
+      "tipo": "qualquer",
+      "valorAlerta": null,
+      "precoAnterior": 10.9,
+      "precoNovo": 7.9,
+      "dataNotificacao": "2025-12-08T10:00:00",
+      "lido": false
+    },
+    {
+      "id": 4,
+      "usuarioId": 2,
+      "produtoId": 6,
+      "mercadoId": 3,
+      "tipo": "abaixo",
+      "valorAlerta": 7.5,
+      "precoAnterior": 9.5,
+      "precoNovo": 7.7,
+      "dataNotificacao": "2025-12-08T08:00:00",
+      "lido": false
+    },
+    {
+      "id": 5,
+      "usuarioId": 3,
+      "produtoId": 17,
+      "mercadoId": 1,
+      "tipo": "qualquer",
+      "valorAlerta": null,
+      "precoAnterior": 4.9,
+      "precoNovo": 3.5,
+      "dataNotificacao": "2025-12-08T10:00:00",
+      "lido": false
+    },
+    {
+      "id": 6,
+      "usuarioId": 3,
+      "produtoId": 21,
+      "mercadoId": 2,
+      "tipo": "abaixo",
+      "valorAlerta": 2,
+      "precoAnterior": 3.2,
+      "precoNovo": 2.2,
+      "dataNotificacao": "2025-12-08T09:05:00",
+      "lido": false
+    },
+    {
+      "id": 7,
+      "usuarioId": 1,
+      "produtoId": 11,
+      "mercadoId": 1,
+      "tipo": "qualquer",
+      "valorAlerta": null,
+      "precoAnterior": 3.9,
+      "precoNovo": 2.9,
+      "dataNotificacao": "2025-12-07T15:30:00",
+      "lido": true
+    },
+    {
+      "id": 8,
+      "usuarioId": 2,
+      "produtoId": 32,
+      "mercadoId": 2,
+      "tipo": "abaixo",
+      "valorAlerta": 6,
+      "precoAnterior": 8.2,
+      "precoNovo": 6.2,
+      "dataNotificacao": "2025-12-07T14:20:00",
+      "lido": true
+    }
+  ],
   "avaliacoes": [
     {
       "id": 1,
       "usuarioId": 1,
       "mercadoId": 1,
       "nota": 5,
-      "comentario": "Excelente supermercado! Preços justos e boa variedade de produtos.",
-      "data": "2025-01-20T16:00:00"
+      "comentario": "Excelente supermercado! Preços justos e boa variedade.",
+      "data": "2025-11-20T16:00:00"
     },
     {
       "id": 2,
       "usuarioId": 1,
       "mercadoId": 2,
       "nota": 4,
-      "comentario": "Bom atendimento, mas os preços poderiam ser melhores.",
-      "data": "2025-01-15T11:00:00"
+      "comentario": "Bom atendimento, mas preços poderiam ser melhores.",
+      "data": "2025-11-10T11:00:00"
     },
     {
       "id": 3,
@@ -726,18 +2360,17 @@
       "mercadoId": 3,
       "nota": 5,
       "comentario": "Melhor supermercado da região! Ótima acessibilidade.",
-      "data": "2025-01-25T15:00:00"
+      "data": "2025-11-25T15:00:00"
     },
     {
       "id": 4,
       "usuarioId": 3,
-      "mercadoId": 2,
+      "mercadoId": 1,
       "nota": 4,
       "comentario": "Produtos frescos e boa localização.",
-      "data": "2025-01-22T17:00:00"
+      "data": "2025-11-28T17:00:00"
     }
   ],
-
   "acessibilidades": [
     {
       "id": 1,
@@ -768,7 +2401,6 @@
       "tipo": "Caixa preferencial"
     }
   ],
-
   "categorias": [
     {
       "id": 1,
@@ -799,33 +2431,6 @@
       "nome": "Padaria",
       "icone": "bi-shop-window",
       "descricao": "Pães e produtos de padaria"
-    }
-  ],
-
-  "alertasPreco": [
-    {
-      "id": 1,
-      "usuarioId": 1,
-      "produtoId": 1,
-      "precoDesejado": 6.5,
-      "ativo": true,
-      "dataCriacao": "2025-01-15T10:00:00"
-    },
-    {
-      "id": 2,
-      "usuarioId": 1,
-      "produtoId": 3,
-      "precoDesejado": 8.0,
-      "ativo": true,
-      "dataCriacao": "2025-01-20T14:30:00"
-    },
-    {
-      "id": 3,
-      "usuarioId": 2,
-      "produtoId": 6,
-      "precoDesejado": 8.0,
-      "ativo": true,
-      "dataCriacao": "2025-01-22T09:00:00"
     }
   ]
 }

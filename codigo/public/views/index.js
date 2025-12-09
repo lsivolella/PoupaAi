@@ -235,6 +235,7 @@ async function adicionarAoCarrinho(produtoId, mercadoId) {
   }
 }
 
+// ✅ SISTEMA DE BUSCA - CORRIGIDO PARA PRODUTOS/INDEX.HTML
 const searchButton = document.getElementById("searchButton");
 const searchInput = document.getElementById("searchInput");
 
@@ -256,7 +257,9 @@ function realizarBusca() {
     return;
   }
 
-  window.location.href = `./views/produtos/listar-produtos.html?busca=${encodeURIComponent(
+  // ✅ Redireciona para /produtos/index.html (arquivo que EXISTE)
+  console.log("🔍 Redirecionando para busca:", termo);
+  window.location.href = `/codigo/public/views/produtos/index.html?busca=${encodeURIComponent(
     termo
   )}`;
 }
@@ -274,6 +277,11 @@ document.addEventListener("DOMContentLoaded", () => {
   new Carousel();
 
   carregarOfertas();
+
+  console.log("✅ Sistema de busca da Home carregado e corrigido");
+  console.log(
+    "✅ Busca redireciona para: /codigo/public/views/produtos/index.html"
+  );
 });
 
 const stylesAdicionais = document.createElement("style");

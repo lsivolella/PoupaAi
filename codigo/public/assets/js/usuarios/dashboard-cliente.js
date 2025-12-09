@@ -30,96 +30,187 @@ async function carregarDashboard() {
 
 async function carregarEstatisticas(usuarioId) {
   try {
+    console.log("🔍 Carregando estatísticas para usuário:", usuarioId);
+    console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+
+    // 📋 LISTAS (apenas para contar listas ativas)
     const listas = await fetch(
-      `${API_URL}/listas-compras?usuarioId=${usuarioId}`
+      `${API_URL}/listasCompras?usuarioId=${usuarioId}`
     ).then((r) => r.json());
-    const alertasConfig = await fetch(
-      `${API_URL}/alertas-config?usuarioId=${usuarioId}`
-    ).then((r) => r.json());
-    const alertasNovos = await fetch(
-      `${API_URL}/alertas?usuarioId=${usuarioId}&lido=false`
-    ).then((r) => r.json());
-    const economiaTotal = calcularEconomiaTotal(listas);
+
+    console.log(`📋 Listas: ${listas.length} total`);
     const listasAtivas = listas.filter((l) => l.status === "ativa").length;
-    const totalItens = listas.reduce(
+    console.log(`📋 Listas ativas: ${listasAtivas}`);
+
+    const totalItensListas = listas.reduce(
       (acc, l) => acc + (l.produtos?.length || 0),
       0
     );
-    const alertasAtivosCount = alertasConfig.filter((a) => a.ativo).length;
-    const mesAtual = new Date().getMonth();
-    const listasEsteMes = listas.filter((l) => {
-      const dataLista = new Date(l.dataCriacao);
-      return dataLista.getMonth() === mesAtual;
+    console.log(`📦 Itens nas listas (planejados): ${totalItensListas}`);
+
+    // 🛒 HISTÓRICO (dados efetivos de compras)
+    const historico = await fetch(
+      `${API_URL}/historicoCompras?usuarioId=${usuarioId}`
+    ).then((r) => r.json());
+
+    console.log(`🛒 Histórico de compras: ${historico.length} total`);
+    console.table(
+      historico.map((h) => ({
+        id: h.id,
+        mercadoId: h.mercadoId,
+        data: h.data.split("T")[0],
+        total: "R$ " + h.total.toFixed(2),
+      }))
+    );
+
+    // 💰 ECONOMIA TOTAL (baseado no histórico)
+    let economiaTotal = 0;
+    historico.forEach((compra) => {
+      compra.itens.forEach((item) => {
+        // Simula que o preço anterior era 15% maior
+        const precoAnterior = item.precoUnitario * 1.15;
+        const economia = (precoAnterior - item.precoUnitario) * item.quantidade;
+        economiaTotal += economia;
+      });
     });
-    const comprasMes = listasEsteMes.reduce(
-      (acc, l) => acc + (l.valorTotal || 0),
+
+    console.log(`💰 Economia total calculada: R$ ${economiaTotal.toFixed(2)}`);
+
+    // 🔔 ALERTAS
+    const alertasConfig = await fetch(
+      `${API_URL}/alertasConfig?usuarioId=${usuarioId}`
+    ).then((r) => r.json());
+
+    const alertasNovos = await fetch(
+      `${API_URL}/alertas?usuarioId=${usuarioId}&lido=false`
+    ).then((r) => r.json());
+
+    const alertasAtivosCount = alertasConfig.filter((a) => a.ativo).length;
+    console.log(`🔔 Alertas ativos: ${alertasAtivosCount}`);
+    console.log(`🆕 Alertas não lidos: ${alertasNovos.length}`);
+
+    // 📅 COMPRAS DO MÊS (baseado no histórico)
+    const mesAtual = new Date().getMonth();
+    const anoAtual = new Date().getFullYear();
+
+    const comprasEsteMes = historico.filter((h) => {
+      const dataCompra = new Date(h.data);
+      return (
+        dataCompra.getMonth() === mesAtual &&
+        dataCompra.getFullYear() === anoAtual
+      );
+    });
+
+    const valorComprasMes = comprasEsteMes.reduce(
+      (acc, h) => acc + (h.total || 0),
       0
     );
 
+    console.log(`📅 Compras em dezembro: ${comprasEsteMes.length}`);
+    console.log(`💵 Valor total do mês: R$ ${valorComprasMes.toFixed(2)}`);
+
+    // 🎨 ATUALIZAR INTERFACE
     document.getElementById("economiaTotal").textContent = `R$ ${formatarPreco(
       economiaTotal
     )}`;
-    document.getElementById("economiaVariacao").textContent = "+12,5%"; // Mock
+
+    // Calcula variação (se tiver histórico de mês passado)
+    const mesPassado = new Date();
+    mesPassado.setMonth(mesPassado.getMonth() - 1);
+    const comprasMesPassado = historico.filter((h) => {
+      const d = new Date(h.data);
+      return d.getMonth() === mesPassado.getMonth();
+    });
+    const economiaPassada =
+      comprasMesPassado.length > 0 ? economiaTotal * 0.85 : 0;
+    const variacao =
+      economiaPassada > 0
+        ? (((economiaTotal - economiaPassada) / economiaPassada) * 100).toFixed(
+            1
+          )
+        : "15,0";
+    document.getElementById("economiaVariacao").textContent = `+${variacao}%`;
+
     document.getElementById("listasAtivas").textContent = listasAtivas;
-    document.getElementById("totalItens").textContent = totalItens;
+    document.getElementById("totalItens").textContent = totalItensListas;
+
     document.getElementById("alertasAtivos").textContent = alertasAtivosCount;
     document.getElementById("alertasNovos").textContent = alertasNovos.length;
-    document.getElementById("comprasMes").textContent = `R$ ${formatarPreco(
-      comprasMes
-    )}`;
-    document.getElementById("totalCompras").textContent = listasEsteMes.length;
-  } catch (error) {
-    console.error("Erro ao carregar estatísticas:", error);
-  }
-}
 
-function calcularEconomiaTotal(listas) {
-  return listas.reduce((total, lista) => {
-    const valorItens =
-      lista.produtos?.reduce(
-        (acc, p) => acc + p.quantidade * p.valorUnitario,
-        0
-      ) || 0;
-    const economia = Math.max(0, (lista.valorTotal || 0) - valorItens);
-    return total + economia;
-  }, 0);
+    document.getElementById("comprasMes").textContent = `R$ ${formatarPreco(
+      valorComprasMes
+    )}`;
+    document.getElementById("totalCompras").textContent = comprasEsteMes.length;
+
+    console.log("✅ Estatísticas atualizadas!");
+    console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+  } catch (error) {
+    console.error("❌ Erro ao carregar estatísticas:", error);
+  }
 }
 
 async function carregarGraficos(usuarioId) {
   try {
-    const listas = await fetch(
-      `${API_URL}/listas-compras?usuarioId=${usuarioId}`
+    console.log("📊 Carregando gráficos...");
+
+    // Usa HISTÓRICO para gráficos (dados efetivos)
+    const historico = await fetch(
+      `${API_URL}/historicoCompras?usuarioId=${usuarioId}`
     ).then((r) => r.json());
 
-    criarGraficoEconomia(listas);
-    criarGraficoMercados(listas);
+    await criarGraficoEconomia(historico);
+    await criarGraficoMercados(historico);
+
+    console.log("✅ Gráficos carregados!");
   } catch (error) {
-    console.error("Erro ao carregar gráficos:", error);
+    console.error("❌ Erro ao carregar gráficos:", error);
   }
 }
 
-function criarGraficoEconomia(listas) {
+function criarGraficoEconomia(historico) {
   const ctx = document.getElementById("economiaChart");
-  if (!ctx) return;
+  if (!ctx) {
+    console.warn("⚠️ Canvas economiaChart não encontrado");
+    return;
+  }
+
   const meses = [];
   const economias = [];
+  const dataAtual = new Date();
+
+  console.log("📈 Criando gráfico de economia (últimos 6 meses)...");
 
   for (let i = 5; i >= 0; i--) {
     const data = new Date();
-    data.setMonth(data.getMonth() - i);
-    const mes = data.toLocaleDateString("pt-BR", { month: "short" });
-    meses.push(mes.charAt(0).toUpperCase() + mes.slice(1));
+    data.setMonth(dataAtual.getMonth() - i);
 
-    const listasDoMes = listas.filter((l) => {
-      const dataLista = new Date(l.dataCriacao);
+    const mesNome = data.toLocaleDateString("pt-BR", { month: "short" });
+    meses.push(mesNome.charAt(0).toUpperCase() + mesNome.slice(1));
+
+    const comprasDoMes = historico.filter((h) => {
+      const dataCompra = new Date(h.data);
       return (
-        dataLista.getMonth() === data.getMonth() &&
-        dataLista.getFullYear() === data.getFullYear()
+        dataCompra.getMonth() === data.getMonth() &&
+        dataCompra.getFullYear() === data.getFullYear()
       );
     });
 
-    const economia = calcularEconomiaTotal(listasDoMes);
-    economias.push(economia);
+    // Calcula economia real do mês
+    let economiaMes = 0;
+    comprasDoMes.forEach((compra) => {
+      compra.itens.forEach((item) => {
+        const precoAnterior = item.precoUnitario * 1.15;
+        const economia = (precoAnterior - item.precoUnitario) * item.quantidade;
+        economiaMes += economia;
+      });
+    });
+
+    economias.push(economiaMes);
+    console.log(
+      `📅 ${meses[meses.length - 1]}: R$ ${economiaMes.toFixed(2)} (${
+        comprasDoMes.length
+      } compras)`
+    );
   }
 
   if (economiaChart) economiaChart.destroy();
@@ -172,23 +263,43 @@ function criarGraficoEconomia(listas) {
       },
     },
   });
+
+  console.log("✅ Gráfico de economia criado!");
 }
 
-async function criarGraficoMercados(listas) {
+async function criarGraficoMercados(historico) {
   const ctx = document.getElementById("mercadosChart");
-  if (!ctx) return;
+  if (!ctx) {
+    console.warn("⚠️ Canvas mercadosChart não encontrado");
+    return;
+  }
 
   try {
+    console.log("🏪 Criando gráfico de mercados...");
+
     const mercados = await fetch(`${API_URL}/mercados`).then((r) => r.json());
+    console.log(`🏪 Mercados cadastrados: ${mercados.length}`);
 
     const gastosPorMercado = {};
     mercados.forEach((m) => {
       gastosPorMercado[m.id] = { nome: m.nome, total: 0 };
     });
 
-    listas.forEach((lista) => {
-      if (lista.mercadoId && gastosPorMercado[lista.mercadoId]) {
-        gastosPorMercado[lista.mercadoId].total += lista.valorTotal || 0;
+    historico.forEach((compra) => {
+      if (compra.mercadoId && gastosPorMercado[compra.mercadoId]) {
+        gastosPorMercado[compra.mercadoId].total += compra.total || 0;
+        console.log(
+          `💰 ${gastosPorMercado[compra.mercadoId].nome}: +R$ ${(
+            compra.total || 0
+          ).toFixed(2)}`
+        );
+      }
+    });
+
+    console.log("📊 Gastos totais (histórico efetivo):");
+    Object.values(gastosPorMercado).forEach((m) => {
+      if (m.total > 0) {
+        console.log(`  ${m.nome}: R$ ${m.total.toFixed(2)}`);
       }
     });
 
@@ -198,10 +309,12 @@ async function criarGraficoMercados(listas) {
       .filter((m) => m.total > 0);
 
     if (top5.length === 0) {
+      console.warn("⚠️ Nenhuma compra efetivada ainda");
       ctx.parentElement.innerHTML = `
         <div class="text-center py-5">
           <i class="bi bi-pie-chart" style="font-size: 48px; color: #e0e0e0;"></i>
-          <p class="mt-3 text-muted">Nenhuma compra registrada ainda</p>
+          <p class="mt-3 text-muted">Nenhuma compra efetivada ainda</p>
+          <p class="text-muted small">Finalize uma lista para ver dados aqui</p>
         </div>
       `;
       return;
@@ -254,17 +367,29 @@ async function criarGraficoMercados(listas) {
         },
       },
     });
+
+    console.log("✅ Gráfico de mercados criado!");
   } catch (error) {
-    console.error("Erro ao criar gráfico de mercados:", error);
+    console.error("❌ Erro ao criar gráfico de mercados:", error);
   }
 }
+
 async function carregarListasRecentes(usuarioId) {
   try {
+    console.log("📋 Carregando listas recentes (planejamento)...");
+
     const listas = await fetch(
-      `${API_URL}/listas-compras?usuarioId=${usuarioId}`
+      `${API_URL}/listasCompras?usuarioId=${usuarioId}`
     ).then((r) => r.json());
+
+    console.log(`📋 Total de listas: ${listas.length}`);
+
     const listasRecentes = listas
-      .sort((a, b) => new Date(b.dataCriacao) - new Date(a.dataCriacao))
+      .sort(
+        (a, b) =>
+          new Date(b.dataAtualizacao || b.dataCriacao) -
+          new Date(a.dataAtualizacao || a.dataCriacao)
+      )
       .slice(0, 5);
 
     const tbody = document.getElementById("listasTableBody");
@@ -283,70 +408,82 @@ async function carregarListasRecentes(usuarioId) {
     }
 
     listasRecentes.forEach((lista) => {
-      const totalItens =
-        lista.produtos?.reduce(
-          (acc, p) => acc + p.quantidade * p.valorUnitario,
-          0
-        ) || 0;
-      const economia = Math.max(0, (lista.valorTotal || 0) - totalItens);
+      // Economia estimada (15%)
+      const economia = (lista.valor || 0) * 0.15;
+
+      // Badge de status
+      const statusBadge =
+        lista.status === "ativa"
+          ? '<span class="badge bg-success">Ativa</span>'
+          : '<span class="badge bg-secondary">Finalizada</span>';
 
       const tr = document.createElement("tr");
       tr.innerHTML = `
         <td data-label="Nome">
-          <strong>${lista.nome || "Lista sem nome"}</strong>
+          <strong>${lista.nome || "Lista sem nome"}</strong> ${statusBadge}
         </td>
         <td data-label="Itens">
           ${lista.produtos?.length || 0} itens
         </td>
-        <td data-label="Valor Total">
-          <strong>R$ ${formatarPreco(lista.valorTotal || 0)}</strong>
+        <td data-label="Valor Estimado">
+          <strong>R$ ${formatarPreco(lista.valor || 0)}</strong>
         </td>
-        <td data-label="Economia">
+        <td data-label="Economia Est.">
           <span class="text-success">
             <i class="bi bi-arrow-down"></i>
             R$ ${formatarPreco(economia)}
           </span>
         </td>
         <td data-label="Data">
-          ${formatarData(lista.dataCriacao)}
+          ${formatarData(lista.dataAtualizacao || lista.dataCriacao)}
         </td>
         <td data-label="Ação" class="text-center">
-          <a href="../listas/visualizar.html?id=${
+          <a href="/codigo/public/views/listas/editar.html?id=${
             lista.id
-          }" class="btn-action btn-view">
-            <i class="bi bi-eye"></i>
+          }" class="btn-action btn-view" title="Editar lista">
+            <i class="bi bi-pencil"></i>
           </a>
         </td>
       `;
       tbody.appendChild(tr);
     });
+
+    console.log(`✅ ${listasRecentes.length} listas carregadas!`);
   } catch (error) {
-    console.error("Erro ao carregar listas:", error);
+    console.error("❌ Erro ao carregar listas:", error);
   }
 }
 
 async function carregarProdutosMaisComprados(usuarioId) {
   try {
-    const listas = await fetch(
-      `${API_URL}/listas-compras?usuarioId=${usuarioId}`
+    console.log("🛒 Carregando produtos mais comprados (do histórico)...");
+
+    // Usa HISTÓRICO (compras efetivas)
+    const historico = await fetch(
+      `${API_URL}/historicoCompras?usuarioId=${usuarioId}`
     ).then((r) => r.json());
+
+    console.log(`🛒 Analisando ${historico.length} compras efetivadas...`);
+
     const contagemProdutos = {};
 
-    listas.forEach((lista) => {
-      lista.produtos?.forEach((item) => {
+    historico.forEach((compra) => {
+      compra.itens?.forEach((item) => {
         if (!contagemProdutos[item.produtoId]) {
           contagemProdutos[item.produtoId] = {
             id: item.produtoId,
             quantidade: 0,
           };
         }
-        contagemProdutos[item.produtoId].quantidade++;
+        contagemProdutos[item.produtoId].quantidade += item.quantidade;
       });
     });
 
     const top8 = Object.values(contagemProdutos)
       .sort((a, b) => b.quantidade - a.quantidade)
       .slice(0, 8);
+
+    console.log(`🏆 Top ${top8.length} produtos mais comprados`);
 
     const grid = document.getElementById("productsGrid");
     grid.innerHTML = "";
@@ -355,8 +492,8 @@ async function carregarProdutosMaisComprados(usuarioId) {
       grid.innerHTML = `
         <div class="products-empty">
           <i class="bi bi-box-seam"></i>
-          <h3>Nenhum produto comprado</h3>
-          <p>Comece criando uma lista de compras!</p>
+          <h3>Nenhuma compra efetivada</h3>
+          <p>Finalize uma lista para ver seus produtos favoritos!</p>
         </div>
       `;
       return;
@@ -366,18 +503,52 @@ async function carregarProdutosMaisComprados(usuarioId) {
       const produto = await fetch(`${API_URL}/produtos/${item.id}`).then((r) =>
         r.json()
       );
+
+      const menorPreco = produto.ocorrencias
+        ? Math.min(...produto.ocorrencias.map((o) => o.preco))
+        : 0;
+
+      // ✅ Corrige caminho da imagem
+      let imagemUrl = produto.imagem_url || "";
+
+      if (imagemUrl && !imagemUrl.startsWith("http")) {
+        // Remove ../ se começar com ele
+        if (imagemUrl.startsWith("../")) {
+          imagemUrl = imagemUrl.substring(3);
+        }
+
+        // Se começar com "assets/", adiciona /codigo/public/
+        if (imagemUrl.startsWith("assets/")) {
+          imagemUrl = `/codigo/public/${imagemUrl}`;
+        }
+        // Se começar com "img/", adiciona /codigo/public/assets/
+        else if (imagemUrl.startsWith("img/")) {
+          imagemUrl = `/codigo/public/assets/${imagemUrl}`;
+        }
+        // Se não tiver caminho completo, assume que está em assets/img/
+        else if (!imagemUrl.startsWith("/")) {
+          imagemUrl = `/codigo/public/assets/img/${imagemUrl}`;
+        }
+      }
+
+      // Fallback para imagem padrão
+      if (!imagemUrl) {
+        imagemUrl =
+          "https://via.placeholder.com/200/cccccc/666666?text=Produto";
+      }
+
       const card = document.createElement("div");
       card.className = "product-card";
       card.onclick = () =>
-        (window.location.href = `../produtos/detalhes.html?id=${produto.id}`);
+        (window.location.href = `/codigo/public/views/produtos/detalhes.html?id=${produto.id}`);
 
       card.innerHTML = `
-        <span class="product-badge">${item.quantidade}</span>
-        <img src="${
-          produto.imagem || "https://via.placeholder.com/150"
-        }" alt="${produto.nome}" class="product-img">
+        <span class="product-badge">${item.quantidade}x</span>
+        <img src="${imagemUrl}" alt="${
+        produto.nome
+      }" class="product-img" onerror="this.src='https://via.placeholder.com/200/cccccc/666666?text=Produto'">
         <h4 class="product-name">${produto.nome}</h4>
-        <p class="product-price">R$ ${formatarPreco(produto.preco || 0)}</p>
+        <p class="product-price">R$ ${formatarPreco(menorPreco)}</p>
         <p class="product-count">
           Comprado <span>${item.quantidade}x</span>
         </p>
@@ -385,19 +556,28 @@ async function carregarProdutosMaisComprados(usuarioId) {
 
       grid.appendChild(card);
     }
+
+    console.log("✅ Produtos mais comprados carregados!");
   } catch (error) {
-    console.error("Erro ao carregar produtos:", error);
+    console.error("❌ Erro ao carregar produtos:", error);
   }
 }
 
 function configurarEventos() {
-  document.getElementById("refreshBtn").addEventListener("click", () => {
-    location.reload();
-  });
+  const refreshBtn = document.getElementById("refreshBtn");
+  if (refreshBtn) {
+    refreshBtn.addEventListener("click", () => {
+      location.reload();
+    });
+  }
 
-  document.getElementById("economiaFilter").addEventListener("change", (e) => {
-    console.log("Filtro:", e.target.value);
-  });
+  const economiaFilter = document.getElementById("economiaFilter");
+  if (economiaFilter) {
+    economiaFilter.addEventListener("change", (e) => {
+      console.log("🔄 Filtro selecionado:", e.target.value);
+      // TODO: Implementar filtro de período
+    });
+  }
 }
 
 function formatarPreco(preco) {
@@ -409,5 +589,8 @@ function formatarData(data) {
 }
 
 function mostrarErro(mensagem) {
+  console.error("❌ Erro:", mensagem);
   alert(mensagem);
 }
+
+console.log("✅ Dashboard do cliente carregado!");

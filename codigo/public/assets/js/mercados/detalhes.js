@@ -25,14 +25,50 @@ async function carregarDetalhes() {
   try {
     const mercado = await service.getMercado(mercadoId);
 
+    // ✅ Corrige caminho da logo
+    let logoUrl = mercado.logo || "";
+
+    if (logoUrl && !logoUrl.startsWith("http")) {
+      // Remove ../ se começar com ele
+      if (logoUrl.startsWith("../")) {
+        logoUrl = logoUrl.substring(3);
+      }
+
+      // Se começar com "assets/", adiciona /codigo/public/
+      if (logoUrl.startsWith("assets/")) {
+        logoUrl = `/codigo/public/${logoUrl}`;
+      }
+      // Se começar com "img/", adiciona /codigo/public/assets/
+      else if (logoUrl.startsWith("img/")) {
+        logoUrl = `/codigo/public/assets/${logoUrl}`;
+      }
+      // Se não tiver caminho completo, assume que está em assets/img/
+      else if (!logoUrl.startsWith("/")) {
+        logoUrl = `/codigo/public/assets/img/${logoUrl}`;
+      }
+    }
+
+    // Fallback para logo padrão
+    if (!logoUrl) {
+      logoUrl = "https://via.placeholder.com/250/667eea/ffffff?text=Mercado";
+    }
+
     cardMercado.innerHTML = `
       <div class="card mb-3 d-flex flex-row align-items-center">
-        <img src="${mercado.logo}" class="img-fluid rounded-start" alt="${
-      mercado.nome
-    }" style="width: 250px; object-fit: cover;">
+        <img 
+          src="${logoUrl}" 
+          class="img-fluid rounded-start" 
+          alt="${mercado.nome}" 
+          style="width: 250px; height: 250px; object-fit: cover;"
+          onerror="this.src='https://via.placeholder.com/250/667eea/ffffff?text=Mercado'"
+        >
         <div class="card-body flex-grow-1">
           <h3 class="card-title">${mercado.nome}</h3>
-          <p><b>Endereço:</b> ${mercado.endereco.rua} ${mercado.endereco.numero}, ${mercado.endereco.bairro}. ${mercado.endereco.cidade} - ${mercado.endereco.estado}</p>
+          <p><b>Endereço:</b> ${mercado.endereco.rua} ${
+      mercado.endereco.numero
+    }, ${mercado.endereco.bairro}. ${mercado.endereco.cidade} - ${
+      mercado.endereco.estado
+    }</p>
           <p><b>Telefone:</b> ${mercado.telefone}</p>
           <p><b>Funcionamento:</b> ${mercado.horarioFuncionamento}</p>
           <p><b>Média Avaliações:</b> ${mercado.mediaAvaliacoes ?? "-"}</p>
@@ -40,8 +76,12 @@ async function carregarDetalhes() {
             ${
               isAdmin
                 ? `
-                  <button class="btn btn-warning" id="btn-editar">Editar</button>
-                  <button class="btn btn-danger" id="btn-excluir">Excluir</button>
+                  <button class="btn btn-warning" id="btn-editar">
+                    <i class="bi bi-pencil"></i> Editar
+                  </button>
+                  <button class="btn btn-danger" id="btn-excluir">
+                    <i class="bi bi-trash"></i> Excluir
+                  </button>
                 `
                 : ""
             }
@@ -56,12 +96,12 @@ async function carregarDetalhes() {
     let acessibilidadesAll = [];
     let acessibilidadesMercado = [];
     if (mercado.acessibilidades && mercado.acessibilidades.length > 0) {
-        acessibilidadesAll = await fetch(
-          "http://localhost:3001/acessibilidades"
-        ).then((r) => r.json());
-        acessibilidadesMercado = acessibilidadesAll.filter((a) =>
-          mercado.acessibilidades.includes(a.id)
-        );
+      acessibilidadesAll = await fetch(
+        "http://localhost:3001/acessibilidades"
+      ).then((r) => r.json());
+      acessibilidadesMercado = acessibilidadesAll.filter((a) =>
+        mercado.acessibilidades.includes(a.id)
+      );
     }
 
     cardAcessibilidade.innerHTML = `
@@ -117,26 +157,30 @@ async function carregarDetalhes() {
 async function carregarStatusUsuario() {
   const userStr = localStorage.getItem("usuarioLogado");
   let user;
-  
-  if (userStr)
-  {
+
+  if (userStr) {
     user = JSON.parse(userStr);
   }
-  isAdmin = user && user.role === "admin";
+
+  // ✅ Verifica se é admin (aceita "admin" ou "role === admin")
+  isAdmin = user && (user.tipo === "admin" || user.role === "admin");
+
+  console.log(isAdmin ? "👨‍💼 Admin logado" : "👤 Usuário comum");
 }
 
 function adicionarEventos(id) {
   const buttonEditar = document.getElementById("btn-editar");
   buttonEditar?.addEventListener("click", () => {
-        sessionStorage.setItem("mercadoId", id);
-        window.location.href = "./editar.html";
-      });
+    sessionStorage.setItem("mercadoId", id);
+    window.location.href = "./editar.html";
+  });
 
-  const buttonExcluir = document.getElementById("btn-excluir")
+  const buttonExcluir = document.getElementById("btn-excluir");
   buttonExcluir?.addEventListener("click", async () => {
     if (confirm("Deseja realmente excluir este mercado?")) {
       try {
         await service.excluirMercado(id);
+        alert("Mercado excluído com sucesso!");
         window.location.href = "index.html";
       } catch (err) {
         console.error(err);
@@ -152,3 +196,5 @@ function adicionarEventos(id) {
       window.location.href = "../avaliacoes/criar.html";
     });
 }
+
+console.log("✅ Sistema de detalhes do mercado carregado!");

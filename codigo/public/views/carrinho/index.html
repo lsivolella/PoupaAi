@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Carrinho - PoupaAí</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="/codigo/public/assets/css/style.css" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    ></script>
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="navbar-container">
+        <div class="logo">
+          <a href="/codigo/public/views/index.html">
+            <img
+              src="/codigo/public/assets/img/Logo_PoupaAI_Branco.svg"
+              alt="PoupaAí"
+              class="logo-img"
+            />
+          </a>
+        </div>
+
+        <div class="search-bar">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Busque usando vírgula, ex: leite, cerveja, azeite, arroz, iogurte"
+            class="search-input"
+          />
+          <button class="search-button" id="searchButton">
+            <i class="bi bi-search"></i>
+            BUSCAR
+          </button>
+        </div>
+
+        <div class="user-actions">
+          <button class="user-btn action-btn" id="loginBtn">
+            <i class="bi bi-person-circle"></i>
+            <span>Entrar</span>
+          </button>
+
+          <div class="user-logged" id="userLogged" style="display: none">
+            <div class="user-info">
+              <img
+                src="/codigo/public/assets/img/Avatar_Usuario.svg"
+                alt="Avatar"
+                class="user-avatar"
+                id="userAvatar"
+              />
+              <span class="user-greeting" id="userGreeting">Olá, Usuário!</span>
+            </div>
+            <button class="btn-logout" id="logoutBtn" title="Sair">
+              <i class="bi bi-box-arrow-right"></i>
+            </button>
+          </div>
+
+          <button class="cart-btn action-btn" id="cartBtn">
+            <i class="bi bi-cart3"></i>
+            <span class="cart-badge" id="cartBadge">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <nav class="categories-nav">
+      <div class="container">
+        <ul class="categories-list">
+          <li>
+            <a href="/codigo/public/views/index.html"
+              ><i class="bi bi-house-door"></i> Início</a
+            >
+          </li>
+          <li>
+            <a href="/codigo/public/views/usuarios/dashboard-cliente.html"
+              ><i class="bi bi-speedometer2"></i> Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="/codigo/public/views/listas/index.html"
+              ><i class="bi bi-list-check"></i> Minhas Listas</a
+            >
+          </li>
+          <li>
+            <a href="/codigo/public/views/mercados/index.html"
+              ><i class="bi bi-shop"></i> Supermercados</a
+            >
+          </li>
+          <li>
+            <a href="/codigo/public/views/produtos/index.html"
+              ><i class="bi bi-box-seam"></i> Produtos</a
+            >
+          </li>
+          <li>
+            <a href="/codigo/public/views/carrinho/index.html" class="active"
+              ><i class="bi bi-cart3"></i> Carrinho</a
+            >
+          </li>
+          <li>
+            <a href="/codigo/public/views/historicos/index.html"
+              ><i class="bi bi-clock-history"></i> Histórico</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="container mt-4 mb-5">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1><i class="bi bi-cart3"></i> Meu Carrinho</h1>
+        <a href="../index.html" class="btn btn-outline-secondary">
+          <i class="bi bi-arrow-left"></i> Continuar Comprando
+        </a>
+      </div>
+
+      <!-- Carrinho Vazio -->
+      <div id="carrinho-vazio" style="display: none" class="text-center py-5">
+        <i class="bi bi-cart-x" style="font-size: 100px; color: #ccc"></i>
+        <h3 class="mt-4">Seu carrinho está vazio</h3>
+        <p class="text-muted">Adicione produtos para começar suas compras</p>
+        <a href="../index.html" class="btn btn-primary mt-3">
+          <i class="bi bi-search"></i> Ver Ofertas
+        </a>
+      </div>
+
+      <!-- Carrinho com Produtos -->
+      <div id="carrinho-conteudo" style="display: none">
+        <div class="row">
+          <!-- Coluna Esquerda: Lista de Produtos -->
+          <div class="col-lg-8">
+            <div class="card">
+              <div
+                class="card-header d-flex justify-content-between align-items-center"
+              >
+                <h5 class="mb-0">
+                  <i class="bi bi-bag-check"></i> Produtos (<span
+                    id="total-itens"
+                    >0</span
+                  >
+                  itens)
+                </h5>
+                <button
+                  class="btn btn-sm btn-outline-danger"
+                  id="btn-limpar-carrinho"
+                >
+                  <i class="bi bi-trash"></i> Limpar Carrinho
+                </button>
+              </div>
+              <div class="card-body p-0">
+                <div id="lista-produtos-carrinho"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Coluna Direita: Resumo -->
+          <div class="col-lg-4">
+            <div class="card sticky-top" style="top: 100px">
+              <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">
+                  <i class="bi bi-calculator"></i> Resumo do Pedido
+                </h5>
+              </div>
+              <div class="card-body">
+                <!-- Mercado selecionado -->
+                <div class="mb-3 p-3 bg-light rounded">
+                  <small class="text-muted d-block mb-1">Mercado:</small>
+                  <strong id="nome-mercado-resumo">-</strong>
+                  <br />
+                  <small class="text-muted" id="endereco-mercado-resumo"
+                    >-</small
+                  >
+                </div>
+
+                <hr />
+
+                <!-- Subtotal -->
+                <div class="d-flex justify-content-between mb-2">
+                  <span>Subtotal:</span>
+                  <strong id="subtotal-valor">R$ 0,00</strong>
+                </div>
+
+                <!-- Desconto (se houver) -->
+                <div class="d-flex justify-content-between mb-2 text-success">
+                  <span>Desconto:</span>
+                  <strong id="desconto-valor">-R$ 0,00</strong>
+                </div>
+
+                <hr />
+
+                <!-- Total -->
+                <div class="d-flex justify-content-between mb-3">
+                  <h5 class="mb-0">Total:</h5>
+                  <h4 class="mb-0 text-success" id="total-valor">R$ 0,00</h4>
+                </div>
+
+                <!-- Método de Pagamento -->
+                <div class="mb-3">
+                  <label class="form-label">
+                    <i class="bi bi-credit-card"></i> Método de Pagamento:
+                  </label>
+                  <select class="form-select" id="metodo-pagamento">
+                    <option value="Cartão de Crédito">Cartão de Crédito</option>
+                    <option value="Cartão de Débito">Cartão de Débito</option>
+                    <option value="PIX">PIX</option>
+                    <option value="Dinheiro">Dinheiro</option>
+                  </select>
+                </div>
+
+                <!-- Botão Registrar Compra -->
+                <button
+                  class="btn btn-success btn-lg w-100"
+                  id="btn-registrar-compra"
+                >
+                  <i class="bi bi-check-circle"></i> Registrar Compra
+                </button>
+
+                <small class="text-muted d-block text-center mt-3">
+                  <i class="bi bi-info-circle"></i> Esta compra será salva no
+                  seu histórico
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal de Confirmação -->
+    <div class="modal fade" id="modalConfirmacao" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-success text-white">
+            <h5 class="modal-title">
+              <i class="bi bi-check-circle"></i> Confirmar Compra
+            </h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="text-center py-3">
+              <i
+                class="bi bi-cart-check"
+                style="font-size: 60px; color: #28a745"
+              ></i>
+              <h4 class="mt-3">Deseja registrar esta compra?</h4>
+              <p class="text-muted">
+                Total: <strong id="modal-total">R$ 0,00</strong>
+              </p>
+              <p class="text-muted">
+                Mercado: <strong id="modal-mercado">-</strong>
+              </p>
+              <p class="text-muted">
+                Itens: <strong id="modal-itens">0</strong> produtos
+              </p>
+            </div>
+            <div class="alert alert-info">
+              <i class="bi bi-info-circle"></i>
+              Após confirmar, a compra será salva no histórico e o carrinho será
+              limpo.
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              <i class="bi bi-x-circle"></i> Cancelar
+            </button>
+            <button
+              type="button"
+              class="btn btn-success"
+              id="btn-confirmar-compra"
+            >
+              <i class="bi bi-check-circle"></i> Confirmar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/codigo/navbar.js"></script>
+    <script type="module" src="../../assets/js/carrinho/index.js"></script>
+  </body>
+</html>

@@ -96,9 +96,11 @@ function carregarCarrinho() {
   }
 }
 
+// ✅ CORRIGIDO: Caminho absoluto para funcionar em todas as páginas
 if (document.getElementById("cartBtn")) {
   document.getElementById("cartBtn").addEventListener("click", () => {
-    window.location.href = "./views/carrinho/index.html";
+    console.log("🛒 Abrindo carrinho...");
+    window.location.href = "/codigo/public/views/carrinho/index.html";
   });
 }
 
@@ -202,3 +204,5 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+
+console.log("✅ Navbar carregado com sucesso!");
