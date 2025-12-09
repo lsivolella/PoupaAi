@@ -4,7 +4,7 @@ import { formatarMoeda } from "../../../utils/formatador.js";
 const produtoService = new ProdutoService();
 const tabela = document.querySelector("#tabela-produtos");
 
-// ✅ Verifica se usuário é admin
+// Verifica se usuário é admin
 function verificarPermissaoAdmin() {
   const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
 
@@ -15,7 +15,7 @@ function verificarPermissaoAdmin() {
   return isAdmin;
 }
 
-// ✅ Esconde botão "Cadastrar Produto" se não for admin
+// Esconde botão "Cadastrar Produto" se não for admin
 function controlarBotaoCadastrar() {
   const btnCadastrar = document.querySelector('a[href="criar.html"]');
 
@@ -25,9 +25,9 @@ function controlarBotaoCadastrar() {
 
   if (!isAdmin) {
     btnCadastrar.style.display = "none";
-    console.log("🔒 Botão 'Cadastrar Produto' ocultado");
+    console.log("Botão 'Cadastrar Produto' ocultado");
   } else {
-    console.log("✅ Botão 'Cadastrar Produto' visível");
+    console.log("Botão 'Cadastrar Produto' visível");
   }
 }
 
@@ -40,7 +40,7 @@ async function criarListaDetalhes() {
   produtos.forEach((produto) => {
     const tr = document.createElement("tr");
 
-    // ✅ Pega o menor preço entre as ocorrências
+    // Pega o menor preço entre as ocorrências
     let menorPreco = "N/A";
     if (produto.ocorrencias && produto.ocorrencias.length > 0) {
       const precos = produto.ocorrencias.map((o) => o.preco);
@@ -48,7 +48,7 @@ async function criarListaDetalhes() {
       menorPreco = precoMinimo.toFixed(2).replace(".", ",");
     }
 
-    // ✅ Corrige caminho da imagem - tenta múltiplos caminhos
+    // Corrige caminho da imagem - tenta múltiplos caminhos
     let imagemUrl = produto.imagem_url || "";
 
     if (imagemUrl && !imagemUrl.startsWith("http")) {
@@ -71,7 +71,7 @@ async function criarListaDetalhes() {
       }
     }
 
-    // ✅ Monta HTML com botão de excluir APENAS se for admin
+    // Monta HTML com botão de excluir APENAS se for admin
     const botoesAcao = isAdmin
       ? `
         <a href="detalhes.html?id=${produto.id}" class="btn btn-sm btn-info" title="Ver detalhes">
@@ -108,7 +108,7 @@ async function criarListaDetalhes() {
     tabela.appendChild(tr);
   });
 
-  // ✅ Só adiciona eventos de excluir se for admin
+  // Só adiciona eventos de excluir se for admin
   if (isAdmin) {
     adicionarEventosExcluir();
   }
@@ -210,10 +210,9 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// ✅ Executa ao carregar a página
+// Executa ao carregar a página
 window.addEventListener("load", () => {
   controlarBotaoCadastrar();
   criarListaDetalhes();
 });
 
-console.log("✅ Sistema de visualização de produtos carregado!");

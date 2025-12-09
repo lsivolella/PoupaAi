@@ -9,7 +9,7 @@ const tituloCategoria = document.querySelector("#titulo-categoria");
 let produtosCache = [];
 let mercadosCache = [];
 
-// ✅ Mapeamento de nomes bonitos para as categorias
+// Mapeamento de nomes bonitos para as categorias
 const nomesCategoria = {
   ofertas: "Ofertas",
   hortifruti: "Hortifruti",
@@ -34,15 +34,15 @@ async function carregarDados() {
     const r = await fetch("http://localhost:3001/mercados");
     mercadosCache = await r.json();
 
-    console.log("✅ Dados carregados:", {
+    console.log("Dados carregados:", {
       produtos: produtosCache.length,
       mercados: mercadosCache.length,
     });
 
-    // ✅ Verifica se veio categoria na URL
+    // Verifica se veio categoria na URL
     verificarCategoriaURL();
   } catch (error) {
-    console.error("❌ Erro ao carregar dados:", error);
+    console.error("Erro ao carregar dados:", error);
     listaCategoria.innerHTML = `
       <div class="alert alert-danger text-center">
         Erro ao carregar produtos. Tente novamente.
@@ -56,15 +56,15 @@ function getNomeMercado(id) {
   return mercado ? mercado.nome : "Desconhecido";
 }
 
-// ✅ VERIFICA SE VEIO ?categoria= NA URL
+// VERIFICA SE VEIO ?categoria= NA URL
 function verificarCategoriaURL() {
   const urlParams = new URLSearchParams(window.location.search);
   const categoriaURL = urlParams.get("categoria");
 
-  console.log("🔍 Categoria detectada na URL:", categoriaURL);
+  console.log("Categoria detectada na URL:", categoriaURL);
 
   if (categoriaURL) {
-    // ✅ Ativa a aba "Por Categoria"
+    // Ativa a aba "Por Categoria"
     const tabCategoria = document.querySelector("#tab-categoria");
     const abaCategoria = document.querySelector("#aba-categoria");
 
@@ -87,7 +87,7 @@ function verificarCategoriaURL() {
       // Filtra os produtos
       filtrarPorCategoria();
 
-      console.log("✅ Aba 'Por Categoria' ativada automaticamente");
+      console.log("Aba 'Por Categoria' ativada automaticamente");
     }
   }
 }
@@ -95,9 +95,9 @@ function verificarCategoriaURL() {
 function filtrarPorCategoria() {
   const categoriaEscolhida = selectCategoria.value.toLowerCase();
 
-  console.log("🔍 Filtrando por categoria:", categoriaEscolhida);
+  console.log("Filtrando por categoria:", categoriaEscolhida);
 
-  // ✅ Atualiza o título
+  // Atualiza o título
   if (categoriaEscolhida) {
     const nomeCategoria =
       nomesCategoria[categoriaEscolhida] || categoriaEscolhida;
@@ -106,7 +106,7 @@ function filtrarPorCategoria() {
     tituloCategoria.innerHTML = `<i class="bi bi-box-seam"></i> Todos os Produtos`;
   }
 
-  // ✅ Filtra produtos
+  // Filtra produtos
   let resultados = produtosCache;
 
   if (categoriaEscolhida) {
@@ -117,7 +117,7 @@ function filtrarPorCategoria() {
     });
   }
 
-  console.log(`📦 ${resultados.length} produtos encontrados`);
+  console.log(`${resultados.length} produtos encontrados`);
 
   if (resultados.length === 0) {
     listaCategoria.innerHTML = `
@@ -129,11 +129,11 @@ function filtrarPorCategoria() {
     return;
   }
 
-  // ✅ Renderiza produtos em cards
+  // Renderiza produtos em cards
   listaCategoria.innerHTML = "";
 
   resultados.forEach((prod) => {
-    // ✅ Pega a ocorrência com menor preço
+    // Pega a ocorrência com menor preço
     const ocorrenciaMaisBarata = prod.ocorrencias.reduce((menor, atual) => {
       return atual.preco < menor.preco ? atual : menor;
     });
@@ -149,7 +149,7 @@ function filtrarPorCategoria() {
       <div class="row g-0 align-items-center">
         <div class="col-md-3 text-center p-3">
           <img 
-            src="${prod.imagem_url}" 
+            src="${prod.imagem_url}"
             alt="${prod.nome}" 
             class="img-fluid rounded" 
             style="max-height:150px; object-fit: contain;"
@@ -162,9 +162,8 @@ function filtrarPorCategoria() {
             <h5 class="card-title">${prod.nome}</h5>
 
             <p class="card-text text-muted mb-2">
-              <i class="bi bi-tag"></i> ${prod.marca} - ${
-      prod.tamanho_embalagem
-    }${prod.unidade_medida}
+              <i class="bi bi-tag"></i> ${prod.marca} - ${prod.tamanho_embalagem
+      }${prod.unidade_medida}
             </p>
 
             <p class="card-text mb-2">
@@ -179,9 +178,8 @@ function filtrarPorCategoria() {
               <p class="card-text fw-bold fs-4 text-success mb-0">
                 R$ ${formatarMoeda(preco)}
               </p>
-              <a href="detalhes.html?id=${
-                prod.id
-              }" class="btn btn-sm btn-primary">
+              <a href="detalhes.html?id=${prod.id
+      }" class="btn btn-sm btn-primary">
                 <i class="bi bi-eye"></i> Ver Detalhes
               </a>
             </div>
@@ -194,11 +192,13 @@ function filtrarPorCategoria() {
   });
 }
 
-// ✅ Event Listeners
-window.addEventListener("load", carregarDados);
+window.addEventListener("load", async () => {
+  await carregarDados();
+});
+
 selectCategoria.addEventListener("change", filtrarPorCategoria);
 
-// ✅ CSS específico para os cards da categoria
+// CSS específico para os cards da categoria
 const estilosCategoria = document.createElement("style");
 estilosCategoria.textContent = `
   .produto-card {
@@ -240,4 +240,3 @@ estilosCategoria.textContent = `
 `;
 document.head.appendChild(estilosCategoria);
 
-console.log("✅ Sistema de categorias carregado");
