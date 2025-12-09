@@ -69,11 +69,11 @@ O desenvolvimento dessa aplicação web se baseia principalmente em três tópic
 
 **1. Relevância Econômica**
 
-- 47% das despesas familiares brasileiras são com alimentação.
-- O setor de supermercados representa 13,6% da receita do comércio nacional.
-- 90% dos consumidores buscam constantemente opções mais baratas no quesito supermercado.
-- O setor de supermercados é um setor em crescimento com 4% de alta no consumo em 2025.
-- A aplicação pode gerar economia significativa para as famílias brasileiros visto que, segundo o Serasa, as compras de supermercado são a principal fonte de endividamente no cartão de crédito dos brasileiros.
+-	17,5% das despesas familiares brasileiras são com alimentação.
+-	Supermercados representam 9,1% da receita do comércio nacional.
+-	87% dos consumidores buscam opções mais baratas.
+-	Crescimento de 4% no consumo em 2025.
+-	Compras de supermercado são a principal fonte de endividamento no cartão de crédito (dados Serasa) representando 59%.
 
 **2. Oportunidade Tecnológica**
 
@@ -316,39 +316,115 @@ O vídeo a seguir traz uma apresentação do problema que a equipe está tratand
 
 Esta seção apresenta as funcionalidades da solução.Info
 
-##### Funcionalidade 1 - Cadastro de Contatos ⚠️ EXEMPLO ⚠️
+##### Funcionalidade 1 - Cadastro de usuário e login
 
-Permite a inclusão, leitura, alteração e exclusão de contatos para o sistema
+Permite o cadastro de novo usuário para o sistema, e caso ja seja cadastrado, permite fazer o login
 
 - **Instruções de acesso:**
-  - Abra o site e efetue o login
-  - Acesse o menu principal e escolha a opção Cadastros
-  - Em seguida, escolha a opção Contatos
+  - Abra o site e no canto superior direito, clique em entrar
+  - Caso não seja cadastrado, clique em "Cadastre-se"
+  - Em seguida, efetue o login
 - **Tela da funcionalidade**:
 
-![Tela de Funcionalidade](images/exemplo-funcionalidade.png)
+![Tela inicial](images/tela-inicial.png)
 
-- **Estrutura de dados:** ⚠️ EXEMPLO ⚠️
+![Tela de login](images/login.png)
 
-Contatos da aplicação
+![Tela de cadastro](images/cadastro-usuario.png)
+
+- **Estrutura de dados:**
+
+Usuário
 
 ```json
-{
-  "id": 1,
-  "nome": "Leanne Graham",
-  "cidade": "Belo Horizonte",
-  "categoria": "amigos",
-  "email": "Sincere@april.biz",
-  "telefone": "1-770-736-8031",
-  "website": "hildegard.org"
-}
+    {
+      "id": 1,
+      "nome": "Sofia Almeida",
+      "sobrenome": "Santos",
+      "telefone": "(31) 98765-4321",
+      "email": "sofia@example.com",
+      "senha": "@senha123",
+      "avatar": "../assets/img/avatar-default.svg",
+      "dataCadastro": "2024-01-15T10:30:00",
+      "endereco": {
+        "cep": "33400-000",
+        "rua": "Rua das Flores",
+        "numero": "123",
+        "bairro": "Centro",
+        "cidade": "Lagoa Santa",
+        "estado": "MG"
+      }
+    }
 ```
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente cada uma das funcionalidades que a aplicação fornece tanto para os usuários quanto aos administradores da solução.
->
-> Inclua, para cada funcionalidade, itens como: (1) titulos e descrição da funcionalidade; (2) Estrutura de dados associada; (3) o detalhe sobre as instruções de acesso e uso.
+##### Funcionalidade 2 - Visualizar, ver detalhes, avaliar e ver mercados no mapa
+
+Permite o usuário veja os mercados disponíveis, veja seus detalhes, avalie e veja o mercado no mapa
+
+- **Instruções de acesso:**
+  - Na barra de navegação, vá em "Supermercados"
+  - Clique nos detalhes do supermercado desejado
+  - Se desejar, clique em "Adicionar Avaliação"
+  - Salve a sua avaliação
+  - Voltando em supermercados, clique em "Ver Mapa"
+- **Tela da funcionalidade**:
+
+![Tela supermercados](images/visualizar-mercados.png)
+
+![Tela detalhes do supermercado](images/detalhes-mercado.png)
+
+![Tela de avaliação do supermercado](images/avaliacao-mercado.png)
+
+![Tela de mapa  do supermercado](images/mapa-mercado.png)
+
+- **Estrutura de dados:**
+
+Mercados
+
+```json
+    {
+      "id": 1,
+      "nome": "Supermercado Lagoa",
+      "logo": "/codigo/public/assets/img/logo_super_lagoa.png",
+      "endereco": {
+        "cep": "33400-000",
+        "rua": "Rua Principal",
+        "numero": "100",
+        "bairro": "Centro",
+        "cidade": "Lagoa Santa",
+        "estado": "MG",
+        "pais": "Brasil"
+      },
+      "telefone": "(31) 3333-4444",
+      "email": "contato@superlagoa.com.br",
+      "horarioFuncionamento": "Seg-Sáb: 7h às 22h, Dom: 8h às 20h",
+      "localizacao": {
+        "latitude": -19.6305,
+        "longitude": -43.936
+      },
+      "acessibilidade": {
+        "rampa": null,
+        "elevador": null,
+        "vagas": null,
+        "piso": true,
+        "braille": true,
+        "preferencial": true,
+        "libras": null
+      },
+      "votos": {
+        "rampa": { "likes": 0, "dislikes": 0 },
+        "elevador": { "likes": 0, "dislikes": 0 },
+        "vagas": { "likes": 0, "dislikes": 0 },
+        "piso": { "likes": 5, "dislikes": 0 },
+        "braille": { "likes": 3, "dislikes": 0 },
+        "preferencial": { "likes": 8, "dislikes": 0 },
+        "libras": { "likes": 0, "dislikes": 0 }
+      },
+      "mediaAvaliacoes": 4.5,
+      "numeroDeAvaliacoes": 12,
+      "dataAtualizacao": "2025-01-28T10:30:00"
+    }
+```
 
 ## Módulos e APIs
 
@@ -356,14 +432,9 @@ Esta seção apresenta os módulos e APIs utilizados na solução
 
 | Propósito   | Plataforma      | Link                                                               |
 | :---------- | :-------------- | :----------------------------------------------------------------- |
-| **Images**  | Unsplash        | [https://unsplash.com/](https://unsplash.com/) ⚠️ EXEMPLO ⚠️       |
-| **Fonts**   | Icons Font Face | [https://fontawesome.com/](https://fontawesome.com/) ⚠️ EXEMPLO ⚠️ |
-| **Scripts** | jQuery          | [http://www.jquery.com/](http://www.jquery.com/) ⚠️ EXEMPLO ⚠️     |
-| **Scripts** | Bootstrap 4     | [http://getbootstrap.com/](http://getbootstrap.com/) ⚠️ EXEMPLO ⚠️ |
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente os módulos e APIs utilizados no desenvolvimento da solução. Inclua itens como: (1) Frameworks, bibliotecas, módulos, etc. utilizados no desenvolvimento da solução; (2) APIs utilizadas para acesso a dados, serviços, etc.
+| **Scripts** | jQuery          | [http://www.jquery.com/](http://www.jquery.com/)     |
+| **Scripts** | Bootstrap 5     | [http://getbootstrap.com/](http://getbootstrap.com/) |
+| **Imagens** | Google Imagens     | [https://images.google.com/?hl=pt-br](https://images.google.com/?hl=pt-br) |
 
 # Referências
 
