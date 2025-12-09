@@ -60,7 +60,7 @@
     {
       "id": 1,
       "nome": "Supermercado Lagoa",
-      "logo": "https://via.placeholder.com/200x100?text=Supermercado+Lagoa",
+      "logo": "/codigo/public/assets/img/logo_super_lagoa.png",
       "endereco": {
         "cep": "33400-000",
         "rua": "Rua Principal",
@@ -102,7 +102,7 @@
     {
       "id": 2,
       "nome": "Mercado Central Lagoa Santa",
-      "logo": "https://via.placeholder.com/200x100?text=Mercado+Central",
+      "logo": "/codigo/public/assets/img/logo_mercadao_lagoa_santa.png",
       "endereco": {
         "cep": "33400-050",
         "rua": "Av. Minas Gerais",
@@ -144,7 +144,7 @@
     {
       "id": 3,
       "nome": "Hipermercado Popular",
-      "logo": "https://via.placeholder.com/200x100?text=Hiper+Popular",
+      "logo": "/codigo/public/assets/img/logo_mercado_popular.png",
       "endereco": {
         "cep": "33400-100",
         "rua": "Rua das Flores",
