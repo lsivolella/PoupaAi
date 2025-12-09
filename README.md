@@ -62,6 +62,10 @@ Após iniciar, a API estará disponível em:
 http://localhost:3000
 ```
 
+### 4. Instalar o Live Server
+
+Procure pela extensão do Live Server na loja de extensão e faça a sua instalação.
+
 ### 5. Testar a aplicação
 
-Agora basta abrir o arquivo public/index.html no navegador para acessar a aplicação e testar todas as funcionalidades.
+Abra qualquer arquivo HTML utilizando o Live Server. Você será capaz de navegar na aplicação e testar todas as funcionalidades.
