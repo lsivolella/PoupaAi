@@ -53,41 +53,54 @@ function filtrarProdutos() {
     return;
   }
 
-  resultados.sort((a, b) => a.preco - b.preco);
-
-  const menorPreco = resultados[0].preco;
-
   listaBusca.innerHTML = "";
 
   resultados.forEach((prod) => {
+    // ✅ pega a ocorrência com menor preço
+    const ocorrenciaMaisBarata = prod.ocorrencias.reduce((menor, atual) => {
+      return atual.preco < menor.preco ? atual : menor;
+    });
+
+    const preco = ocorrenciaMaisBarata.preco;
+    const mercadoId = ocorrenciaMaisBarata.mercadoId;
+    const nomeMercado = getNomeMercado(mercadoId);
+
     const div = document.createElement("div");
     div.classList.add("card", "mb-3");
+
     div.innerHTML = `
-            <div class="row g-0 align-items-center">
-                <div class="col-md-3 text-center p-3">
-                    <img src="${prod.imagem_url}" alt="${
-      prod.nome
-    }" class="img-fluid rounded" style="max-height:150px;">
-                </div>
-                <div class="col-md-9">
-                    <div class="card-body">
-                        <h5 class="card-title">${prod.nome}</h5>
-                        <p class="card-text">${prod.marca} - ${
-      prod.tamanho_embalagem
-    }${prod.unidade_medida}</p>
-                        <p class="card-text">${prod.descricao}</p>
-                        <p class="card-text">Mercado: ${getNomeMercado(
-                          prod.Mercado[0]
-                        )}</p>
-                        <p class="card-text fw-bold ${
-                          prod.preco === menorPreco ? "text-success" : ""
-                        }">
-                            R$ ${prod.preco.toFixed(2)}
-                        </p>
-                    </div>
-                </div>
-            </div>
-        `;
+    <div class="row g-0 align-items-center">
+      <div class="col-md-3 text-center p-3">
+        <img 
+          src="${prod.imagem_url}" 
+          alt="${prod.nome}" 
+          class="img-fluid rounded" 
+          style="max-height:150px;"
+        >
+      </div>
+
+      <div class="col-md-9">
+        <div class="card-body">
+          <h5 class="card-title">${prod.nome}</h5>
+
+          <p class="card-text">
+            ${prod.marca} - ${prod.tamanho_embalagem}${prod.unidade_medida}
+          </p>
+
+          <p class="card-text">${prod.descricao}</p>
+
+          <p class="card-text">
+            Mercado: ${nomeMercado}
+          </p>
+
+          <p class="card-text fw-bold">
+            R$ ${formatarMoeda(preco)}
+          </p>
+        </div>
+      </div>
+    </div>
+  `;
+
     listaBusca.appendChild(div);
   });
 }
