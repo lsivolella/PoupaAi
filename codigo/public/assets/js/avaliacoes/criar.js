@@ -31,7 +31,7 @@ function configurarFormulario() {
     e.preventDefault();
 
     const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
-
+    console.log(usuarioLogado);
     const nova = {
       usuarioId: Number(usuarioLogado.id),
       mercadoId: Number(document.getElementById("mercado-select").value),
