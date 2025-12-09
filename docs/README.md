@@ -523,7 +523,7 @@ Permite Que o usuário busque, filtre, veja o produto e seus detalhes. Ao admini
   - Em produtos, se o administrador desejar excluir um produto, clique em "excluir"
 - **Tela da funcionalidade**:
 
-![Tela buscar produtos](images/buscar-produtos.png)
+![Tela buscar produtos](images/buscar-produto.png)
 
 ![Tela filtrar produtos](images/filtrar-produtos.png)
 
