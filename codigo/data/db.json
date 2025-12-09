@@ -2369,6 +2369,13 @@
       "nota": 4,
       "comentario": "Produtos frescos e boa localização.",
       "data": "2025-11-28T17:00:00"
+    },
+    {
+      "usuarioId": 1,
+      "mercadoId": 1,
+      "nota": 5,
+      "comentario": "Boa",
+      "id": 5
     }
   ],
   "acessibilidades": [

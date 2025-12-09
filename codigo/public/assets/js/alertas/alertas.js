@@ -99,17 +99,39 @@ async function renderizarAlertas(alertas, containerId, loadingId) {
   }
 }
 
+// ✅ Função para corrigir caminho da imagem do produto
+function getImagemProduto(produto) {
+  let imagemUrl = produto.imagem_url || "";
+
+  if (imagemUrl && !imagemUrl.startsWith("http")) {
+    if (imagemUrl.startsWith("../")) {
+      imagemUrl = imagemUrl.substring(3);
+    }
+
+    if (imagemUrl.startsWith("assets/")) {
+      imagemUrl = `/codigo/public/${imagemUrl}`;
+    } else if (imagemUrl.startsWith("img/")) {
+      imagemUrl = `/codigo/public/assets/${imagemUrl}`;
+    } else if (!imagemUrl.startsWith("/")) {
+      imagemUrl = `/codigo/public/assets/img/${imagemUrl}`;
+    }
+  }
+
+  return (
+    imagemUrl || "https://via.placeholder.com/80/cccccc/666666?text=Sem+Imagem"
+  );
+}
+
 function criarCardAlerta(alerta, produto, mercado) {
   const card = document.createElement("div");
   card.className = `alert-card ${alerta.lido ? "lido" : ""}`;
   card.dataset.alertaId = alerta.id;
 
   const tempoDecorrido = calcularTempoDecorrido(alerta.dataNotificacao);
+  const imagemProduto = getImagemProduto(produto);
 
   card.innerHTML = `
-    <img src="${produto.imagem || "https://via.placeholder.com/80"}" alt="${
-    produto.nome
-  }" class="alert-product-img">
+    <img src="${imagemProduto}" alt="${produto.nome}" class="alert-product-img">
     
     <div class="alert-content">
       <h3 class="alert-product-name">${produto.nome}</h3>

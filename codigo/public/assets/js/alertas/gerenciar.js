@@ -37,6 +37,29 @@ async function carregarAlertas() {
   }
 }
 
+function getImagemProduto(produto) {
+  let imagemUrl = produto.imagem_url || "";
+
+  if (imagemUrl && !imagemUrl.startsWith("http")) {
+    if (imagemUrl.startsWith("../")) {
+      imagemUrl = imagemUrl.substring(3);
+    }
+
+    if (imagemUrl.startsWith("assets/")) {
+      imagemUrl = `/codigo/public/${imagemUrl}`;
+    } else if (imagemUrl.startsWith("img/")) {
+      imagemUrl = `/codigo/public/assets/${imagemUrl}`;
+    } else if (!imagemUrl.startsWith("/")) {
+      imagemUrl = `/codigo/public/assets/img/${imagemUrl}`;
+    }
+  }
+
+  return (
+    imagemUrl ||
+    "https://ui-avatars.com/api/?name=Produto&size=50&background=e0e0e0&color=666"
+  );
+}
+
 async function renderizarTabela(alertas) {
   const tbody = document.getElementById("alertasTableBody");
   const loadingRow = document.getElementById("loadingRow");
@@ -77,19 +100,16 @@ async function renderizarTabela(alertas) {
         </span>
       </td>
       <td data-label="Produto">
-        <div class="table-product">
-          <img src="${
-            produto.imagem_url ||
-            "https://ui-avatars.com/api/?name=Produto&size=50&background=e0e0e0&color=666"
-          }" alt="${
+      <div class="table-product">
+        <img src="${getImagemProduto(produto)}" alt="${
       produto.nome
-    }" class="table-product-img" onerror="this.src='https://ui-avatars.com/api/?name=Produto&size=50&background=e0e0e0&color=666'">
-          <div>
-            <strong>${produto.nome}</strong>
-            <small>${produto.marca || ""}</small>
-          </div>
+    }" class="table-product-img">
+        <div>
+          <strong>${produto.nome}</strong>
+          <small>${produto.marca || ""}</small>
         </div>
-      </td>
+      </div>
+    </td>
       <td data-label="Tipo">
         <span class="tipo-badge tipo-${alerta.tipo}">
           <i class="bi bi-${
