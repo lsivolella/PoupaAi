@@ -1,5 +1,3 @@
-const API_URL = "http://localhost:3001";
-
 class Carousel {
   constructor() {
     this.wrapper = document.getElementById("carouselWrapper");
@@ -69,39 +67,26 @@ class Carousel {
   }
 
   stopAutoPlay() {
-    if (this.autoPlayInterval) {
-      clearInterval(this.autoPlayInterval);
-    }
+    if (this.autoPlayInterval) clearInterval(this.autoPlayInterval);
   }
 }
 
 async function carregarOfertas() {
   try {
-    const response = await fetch(`${API_URL}/promocoes?ativa=true&_limit=8`);
-
-    if (!response.ok) {
-      throw new Error("Erro ao carregar ofertas");
-    }
+    const response = await fetch(`/api/promocoes?ativa=true&_limit=8`);
+    if (!response.ok) throw new Error("Erro ao carregar ofertas");
 
     const promocoes = await response.json();
 
     const ofertasCompletas = await Promise.all(
       promocoes.map(async (promo) => {
-        const produtoRes = await fetch(
-          `${API_URL}/produtos/${promo.produtoId}`
-        );
+        const produtoRes = await fetch(`/api/produtos/${promo.produtoId}`);
         const produto = await produtoRes.json();
 
-        const mercadoRes = await fetch(
-          `${API_URL}/mercados/${promo.mercadoId}`
-        );
+        const mercadoRes = await fetch(`/api/mercados/${promo.mercadoId}`);
         const mercado = await mercadoRes.json();
 
-        return {
-          ...promo,
-          produto,
-          mercado,
-        };
+        return { ...promo, produto, mercado };
       })
     );
 
@@ -136,33 +121,22 @@ function renderizarOfertas(ofertas) {
       <div class="offer-card">
         <div class="offer-badge">-${desconto}%</div>
         <div class="offer-image">
-          <img src="${oferta.produto.imagem_url}" alt="${
-        oferta.produto.nome
-      }" onerror="this.src='./assets/img/placeholder-produto.png'">
+          <img src="${oferta.produto.imagem_url}" alt="${oferta.produto.nome}"
+               onerror="this.src='/assets/img/placeholder-produto.png'">
         </div>
         <div class="offer-content">
           <div class="offer-market">
-            <i class="bi bi-shop"></i>
-            ${oferta.mercado.nome}
+            <i class="bi bi-shop"></i> ${oferta.mercado.nome}
           </div>
           <h3 class="offer-title">${oferta.produto.nome}</h3>
           <p class="offer-brand">${oferta.produto.marca}</p>
           <div class="offer-price">
-            <span class="price-old">R$ ${formatarPreco(
-              oferta.precoOriginal
-            )}</span>
-            <span class="price-new">R$ ${formatarPreco(
-              oferta.precoPromocional
-            )}</span>
+            <span class="price-old">R$ ${formatarPreco(oferta.precoOriginal)}</span>
+            <span class="price-new">R$ ${formatarPreco(oferta.precoPromocional)}</span>
           </div>
-          <div class="offer-description">
-            ${oferta.descricao}
-          </div>
-          <button class="btn-add-cart" onclick="adicionarAoCarrinho(${
-            oferta.produtoId
-          }, ${oferta.mercadoId})">
-            <i class="bi bi-cart-plus"></i>
-            Adicionar ao Carrinho
+          <div class="offer-description">${oferta.descricao}</div>
+          <button class="btn-add-cart" onclick="adicionarAoCarrinho(${oferta.produtoId}, ${oferta.mercadoId})">
+            <i class="bi bi-cart-plus"></i> Adicionar ao Carrinho
           </button>
         </div>
       </div>
@@ -178,16 +152,18 @@ function mostrarErroOfertas() {
       <i class="bi bi-exclamation-triangle"></i>
       <p>Não foi possível carregar as ofertas.</p>
       <button class="btn-retry" onclick="carregarOfertas()">
-        <i class="bi bi-arrow-clockwise"></i>
-        Tentar Novamente
+        <i class="bi bi-arrow-clockwise"></i> Tentar Novamente
       </button>
     </div>
   `;
 }
 
+// =====================================
+// Carrinho
+// =====================================
 async function adicionarAoCarrinho(produtoId, mercadoId) {
   try {
-    const response = await fetch(`${API_URL}/produtos/${produtoId}`);
+    const response = await fetch(`/api/produtos/${produtoId}`);
     const produto = await response.json();
 
     const ocorrencia = produto.ocorrencias.find(
@@ -201,8 +177,8 @@ async function adicionarAoCarrinho(produtoId, mercadoId) {
 
     const itemCarrinho = {
       id: `${produtoId}-${mercadoId}`,
-      produtoId: produtoId,
-      mercadoId: mercadoId,
+      produtoId,
+      mercadoId,
       nome: produto.nome,
       marca: produto.marca,
       imagem: produto.imagem_url,
@@ -212,9 +188,7 @@ async function adicionarAoCarrinho(produtoId, mercadoId) {
 
     let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
-    const indiceExistente = carrinho.findIndex(
-      (item) => item.id === itemCarrinho.id
-    );
+    const indiceExistente = carrinho.findIndex((item) => item.id === itemCarrinho.id);
 
     if (indiceExistente !== -1) {
       carrinho[indiceExistente].quantidade += 1;
@@ -225,19 +199,14 @@ async function adicionarAoCarrinho(produtoId, mercadoId) {
     }
 
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
-
-    if (typeof carregarCarrinho === "function") {
-      carregarCarrinho();
-    }
+    if (typeof carregarCarrinho === "function") carregarCarrinho();
   } catch (error) {
     console.error("Erro ao adicionar ao carrinho:", error);
     mostrarNotificacao("Erro ao adicionar produto", "error");
   }
 }
-
 function calcularDesconto(precoOriginal, precoPromocional) {
-  const desconto = ((precoOriginal - precoPromocional) / precoOriginal) * 100;
-  return Math.round(desconto);
+  return Math.round(((precoOriginal - precoPromocional) / precoOriginal) * 100);
 }
 
 function formatarPreco(preco) {
@@ -246,175 +215,7 @@ function formatarPreco(preco) {
 
 document.addEventListener("DOMContentLoaded", () => {
   new Carousel();
-
   carregarOfertas();
 
   console.log("✅ Sistema de busca da Home carregado e corrigido");
-  console.log(
-    "✅ Busca redireciona para: /codigo/public/views/produtos/index.html"
-  );
 });
-
-const stylesAdicionais = document.createElement("style");
-stylesAdicionais.textContent = `
-  .no-offers,
-  .error-offers {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 60px 20px;
-    color: #6c757d;
-    text-align: center;
-  }
-
-  .no-offers i,
-  .error-offers i {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    opacity: 0.5;
-  }
-
-  .btn-retry {
-    margin-top: 1rem;
-    padding: 10px 20px;
-    background: #667eea;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-  }
-
-  .btn-retry:hover {
-    background: #5568d3;
-    transform: translateY(-2px);
-  }
-
-  .offer-card {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-    position: relative;
-  }
-
-  .offer-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  }
-
-  .offer-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #ff4757;
-    color: white;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-weight: 700;
-    font-size: 14px;
-    z-index: 1;
-  }
-
-  .offer-image {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    background: #f8f9fa;
-  }
-
-  .offer-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  .offer-content {
-    padding: 15px;
-  }
-
-  .offer-market {
-    font-size: 12px;
-    color: #667eea;
-    font-weight: 500;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-
-  .offer-title {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 5px;
-    color: #2d3748;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .offer-brand {
-    font-size: 13px;
-    color: #6c757d;
-    margin-bottom: 10px;
-  }
-
-  .offer-price {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 8px;
-  }
-
-  .price-old {
-    font-size: 13px;
-    color: #999;
-    text-decoration: line-through;
-  }
-
-  .price-new {
-    font-size: 22px;
-    font-weight: 700;
-    color: #43e97b;
-  }
-
-  .offer-description {
-    font-size: 13px;
-    color: #667eea;
-    margin-bottom: 12px;
-    font-weight: 500;
-  }
-
-  .btn-add-cart {
-    width: 100%;
-    padding: 12px;
-    background: #667eea;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    transition: all 0.3s ease;
-  }
-
-  .btn-add-cart:hover {
-    background: #5568d3;
-    transform: translateY(-2px);
-  }
-
-  .btn-add-cart:active {
-    transform: translateY(0);
-  }
-`;
-document.head.appendChild(stylesAdicionais);
