@@ -394,8 +394,117 @@ Produtos
       ]
     }
 ```
+Promoções
 
-##### Funcionalidade 3 - Visualizar, ver detalhes, avaliar e ver mercados no mapa
+```json
+    {
+      "id": 1,
+      "produtoId": 1,
+      "mercadoId": 3,
+      "precoOriginal": 8.2,
+      "precoPromocional": 6.5,
+      "desconto": 21,
+      "descricao": "Economia de R$ 1,70 por kg!",
+      "dataInicio": "2025-12-01T00:00:00",
+      "dataFim": "2025-12-15T23:59:59",
+      "ativa": true,
+      "destaque": true
+    }
+```
+
+##### Funcionalidade 3 - Dashboard
+
+Permite que o usuário atualize e visualize seu dashboard com sua economia total, listas ativas, alertas ativos, e compras no mês. Além de ter gráficos para economia e de gastos em supermercados. Pode também visualizar suas listas recentes e produtos mais comprados. 
+
+- **Instruções de acesso:**
+  - Na tela inicial, na barra de navegação, clique em "Dashboard"
+  - Se desejar, clique em "Atualizar" para manter o dashboard atual
+  - Role para baixo para ir visualizando todos seus dados e métricas
+- **Tela da funcionalidade**:
+
+![Tela Dashboard](images/dashboard-site.png)
+
+- **Estrutura de dados:**
+
+Listas
+
+```json
+    {
+      "id": 1,
+      "usuarioId": 1,
+      "nome": "Lista Mensal - Janeiro",
+      "dataCriacao": "2025-01-15T10:00:00",
+      "dataAtualizacao": "2025-01-28T14:30:00",
+      "status": "ativa",
+      "valor": 150.5,
+      "produtos": [
+        {
+          "produtoId": 1,
+          "quantidade": 5,
+          "valorUnitario": 7.2,
+          "mercadoId": 1
+        },
+        {
+          "produtoId": 3,
+          "quantidade": 3,
+          "valorUnitario": 9.1,
+          "mercadoId": 1
+        },
+        {
+          "produtoId": 7,
+          "quantidade": 10,
+          "valorUnitario": 4.5,
+          "mercadoId": 1
+        }
+      ]
+    }
+```
+
+Produtos
+
+```json
+    {
+      "id": 1,
+      "nome": "Arroz Branco",
+      "marca": "Camil",
+      "categoria": "Alimentos",
+      "unidade_medida": "kg",
+      "tamanho_embalagem": "1",
+      "descricao": "Arroz branco tipo 1, grãos selecionados",
+      "imagem_url": "/codigo/public/assets/img/arroz_branco_camil_1kg.jpg",
+      "criadoEm": "2024-01-01T10:00:00",
+      "atualizadoEm": "2025-01-28T10:00:00",
+      "ocorrencias": [
+        {
+          "mercadoId": 1,
+          "preco": 7.2,
+          "precoAnterior": 7.9,
+          "estoque": "Em estoque",
+          "ultimaAtualizacao": "2025-01-28T10:00:00"
+        }
+      ]
+    }
+```
+
+Promoções
+
+```json
+    {
+      "id": 1,
+      "produtoId": 1,
+      "mercadoId": 3,
+      "precoOriginal": 8.2,
+      "precoPromocional": 6.5,
+      "desconto": 21,
+      "descricao": "Economia de R$ 1,70 por kg!",
+      "dataInicio": "2025-12-01T00:00:00",
+      "dataFim": "2025-12-15T23:59:59",
+      "ativa": true,
+      "destaque": true
+    }
+```
+
+##### Funcionalidade 4 - Visualizar, ver detalhes, avaliar e ver mercados no mapa
 
 Permite que o usuário veja os mercados disponíveis, veja seus detalhes, avalie e veja o mercado no mapa
 
@@ -510,7 +619,7 @@ Avaliações
     }
 ```
 
-##### Funcionalidade 4 - Buscar, filtrar, visualizar, ver detalhes, cadastrar e excluir produtos
+##### Funcionalidade 5 - Buscar, filtrar, visualizar, ver detalhes, cadastrar e excluir produtos
 
 Permite Que o usuário busque, filtre, veja o produto e seus detalhes. Ao administrador, permite cadastrar e excluir produtos
 
@@ -578,7 +687,7 @@ Categorias
     }
 ```
 
-##### Funcionalidade 5 - Visualizar, criar, editar e excluir listas de compras
+##### Funcionalidade 6 - Visualizar, criar, editar e excluir listas de compras
 
 Permite Que o usuário veja, crie, edite e exclua suas listas de compras
 
@@ -631,7 +740,7 @@ Listas
     }
 ```
 
-##### Funcionalidade 6 - Comparador de preços
+##### Funcionalidade 7 - Comparador de preços
 
 Permite que o usuário compare preços tanto de produtos específicos quanto preços de listas
 
@@ -706,7 +815,7 @@ Listas
     }
 ```
 
-##### Funcionalidade 7 - Alertas
+##### Funcionalidade 8 - Alertas
 
 Permite que o usuário receba/veja alertas de preço abaixando, e crie novos alertas de produtos que desejar
 
@@ -757,7 +866,7 @@ Alertas
     }
 ```
 
-##### Funcionalidade 8 - Visualizar, e excluir hisórico de compras
+##### Funcionalidade 9 - Visualizar, e excluir hisórico de compras
 
 Permite que o usuário veja seu histórico de compras e exclua alguma compra do histórico
 
