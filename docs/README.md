@@ -486,24 +486,6 @@ Produtos
     }
 ```
 
-Promoções
-
-```json
-    {
-      "id": 1,
-      "produtoId": 1,
-      "mercadoId": 3,
-      "precoOriginal": 8.2,
-      "precoPromocional": 6.5,
-      "desconto": 21,
-      "descricao": "Economia de R$ 1,70 por kg!",
-      "dataInicio": "2025-12-01T00:00:00",
-      "dataFim": "2025-12-15T23:59:59",
-      "ativa": true,
-      "destaque": true
-    }
-```
-
 ##### Funcionalidade 4 - Visualizar, ver detalhes, avaliar e ver mercados no mapa
 
 Permite que o usuário veja os mercados disponíveis, veja seus detalhes, avalie e veja o mercado no mapa
