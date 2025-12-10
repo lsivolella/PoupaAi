@@ -9,7 +9,7 @@ const middlewares = jsonServer.defaults();
 app.use('/api', middlewares);
 app.use('/api', router);
 
-app.use(express.static(path.join(__dirname, 'public', 'views')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'views', 'index.html'));
