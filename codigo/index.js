@@ -1,14 +1,22 @@
 const jsonServer = require('json-server');
 const path = require('path');
+const express = require('express');
 
-const server = jsonServer.create();
+const app = express();
 const router = jsonServer.router(path.join(__dirname, 'data', 'db.json'));
 const middlewares = jsonServer.defaults();
 
-server.use(middlewares);
-server.use(router);
+app.use('/api', middlewares);
+app.use('/api', router);
 
-server.listen(3001, () => {
-  console.log('JSON Server is running');
+app.use(express.static(path.join(__dirname, 'public', 'views')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'views', 'index.html'));
+});
+
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
   console.log('DB path:', path.join(__dirname, 'data', 'db.json'));
 });
