@@ -53,13 +53,13 @@ npm install json-server
 Execute o servidor apontando para o arquivo db.json:
 
 ```bash
-npx json-server --watch db/db.json --port 3000
+npx json-server --watch data/db.json --port 3001
 ```
 
 Após iniciar, a API estará disponível em:
 
 ```bash
-http://localhost:3000
+http://localhost:3001
 ```
 
 ### 4. Instalar o Live Server
