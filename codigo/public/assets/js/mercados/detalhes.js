@@ -93,13 +93,21 @@ async function carregarDetalhes() {
 
     let acessibilidadesAll = [];
     let acessibilidadesMercado = [];
-    if (mercado.acessibilidades && mercado.acessibilidades.length > 0) {
-      acessibilidadesAll = await fetch(
-        "http://localhost:3001/acessibilidades"
-      ).then((r) => r.json());
-      acessibilidadesMercado = acessibilidadesAll.filter((a) =>
-        mercado.acessibilidades.includes(a.id)
-      );
+    if (mercado.acessibilidade) {
+
+      const acessIds = Object.values(mercado.acessibilidade)
+        .map((v, i) => v === true ? i + 1 : null)
+        .filter(v => v !== null);
+
+      if (acessIds.length > 0) {
+        acessibilidadesAll = await fetch(
+          "http://localhost:3001/acessibilidades"
+        ).then((r) => r.json());
+
+        acessibilidadesMercado = acessibilidadesAll.filter((a) =>
+          acessIds.includes(a.id)
+        );
+      }
     }
 
     cardAcessibilidade.innerHTML = `
