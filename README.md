@@ -1,6 +1,13 @@
-[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=20612906)
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="codigo/public/assets/img/Logo_PoupaAI_Branco.svg">
+    <img src="codigo/public/assets/img/Logo_PoupaAI.svg" alt="Logo do PoupaAí" width="300">
+  </picture>
+</p>
 
 # PoupaAí
+
+> 🏆 Este projeto foi eleito o **melhor projeto do 1º período** da turma de Engenharia de Software.
 
 Uma plataforma voltada para ajudar consumidores a encontrarem os melhores preços nos mercados e a economizar seu tempo ao realizar compras.
 
