@@ -27,52 +27,59 @@ Uma plataforma voltada para ajudar consumidores a encontrarem os melhores preço
 
 ## Instruções de utilização
 
-Para testar esta aplicação localmente, você precisará do **Node.js** e do **JSON Server**, que é usado como API REST simulada. Siga os passos abaixo:
+A aplicação é composta por duas partes que rodam juntas:
 
----
+| Parte | Onde fica | O que faz |
+| :--- | :--- | :--- |
+| **API** | `codigo/` | Um [JSON Server](https://github.com/typicode/json-server) que simula uma API REST a partir do arquivo `codigo/data/db.json`, na porta `3001` |
+| **Front-end** | `codigo/public/` | Páginas HTML, CSS e JavaScript que consomem a API |
 
-### 1. Instalar o Node.js
+### Pré-requisitos
 
-Se ainda não tiver instalado, baixe e instale pela página oficial:
+- **Node.js** (versão LTS): https://nodejs.org
+- **Visual Studio Code** com a extensão **Live Server**, ou qualquer servidor de arquivos estáticos
 
-https://nodejs.org
-
----
-
-### 2. Inicializar o projeto (caso ainda não exista um package.json)
-
-No diretório raiz do projeto, execute:
+### 1. Clonar o repositório
 
 ```bash
-npm init -y
+git clone https://github.com/lsivolella/PoupaAi.git
+cd PoupaAi
 ```
 
-Isso criará o arquivo package.json, necessário para gerenciar dependências.
+### 2. Instalar as dependências
 
-### 3. Instalar o JSON Server
-
-Com o arquivo package.json criado, instale o JSON Server:
+As dependências já estão declaradas em `codigo/package.json`, então não é necessário criar um novo projeto nem instalar o JSON Server manualmente:
 
 ```bash
-npm install json-server
+cd codigo
+npm install
 ```
 
-Execute o servidor apontando para o arquivo db.json:
+### 3. Iniciar a API
+
+Ainda dentro da pasta `codigo`, execute:
 
 ```bash
-npx json-server --watch data/db.json --port 3001
+npm start
 ```
 
-Após iniciar, a API estará disponível em:
+A API ficará disponível em:
 
-```bash
+```
 http://localhost:3001
 ```
 
-### 4. Instalar o Live Server
+Mantenha este terminal aberto enquanto usa a aplicação, pois o front-end faz as requisições para essa porta.
 
-Procure pela extensão do Live Server na loja de extensão e faça a sua instalação.
+### 4. Abrir o front-end
+
+1. No Visual Studio Code, instale a extensão **Live Server** (caso ainda não a tenha).
+2. Abra o arquivo `codigo/public/views/index.html`.
+3. Clique com o botão direito no arquivo e escolha **Open with Live Server**.
 
 ### 5. Testar a aplicação
 
-Abra qualquer arquivo HTML utilizando o Live Server. Você será capaz de navegar na aplicação e testar todas as funcionalidades.
+Navegue pelas páginas e teste as funcionalidades. Os dados de exemplo (usuários, mercados, produtos, listas e alertas) vêm de `codigo/data/db.json`.
+
+> [!NOTE]
+> O JSON Server grava no `db.json` as alterações feitas pela aplicação (cadastros, listas, avaliações etc.). Para restaurar os dados originais, desfaça as mudanças nesse arquivo com `git restore codigo/data/db.json`.
